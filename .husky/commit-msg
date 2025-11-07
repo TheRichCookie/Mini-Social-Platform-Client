@@ -1,0 +1,32 @@
+#!/sh
+
+# RED='\033[0;31m'
+# GREEN='\033[0;32m'
+# YELLOW='\033[1;33m'
+# NC='\033[0m' # No Color
+
+# echo ""
+# echo " *********************************************************** "
+# echo " COMMIT MSG "
+# echo " *********************************************************** "
+
+# echo ""
+# echo " ------------------------------------------------------------ "
+# echo " VALIDATING COMMIT JIRA TASK ID"
+# echo " ------------------------------------------------------------ "
+# node ./.scripts/jira-task-validation.mjs "$1" || {
+#   echo "${RED} Error: VALIDATING COMMIT JIRA TASK ID FAILED! ${NC}" >&2
+#   exit 1
+# }
+# echo " ------------------------------------------------------------ "
+
+# echo ""
+# echo " ------------------------------------------------------------ "
+# echo " VALIDATING COMMIT CONVENTIONAL "
+# echo " ------------------------------------------------------------ "
+# npx commitlint --edit "$1" || {
+#   echo "${RED} Error: COMMIT MSG FAILED! ${NC}" >&2
+#   exit 1
+# }
+# echo -e "✅${GREEN} Commit message validation passed successfully. ${NC}"
+# echo " ------------------------------------------------------------ "

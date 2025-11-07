@@ -1,0 +1,21 @@
+# root files
+package.json
+package-lock.json
+yarn.lock
+vs-*.code-workspace
+stylelint.config.js
+.commitlintrc.json
+.eslintrc.js
+.lintstagedrc.json
+.prettierrc.js
+.validate-branch-namerc.json
+config.commitizen.js
+README.md
+release.config.mjs
+tsconfig.doc.json
+tsconfig.json
+
+# root folders
+.vscode/
+dist/
+documentation/

@@ -1,0 +1,1 @@
+module.exports = require('./configs/code-quality/prettier/index.js');
