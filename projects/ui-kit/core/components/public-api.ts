@@ -1,1 +1,1 @@
-export * from './uk-button/uk-button.component';
+export * from './star-field/star-field.component';

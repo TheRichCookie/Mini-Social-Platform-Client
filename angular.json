@@ -56,7 +56,7 @@
                         "stylePreprocessorOptions": {
                             "includePaths": ["projects/ui-kit/core/assets/styles/index.scss"]
                         },
-                        "styles": ["projects/hangout-app/src/styles.scss"],
+                        "styles": ["projects/ui-kit/core/assets/styles/index.scss"],
                         "scripts": []
                     },
                     "configurations": {
@@ -110,7 +110,10 @@
                                 "input": "projects/hangout-app/public"
                             }
                         ],
-                        "styles": ["projects/hangout-app/src/styles.scss"],
+                        "styles": [
+                            "projects/hangout-app/src/styles.scss",
+                            "projects/baman/ui-kit/assets/styles/index.scss"
+                        ],
                         "scripts": []
                     }
                 },
