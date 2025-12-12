@@ -1,0 +1,14 @@
+@use 'core' as *;
+
+:host {
+}
+
+.uk.header-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    uk-icon {
+        cursor: pointer;
+    }
+}

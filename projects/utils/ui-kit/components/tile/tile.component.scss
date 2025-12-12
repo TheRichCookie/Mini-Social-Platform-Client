@@ -1,0 +1,29 @@
+@use 'core' as *;
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.uk.title {
+  width: 100%;
+
+  > .wrapper {
+    width: 100%;
+
+    > .title-container {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      > .left-side {
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    > .description {
+      width: 100%;
+    }
+  }
+}

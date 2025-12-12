@@ -1,0 +1,85 @@
+@use "ngx-toastr/toastr" as *;
+@use 'core' as *;
+
+$toast-icon-size: 20px;
+$toast-title-gap: 12px;
+
+.toast-container {
+  > .ngx-toastr {
+    box-shadow: none !important;
+    border-radius: 12px !important;
+    padding: 16px 20px;
+    width: 350px;
+    min-height: 64px !important;
+    line-height: initial !important;
+
+    .toast-title {
+      @include typography-subtitle-strong();
+      display: flex;
+      align-items: center;
+      gap: $toast-title-gap;
+    }
+
+    .toast-message {
+      @include typography-subtitle();
+      display: flex;
+      align-items: center;
+      padding-right: $toast-title-gap + $toast-icon-size;
+    }
+
+    &.uk-success-toast {
+      border: $color-content-success solid 1px;
+      background-color: $color-background-success;
+      color: $color-content-success !important;
+    }
+
+    &.uk-error-toast {
+      border: $color-content-error solid 1px;
+      background-color: $color-background-error;
+      color: $color-content-error !important;
+    }
+
+    &.uk-info-toast {
+      border: $color-content-caution solid 1px;
+      background-color: $color-background-caution;
+      color: $color-content-caution !important;
+    }
+  }
+
+  .toast-success {
+    background-image: none !important;
+
+    .toast-title {
+      &::before {
+        content: "\e941";
+        color: $color-content-success;
+        font-size: $toast-icon-size;
+        font-family: "app-icon";
+      }
+    }
+  }
+  .toast-error {
+    background-image: none !important;
+
+    .toast-title {
+      &::before {
+        content: "\e944";
+        color: $color-content-error;
+        font-size: $toast-icon-size;
+        font-family: "app-icon";
+      }
+    }
+  }
+  .toast-info {
+    background-image: none !important;
+
+    .toast-title {
+      &::before {
+        content: "\e935";
+        color: $color-content-caution;
+        font-size: $toast-icon-size;
+        font-family: "app-icon";
+      }
+    }
+  }
+}

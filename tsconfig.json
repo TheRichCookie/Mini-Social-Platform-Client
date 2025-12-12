@@ -4,9 +4,8 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "@ui-kit/core": ["./dist/ui-kit/core"]
+      "@utils/ui-kit": ["./dist/utils/ui-kit"],
     },
-    "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
@@ -14,18 +13,16 @@
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
     "isolatedModules": true,
-    "esModuleInterop": true,
     "experimentalDecorators": true,
-    "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
-    "module": "ES2022",
-    "forceConsistentCasingInFileNames": true
+    "module": "preserve",
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
+    "typeCheckHostBindings": true,
     "strictTemplates": true,
     "fullTemplateTypeCheck": true,
     "strictInputTypes": true,

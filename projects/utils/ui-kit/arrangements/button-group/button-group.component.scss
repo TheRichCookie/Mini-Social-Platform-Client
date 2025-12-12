@@ -1,0 +1,66 @@
+@use 'core' as *;
+
+$inner-margin: pxToRem(8);
+
+:host {
+    .uk.button-group {
+        &.uk-button-group-type {
+            &-HORIZONTAL {
+                &::ng-deep {
+                    uk-button {
+                        margin-left: $inner-margin;
+
+                        &:last-child {
+                            margin-left: 0;
+                        }
+                    }
+                }
+            }
+
+            &-VERTICAL {
+                &::ng-deep {
+                    uk-button {
+                        margin-bottom: $inner-margin;
+
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.uk.button-group {
+    display: flex;
+
+    // type
+    &.uk-button-group {
+        &-type {
+            &-HORIZONTAL {
+                flex-direction: row;
+                justify-content: space-evenly;
+            }
+
+            &-VERTICAL {
+                flex-direction: column;
+                justify-content: space-around;
+            }
+        }
+
+        &-align-type {
+            &-START {
+                justify-content: start;
+            }
+
+            &-CENTER {
+                justify-content: center;
+            }
+
+            &-END {
+                justify-content: end;
+            }
+        }
+    }
+}

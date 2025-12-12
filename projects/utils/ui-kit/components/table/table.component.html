@@ -1,0 +1,57 @@
+<div
+  class="uk table"
+  [ngClass]="{ 'has-pagination': hasPagination(), 'is-loading': isLoading }"
+>
+  @if (tableData && tableData.length) {
+    <div class="table">
+      <p-table [first]="first" [value]="tableData">
+        <ng-template pTemplate="header">
+          <ng-container *ngTemplateOutlet="ukTableHeader" />
+        </ng-template>
+        <ng-template let-index="rowIndex" let-rowData pTemplate="body">
+          <ng-container>
+            <ng-container
+              *ngTemplateOutlet="
+                ukTableBody;
+                context: { $implicit: rowData, index, first: first }
+              "
+            />
+          </ng-container>
+        </ng-template>
+      </p-table>
+      @if (isLoading) {
+        <uk-icon
+          class="loading-icon"
+          [fgColor]="UK_TYPE.ICON.FG_COLOR.CONTENT_LIGHT"
+          [name]="UK_TYPE.ICON.NAME.GENERAL_LOADING"
+          [size]="UK_TYPE.ICON.SIZE.LARGEST"
+        />
+      }
+      @if (hasPagination()) {
+        <div class="pagination">
+          <uk-pagination
+            [currentPage]="page"
+            [pageSize]="rows"
+            [totalItems]="totalItems"
+            (CHANGE_PAGE)="changePage($event)"
+          />
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="empty-state">
+      <ng-container
+        *ngTemplateOutlet="tableEmptyStateTemplate || defaultTemplate"
+      />
+
+      <ng-template #defaultTemplate>
+        <uk-empty-state
+          [iconFgColor]="UK_TYPE.ICON.FG_COLOR.CONTENT_PRIMARY"
+          [style]="UK_TYPE.EMPTY_STATE.STYLE.PRE_DEFINED"
+        >
+          داده‌ای برای نمایش وجود ندارد.
+        </uk-empty-state>
+      </ng-template>
+    </div>
+  }
+</div>

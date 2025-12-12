@@ -1,0 +1,86 @@
+@use "core" as *;
+
+:host {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    &.uk-date-select {
+        &-is-disabled {
+            &-TRUE {
+                position: relative;
+
+                .mode {
+                    &.value {
+                        background-color: #f9f9f9;
+                    }
+                }
+
+                &::after {
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    content: '';
+                }
+            }
+            &-FALSE {
+            }
+        }
+    }
+}
+
+.uk.date-select {
+    position: relative;
+    > .mode {
+        position: relative;
+        // border: 1px solid $color-border-grade-2;
+        border-radius: pxToRem(6);
+        padding: 0 4px;
+        width: 100%;
+        height: 48px;
+
+        &:after {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+            content: '';
+        }
+    }
+
+    uk-icon {
+        position: absolute;
+        top: 50%;
+        left: 8px;
+        transform: translateY(-50%);
+    }
+
+    &.uk-date-select {
+        &-crud-mode {
+            &-VIEW {
+                .mode {
+                    border-color: transparent;
+                }
+
+                uk-icon {
+                    display: none;
+                }
+            }
+
+            &-EDIT {
+                .mode {
+                }
+
+                uk-icon {
+                    display: block;
+                }
+            }
+        }
+    }
+}

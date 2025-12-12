@@ -1,0 +1,111 @@
+@use "core" as *;
+
+:host {
+  @include fullHeightBlock();
+}
+
+.uk.scroll {
+  height: 100%;
+
+  ng-scrollbar {
+    height: 100%;
+
+    //Adjust the border radius of the scrollbar track
+    --scrollbar-border-radius: 4px;
+
+    // Set the thickness of the scrollbar track
+    --scrollbar-thickness: 6;
+
+    // Define the space between the scrollbar track and its surroundings
+    // --scrollbar-offset: 0;
+
+    // Customize the transition effect for the scrollbar track wrapper
+    // --scrollbar-track-wrapper-transition: width 60ms linear, height 60ms linear;
+
+    // Define the color of the scrollbar track
+    // --scrollbar-track-color: #ffffff;
+
+    // Define the color of the scrollbar thumb
+    --scrollbar-thumb-color: #e0e0e2;
+
+    // Define the color of the scrollbar thumb when hovered
+    // --scrollbar-thumb-hover-color: var(--scrollbar-thumb-color);
+
+    // Define the thickness of the scrollbar when hovered
+    // --scrollbar-hover-thickness: var(--scrollbar-thickness);
+
+    // Customize the transition effect for the scrollbar thumb
+    // --scrollbar-thumb-transition: none;
+
+    // Set the minimum size for the scrollbar thumb
+    // --scrollbar-thumb-min-size: 20;
+
+    // Define the colors for the scrollbar buttons
+    // --scrollbar-button-color: var(--scrollbar-thumb-color);
+    // --scrollbar-button-hover-color: var(--scrollbar-button-color);
+    // --scrollbar-button-active-color: var(--scrollbar-button-hover-color);
+
+    // Define the fill color for the scrollbar button arrow
+    // --scrollbar-button-fill: white;
+    // --scrollbar-button-hover-fill: var(--scrollbar-button-fill);
+    // --scrollbar-button-active-fill: var(--scrollbar-button-hover-fill);
+
+    // Customize the overscroll behavior of the viewport
+    // Disabling overscroll behavior prevents bouncing in Firefox and Safari
+    // --scrollbar-overscroll-behavior: initial;
+
+    // Define the overscroll behavior for mobile devices
+    // --scrollbar-mobile-overscroll-behavior: none;
+  }
+
+  .content {
+    .animation-wrapper {
+      margin: 0 auto;
+      width: 100px;
+      height: 30px;
+    }
+  }
+
+  &.uk-scroll {
+    &-show-scrollbar {
+      &-TRUE {
+        //
+      }
+
+      &-FALSE {
+        ng-scrollbar {
+          --scrollbar-track-color: transparent;
+          --scrollbar-thumb-color: transparent;
+        }
+      }
+    }
+
+    &-content-has-sides-margin {
+      &-FALSE {
+      }
+
+      &-TRUE {
+        .content {
+          .zoon {
+            margin-right: 10px;
+
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+
+    &-content-has-bottom-margin {
+      &-FALSE {
+      }
+
+      &-TRUE {
+        .content {
+          .zoon {
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+  }
+}

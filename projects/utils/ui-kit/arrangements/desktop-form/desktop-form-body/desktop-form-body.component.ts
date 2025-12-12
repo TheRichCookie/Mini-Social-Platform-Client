@@ -1,0 +1,11 @@
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+
+@Component({
+  standalone: true,
+  selector: 'uk-desktop-form-body',
+  imports: [],
+  templateUrl: './desktop-form-body.component.html',
+  styleUrl: './desktop-form-body.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class UkDesktopFormBodyComponent {}

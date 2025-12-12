@@ -1,0 +1,75 @@
+// ############################################## solution #1
+
+// @mixin respond($breakpoint) {
+//     @if ($breakpoint == medium) {
+//         @media (max-width: 900px) {
+//             @content;
+//         }
+//     }
+//     @if ($breakpoint == small) {
+//         @media (max-width: 600px) {
+//             @content;
+//         }
+//     }
+// }
+
+// // usage:
+// //   h1 {
+// //     font-size: 26px;
+// //     @include respond(medium) {
+// //        font-size: 24px;
+// //      }
+// //     @include respond(small) {
+// //        font-size: 20px;
+// //      }
+// //   }
+
+// ############################################## solution #2
+// // Variables for responsive breakpoints
+// $breakpoints: (
+//   "sm": 576px,
+//   "md": 768px,
+//   "lg": 992px,
+//   "xl": 1200px
+// );
+
+// // Grid container
+// .grid-container {
+//   display: flex;
+//   flex-wrap: wrap;
+//   margin-right: -15px;
+//   margin-left: -15px;
+// }
+
+// // Row
+// .grid-row {
+//   display: flex;
+//   flex-wrap: wrap;
+//   margin-right: -15px;
+//   margin-left: -15px;
+// }
+
+// // Column base
+// .grid-col {
+//   flex: 1;
+//   padding-right: 15px;
+//   padding-left: 15px;
+// }
+
+// // Responsive column widths
+// @each $breakpoint, $width in $breakpoints {
+//   @media (min-width: $width) {
+//     @for $i from 1 through 12 {
+//       .grid-col-#{$breakpoint}-#{$i} {
+//         flex: 0 0 #{($i / 12) * 100}%;
+//         max-width: #{($i / 12) * 100}%;
+//       }
+//     }
+//   }
+// }
+
+// // Example full-width column
+// .grid-col-full {
+//   flex: 0 0 100%;
+//   max-width: 100%;
+// }

@@ -1,0 +1,33 @@
+@use "core" as *;
+
+.ngx-otp-input-form {
+  direction: ltr;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px !important;
+  width: 100%;
+
+  .ngx-otp-input {
+    &-box {
+      flex: 1;
+      background-color: $color-background-surface-00;
+      border: 1px solid $color-border-grade-2 !important;
+      @include persian-number();
+      color: $color-content-high-emphasis;
+      font-size: 16px !important;
+    }
+
+    // &-filled {
+    //   border-color: $color-content-primary !important;
+    // }
+
+    // &-success {
+    //   border-color: $color-content-success !important;
+    // }
+
+    // &-failed {
+    //   border-color: $color-content-error !important;
+    // }
+  }
+}

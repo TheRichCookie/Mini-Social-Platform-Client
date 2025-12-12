@@ -1,0 +1,13 @@
+<div
+    class="uk tile"
+    [ngClass]="['uk-tile-width-' + width, 'uk-tile-cursor-' + cursor, 'uk-tile-is-selected-' + isSelected]"
+>
+    <div class="wrapper">
+        <div class="top">
+            <ng-content select="[TOP]" />
+        </div>
+        <div class="title">
+            <ng-content select="[TEXT]" />
+        </div>
+    </div>
+</div>

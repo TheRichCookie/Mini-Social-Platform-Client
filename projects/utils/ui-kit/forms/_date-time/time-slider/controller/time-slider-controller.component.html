@@ -1,0 +1,65 @@
+<div class="time-slider-controller">
+    <div class="time-header">
+        <button
+            *ngIf="!is24Hour && range !== 'mm:ss'"
+            type="button"
+            [disabled]="disabled"
+            (click)="toggleAmPm()"
+        >
+            {{ amPm }}
+        </button>
+        <span>
+            <ng-container *ngIf="range === 'HH:mm' || range === 'HH:mm:ss'">
+                {{ hour.toString().padStart(2, '0') }}:
+            </ng-container>
+            {{ minute.toString().padStart(2, '0') }}
+            <ng-container *ngIf="range !== 'HH:mm'">:{{ second.toString().padStart(2, '0') }}</ng-container>
+        </span>
+    </div>
+
+    <div class="slider-container" *ngIf="range === 'HH:mm' || range === 'HH:mm:ss'">
+        <uk-range-slider
+            [disabled]="disabled"
+            [max]="is24Hour ? 23 : 12"
+            [min]="0"
+            [singleThumb]="true"
+            [step]="1"
+            [value]="hour"
+            (ON_VALUE_CHANGE)="onHourChange($event)"
+        />
+    </div>
+
+    <div class="slider-container">
+        <uk-range-slider
+            [disabled]="disabled"
+            [max]="59"
+            [min]="0"
+            [singleThumb]="true"
+            [step]="minuteStep"
+            [value]="minute"
+            (ON_VALUE_CHANGE)="onMinuteChange($event)"
+        />
+    </div>
+
+
+    <div class="slider-container" *ngIf="range === 'HH:mm:ss' || range === 'mm:ss'">
+        <uk-range-slider
+            [disabled]="disabled"
+            [max]="59"
+            [min]="0"
+            [singleThumb]="true"
+            [step]="secondStep"
+            [value]="second"
+            (ON_VALUE_CHANGE)="onSecondChange($event)"
+        />
+    </div>
+
+    <button
+        *ngIf="showCurrent"
+        type="button"
+        [disabled]="disabled"
+        (click)="setNow()"
+    >
+        Set Now
+    </button>
+</div>

@@ -1,0 +1,110 @@
+<div class="uk stepper">
+  <uk-scroll
+    [orientation]="'horizontal'"
+    [showScrollbar]="showScrollbar"
+    [visibility]="'visible'"
+  >
+    <div class="wrapper">
+      <div
+        *ngFor="let step of steps; let i = index"
+        class="step"
+      >
+        <div class="content">
+          <!-- prev locked and done -->
+          <ng-container *ngIf="activeIndex > i && step.disabled && step.done">
+            <uk-shape-icon
+              [bgColor]="UK_TYPE.SHAPE_ICON.BG_COLOR.OPACITY_PRIMARY_00"
+              [fgColor]="UK_TYPE.SHAPE_ICON.FG_COLOR.CONTENT_PRIMARY"
+              [iconName]="UK_TYPE.ICON.NAME.MATH_CHECK_OUTLINE"
+              [size]="UK_TYPE.SHAPE_ICON.SIZE.SMALL"
+            />
+          </ng-container>
+          <!-- prev locked and not done -->
+          <ng-container *ngIf="activeIndex > i && step.disabled && !step.done">
+            <uk-shape-icon
+              [bgColor]="UK_TYPE.SHAPE_ICON.BG_COLOR.OPACITY_PRIMARY_00"
+              [fgColor]="UK_TYPE.SHAPE_ICON.FG_COLOR.CONTENT_PRIMARY"
+              [iconName]="UK_TYPE.ICON.NAME.MATH_CHECK_OUTLINE"
+              [size]="UK_TYPE.SHAPE_ICON.SIZE.SMALL"
+            />
+          </ng-container>
+          <!-- prev un-locked and done -->
+          <ng-container *ngIf="activeIndex > i && !step.disabled && step.done">
+            <uk-shape-icon
+              [bgColor]="UK_TYPE.SHAPE_ICON.BG_COLOR.OPACITY_PRIMARY_00"
+              [fgColor]="UK_TYPE.SHAPE_ICON.FG_COLOR.CONTENT_PRIMARY"
+              [iconName]="UK_TYPE.ICON.NAME.MATH_CHECK_OUTLINE"
+              [size]="UK_TYPE.SHAPE_ICON.SIZE.SMALL"
+            />
+          </ng-container>
+          <!-- prev un-locked and not done -->
+          <ng-container *ngIf="activeIndex > i && !step.disabled && !step.done">
+            <uk-shape-icon
+              [bgColor]="UK_TYPE.SHAPE_ICON.BG_COLOR.OPACITY_PRIMARY_00"
+              [fgColor]="UK_TYPE.SHAPE_ICON.FG_COLOR.CONTENT_PRIMARY"
+              [iconName]="UK_TYPE.ICON.NAME.MATH_CHECK_OUTLINE"
+              [size]="UK_TYPE.SHAPE_ICON.SIZE.SMALL"
+            />
+          </ng-container>
+          <!-- current -->
+          <ng-container *ngIf="activeIndex === i">
+            <uk-shape-icon
+              [bgColor]="UK_TYPE.SHAPE_ICON.BG_COLOR.REFERENCE_PRIMARY_MAIN"
+              [fgColor]="UK_TYPE.SHAPE_ICON.FG_COLOR.CONTENT_LIGHT"
+              [iconName]="UK_TYPE.ICON.NAME.LOCK_PROGRESS"
+              [size]="UK_TYPE.SHAPE_ICON.SIZE.SMALL"
+            />
+          </ng-container>
+          <!-- next locked and done -->
+          <ng-container *ngIf="activeIndex < i && step.disabled && step.done">
+            <uk-shape-icon
+              [bgColor]="UK_TYPE.SHAPE_ICON.BG_COLOR.REFERENCE_NEUTRAL_80"
+              [fgColor]="UK_TYPE.SHAPE_ICON.FG_COLOR.CONTENT_LIGHT"
+              [iconName]="UK_TYPE.ICON.NAME.LOCK_AFTER"
+              [size]="UK_TYPE.SHAPE_ICON.SIZE.SMALL"
+            />
+          </ng-container>
+          <!-- next locked and not done -->
+          <ng-container *ngIf="activeIndex < i && step.disabled && !step.done">
+            <uk-shape-icon
+              [bgColor]="UK_TYPE.SHAPE_ICON.BG_COLOR.REFERENCE_NEUTRAL_80"
+              [fgColor]="UK_TYPE.SHAPE_ICON.FG_COLOR.CONTENT_LIGHT"
+              [iconName]="UK_TYPE.ICON.NAME.LOCK_AFTER"
+              [size]="UK_TYPE.SHAPE_ICON.SIZE.SMALL"
+            />
+          </ng-container>
+          <!-- next un-locked and done -->
+          <ng-container *ngIf="activeIndex < i && !step.disabled && step.done">
+            <uk-shape-icon
+              [bgColor]="UK_TYPE.SHAPE_ICON.BG_COLOR.REFERENCE_NEUTRAL_80"
+              [fgColor]="UK_TYPE.SHAPE_ICON.FG_COLOR.CONTENT_LIGHT"
+              [iconName]="UK_TYPE.ICON.NAME.LOCK_AFTER"
+              [size]="UK_TYPE.SHAPE_ICON.SIZE.SMALL"
+            />
+          </ng-container>
+          <!-- next un-locked and not done -->
+          <ng-container *ngIf="activeIndex < i && !step.disabled && !step.done">
+            <uk-shape-icon
+              [bgColor]="UK_TYPE.SHAPE_ICON.BG_COLOR.REFERENCE_NEUTRAL_80"
+              [fgColor]="UK_TYPE.SHAPE_ICON.FG_COLOR.CONTENT_LIGHT"
+              [iconName]="UK_TYPE.ICON.NAME.LOCK_AFTER"
+              [size]="UK_TYPE.SHAPE_ICON.SIZE.SMALL"
+            />
+          </ng-container>
+
+          <!-- ********* -->
+          <uk-text
+            [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_DARK"
+            [horizontalAlignment]="UK_TYPE.TEXT.HORIZONTAL_ALIGNMENT.CENTER"
+            [typography]="UK_TYPE.TEXT.TYPOGRAPHY.CAPTION_STRONG"
+            [whiteSpace]="UK_TYPE.TEXT.WHITE_SPACE.NO_WRAP"
+          >
+            {{ step.title }}
+          </uk-text>
+        </div>
+
+        <div class="connector"></div>
+      </div>
+    </div>
+  </uk-scroll>
+</div>

@@ -1,0 +1,34 @@
+<div
+    class="uk empty-state"
+    [ngClass]="['uk-empty-state-style-' + style]"
+>
+    <div class="wrapper">
+        @if (type === 'ICON') {
+            <uk-icon
+                [fgColor]="iconFgColor"
+                [name]="UK_TYPE.ICON.NAME.EMOJI_POKER"
+                [size]="UK_TYPE.ICON.SIZE.LARGEST_XXXX"
+            />
+        }
+        @if (type === 'ANIMATION') {
+            <uk-animation
+                #searchCloseAnimation
+                [autoplay]="UK_TYPE.UK.BOOLEAN.TRUE"
+                [autoReset]="UK_TYPE.UK.BOOLEAN.TRUE"
+                [loop]="UK_TYPE.UK.BOOLEAN.FALSE"
+                [path]="'uk-animations/empty-state.json'"
+            />
+        }
+        @if (type === 'SVG') {
+            <uk-image-box [picture]="UK_TYPE.IMAGE_BOX.PICTURE.EMPTY_BOX" />
+        }
+
+        <uk-text
+            [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_LOW_EMPHASIS"
+            [padding]="UK_TYPE.TEXT.PADDING.P4"
+            [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_1"
+        >
+            <ng-content />
+        </uk-text>
+    </div>
+</div>

@@ -1,0 +1,109 @@
+@mixin devices($breakpoint) {
+    @if $breakpoint == w9999 {
+        @media only screen and (max-width: 9999px) {
+            @content;
+        }
+    }
+
+    @if $breakpoint == w1400 {
+        @media only screen and (max-width: 1400px) {
+            @content;
+        }
+    }
+
+    @if $breakpoint == w1200 {
+        @media only screen and (max-width: 1200px) {
+            @content;
+        }
+    }
+
+    @if $breakpoint == w992 {
+        @media only screen and (max-width: 992px) {
+            @content;
+        }
+    }
+
+    @if $breakpoint == w768 {
+        @media only screen and (max-width: 768px) {
+            @content;
+        }
+    }
+
+    @if $breakpoint == w650 {
+        @media only screen and (max-width: 650px) {
+            @content;
+        }
+    }
+
+    @if $breakpoint == w576 {
+        @media only screen and (max-width: 576px) {
+            @content;
+        }
+    }
+
+    @if $breakpoint == w450 {
+        @media only screen and (max-width: 450px) {
+            @content;
+        }
+    }
+
+    @if $breakpoint == h700 {
+        @media only screen and (max-height: 700px) {
+            @content;
+        }
+    }
+
+    @if $breakpoint == h550 {
+        @media only screen and (max-height: 550px) {
+            @content;
+        }
+    }
+
+    @if $breakpoint == h470 {
+        @media only screen and (max-height: 470px) {
+            @content;
+        }
+    }
+
+    @if $breakpoint == h400 {
+        @media only screen and (max-height: 400px) {
+            @content;
+        }
+    }
+}
+
+@mixin maxWidth($width) {
+    @media only screen and (max-width: #{$width}px) {
+        @content;
+    }
+}
+
+@mixin maxHeight($height) {
+    @media only screen and (max-height: #{$height}px) {
+        @content;
+    }
+}
+
+// #MEDIA_QUERY width
+// @include devices(w9999) {}
+// @include devices(w1400) {}
+// @include devices(w1200) {}
+// @include devices(w992) {}
+// @include devices(w768) {}
+// @include devices(w650) {}
+// @include devices(w576) {}
+// @include devices(w450) {}
+
+// #MEDIA_QUERY height
+// @include devices(h700) {}
+// @include devices(h550) {}
+// @include devices(h470) {}
+// @include devices(h400) {}
+
+// @media screen and (orientation:landscape) {}
+// @media screen and (orientation:portrait) {}
+
+// @media screen and (min-device-aspect-ratio: 16/9) {}
+
+// @include maxWidth(100) {}
+// @include maxHeight(100) {}

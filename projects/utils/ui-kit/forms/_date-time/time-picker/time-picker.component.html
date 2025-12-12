@@ -1,0 +1,77 @@
+<!-- uk-time-picker.component.html -->
+<div class="timepicker-container">
+  <div
+    class="clock"
+    (mousedown)="startDrag($event, 'HOUR')"
+    (mouseup)="stopDrag()"
+    (mousemove)="onDrag($event, 'HOUR')"
+  >
+    <svg #hourSvg viewBox="0 0 200 200">
+      <!-- Outer circle -->
+      <circle cx="100" cy="100" r="90" class="clock-face" />
+
+      <!-- Hour ticks -->
+      @for (h of hours; track h; let i = $index) {
+        <ng-container>
+          <text
+            [attr.x]="getX(h, 'HOUR', 70)"
+            [attr.y]="getY(h, 'HOUR', 70)"
+            class="clock-text"
+          >
+            {{ h }}
+          </text>
+        </ng-container>
+      }
+
+      <!-- Hour hand -->
+      <line
+        x1="100"
+        y1="100"
+        [attr.x2]="getX(selectedHour, 'HOUR', 50)"
+        [attr.y2]="getY(selectedHour, 'HOUR', 50)"
+        class="clock-hand hour-hand"
+      />
+    </svg>
+  </div>
+
+  <div
+    class="clock"
+    (mousedown)="startDrag($event, 'MINUTE')"
+    (mouseup)="stopDrag()"
+    (mousemove)="onDrag($event, 'MINUTE')"
+  >
+    <svg #minuteSvg viewBox="0 0 200 200">
+      <!-- Outer circle -->
+      <circle cx="100" cy="100" r="90" class="clock-face" />
+
+      <!-- Hour ticks -->
+      @for (m of minutes; track m; let i = $index) {
+        <ng-container>
+          <text
+            [attr.x]="getX(m, 'MINUTE', 70)"
+            [attr.y]="getY(m, 'MINUTE', 70)"
+            class="clock-text"
+          >
+            {{ m }}
+          </text>
+        </ng-container>
+      }
+
+      <!-- Minute hand -->
+      <line
+        x1="100"
+        y1="100"
+        [attr.x2]="getX(selectedMinute / 5, 'HOUR', 80)"
+        [attr.y2]="getY(selectedMinute / 5, 'HOUR', 80)"
+        class="clock-hand minute-hand"
+      />
+    </svg>
+  </div>
+
+  <div class="controls">
+    <button (click)="toggleMeridian()">{{ isPM ? "PM" : "AM" }}</button>
+    <div class="time-display">
+      {{ selectedHour }}:{{ selectedMinute | number: "2.0" }}
+    </div>
+  </div>
+</div>

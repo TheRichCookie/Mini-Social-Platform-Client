@@ -1,0 +1,15 @@
+@use 'core' as *;
+
+:host {
+    display: block;
+    position: relative;
+    flex: 1;
+}
+
+.uk.inner-page-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

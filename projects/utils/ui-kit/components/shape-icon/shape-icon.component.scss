@@ -1,0 +1,160 @@
+@use "core" as *;
+
+.uk.shape-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > .icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+  }
+
+  &.shape-icon-bg-color {
+    &-TRANSPARENT {
+      > .icon-wrapper {
+        background-color: transparent;
+      }
+    }
+    &-OPACITY-PRIMARY-00 {
+      > .icon-wrapper {
+        background-color: $color-opacity-primary-00;
+      }
+    }
+    &-BACKGROUND-ERROR {
+      > .icon-wrapper {
+        background-color: $color-background-error;
+      }
+    }
+    &-REFERENCE-PRIMARY-MAIN {
+      > .icon-wrapper {
+        background-color: $color-reference-primary-main;
+      }
+    }
+    &-BACKGROUND-PRIMARY-01 {
+      > .icon-wrapper {
+        background-color: $color-background-primary-01;
+      }
+    }
+    &-BACKGROUND-SURFACE-01 {
+      > .icon-wrapper {
+        background-color: $color-background-surface-01;
+      }
+    }
+    &-BACKGROUND-SURFACE-02 {
+      > .icon-wrapper {
+        background-color: $color-background-surface-02;
+      }
+    }
+    &-BACKGROUND-SUCCESS {
+      > .icon-wrapper {
+        background-color: $color-background-success;
+      }
+    }
+    &-REFERENCE-NEUTRAL-80 {
+      background-color: $color-reference-neutral-neutral-80;
+    }
+  }
+
+  &.shape-icon-fg-color {
+    &-TRANSPARENT {
+      > .icon-wrapper {
+        color: transparent;
+      }
+    }
+    &-OPACITY-PRIMARY-00 {
+      > .icon-wrapper {
+        color: $color-opacity-primary-00;
+      }
+    }
+    &-REFERENCE-NEUTRAL-80 {
+      > .icon-wrapper {
+        color: $color-reference-neutral-neutral-80;
+      }
+    }
+    &-REFERENCE-PRIMARY-MAIN {
+      > .icon-wrapper {
+        color: $color-reference-primary-main;
+      }
+    }
+    &-BUTTON-ERROR-FILL {
+      > .icon-wrapper {
+        color: $color-background-error;
+      }
+    }
+    &-CONTENT-HIGH-EMPHASIS {
+      > .icon-wrapper {
+        color: $color-content-high-emphasis;
+      }
+    }
+    &-CONTENT-SUCCESS {
+      > .icon-wrapper {
+        color: $color-content-success;
+      }
+    }
+  }
+
+  &.shape-icon-border-color {
+    &-TRANSPARENT {
+      > .icon-wrapper {
+        border: none;
+      }
+    }
+    &-BUTTON-ERROR-FILL {
+      > .icon-wrapper {
+        border: 1px solid $color-button-error-fill;
+      }
+    }
+  }
+
+  &.shape-icon-size {
+    &-SMALL {
+      > .icon-wrapper {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    &-MEDIUM {
+      > .icon-wrapper {
+        width: 40px;
+        height: 40px;
+      }
+    }
+    &-LARGE {
+      > .icon-wrapper {
+        width: 60px;
+        height: 60px;
+      }
+    }
+  }
+
+  &.shape-icon-type {
+    &-CIRCLE {
+      > .icon-wrapper {
+        border-radius: 50%;
+      }
+    }
+
+    &-SQUARE {
+      &.shape-icon-size {
+        &-SMALL {
+          > .icon-wrapper {
+            border-radius: 4px;
+          }
+        }
+        &-MEDIUM {
+          > .icon-wrapper {
+            border-radius: 6px;
+          }
+        }
+        &-LARGE {
+          > .icon-wrapper {
+            border-radius: 8px;
+          }
+        }
+      }
+    }
+  }
+}

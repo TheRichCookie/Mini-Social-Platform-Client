@@ -1,0 +1,9 @@
+[run power shell as admin]
+npm i howler --force
+npm i -D @types/howler --force
+npm i -g audiosprite
+choco install ffmpeg
+audiosprite --export "webm,mp3" --format "howler2" --output output\sounds waves\*.wav
+
+
+// https://audiomass.co/

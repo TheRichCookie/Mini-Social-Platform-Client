@@ -1,0 +1,15 @@
+@use "core" as *;
+
+:host {
+  display: inline-block;
+}
+
+.uk.link {
+  color: $color-content-primary;
+  @include typography-body-1-strong();
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

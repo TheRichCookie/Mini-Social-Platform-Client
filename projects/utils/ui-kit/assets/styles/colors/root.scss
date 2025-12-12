@@ -1,0 +1,666 @@
+@use "sass:map";
+// ******************************************************** SCSS VARIABLES ***
+
+$lightColors: (
+  background: (
+    // Surfaces
+    surface00: #ffffff,
+    // Pure white
+    surface01: #f5f5f5,
+    // Lightest gray for lifted elements
+    surface02: #e8e8e8,
+    // Slightly darker gray for subtle contrast
+    // Primary/Secondary tints
+    primary01: #e6f0ff,
+    // Light tint of new primary blue
+    primary02: #c5dcff,
+    // Medium tint of new primary blue
+    secondary: #c9f0eb,
+    // Light tint of new secondary teal
+    // Status colors (Updated)
+    caution: #fff5e0,
+    // Light caution yellow
+    error: #ffebeb,
+    // Light error red
+    progress: #e8f0ff,
+    // Light progress blue (same as primary01)
+    success: #e8ffe9,
+    // Light success green
+    neutral: #f0f2f5,
+    // Neutral background base
+    // Misc
+    scrimDark: #b3b3b3,
+    snackbar: #26292c,
+    // Dark snackbar for contrast
+  ),
+  opacity: (
+    // Primary opacity based on new primary color (#4285F4) -> R: 66, G: 133, B: 244
+    primary00: rgba(66, 133, 244, 0.08),
+    primary01: rgba(66, 133, 244, 0.12),
+    primary02: rgba(66, 133, 244, 0.16),
+    // Secondary opacity based on new secondary color (#00A693) -> R: 0, G: 166, B: 147
+    secondary00: rgba(0, 166, 147, 0.08),
+    secondary01: rgba(0, 166, 147, 0.12),
+    secondary02: rgba(255, 255, 255, 1),
+    // General opacities
+    light00: rgba(255, 255, 255, 0.08),
+    light01: rgba(255, 255, 255, 0.12),
+    light02: rgba(255, 255, 255, 0.16),
+    dark00: rgba(0, 0, 0, 0.08),
+    dark01: rgba(0, 0, 0, 0.12),
+    dark02: rgba(0, 0, 0, 0.16),
+    // Error opacity based on new error color (#EA4335) -> R: 234, G: 67, B: 53
+    error00: rgba(234, 67, 53, 0.08),
+    error01: rgba(255, 255, 255, 1),
+    error02: rgba(234, 67, 53, 0.16),
+  ),
+  content: (
+    light: #ffffff,
+    disabled: #a1a3a8,
+    lowEmphasis: #8c8f94,
+    highEmphasis: #1a1a1a,
+    // Near black for contrast
+    dark: #000000,
+    neutral: #62666d,
+    // New Content Colors
+    primary: #4285f4,
+    // New Primary Main
+    secondary: #00a693,
+    // New Secondary Main
+    caution: #f4b400,
+    // New Caution Yellow
+    error: #ea4335,
+    // New Error Red
+    progress: #1967d2,
+    // New Primary Dark
+    success: #34a853,
+    // New Success Green
+  ),
+  border: (
+    grade0: #ffffff,
+    grade1: #e0e0e2,
+    // Light border
+    grade2: #c0c2c5,
+    // Medium border
+  ),
+  button: (
+    // Primary based on #4285F4
+    primary: #4285f4,
+    primaryHover: #5b92f7,
+    primaryPressed: #3a75e6,
+    primaryHoverOutline: #e6f0ff,
+    primaryHoverPressed: #c5dcff,
+    // Secondary based on #00A693
+    secondary: #00a693,
+    secondaryHover: #1cc6b6,
+    outline: #a1a3a8,
+    disabled: #e0e0e2,
+    // Error based on #EA4335
+    errorFill: #ea4335,
+    errorFillHover: #eb594d,
+    errorOutlineHover: #fdeaea,
+    errorOutlinePressed: #fbe0e0,
+  ),
+  tag: (
+    tag100: #264653,
+    tag200: #287271,
+    tag300: #2a9d8f,
+    tag400: #8ab17d,
+    tag500: #babb74,
+    tag600: #e9c46a,
+    tag700: #efb366,
+    tag800: #f4a261,
+    tag850: #ee8959,
+    tag900: #e76f51,
+  ),
+  referencePrimary: (
+    primaryLightness: #e6f0ff,
+    primaryLight: #a3c6ff,
+    main: #4285f4,
+    // Core Primary
+    dark: #1967d2,
+    darker: #0c3e8a,
+    darkest: #061f45,
+  ),
+  referenceSecondary: (
+    primaryLightness: #c9f0eb,
+    primaryLight: #66d4c8,
+    main: #00a693,
+    // Core Secondary
+    dark: #00897b,
+    darker: #00564c,
+    darkest: #002b26,
+  ),
+  referenceNeutral: (
+    neutral100: #ffffff,
+    neutral99: #fcfdfc,
+    neutral95: #f0f2f5,
+    neutral90: #e0e0e2,
+    neutral80: #c0c2c5,
+    neutral70: #a1a3a8,
+    neutral60: #8c8f94,
+    neutral50: #7d8188,
+    neutral40: #62666d,
+    neutral30: #424750,
+    neutral20: #26292c,
+    // Darker neutral for content/snackbar
+    neutral10: #1a1a1a,
+  ),
+);
+
+$darkColors: (
+  background: (
+    // Surfaces
+    surface00: #10162f,
+    // Darker surface
+    surface01: #26292c,
+    // Medium dark for elevated elements
+    surface02: #313741,
+    // Slightly lighter dark for active elements
+    // Primary/Secondary tints
+    primary01: #0c3e8a,
+    // Dark tint of new primary blue
+    primary02: #1967d2,
+    // Medium tint of new primary blue
+    secondary: #00564c,
+    // Dark tint of new secondary teal
+    // Status colors (Updated)
+    caution: #f4b400,
+    // New Caution Yellow
+    error: #ea4335,
+    // New Error Red
+    progress: #1967d2,
+    // Dark progress blue
+    success: #34a853,
+    // New Success Green
+    neutral: #3d3d3d,
+    // Misc
+    scrimDark: #b3b3b3,
+    snackbar: #f0f0f1,
+    // Light snackbar for contrast
+  ),
+  opacity: (
+    // Primary opacity based on new primary color (#4285F4)
+    primary00: rgba(255, 255, 255, 0.08),
+    // White-based opacity for dark theme
+    primary01: rgba(255, 255, 255, 0.12),
+    primary02: rgba(255, 255, 255, 0.16),
+    // Secondary opacity based on new secondary color (#00A693)
+    secondary00: rgba(255, 255, 255, 0.08),
+    secondary01: rgba(255, 255, 255, 0.12),
+    secondary02: rgba(0, 0, 0, 1),
+    // General opacities
+    light00: rgba(0, 0, 0, 0.08),
+    light01: rgba(0, 0, 0, 0.12),
+    light02: rgba(0, 0, 0, 0.16),
+    dark00: rgba(255, 255, 255, 0.08),
+    dark01: rgba(255, 255, 255, 0.12),
+    dark02: rgba(255, 255, 255, 0.16),
+    // Error opacity based on new error color (#EA4335)
+    error00: rgba(234, 67, 53, 0.08),
+    error01: rgba(0, 0, 0, 1),
+    error02: rgba(234, 67, 53, 0.16),
+  ),
+  content: (
+    light: #ffffff,
+    disabled: #7d8188,
+    lowEmphasis: #91949a,
+    highEmphasis: #e0e0e2,
+    // Light gray for contrast
+    dark: #e0e0e2,
+    neutral: #b0b3b8,
+    // New Content Colors
+    primary: #4285f4,
+    // New Primary Main
+    secondary: #00a693,
+    // New Secondary Main
+    caution: #f4b400,
+    // New Caution Yellow
+    error: #ea4335,
+    // New Error Red
+    progress: #a3c6ff,
+    // Primary Light for contrast
+    success: #34a853,
+    // New Success Green
+  ),
+  border: (
+    grade0: #141a2e,
+    grade1: #1e263d,
+    // Dark border
+    grade2: #202a46,
+    // Medium dark border
+  ),
+  button: (
+    // Primary based on #4285F4 (use darker for fill in dark mode)
+    primary: #1967d2,
+    primaryHover: #4285f4,
+    primaryPressed: #5b92f7,
+    primaryHoverOutline: #0c3e8a,
+    primaryHoverPressed: #061f45,
+    // Secondary based on #00A693
+    secondary: #00897b,
+    secondaryHover: #1cc6b6,
+    outline: #91949a,
+    disabled: #4b4b4d,
+    // Error based on #EA4335
+    errorFill: #ea4335,
+    errorFillHover: #eb594d,
+    errorOutlineHover: #80211a,
+    errorOutlinePressed: #5c1813,
+  ),
+  tag: (
+    tag100: #f2f2f2,
+    tag200: #b3c4c4,
+    tag300: #9fccbb,
+    tag400: #8ab17d,
+    tag500: #dadc94,
+    tag600: #e9c46a,
+    tag700: #efb366,
+    tag800: #f4a261,
+    tag850: #ee8959,
+    tag900: #e76f51,
+  ),
+  referencePrimary: (
+    primaryLightness: #e6f0ff,
+    primaryLight: #a3c6ff,
+    main: #4285f4,
+    dark: #1967d2,
+    darker: #0c3e8a,
+    darkest: #061f45,
+  ),
+  referenceSecondary: (
+    primaryLightness: #c9f0eb,
+    primaryLight: #66d4c8,
+    main: #00a693,
+    dark: #00897b,
+    darker: #00564c,
+    darkest: #002b26,
+  ),
+  referenceNeutral: (
+    neutral100: #121212,
+    neutral99: #1a1a1a,
+    neutral95: #2e2e2e,
+    neutral90: #424242,
+    neutral80: #606060,
+    neutral70: #707070,
+    neutral60: #91949a,
+    neutral50: #a1a3a8,
+    neutral40: #b0b3b8,
+    neutral30: #e0e0e2,
+    neutral20: #f0f0f1,
+    neutral10: #ffffff,
+  ),
+);
+
+// --- Functions and CSS Variable Declarations (Kept untouched to maintain structure) ---
+
+@function getRootLightColor($category, $tone) {
+  $color: map.get(map.get($lightColors, $category), $tone);
+
+  @if not $color {
+    @error "Invalid category name: " + #{$category} + " or tone name: " + #{$tone} + ", in root color";
+  }
+
+  @return $color;
+}
+
+@function getRootDarkColor($category, $tone) {
+  $color: map.get(map.get($darkColors, $category), $tone);
+
+  @if not $color {
+    @error "Invalid category name: " + #{$category} + " or tone name: " + #{$tone} + ", in root color";
+  }
+
+  @return $color;
+}
+
+:root {
+  // ******************************************************** LIGHT ***
+  // background
+  --background-surface-00-LIGHT: #{getRootLightColor(background, surface00)};
+  --background-surface-01-LIGHT: #{getRootLightColor(background, surface01)};
+  --background-surface-02-LIGHT: #{getRootLightColor(background, surface02)};
+  --background-primary-01-LIGHT: #{getRootLightColor(background, primary01)};
+  --background-primary-02-LIGHT: #{getRootLightColor(background, primary02)};
+  --background-secondary-LIGHT: #{getRootLightColor(background, secondary)};
+  --background-caution-LIGHT: #{getRootLightColor(background, caution)};
+  --background-error-LIGHT: #{getRootLightColor(background, error)};
+  --background-progress-LIGHT: #{getRootLightColor(background, progress)};
+  --background-success-LIGHT: #{getRootLightColor(background, success)};
+  --background-neutral-LIGHT: #{getRootLightColor(background, neutral)};
+  --background-scrim-dark-LIGHT: #{getRootLightColor(background, scrimDark)};
+  --background-snackbar-LIGHT: #{getRootLightColor(background, snackbar)};
+  // opacity
+  --opacity-primary-00-LIGHT: #{getRootLightColor(opacity, primary00)};
+  --opacity-primary-01-LIGHT: #{getRootLightColor(opacity, primary01)};
+  --opacity-primary-02-LIGHT: #{getRootLightColor(opacity, primary02)};
+  --opacity-secondary-00-LIGHT: #{getRootLightColor(opacity, secondary00)};
+  --opacity-secondary-01-LIGHT: #{getRootLightColor(opacity, secondary01)};
+  --opacity-secondary-02-LIGHT: #{getRootLightColor(opacity, secondary02)};
+  --opacity-light-00-LIGHT: #{getRootLightColor(opacity, light00)};
+  --opacity-light-01-LIGHT: #{getRootLightColor(opacity, light01)};
+  --opacity-light-02-LIGHT: #{getRootLightColor(opacity, light02)};
+  --opacity-dark-00-LIGHT: #{getRootLightColor(opacity, dark00)};
+  --opacity-dark-01-LIGHT: #{getRootLightColor(opacity, dark01)};
+  --opacity-dark-02-LIGHT: #{getRootLightColor(opacity, dark02)};
+  --opacity-error-00-LIGHT: #{getRootLightColor(opacity, error00)};
+  --opacity-error-01-LIGHT: #{getRootLightColor(opacity, error01)};
+  --opacity-error-02-LIGHT: #{getRootLightColor(opacity, error02)};
+  // content
+  --content-light-LIGHT: #{getRootLightColor(content, light)};
+  --content-disabled-LIGHT: #{getRootLightColor(content, disabled)};
+  --content-low-emphasis-LIGHT: #{getRootLightColor(content, lowEmphasis)};
+  --content-high-emphasis-LIGHT: #{getRootLightColor(content, highEmphasis)};
+  --content-dark-LIGHT: #{getRootLightColor(content, dark)};
+  --content-neutral-LIGHT: #{getRootLightColor(content, neutral)};
+  --content-primary-LIGHT: #{getRootLightColor(content, primary)};
+  --content-secondary-LIGHT: #{getRootLightColor(content, secondary)};
+  --content-caution-LIGHT: #{getRootLightColor(content, caution)};
+  --content-error-LIGHT: #{getRootLightColor(content, error)};
+  --content-progress-LIGHT: #{getRootLightColor(content, progress)};
+  --content-success-LIGHT: #{getRootLightColor(content, success)};
+  // border
+  --border-grade-0-LIGHT: #{getRootLightColor(border, grade0)};
+  --border-grade-1-LIGHT: #{getRootLightColor(border, grade1)};
+  --border-grade-2-LIGHT: #{getRootLightColor(border, grade2)};
+  // button
+  --button-primary-LIGHT: #{getRootLightColor(button, primary)};
+  --button-primary-hover-LIGHT: #{getRootLightColor(button, primaryHover)};
+  --button-primary-pressed-LIGHT: #{getRootLightColor(button, primaryPressed)};
+  --button-primary-hoverOutline-LIGHT: #{getRootLightColor(
+      button,
+      primaryHoverOutline
+    )};
+  --button-primary-hoverPressed-LIGHT: #{getRootLightColor(
+      button,
+      primaryHoverPressed
+    )};
+  --button-secondary-LIGHT: #{getRootLightColor(button, secondary)};
+  --button-secondary-hover-LIGHT: #{getRootLightColor(button, secondaryHover)};
+  --button-outline-LIGHT: #{getRootLightColor(button, outline)};
+  --button-disabled-LIGHT: #{getRootLightColor(button, disabled)};
+  --button-error-fill-LIGHT: #{getRootLightColor(button, errorFill)};
+  --button-error-fill-hover-LIGHT: #{getRootLightColor(button, errorFillHover)};
+  --button-error-outline-hover-LIGHT: #{getRootLightColor(
+      button,
+      errorOutlineHover
+    )};
+  --button-error-outline-pressed-LIGHT: #{getRootLightColor(
+      button,
+      errorOutlinePressed
+    )};
+  // tag
+  --tag-tag-100-LIGHT: #{getRootLightColor(tag, tag100)};
+  --tag-tag-200-LIGHT: #{getRootLightColor(tag, tag200)};
+  --tag-tag-300-LIGHT: #{getRootLightColor(tag, tag300)};
+  --tag-tag-400-LIGHT: #{getRootLightColor(tag, tag400)};
+  --tag-tag-500-LIGHT: #{getRootLightColor(tag, tag500)};
+  --tag-tag-600-LIGHT: #{getRootLightColor(tag, tag600)};
+  --tag-tag-700-LIGHT: #{getRootLightColor(tag, tag700)};
+  --tag-tag-800-LIGHT: #{getRootLightColor(tag, tag800)};
+  --tag-tag-850-LIGHT: #{getRootLightColor(tag, tag850)};
+  --tag-tag-900-LIGHT: #{getRootLightColor(tag, tag900)};
+  // referencePrimary
+  --reference-primary-primary-lightness-LIGHT: #{getRootLightColor(
+      referencePrimary,
+      primaryLightness
+    )};
+  --reference-primary-primary-light-LIGHT: #{getRootLightColor(
+      referencePrimary,
+      primaryLight
+    )};
+  --reference-primary-main-LIGHT: #{getRootLightColor(referencePrimary, main)};
+  --reference-primary-dark-LIGHT: #{getRootLightColor(referencePrimary, dark)};
+  --reference-primary-darker-LIGHT: #{getRootLightColor(
+      referencePrimary,
+      darker
+    )};
+  --reference-primary-darkest-LIGHT: #{getRootLightColor(
+      referencePrimary,
+      darkest
+    )};
+  // referenceSecondary
+  --reference-secondary-primary-lightness-LIGHT: #{getRootLightColor(
+      referenceSecondary,
+      primaryLightness
+    )};
+  --reference-secondary-primary-light-LIGHT: #{getRootLightColor(
+      referenceSecondary,
+      primaryLight
+    )};
+  --reference-secondary-main-LIGHT: #{getRootLightColor(
+      referenceSecondary,
+      main
+    )};
+  --reference-secondary-dark-LIGHT: #{getRootLightColor(
+      referenceSecondary,
+      dark
+    )};
+  --reference-secondary-darker-LIGHT: #{getRootLightColor(
+      referenceSecondary,
+      darker
+    )};
+  --reference-secondary-darkest-LIGHT: #{getRootLightColor(
+      referenceSecondary,
+      darkest
+    )};
+  // referenceNeutral
+  --reference-neutral-neutral-100-LIGHT: #{getRootLightColor(
+      referenceNeutral,
+      neutral100
+    )};
+  --reference-neutral-neutral-99-LIGHT: #{getRootLightColor(
+      referenceNeutral,
+      neutral99
+    )};
+  --reference-neutral-neutral-95-LIGHT: #{getRootLightColor(
+      referenceNeutral,
+      neutral95
+    )};
+  --reference-neutral-neutral-90-LIGHT: #{getRootLightColor(
+      referenceNeutral,
+      neutral90
+    )};
+  --reference-neutral-neutral-80-LIGHT: #{getRootLightColor(
+      referenceNeutral,
+      neutral80
+    )};
+  --reference-neutral-neutral-70-LIGHT: #{getRootLightColor(
+      referenceNeutral,
+      neutral70
+    )};
+  --reference-neutral-neutral-60-LIGHT: #{getRootLightColor(
+      referenceNeutral,
+      neutral60
+    )};
+  --reference-neutral-neutral-50-LIGHT: #{getRootLightColor(
+      referenceNeutral,
+      neutral50
+    )};
+  --reference-neutral-neutral-40-LIGHT: #{getRootLightColor(
+      referenceNeutral,
+      neutral40
+    )};
+  --reference-neutral-neutral-30-LIGHT: #{getRootLightColor(
+      referenceNeutral,
+      neutral30
+    )};
+  --reference-neutral-neutral-20-LIGHT: #{getRootLightColor(
+      referenceNeutral,
+      neutral20
+    )};
+  --reference-neutral-neutral-10-LIGHT: #{getRootLightColor(
+      referenceNeutral,
+      neutral10
+    )};
+
+  // ******************************************************** DARK ***
+  // background
+  --background-surface-00-DARK: #{getRootDarkColor(background, surface00)};
+  --background-surface-01-DARK: #{getRootDarkColor(background, surface01)};
+  --background-surface-02-DARK: #{getRootDarkColor(background, surface02)};
+  --background-primary-01-DARK: #{getRootDarkColor(background, primary01)};
+  --background-primary-02-DARK: #{getRootDarkColor(background, primary02)};
+  --background-secondary-DARK: #{getRootDarkColor(background, secondary)};
+  --background-caution-DARK: #{getRootDarkColor(background, caution)};
+  --background-error-DARK: #{getRootDarkColor(background, error)};
+  --background-progress-DARK: #{getRootDarkColor(background, progress)};
+  --background-success-DARK: #{getRootDarkColor(background, success)};
+  --background-neutral-DARK: #{getRootDarkColor(background, neutral)};
+  --background-scrim-dark-DARK: #{getRootDarkColor(background, scrimDark)};
+  --background-snackbar-DARK: #{getRootDarkColor(background, snackbar)};
+  // opacity
+  --opacity-primary-00-DARK: #{getRootDarkColor(opacity, primary00)};
+  --opacity-primary-01-DARK: #{getRootDarkColor(opacity, primary01)};
+  --opacity-primary-02-DARK: #{getRootDarkColor(opacity, primary02)};
+  --opacity-secondary-00-DARK: #{getRootDarkColor(opacity, secondary00)};
+  --opacity-secondary-01-DARK: #{getRootDarkColor(opacity, secondary01)};
+  --opacity-secondary-02-DARK: #{getRootDarkColor(opacity, secondary02)};
+  --opacity-light-00-DARK: #{getRootDarkColor(opacity, light00)};
+  --opacity-light-01-DARK: #{getRootDarkColor(opacity, light01)};
+  --opacity-light-02-DARK: #{getRootDarkColor(opacity, light02)};
+  --opacity-dark-00-DARK: #{getRootDarkColor(opacity, dark00)};
+  --opacity-dark-01-DARK: #{getRootDarkColor(opacity, dark01)};
+  --opacity-dark-02-DARK: #{getRootDarkColor(opacity, dark02)};
+  --opacity-error-00-DARK: #{getRootDarkColor(opacity, error00)};
+  --opacity-error-01-DARK: #{getRootDarkColor(opacity, error01)};
+  --opacity-error-02-DARK: #{getRootDarkColor(opacity, error02)};
+  // content
+  --content-light-DARK: #{getRootDarkColor(content, light)};
+  --content-disabled-DARK: #{getRootDarkColor(content, disabled)};
+  --content-low-emphasis-DARK: #{getRootDarkColor(content, lowEmphasis)};
+  --content-high-emphasis-DARK: #{getRootDarkColor(content, highEmphasis)};
+  --content-dark-DARK: #{getRootDarkColor(content, dark)};
+  --content-neutral-DARK: #{getRootDarkColor(content, neutral)};
+  --content-primary-DARK: #{getRootDarkColor(content, primary)};
+  --content-secondary-DARK: #{getRootDarkColor(content, secondary)};
+  --content-caution-DARK: #{getRootDarkColor(content, caution)};
+  --content-error-DARK: #{getRootDarkColor(content, error)};
+  --content-progress-DARK: #{getRootDarkColor(content, progress)};
+  --content-success-DARK: #{getRootDarkColor(content, success)};
+  // border
+  --border-grade-0-DARK: #{getRootDarkColor(border, grade0)};
+  --border-grade-1-DARK: #{getRootDarkColor(border, grade1)};
+  --border-grade-2-DARK: #{getRootDarkColor(border, grade2)};
+  // button
+  --button-primary-DARK: #{getRootDarkColor(button, primary)};
+  --button-primary-hover-DARK: #{getRootDarkColor(button, primaryHover)};
+  --button-primary-pressed-DARK: #{getRootDarkColor(button, primaryPressed)};
+  --button-primary-hoverOutline-DARK: #{getRootDarkColor(
+      button,
+      primaryHoverOutline
+    )};
+  --button-primary-hoverPressed-DARK: #{getRootDarkColor(
+      button,
+      primaryHoverPressed
+    )};
+  --button-secondary-DARK: #{getRootDarkColor(button, secondary)};
+  --button-secondary-hover-DARK: #{getRootDarkColor(button, secondaryHover)};
+  --button-outline-DARK: #{getRootDarkColor(button, outline)};
+  --button-disabled-DARK: #{getRootDarkColor(button, disabled)};
+  --button-error-fill-DARK: #{getRootDarkColor(button, errorFill)};
+  --button-error-fill-hover-DARK: #{getRootDarkColor(button, errorFillHover)};
+  --button-error-outline-hover-DARK: #{getRootDarkColor(
+      button,
+      errorOutlineHover
+    )};
+  --button-error-outline-pressed-DARK: #{getRootDarkColor(
+      button,
+      errorOutlinePressed
+    )};
+  // tag
+  --tag-tag-100-DARK: #{getRootDarkColor(tag, tag100)};
+  --tag-tag-200-DARK: #{getRootDarkColor(tag, tag200)};
+  --tag-tag-300-DARK: #{getRootDarkColor(tag, tag300)};
+  --tag-tag-400-DARK: #{getRootDarkColor(tag, tag400)};
+  --tag-tag-500-DARK: #{getRootDarkColor(tag, tag500)};
+  --tag-tag-600-DARK: #{getRootDarkColor(tag, tag600)};
+  --tag-tag-700-DARK: #{getRootDarkColor(tag, tag700)};
+  --tag-tag-800-DARK: #{getRootDarkColor(tag, tag800)};
+  --tag-tag-850-DARK: #{getRootDarkColor(tag, tag850)};
+  --tag-tag-900-DARK: #{getRootDarkColor(tag, tag900)};
+  // referencePrimary
+  --reference-primary-primary-lightness-DARK: #{getRootDarkColor(
+      referencePrimary,
+      primaryLightness
+    )};
+  --reference-primary-primary-light-DARK: #{getRootDarkColor(
+      referencePrimary,
+      primaryLight
+    )};
+  --reference-primary-main-DARK: #{getRootDarkColor(referencePrimary, main)};
+  --reference-primary-dark-DARK: #{getRootDarkColor(referencePrimary, dark)};
+  --reference-primary-darker-DARK: #{getRootDarkColor(referencePrimary, darker)};
+  --reference-primary-darkest-DARK: #{getRootDarkColor(
+      referencePrimary,
+      darkest
+    )};
+  // referenceSecondary
+  --reference-secondary-primary-lightness-DARK: #{getRootDarkColor(
+      referenceSecondary,
+      primaryLightness
+    )};
+  --reference-secondary-primary-light-DARK: #{getRootDarkColor(
+      referenceSecondary,
+      primaryLight
+    )};
+  --reference-secondary-main-DARK: #{getRootDarkColor(referenceSecondary, main)};
+  --reference-secondary-dark-DARK: #{getRootDarkColor(referenceSecondary, dark)};
+  --reference-secondary-darker-DARK: #{getRootDarkColor(
+      referenceSecondary,
+      darker
+    )};
+  --reference-secondary-darkest-DARK: #{getRootDarkColor(
+      referenceSecondary,
+      darkest
+    )};
+  // referenceNeutral
+  --reference-neutral-neutral-100-DARK: #{getRootDarkColor(
+      referenceNeutral,
+      neutral100
+    )};
+  --reference-neutral-neutral-99-DARK: #{getRootDarkColor(
+      referenceNeutral,
+      neutral99
+    )};
+  --reference-neutral-neutral-95-DARK: #{getRootDarkColor(
+      referenceNeutral,
+      neutral95
+    )};
+  --reference-neutral-neutral-90-DARK: #{getRootDarkColor(
+      referenceNeutral,
+      neutral90
+    )};
+  --reference-neutral-neutral-80-DARK: #{getRootDarkColor(
+      referenceNeutral,
+      neutral80
+    )};
+  --reference-neutral-neutral-70-DARK: #{getRootDarkColor(
+      referenceNeutral,
+      neutral70
+    )};
+  --reference-neutral-neutral-60-DARK: #{getRootDarkColor(
+      referenceNeutral,
+      neutral60
+    )};
+  --reference-neutral-neutral-50-DARK: #{getRootDarkColor(
+      referenceNeutral,
+      neutral50
+    )};
+  --reference-neutral-neutral-40-DARK: #{getRootDarkColor(
+      referenceNeutral,
+      neutral40
+    )};
+  --reference-neutral-neutral-30-DARK: #{getRootDarkColor(
+      referenceNeutral,
+      neutral30
+    )};
+  --reference-neutral-neutral-20-DARK: #{getRootDarkColor(
+      referenceNeutral,
+      neutral20
+    )};
+  --reference-neutral-neutral-10-DARK: #{getRootDarkColor(
+      referenceNeutral,
+      neutral10
+    )};
+}

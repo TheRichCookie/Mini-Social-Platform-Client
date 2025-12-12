@@ -1,0 +1,32 @@
+@import '../fonts/_app-icon/style.css';
+
+//----------------------------------------------------- override app-icons
+[class^='app-ico-'],
+[class*=' app-ico-'] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: unset !important;
+    speak: unset !important;
+    font-style: unset !important;
+    font-weight: unset !important;
+    font-variant: unset !important;
+    text-transform: unset !important;
+    line-height: unset !important;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: unset !important;
+    -moz-osx-font-smoothing: unset !important;
+}
+
+[class^='app-ico-']:before,
+[class*=' app-ico-']:before {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'local-icons' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

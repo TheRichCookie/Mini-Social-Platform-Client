@@ -1,0 +1,26 @@
+<div class="uk check-box">
+  <label [for]="id">
+    <div class="input">
+      <input
+        id="{{ id }}"
+        name="{{ name }}"
+        type="checkbox"
+        [disabled]="disabled"
+        [(ngModel)]="value"
+        (blur)="touched()"
+        (change)="onChange()"
+      />
+      <div class="check-mark"></div>
+    </div>
+    @if (hasLabel) {
+      <uk-text
+        [display]="UK_TYPE.TEXT.DISPLAY.BLOCK"
+        [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS"
+        [horizontalAlignment]="UK_TYPE.TEXT.HORIZONTAL_ALIGNMENT.CENTER"
+        [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_1_STRONG"
+      >
+        <ng-content />
+      </uk-text>
+    }
+  </label>
+</div>

@@ -1,0 +1,78 @@
+<div
+  class="uk image-box"
+  [ngClass]="['image-box-size-' + size, 'image-box-cursor-' + cursor]"
+>
+  @if (picture === UK_TYPE.IMAGE_BOX.PICTURE.CUSTOM) {
+    <img [src]="src" alt="" />
+  } @else {
+    @if (picture === UK_TYPE.IMAGE_BOX.PICTURE.SUCCESS) {
+      <img src="uk-images/mini/success.svg" alt="" />
+    } @else if (picture === UK_TYPE.IMAGE_BOX.PICTURE.INFO) {
+      <img src="uk-images/mini/info.svg" alt="" />
+    } @else if (picture === UK_TYPE.IMAGE_BOX.PICTURE.ERROR) {
+      <img src="uk-images/mini/error.svg" alt="" />
+    } @else if (picture === UK_TYPE.IMAGE_BOX.PICTURE.LOGO) {
+      <img src="uk-images/logo/baman-logo.svg" alt="" />
+    } @else if (picture === UK_TYPE.IMAGE_BOX.PICTURE.DANGER) {
+      <img src="uk-images/mini/danger.svg" alt="" />
+    } @else if (picture === UK_TYPE.IMAGE_BOX.PICTURE.MAP_EMPTY) {
+      <img src="uk-images/map/map-empty.svg" alt="" />
+    } @else if (picture === UK_TYPE.IMAGE_BOX.PICTURE.MAP_VALUE) {
+      <img src="uk-images/map/map-value.svg" alt="" />
+    } @else if (picture === UK_TYPE.IMAGE_BOX.PICTURE.EMPTY) {
+      <img src="uk-images/mini/empty.svg" alt="" />
+    } @else if (picture === UK_TYPE.IMAGE_BOX.PICTURE.BALE) {
+      <img src="uk-images/mini/bale.svg" alt="" />
+    } @else if (picture === UK_TYPE.IMAGE_BOX.PICTURE.CATALOG) {
+      <img src="uk-images/mini/catalog.svg" alt="" />
+    } @else if (picture === UK_TYPE.IMAGE_BOX.PICTURE.GLOB) {
+      <img src="uk-images/mini/glob.svg" alt="" />
+    } @else if (picture === UK_TYPE.IMAGE_BOX.PICTURE.INSTAGRAM) {
+      <img src="uk-images/mini/instagram.svg" alt="" />
+    } @else if (picture === UK_TYPE.IMAGE_BOX.PICTURE.EITAA) {
+      <img src="uk-images/mini/eitaa.svg" alt="" />
+    } @else if (picture === UK_TYPE.IMAGE_BOX.PICTURE.MENU) {
+      <img src="uk-images/mini/menu.svg" alt="" />
+    } @else if (picture === UK_TYPE.IMAGE_BOX.PICTURE.RUBICA) {
+      <img src="uk-images/mini/rubica.svg" alt="" />
+    } @else if (picture === UK_TYPE.IMAGE_BOX.PICTURE.TELEGRAM) {
+      <img src="uk-images/mini/telegram.svg" alt="" />
+    } @else if (picture === UK_TYPE.IMAGE_BOX.PICTURE.WEBLOG) {
+      <img src="uk-images/mini/weblog.svg" alt="" />
+    } @else if (picture === UK_TYPE.IMAGE_BOX.PICTURE.WHATSAPP) {
+      <img src="uk-images/mini/whatsapp.svg" alt="" />
+    } @else if (picture === UK_TYPE.IMAGE_BOX.PICTURE.EMPTY_ROBOT) {
+      <img src="uk-images/mini/empty-robot.svg" alt="" />
+    } @else if (picture === UK_TYPE.IMAGE_BOX.PICTURE.EMPTY_BOX) {
+      <img src="uk-images/mini/empty-box.svg" alt="" />
+    } @else if (picture === UK_TYPE.IMAGE_BOX.PICTURE.CIRCLE_TICK) {
+      <img src="uk-images/mini/circle-tick.svg" alt="" />
+    }
+  }
+  @if (title) {
+    <div class="label">
+      <uk-text
+        [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_LOW_EMPHASIS"
+        [horizontalAlignment]="UK_TYPE.TEXT.HORIZONTAL_ALIGNMENT.CENTER"
+        [padding]="UK_TYPE.TEXT.PADDING.NONE"
+        [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE_STRONG"
+        [verticalAlignment]="UK_TYPE.TEXT.VERTICAL_ALIGNMENT.CENTER"
+      >
+        {{ title }}
+      </uk-text>
+    </div>
+  }
+  @if (subTitle) {
+    <div class="label">
+      <uk-text
+        [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_LOW_EMPHASIS"
+        [horizontalAlignment]="UK_TYPE.TEXT.HORIZONTAL_ALIGNMENT.CENTER"
+        [padding]="UK_TYPE.TEXT.PADDING.NONE"
+        [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE_STRONG"
+        [verticalAlignment]="UK_TYPE.TEXT.VERTICAL_ALIGNMENT.CENTER"
+      >
+        {{ subTitle }}
+      </uk-text>
+    </div>
+  }
+</div>

@@ -1,0 +1,237 @@
+@use "core" as *;
+
+$tableBorderColor: $color-border-grade-2;
+$tableBorderSize: 1px;
+$tableBorderRadius: 12px;
+
+$tableHeaderColor: $color-background-surface-02;
+$tableHeaderLabelLeftRightPadding: pxToRem(24);
+$tableHeaderLabelTopBottomPadding: pxToRem(13);
+
+$tableDataLabelLeftRightPadding: pxToRem(24);
+$tableDataLabelTopBottomPadding: pxToRem(26);
+
+$tablePaginatorTopBorder: 1px;
+$tablePaginatorBorderColor: $color-border-grade-1;
+$tablePaginatorPadding: pxToRem(12);
+$tablePaginatorPageLeftRightMargin: pxToRem(2);
+$tablePaginatorPageTopBottomPadding: pxToRem(10);
+$tablePaginatorPageLeftRightPadding: pxToRem(14);
+$tablePaginatorPageColor: $color-content-low-emphasis;
+$tablePaginatorBorderRadius: 8px;
+
+$tablePaginatorPageHighlightBorderSize: 1px;
+$tablePaginatorPageHighlightBorderColor: $color-border-grade-1;
+$tablePaginatorPageHighlightBackgroundColor: $color-background-surface-01;
+$tablePaginatorPageHighlightColor: $color-content-high-emphasis;
+
+$tablePaginatorPageHoverColor: $color-background-surface-01;
+
+$tableScrollBarHeight: 6px;
+$tableScrollBarColorThumb: $color-border-grade-2;
+$tableScrollBarColorTrack: $color-background-surface-00;
+$tableScrollBarBorderRadius: 8px;
+$tableActionsGapSize: pxToRem(12);
+
+.uk.table {
+  height: 100%;
+
+  > .table {
+    box-shadow: 0 1px 3px 0 rgba(16, 24, 40, 0.1);
+    border: $tableBorderSize solid $tableBorderColor;
+    border-radius: $tableBorderRadius;
+
+    p-table {
+      .p-datatable-table-container {
+        overflow: hidden;
+        border-radius: $tableBorderRadius;
+
+        tr {
+          th {
+            border-bottom: 1px solid $color-border-grade-2;
+            background-color: $tableHeaderColor;
+            padding: $tableHeaderLabelTopBottomPadding
+              $tableHeaderLabelLeftRightPadding;
+          }
+          td {
+            background-color: $color-background-surface-00;
+            padding: $tableDataLabelTopBottomPadding
+              $tableDataLabelLeftRightPadding;
+            text-align: center;
+
+            &:hover:not(.table-actions-wrapper) {
+              background-color: $tableHeaderColor;
+            }
+
+            &.table-actions-wrapper {
+              > .table-actions {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: $tableActionsGapSize;
+              }
+            }
+
+            uk-badge {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+          }
+          &:first-child {
+            th {
+              &:first-child {
+                border-radius: 0 $tableBorderRadius 0 0;
+              }
+              &:last-child {
+                border-radius: $tableBorderRadius 0 0 0;
+              }
+            }
+          }
+
+          &:last-child {
+            td {
+              border-bottom: none;
+            }
+          }
+        }
+
+        tbody {
+          tr {
+            background-color: $color-background-surface-00;
+            td {
+              border-bottom: 1px solid $color-border-grade-2;
+            }
+          }
+        }
+
+        .p-datatable-wrapper {
+          border-radius: $tableBorderRadius $tableBorderRadius 0 0;
+        }
+
+        .p-paginator {
+          border-width: $tablePaginatorTopBorder 0 0 0 !important;
+          border-style: solid !important;
+          border-color: $tablePaginatorBorderColor !important;
+          border-radius: 0 0 $tableBorderRadius $tableBorderRadius;
+          background-color: $color-background-surface-00;
+          padding: $tablePaginatorPadding;
+
+          &-page {
+            margin: 0 $tablePaginatorPageLeftRightMargin;
+            border-radius: $tablePaginatorBorderRadius;
+            padding: $tablePaginatorPageTopBottomPadding
+              $tablePaginatorPageLeftRightPadding;
+            color: $tablePaginatorPageColor;
+            @include persian-number();
+            @include typography-h-5();
+
+            &.p-highlight {
+              border: $tablePaginatorPageHighlightBorderSize solid
+                $tablePaginatorPageHighlightBorderColor;
+              background-color: $tablePaginatorPageHighlightBackgroundColor;
+              color: $tablePaginatorPageHighlightColor;
+            }
+
+            &:hover {
+              background-color: $tablePaginatorPageHoverColor;
+            }
+          }
+
+          &-prev {
+            rotate: (180deg);
+            border-radius: $tablePaginatorBorderRadius;
+          }
+
+          &-next {
+            rotate: (180deg);
+            border-radius: $tablePaginatorBorderRadius;
+          }
+
+          &-first {
+            rotate: (180deg);
+            border-radius: $tablePaginatorBorderRadius;
+          }
+
+          &-last {
+            rotate: (180deg);
+            border-radius: $tablePaginatorBorderRadius;
+          }
+        }
+
+        /* Webkit Browsers */
+        &::-webkit-scrollbar {
+          height: $tableScrollBarHeight;
+        }
+        &::-webkit-scrollbar-thumb {
+          border-radius: $tableScrollBarBorderRadius;
+          background-color: $tableScrollBarColorThumb;
+        }
+        &::-webkit-scrollbar-track {
+          background-color: $tableScrollBarColorTrack;
+        }
+        /* Microsoft Edge and IE */
+        *::-ms-scrollbar {
+          height: $tableScrollBarHeight;
+        }
+        *::-ms-scrollbar-thumb {
+          border-radius: $tableScrollBarBorderRadius;
+          background-color: $tableScrollBarColorThumb;
+        }
+        *::-ms-scrollbar-track {
+          background-color: $tableScrollBarColorTrack;
+        }
+      }
+    }
+  }
+
+  &:not(.has-pagination) {
+    > .table {
+      p-table {
+        .p-datatable {
+          &.p-component {
+            border-radius: 12px;
+          }
+        }
+
+        tr {
+          &:last-child {
+            td {
+              &:first-child {
+                border-radius: 0 0 $tableBorderRadius 0;
+              }
+              &:last-child {
+                border-radius: 0 0 0 $tableBorderRadius;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // &.is-loading {
+  //   .table {
+  //     p-table {
+  //       .p-datatable-table-container {
+  //         .p-datatable-table {
+  //           .p-datatable-tbody {
+  //             position: relative;
+
+  //             &:after {
+  //               position: absolute;
+  //               top: 0;
+  //               left: 0;
+  //               opacity: 70%;
+  //               background-color: $color-background-scrim-dark;
+  //               width: 100%;
+  //               height: 100%;
+  //               content: "";
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+}

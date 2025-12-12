@@ -1,0 +1,45 @@
+<uk-page
+  class="uk modal-frame"
+  [@slideInOut]="true"
+  [bodyBackgroundColor]="bodyBackgroundColor"
+  [bodyOverFlow]="UK_TYPE.PAGE.BODY_OVER_FLOW.SCROLL"
+  [ngClass]="[
+    'uk-modal-frame-background-color-' + bodyBackgroundColor,
+    'uk-modal-frame-padding-' + padding,
+  ]"
+  [showFooterBorder]="showFooterBorder"
+  [showHeaderBorder]="showHeaderBorder"
+  [style.max-width.px]="appWidth"
+>
+  <uk-page-header *ngIf="showHeader === UK_TYPE.MODAL_FRAME.SHOW_HEADER.TRUE">
+    <div class="header-row">
+      <uk-text
+        [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_DARK"
+        [typography]="UK_TYPE.TEXT.TYPOGRAPHY.H_4"
+      >
+        {{ title }}
+      </uk-text>
+      <div class="header-end">
+        <div class="header-end-content">
+          <ng-content select="[HEADER_END_CONTENT]" />
+        </div>
+        <uk-icon
+          *ngIf="showTopClose"
+          [name]="UK_TYPE.ICON.NAME.MATH_CLOSE"
+          [size]="UK_TYPE.ICON.SIZE.LARGEST"
+          (click)="onClose()"
+        />
+      </div>
+    </div>
+  </uk-page-header>
+
+  <uk-page-body class="body-container">
+    <div class="frame">
+      <ng-content select="[FRAME-BODY]" />
+    </div>
+  </uk-page-body>
+
+  <uk-page-footer *ngIf="!hideBottomFrame">
+    <ng-content select="[FRAME-ACTIONS]" />
+  </uk-page-footer>
+</uk-page>

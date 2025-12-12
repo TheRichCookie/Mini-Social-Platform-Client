@@ -1,0 +1,14 @@
+<div
+    class="uk text-area"
+    [ngClass]="['uk-text-area-border-color-' + borderColor, 'uk-text-area-disabled-' + (disabled ? 'TRUE' : 'FALSE')]"
+>
+    <textarea
+        rows="4"
+        [disabled]="disabled"
+        [placeholder]="placeholder"
+        [value]="value"
+        [(ngModel)]="val"
+        (blur)="onBlur()"
+        (input)="onChange()"
+    ></textarea>
+</div>

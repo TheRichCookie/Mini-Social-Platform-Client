@@ -1,0 +1,36 @@
+<div
+  class="uk badge"
+  [ngClass]="[
+    'uk-badge-type-' + badgeType,
+    'uk-badge-size-' + size,
+    'uk-badge-cursor-' + cursor,
+    'uk-badge-is-outline-' + isOutline,
+    'uk-badge-border-radius-' + borderRadius,
+  ]"
+>
+  <uk-icon
+    *ngIf="startIconName"
+    class="start-icon"
+    [fgColor]="currentIconFgColor"
+    [name]="startIconName"
+    [size]="currentIconSize"
+  />
+  <uk-text
+    [display]="UK_TYPE.TEXT.DISPLAY.BLOCK"
+    [fgColor]="currentTextFgColor"
+    [horizontalAlignment]="'CENTER'"
+    [numeric]="isNumeric"
+    [typography]="currentTextTypography"
+    [verticalAlignment]="'CENTER'"
+    [whiteSpace]="UK_TYPE.TEXT.WHITE_SPACE.NO_WRAP"
+  >
+    <ng-content />
+  </uk-text>
+  <uk-icon
+    *ngIf="endIconName"
+    class="end-icon"
+    [fgColor]="currentIconFgColor"
+    [name]="endIconName"
+    [size]="currentIconSize"
+  />
+</div>

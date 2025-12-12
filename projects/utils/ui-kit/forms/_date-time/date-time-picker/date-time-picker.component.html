@@ -1,0 +1,20 @@
+<div class="uk date-time-picker">
+    <uk-button
+        [bgColor]="disabled ? UK_TYPE.BUTTON.BG_COLOR.BUTTON_SECONDARY : UK_TYPE.BUTTON.BG_COLOR.BUTTON_PRIMARY"
+        (click)="openDateTimeModal($event)"
+    >
+        <uk-icon
+            [cursor]="UK_TYPE.ICON.CURSOR.POINTER"
+            [fgColor]="UK_TYPE.ICON.FG_COLOR.CONTENT_SECONDARY"
+            [name]="UK_TYPE.ICON.NAME.DATE_CLOCK"
+            [size]="UK_TYPE.ICON.SIZE.LARGE"
+        />
+    </uk-button>
+    <uk-input
+        [dir]="'ltr'"
+        [disabled]="disabled"
+        [mask]="'0000-00-00 00:00'"
+        [placeholder]="'yyyy-MM-dd HH:mm'"
+        [(ngModel)]="value"
+    />
+</div>

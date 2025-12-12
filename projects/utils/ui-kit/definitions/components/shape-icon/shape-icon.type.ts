@@ -1,0 +1,25 @@
+export enum UkShapeIconType {
+  CIRCLE = 'CIRCLE',
+  SQUARE = 'SQUARE',
+}
+export type ShapeIconType = `${UkShapeIconType}`;
+
+export enum UkShapeIconSize {
+  LARGE = 'LARGE',
+  MEDIUM = 'MEDIUM',
+  SMALL = 'SMALL',
+}
+export type ShapeIconSize = `${UkShapeIconSize}`;
+
+export enum UkShapeIconBgColor {
+  TRANSPARENT = 'TRANSPARENT',
+  OPACITY_PRIMARY_00 = 'OPACITY-PRIMARY-00',
+  BACKGROUND_ERROR_01 = 'BACKGROUND-ERROR',
+  BACKGROUND_SUCCESS = 'BACKGROUND-SUCCESS',
+  REFERENCE_PRIMARY_MAIN = 'REFERENCE-PRIMARY-MAIN',
+  BACKGROUND_PRIMARY_01 = 'BACKGROUND-PRIMARY-01',
+  BACKGROUND_SURFACE_01 = 'BACKGROUND-SURFACE-01',
+  BACKGROUND_SURFACE_02 = 'BACKGROUND-SURFACE-02',
+  REFERENCE_NEUTRAL_80 = 'REFERENCE-NEUTRAL-80',
+}
+export type ShapeIconBGColor = `${UkShapeIconBgColor}`;

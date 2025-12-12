@@ -1,0 +1,42 @@
+@use 'core' as *;
+
+$sideMenuBorderRadius: 8px;
+
+:host {
+}
+
+.uk.side-menu {
+  display: flex;
+  position: relative;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  margin-bottom: pxToRem(8);
+  border-radius: $sideMenuBorderRadius;
+  background-color: $color-background-surface-00;
+  padding: pxToRem(12);
+
+  &:after {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
+  }
+
+  &.active {
+    background-color: $color-background-primary-01;
+  }
+
+  &:hover {
+    cursor: pointer;
+    border-radius: $sideMenuBorderRadius;
+    background-color: $color-opacity-primary-00;
+  }
+
+  > uk-icon {
+    display: block;
+    margin-left: 20px;
+  }
+}

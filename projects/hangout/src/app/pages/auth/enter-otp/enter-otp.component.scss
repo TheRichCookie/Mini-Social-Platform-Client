@@ -1,0 +1,55 @@
+@use "core" as *;
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  width: 100%;
+}
+
+uk-page.enter-otp {
+  display: block;
+  border: solid 1px $color-border-grade-2;
+  background-color: $color-background-surface-00;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 370px;
+  overflow: hidden;
+
+  uk-page-body {
+    uk-page-part {
+      &.top {
+        margin-top: pxToRem(24);
+
+        .wrapper {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: pxToRem(12);
+
+          .image-box {
+            width: 130px;
+          }
+        }
+      }
+
+      &.form {
+        .form-row-otp {
+          margin-bottom: pxToRem(8);
+        }
+      }
+    }
+  }
+
+  uk-page-part {
+    &.stop-watch {
+      .wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}

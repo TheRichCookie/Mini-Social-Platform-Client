@@ -1,0 +1,102 @@
+// ############################################## solution #1
+// // Container queries are an alternative to media queries,
+// // which apply styles to elements based on viewport size or other device characteristics.
+
+// ._container_query_parent {
+//     &.preview {
+//         container-name: preview;
+//         container-type: inline-size;
+
+//         > ._container_query_child {
+//             display: grid;
+//         }
+//     }
+// }
+
+// @container preview (max-width: 9999px) {
+//     ._container_query_child {
+//         grid-template-columns: 20% 20% 20% 20% 20%;
+//     }
+// }
+
+// @container preview (max-width: 1200px) {
+//     ._container_query_child {
+//         grid-template-columns: 25% 25% 25% 25%;
+//     }
+// }
+
+// @container preview (max-width: 900px) {
+//     ._container_query_child {
+//         grid-template-columns: 33.333% 33.333% 33.333%;
+//     }
+// }
+
+// @container preview (max-width: 600px) {
+//     ._container_query_child {
+//         grid-template-columns: 50% 50%;
+//     }
+// }
+
+// @container preview (max-width: 400px) {
+//     ._container_query_child {
+//         grid-template-columns: 100%;
+//     }
+// }
+
+// ############################################## solution #2
+// // Container breakpoints
+// $container-breakpoints: (
+//   "sm": 576px,
+//   "md": 768px,
+//   "lg": 992px,
+//   "xl": 1200px
+// );
+
+// // Grid container
+// .grid-container {
+//   display: flex;
+//   flex-wrap: wrap;
+//   margin-right: -15px;
+//   margin-left: -15px;
+//   width: 100%;
+
+//   // Responsive container sizes
+//   @each $breakpoint, $width in $container-breakpoints {
+//     @media (min-width: $width) {
+//       max-width: $width;
+//     }
+//   }
+// }
+
+// // Row
+// .grid-row {
+//   display: flex;
+//   flex-wrap: wrap;
+//   margin-right: -15px;
+//   margin-left: -15px;
+// }
+
+// // Column base
+// .grid-col {
+//   flex: 1;
+//   padding-right: 15px;
+//   padding-left: 15px;
+// }
+
+// // Responsive columns based on container width
+// @each $breakpoint, $width in $container-breakpoints {
+//   @media (min-width: $width) {
+//     @for $i from 1 through 12 {
+//       .grid-col-#{$breakpoint}-#{$i} {
+//         flex: 0 0 #{($i / 12) * 100}%;
+//         max-width: #{($i / 12) * 100}%;
+//       }
+//     }
+//   }
+// }
+
+// // Full-width column
+// .grid-col-full {
+//   flex: 0 0 100%;
+//   max-width: 100%;
+// }

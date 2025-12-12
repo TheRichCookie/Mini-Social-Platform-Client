@@ -1,0 +1,16 @@
+<div
+  class="uk shape-icon"
+  [ngClass]="[
+    'shape-icon-bg-color-' + bgColor,
+    'shape-icon-fg-color-' + fgColor,
+    'shape-icon-border-color-' + borderColor,
+    'shape-icon-size-' + size,
+    'shape-icon-type-' + shapeIconType,
+    'shape-icon-color-' + bgColor,
+    'shape-icon-type-' + shapeIconType,
+  ]"
+>
+  <span class="icon-wrapper">
+    <uk-icon [fgColor]="fgColor" [name]="iconName" [size]="currentIconSize" />
+  </span>
+</div>

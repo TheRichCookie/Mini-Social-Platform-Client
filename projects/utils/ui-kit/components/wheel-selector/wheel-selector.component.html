@@ -1,0 +1,53 @@
+<div class="ng-data-picker flex-box">
+  <!-- picker-group-layer -->
+  @for (group of data; track group; let gIndex = $index) {
+    <div
+      #pickerGroupLayer
+      class="picker-group"
+      [ngClass]="getGroupClass(gIndex)"
+    >
+      <div class="picker-list">
+        @for (item of group.list; track item; let iIndex = $index) {
+          <ng-container>
+            <div
+              *ngIf="group.divider; else ngIfElse"
+              class="picker-item divider"
+              [ngClass]="getItemClass(gIndex, iIndex, true)"
+            >
+              <uk-text
+                [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS"
+                [horizontalAlignment]="UK_TYPE.TEXT.HORIZONTAL_ALIGNMENT.CENTER"
+              >
+                {{ group.text }}
+              </uk-text>
+            </div>
+
+            <ng-template #ngIfElse>
+              <div
+                class="picker-item"
+                [ngClass]="getItemClass(gIndex, iIndex)"
+                [ngStyle]="getItemStyle(gIndex, iIndex)"
+              >
+                <uk-text
+                  [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS"
+                  [horizontalAlignment]="
+                    UK_TYPE.TEXT.HORIZONTAL_ALIGNMENT.CENTER
+                  "
+                  [numeric]="UK_TYPE.TEXT.NUMERIC.PERSIAN"
+                >
+                  {{ item }}
+                </uk-text>
+              </div>
+            </ng-template>
+          </ng-container>
+        }
+      </div>
+    </div>
+  }
+
+  <div #pickerHandleLayer class="picker-handle-layer flex-box dir-column">
+    <div data-type="top" class="picker-top weight-1"></div>
+    <div data-type="middle" class="picker-middle"></div>
+    <div data-type="bottom" class="picker-bottom weight-1"></div>
+  </div>
+</div>

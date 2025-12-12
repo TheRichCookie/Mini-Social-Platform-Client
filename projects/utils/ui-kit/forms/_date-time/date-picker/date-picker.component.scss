@@ -1,0 +1,40 @@
+@use 'core' as *;
+
+:host {
+    display: block;
+    width: 100%;
+}
+
+.uk.date-picker {
+    ngb-datepicker {
+        width: 100%;
+    }
+
+    .control-wrapper {
+        display: flex;
+        gap: 4px;
+
+        uk-button {
+            display: block;
+            width: 48px;
+        }
+
+        input {
+            border-width: 1px;
+            border-style: solid;
+            border-color: $color-content-secondary;
+            border-radius: 16px;
+            background-color: transparent;
+            padding: 0 10px;
+            width: 100%;
+            min-height: 48px;
+            color: $color-content-secondary;
+            font-size: 12px;
+            font-feature-settings: 'ss01';
+
+            &:focus-visible {
+                outline: none;
+            }
+        }
+    }
+}

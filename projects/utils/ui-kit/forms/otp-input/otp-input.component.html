@@ -1,0 +1,10 @@
+<div class="uk otp-input">
+    <ngx-otp-input
+        #otpInput
+        [otp]="otpValue"
+        [options]="otpOptions"
+        [status]="status"
+        (otpComplete)="otpComplete($event)"
+        (otpChange)="onOtpChange($event)"
+    />
+</div>

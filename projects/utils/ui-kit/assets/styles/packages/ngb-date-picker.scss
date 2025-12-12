@@ -1,0 +1,169 @@
+@use "core" as *;
+
+.uk.select-date-drop-down {
+  ngb-datepicker {
+    direction: ltr;
+    border: 1px solid $color-background-surface-01;
+    border-radius: 8px;
+    background-color: $color-background-surface-00;
+    padding: 20px 24px;
+
+    .ngb-dp-header {
+      margin-bottom: 12px;
+      padding: 0 !important;
+
+      .ngb-dp-month-name {
+        @include persian-number();
+        @include typography-subtitle-strong();
+        display: flex;
+        align-items: center;
+        color: $color-content-high-emphasis;
+      }
+
+      .visually-hidden {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        clip: rect(0, 0, 0, 0) !important;
+        white-space: nowrap !important;
+        border: 0 !important;
+      }
+
+      .ngb-dp-arrow {
+        &.ngb-dp-arrow-prev {
+          align-items: center;
+
+          > .ngb-dp-arrow-btn {
+            height: 0;
+
+            > .ngb-dp-navigation-chevron {
+              display: flex;
+              position: relative;
+              justify-content: center;
+              transform: rotate(-90deg);
+              border: none;
+              width: 0;
+              height: 0;
+
+              &::before {
+                position: absolute;
+                transform: translateY(-100%) rotate(180deg);
+                cursor: pointer;
+                content: "\e906";
+                color: #91949a;
+                font-weight: normal;
+                font-size: 24px;
+                font-family: "app-icon";
+              }
+            }
+          }
+        }
+        &.ngb-dp-arrow-next {
+          align-items: center;
+
+          > .ngb-dp-arrow-btn {
+            height: 0;
+
+            > .ngb-dp-navigation-chevron {
+              display: flex;
+              position: relative;
+              justify-content: center;
+              transform: rotate(-90deg) scaleY(-1);
+              border: none;
+              width: 0;
+              height: 0;
+
+              &::before {
+                position: absolute;
+                transform: translateY(-100%) rotate(180deg);
+                cursor: pointer;
+                content: "\e906";
+                color: #91949a;
+                font-weight: normal;
+                font-size: 24px;
+                font-family: "app-icon";
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .ngb-dp-content {
+      &.ngb-dp-months {
+        > .ngb-dp-month {
+          .ngb-dp-week {
+            gap: 4px;
+            margin-bottom: 4px !important;
+
+            &.ngb-dp-weekdays {
+              .ngb-dp-weekday {
+                &.small {
+                  @include typography-body-1-strong();
+                  color: $color-content-high-emphasis;
+                  font-style: normal;
+                }
+              }
+            }
+            > .ngb-dp-day {
+              @include typography-body-1();
+              @include persian-number();
+              color: $color-content-high-emphasis;
+
+              &.ngb-dp-today {
+                > .day-range {
+                  display: flex;
+                  position: relative;
+                  justify-content: center;
+
+                  &.range,
+                  &.faded,
+                  &.to-date {
+                    &::after {
+                      position: absolute;
+                      top: 25px;
+                      border-radius: 50%;
+                      background-color: $color-background-surface-00;
+                      width: 5px;
+                      height: 5px;
+                      content: "";
+                    }
+                  }
+
+                  &:not(.range):not(.faded):not(.to-date) {
+                    &::after {
+                      position: absolute;
+                      top: 25px;
+                      border-radius: 50%;
+                      background-color: $color-content-primary;
+                      width: 5px;
+                      height: 5px;
+                      content: "";
+                    }
+                  }
+                }
+              }
+
+              &:hover {
+                border-radius: 50%;
+                background-color: $color-background-surface-01;
+              }
+
+              > .btn-light {
+                &.bg-primary {
+                  &.text-white {
+                    border-radius: 50% !important;
+                    background-color: $color-reference-primary-main !important;
+                    color: $color-background-surface-00 !important;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

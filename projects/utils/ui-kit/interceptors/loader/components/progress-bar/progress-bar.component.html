@@ -1,0 +1,139 @@
+<div class="progress-bar-wrapper">
+  <!-- radial bar -->
+  <div
+    *ngIf="barProperties.barType === 'RADIAL'"
+    class="set-size charts-container"
+    [style.font-size.em]="barProperties.radial.size"
+  >
+    <div>
+      <div class="pie-wrapper progress-radial style-2">
+        <span
+          *ngIf="
+            barProperties.radial.label.enable &&
+            barProperties.progress <= 100 &&
+            barProperties.progress >= 0
+          "
+          class="label"
+          [style.color]="barProperties.radial.label.color"
+        >
+          {{ barProperties.progress }}
+          <span *ngIf="!barProperties.progress">0</span>
+          <span
+            class="smaller"
+            [style.color]="barProperties.radial.label.color"
+          >
+            %
+          </span>
+        </span>
+        <div class="pie">
+          <div
+            class="half-circle left-side"
+            [style.border-color]="barProperties.color"
+            [style.border]="leftBorder"
+            [style.transform]="leftRotation"
+          ></div>
+          <div
+            class="half-circle"
+            [ngClass]="{
+              'right-side': barProperties.progress <= 50,
+              'right-side2': barProperties.progress > 50,
+            }"
+            [style.border-color]="
+              barProperties.progress > 50
+                ? barProperties.color
+                : barProperties.secondColor
+            "
+            [style.border]="
+              barProperties.progress > 50
+                ? barProperties.color +
+                  ' ' +
+                  barProperties.radial.depth / 16 +
+                  'em solid'
+                : barProperties.secondColor +
+                  ' ' +
+                  barProperties.radial.depth / 16 +
+                  'em solid'
+            "
+          ></div>
+        </div>
+        <div
+          class="shadow"
+          [style.border]="
+            barProperties.secondColor +
+            ' ' +
+            barProperties.radial.depth / 16 +
+            'em solid'
+          "
+        ></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- linear bar -->
+  <div
+    *ngIf="barProperties.barType === 'LINEAR'"
+    class="progress-linear"
+    [style.background-color]="barProperties.secondColor"
+    [style.height.px]="barProperties.linear.depth"
+  >
+    <div
+      *ngIf="
+        barProperties.progress &&
+        barProperties.progress <= 100 &&
+        barProperties.progress >= 0
+      "
+      class="bar"
+      [ngClass]="{
+        stripped: barProperties.linear.stripped,
+        active: barProperties.linear.active,
+      }"
+      [style.background-color]="barProperties.color"
+      [style.height.px]="barProperties.linear.depth"
+      [style.line-height.px]="barProperties.linear.depth"
+      [style.width.%]="barProperties.progress"
+    >
+      <span
+        *ngIf="
+          barProperties.linear.label.enable && barProperties.progress <= 100
+        "
+        [style.color]="barProperties.linear.label.color"
+        [style.font-size.px]="barProperties.linear.label.fontSize"
+      >
+        {{ barProperties.linear.label.value }}
+      </span>
+      <span
+        *ngIf="barProperties.linear.label.showPercentage"
+        [style.color]="barProperties.linear.label.color"
+        [style.font-size.px]="barProperties.linear.label.fontSize"
+      >
+        {{ barProperties.progress + "%" }}
+      </span>
+    </div>
+    <div
+      *ngIf="
+        !barProperties.progress ||
+        barProperties.progress > 100 ||
+        barProperties.progress < 0
+      "
+      class="bar"
+      [style.width.%]="0"
+    ></div>
+  </div>
+
+  <!-- animation -->
+  <div *ngIf="barProperties.barType === 'ANIMATION'">
+    <div class="animation-bg">
+      <div class="animation-wrapper">
+        <uk-animation
+          #searchCloseAnimation
+          [animationScale]="1"
+          [autoplay]="UK_TYPE.UK.BOOLEAN.TRUE"
+          [autoReset]="UK_TYPE.UK.BOOLEAN.TRUE"
+          [loop]="UK_TYPE.UK.BOOLEAN.TRUE"
+          [path]="'uk-animations/circle-loading.json'"
+        />
+        
+      </div>
+    </div>
+  </div>
+</div>

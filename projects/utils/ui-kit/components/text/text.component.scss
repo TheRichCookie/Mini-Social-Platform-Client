@@ -1,0 +1,260 @@
+@use 'core' as *;
+
+:host {
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  &.is-blocked {
+    display: block;
+    width: 100%;
+  }
+
+  &.is-inline {
+    display: inline;
+  }
+
+  &.is-inline-block {
+    display: inline-block;
+  }
+
+  &.is-flex {
+    display: flex;
+    width: 100%;
+  }
+
+  &.is-inline-flex {
+    display: inline-flex;
+  }
+}
+
+.uk.text {
+  display: flex;
+  width: 100%;
+  height: 100%;
+
+  &.uk-text {
+    &-border-radius {
+      &-NONE {
+        border-radius: 0;
+      }
+      &-R4 {
+        border-radius: pxToRem(4);
+      }
+    }
+
+    &-display {
+      &-BLOCK {
+        display: block;
+      }
+      &-INLINE {
+        display: inline;
+      }
+      &-FLEX {
+        display: flex;
+      }
+      &-INLINE-BLOCK {
+        display: inline-block;
+      }
+      &-INLINE-FLEX {
+        display: inline-flex;
+      }
+    }
+
+    &-horizontal-alignment {
+      &-START {
+        justify-content: flex-start;
+        > span {
+          text-align: right;
+        }
+      }
+      &-CENTER {
+        justify-content: center;
+
+        > span {
+          display: block;
+          text-align: center;
+        }
+      }
+      &-END {
+        justify-content: flex-end;
+        > span {
+          text-align: left;
+        }
+      }
+      &-JUSTIFY {
+        justify-content: space-between;
+        > span {
+          display: block;
+          text-align: justify;
+        }
+      }
+    }
+
+    &-vertical-alignment {
+      &-TOP {
+        align-items: flex-start;
+      }
+      &-CENTER {
+        align-items: center;
+      }
+      &-BOTTOM {
+        align-items: flex-end;
+      }
+    }
+
+    &-bg-color {
+      &-TRANSPARENT {
+        background-color: transparent;
+      }
+      &-SECONDARY-800 {
+        background-color: $color-opacity-secondary-01;
+      }
+    }
+
+    &-fg-color {
+      &-CONTENT-LIGHT {
+        color: $color-content-light;
+      }
+      &-CONTENT-DARK {
+        color: $color-content-dark;
+      }
+      &-CONTENT-PRIMARY {
+        color: $color-content-primary;
+      }
+      &-CONTENT-NEUTRAL {
+        color: $color-content-neutral;
+      }
+      &-CONTENT-SECONDARY {
+        color: $color-content-secondary;
+      }
+      &-BUTTON-PRIMARY {
+        color: $color-button-primary;
+      }
+      &-CONTENT-HIGH-EMPHASIS {
+        color: $color-content-high-emphasis;
+      }
+      &-CONTENT-DISABLED {
+        color: $color-content-disabled;
+      }
+      &-CONTENT-PROGRESS {
+        color: $color-content-progress;
+      }
+      &-CONTENT-SUCCESS {
+        color: $color-content-success;
+      }
+      &-CONTENT-ERROR {
+        color: $color-content-error;
+      }
+      &-CONTENT-CAUTION {
+        color: $color-content-caution;
+      }
+      &-CONTENT-LOW-EMPHASIS {
+        color: $color-content-low-emphasis;
+      }
+    }
+
+    &-padding {
+      &-NONE {
+        padding: 0;
+      }
+      &-P4 {
+        padding: pxToRem(4);
+      }
+    }
+
+    &-numeric {
+      &-DEFAULT {
+        @include english-number();
+      }
+      &-PERSIAN {
+        @include persian-number();
+      }
+    }
+
+    &-direction {
+      &-LEFT-TO-RIGHT {
+        span {
+          direction: ltr;
+        }
+      }
+      &-RIGHT-To-LEFT {
+        span {
+          direction: rtl;
+        }
+      }
+    }
+
+    &-typography {
+      &-H-1 {
+        @include typography-h-1();
+      }
+      &-H-2 {
+        @include typography-h-2();
+      }
+      &-H-3 {
+        @include typography-h-3();
+      }
+      &-H-4 {
+        @include typography-h-4();
+      }
+      &-H-5 {
+        @include typography-h-5();
+      }
+      &-SUBTITLE {
+        @include typography-subtitle();
+      }
+      &-SUBTITLE-STRONG {
+        @include typography-subtitle-strong();
+      }
+      &-BODY-1 {
+        @include typography-body-1();
+      }
+      &-BODY-1-STRONG {
+        @include typography-body-1-strong();
+      }
+      &-BODY-2 {
+        @include typography-body-2();
+      }
+      &-BODY-2-STRONG {
+        @include typography-body-2-strong();
+      }
+      &-CAPTION {
+        @include typography-caption();
+      }
+      &-CAPTION-STRONG {
+        @include typography-caption-strong();
+      }
+      &-BUTTON-1 {
+        @include typography-button-1();
+      }
+      &-BUTTON-2 {
+        @include typography-button-2();
+      }
+      &-LINK-1 {
+        @include typography-link-1();
+      }
+      &-LINK-2 {
+        @include typography-link-2();
+      }
+    }
+
+    &-text-wrap {
+      &-UN-SET {
+        text-wrap: unset;
+      }
+      &-AUTO {
+        text-wrap: auto;
+      }
+    }
+
+    &-white-space {
+      &-UN-SET {
+        white-space: unset;
+      }
+      &-NO_WRAP {
+        white-space: nowrap;
+      }
+    }
+  }
+}

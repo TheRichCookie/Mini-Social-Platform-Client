@@ -1,0 +1,65 @@
+<div class="uk select-check-box-drop-down">
+  <div class="dropdown">
+    @if (searchProperty) {
+      <div class="search-wrapper">
+        <uk-input
+          [placeholder]="searchPlaceholder"
+          [(ngModel)]="searchValue"
+          (ngModelChange)="onSearchValueChange($event)"
+        >
+          <uk-icon
+            [name]="UK_TYPE.ICON.NAME.ARROW_DOWN"
+            [size]="UK_TYPE.ICON.SIZE.LARGEST"
+            (click)="onClearSearchValue()"
+          />
+        </uk-input>
+      </div>
+    }
+
+    <uk-scroll
+      [maxHeight]="140"
+      [showScrollbar]="UK_TYPE.UK.BOOLEAN.TRUE"
+      [contentHasSideMargin]="UK_TYPE.UK.BOOLEAN.TRUE"
+    >
+      <div
+        class="option"
+        role="button"
+        tabindex="0"
+        (click)="toggleSelectAll($event)"
+        (keydown.enter)="toggleSelectAll($event)"
+      >
+        <div class="check-box-button">
+          <uk-check-box [hasLabel]="true" [(ngModel)]="isAllSelected">
+            همه
+          </uk-check-box>
+        </div>
+      </div>
+      <uk-check-box-group [(ngModel)]="values">
+        @for (option of options; track option) {
+          <div class="option">
+            <div class="check-box-button">
+              <uk-check-box
+                [hasLabel]="true"
+                [id]="getOptionValue(option)"
+                (change)="updateSelectAllState()"
+              >
+                {{ getOptionLabel(option) }}
+              </uk-check-box>
+            </div>
+          </div>
+        }
+      </uk-check-box-group>
+    </uk-scroll>
+  </div>
+
+  <div class="footer">
+    <uk-button
+      [bgColor]="UK_TYPE.BUTTON.BG_COLOR.PRIMARY_1"
+      [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
+      [fgColor]="UK_TYPE.BUTTON.FG_COLOR.CONTENT_PRIMARY"
+      (click)="onSubmit()"
+    >
+      تایید
+    </uk-button>
+  </div>
+</div>

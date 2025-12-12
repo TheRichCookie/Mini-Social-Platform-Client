@@ -1,0 +1,25 @@
+<div class="uk list" [ngClass]="{ bullet }">
+  <ng-content select="uk-icon[START]" />
+  <div class="text-icon">
+    <div class="title-subtitle">
+      <div class="title">
+        <uk-text
+          [numeric]="UK_TYPE.TEXT.NUMERIC.PERSIAN"
+          [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_1_STRONG"
+          [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS"
+        >
+          <ng-content select="[TITLE]" />
+        </uk-text>
+      </div>
+      <div class="subtitle">
+        <uk-text
+          [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_1"
+          [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS"
+        >
+          <ng-content select="[SUBTITLE]" />
+        </uk-text>
+      </div>
+    </div>
+    <ng-content select="uk-icon[END]" />
+  </div>
+</div>

@@ -1,0 +1,112 @@
+@use 'core' as *;
+
+.uk.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+
+  .app-uk {
+    &.icon {
+      user-select: none !important;
+    }
+  }
+
+  // fg-color
+  &.uk-icon-fg-color {
+    &-BUTTON-PRIMARY {
+      color: $color-button-primary;
+    }
+    &-CONTENT-LOW-EMPHASIS {
+      color: $color-content-low-emphasis;
+    }
+    &-CONTENT-HIGH-EMPHASIS {
+      color: $color-content-high-emphasis;
+    }
+    &-CONTENT-PRIMARY {
+      color: $color-content-primary;
+    }
+    &-CONTENT-NATURAL {
+      color: $color-content-neutral;
+    }
+    &-CONTENT-CAUTION {
+      color: $color-content-caution;
+    }
+    &-CONTENT-SECONDARY {
+      color: $color-content-secondary;
+    }
+    &-CONTENT-LIGHT {
+      color: $color-content-light;
+    }
+    &-CONTENT-ERROR {
+      color: $color-content-error;
+    }
+    &-CONTENT-PROGRESS {
+      color: $color-content-progress;
+    }
+    &-CONTENT-SUCCESS {
+      color: $color-content-success;
+    }
+    &-REFERENCE-NEUTRAL {
+      color: $color-reference-neutral-neutral-30;
+    }
+    &-CONTENT-HIGH-EMPHASIS {
+      color: $color-content-high-emphasis;
+    }
+    &-CONTENT-DISABLED {
+      color: $color-content-disabled;
+    }
+    &-REFERENCE-PRIMARY-LIGHT {
+      color: $color-reference-primary-primary-light;
+    }
+  }
+
+  // size
+  &.uk-icon-size {
+    &-SMALLEST {
+      font-size: pxToRem(8);
+    }
+    &-SMALLER {
+      font-size: pxToRem(12);
+    }
+    &-SMALL {
+      font-size: pxToRem(14);
+    }
+    &-MEDIUM {
+      font-size: pxToRem(16);
+    }
+    &-LARGE {
+      font-size: pxToRem(18);
+    }
+    &-LARGER {
+      font-size: pxToRem(20);
+    }
+    &-LARGEST {
+      font-size: pxToRem(24);
+    }
+    &-LARGEST-B-X {
+      font-size: pxToRem(32);
+    }
+    &-LARGEST-X {
+      font-size: pxToRem(38);
+    }
+    &-LARGEST-XX {
+      font-size: pxToRem(44);
+    }
+    &-LARGEST-XXX {
+      font-size: pxToRem(64);
+    }
+    &-LARGEST-XXXX {
+      font-size: pxToRem(80);
+    }
+  }
+
+  &.uk-icon-cursor {
+    &-DEFAULT {
+      cursor: default;
+    }
+    &-POINTER {
+      cursor: pointer;
+    }
+  }
+}

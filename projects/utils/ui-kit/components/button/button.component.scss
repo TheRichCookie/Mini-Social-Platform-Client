@@ -1,0 +1,206 @@
+@use 'core' as *;
+
+$height: pxToRem(40);
+$tb-padding-normal: pxToRem(10);
+$lr-padding-normal: pxToRem(18);
+$tb-padding-small: pxToRem(3);
+$lr-padding-small: pxToRem(10);
+$border-radius-normal: pxToRem(8);
+$border-radius-small: pxToRem(4);
+$inner-margin: pxToRem(5);
+
+$height-normal: pxToRem(38);
+$height-small: pxToRem(24);
+
+:host {
+  text-align: center;
+  &.is-blocked {
+    display: block;
+    width: 100%;
+  }
+}
+
+.is-blocked {
+  display: block;
+  width: 100%;
+}
+
+.uk.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 12px;
+  width: 100%;
+  text-wrap: nowrap;
+
+  &.uk-button {
+    &-display {
+      &-BLOCK {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        // border-radius: $border-radius-small;
+      }
+
+      &-INLINE {
+      }
+
+      &-SQUARE {
+        width: 48px;
+      }
+    }
+
+    &-bg-color {
+      &-TRANSPARENT {
+        background-color: transparent;
+      }
+      &-BUTTON-PRIMARY {
+        background-color: $color-button-primary;
+      }
+      &-CONTENT-SECONDARY {
+        background-color: $color-content-secondary;
+      }
+      &-ERROR-FILL {
+        background-color: $color-button-error-fill;
+      }
+      &-BUTTON-SECONDARY {
+        background-color: $color-button-secondary;
+      }
+      &-BUTTON-DISABLED {
+        background-color: $color-button-disabled;
+      }
+      &-PRIMARY-1 {
+        background-color: $color-background-primary-01;
+      }
+    }
+
+    &-border-color {
+      &-TRANSPARENT {
+        border-color: transparent;
+      }
+      &-COLOR-BUTTON-OUTLINE {
+        border-color: $color-button-outline;
+      }
+      &-COLOR-BUTTON-ERROR-FILL {
+        border-color: $color-button-error-fill;
+      }
+      &-COLOR-BUTTON-PRIMARY {
+        border-color: $color-button-primary;
+      }
+      &-COLOR-BUTTON-SECONDARY {
+        border-color: $color-button-secondary;
+      }
+      &-CONTENT-DISABLED {
+        border-color: $color-content-disabled;
+      }
+      &-COLOR-BORDER-GRADE-0 {
+        border-color: $color-border-grade-0;
+      }
+      &-COLOR-BORDER-GRADE-1 {
+        border-color: $color-border-grade-1;
+      }
+      &-COLOR-BORDER-GRADE-2 {
+        border-color: $color-border-grade-2;
+      }
+    }
+
+    &-padding {
+      &-NORMAL {
+        padding: $tb-padding-normal $lr-padding-normal;
+        height: $height-normal;
+        //border-radius: $border-radius-normal;
+      }
+
+      &-SMALL {
+        padding: $tb-padding-small $lr-padding-small;
+        height: $height-small;
+        // border-radius: $border-radius-small;
+      }
+      &-NONE {
+        padding: 0;
+        height: $height-normal;
+      }
+    }
+
+    &-height {
+      &-H-48 {
+        height: pxToRem(48);
+      }
+      &-H-32 {
+        height: pxToRem(32);
+      }
+      &-H-36 {
+        height: pxToRem(36);
+      }
+      &-H-40 {
+        height: 40px;
+      }
+      &-H-36 {
+        height: 36px;
+      }
+    }
+
+    &-border-radius {
+      &-R-12 {
+        border-radius: 12px;
+      }
+      &-R-08 {
+        border-radius: 8px;
+      }
+      &-R-04 {
+        border-radius: 4px;
+      }
+      &-R-00 {
+        border-radius: 0;
+      }
+    }
+
+    &-uk-type {
+      &-NONE {
+      }
+
+      &-OUTLINE-BLUE {
+        // background-color: $color-fg-white;
+        // border-color: $color-bg-ocean-600;
+      }
+    }
+  }
+
+  .start-wrapper {
+    display: none;
+
+    &:not(:empty) {
+      display: block;
+    }
+  }
+
+  .end-wrapper {
+    display: none;
+
+    &:not(:empty) {
+      display: block;
+    }
+  }
+
+  &:not(.disabled) {
+    &.uk-button {
+      &-cursor {
+        &-NORMAL {
+        }
+
+        &-POINTER {
+          @include cursorPointerOverlay();
+        }
+      }
+    }
+  }
+  &.disabled {
+    @include cursorNotAllowedOverlay();
+    border-color: transparent;
+    background-color: $color-button-disabled;
+  }
+}

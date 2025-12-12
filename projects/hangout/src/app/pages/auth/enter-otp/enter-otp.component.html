@@ -1,0 +1,115 @@
+<uk-page
+  class="enter-otp"
+  [bodyOverFlow]="UK_TYPE.PAGE.BODY_OVER_FLOW.SCROLL"
+  [showFooterBorder]="false"
+>
+  <uk-page-body>
+    <uk-page-part
+      class="top"
+      [isFirstChildStick]="UK_TYPE.PAGE_PART.IS_FIRST_CHILD_STICK.FALSE"
+    >
+      <div class="wrapper">
+        <div class="image-box">
+          <uk-image [source]="'uk-images/logo/hangout-logo.png'" />
+        </div>
+        <uk-text
+          [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS"
+          [horizontalAlignment]="UK_TYPE.TEXT.HORIZONTAL_ALIGNMENT.CENTER"
+          [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE"
+        >
+        کد ارسال شده را وارد کنید.
+        </uk-text>
+      </div>
+    </uk-page-part>
+    <uk-page-part
+      class="form"
+      [bottomMargin]="UK_TYPE.PAGE_PART.BOTTOM_MARGIN.NO"
+    >
+      <uk-form>
+        <uk-form-body>
+          <uk-form-part>
+            <uk-form-row class="form-row-otp">
+              <uk-form-controller>
+                <uk-otp-input
+                  #otpInput
+                  [status]="otpInputStatus"
+                  (ON_COMPLETE)="onComplete($event)"
+                  (ON_CHANGE)="onChange()"
+                />
+
+                <!-- @if (otpFormSubmitted) {
+                  <uk-form-errors [errors]="otpForm.controls['otp'].errors" />
+                }
+                @if (otpInputStatus === ngxOtpStatus.FAILED) {
+                  <uk-form-controller-info>
+                    <uk-text
+                      [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_ERROR"
+                      [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_1"
+                    >
+                      {{ otpInputErrorMessage }}
+                    </uk-text>
+                  </uk-form-controller-info>
+                } -->
+              </uk-form-controller>
+            </uk-form-row>
+          </uk-form-part>
+        </uk-form-body>
+      </uk-form>
+    </uk-page-part>
+
+    <uk-page-part
+      class="stop-watch"
+      [bottomMargin]="UK_TYPE.PAGE_PART.BOTTOM_MARGIN.NO"
+    >
+      <div class="wrapper">
+        @if (stopWatchStatus !== "REACHED") {
+          <uk-text
+            [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS"
+            [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_2"
+          >
+            ارسال مجدد کد تا
+          </uk-text>
+          <uk-stop-watch
+            [duration]="duration"
+            [startTime]="receivedTime"
+            (REACHED)="onStopWatchReached($event)"
+          />
+          <uk-text
+            [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS"
+            [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_2"
+          >
+            ثانیه دیگر
+          </uk-text>
+        } @else {
+          <uk-button
+            [bgColor]="UK_TYPE.BUTTON.BG_COLOR.TRANSPARENT"
+            [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
+            [display]="UK_TYPE.BUTTON.DISPLAY.BLOCK"
+            [fgColor]="UK_TYPE.BUTTON.FG_COLOR.CONTENT_PRIMARY"
+            [typography]="UK_TYPE.BUTTON.TYPOGRAPHY.BUTTON_1"
+          >
+            <uk-icon
+              START
+              [fgColor]="UK_TYPE.ICON.FG_COLOR.CONTENT_PRIMARY"
+              [name]="UK_TYPE.ICON.NAME.GENERAL_REFRESH"
+              [size]="UK_TYPE.ICON.SIZE.LARGE"
+            />
+            ارسال مجدد کد
+          </uk-button>
+        }
+      </div>
+    </uk-page-part>
+  </uk-page-body>
+  <uk-page-footer>
+    <uk-button
+      [bgColor]="UK_TYPE.BUTTON.BG_COLOR.BUTTON_PRIMARY"
+      [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
+      [display]="UK_TYPE.BUTTON.DISPLAY.BLOCK"
+      [fgColor]="UK_TYPE.BUTTON.FG_COLOR.CONTENT_LIGHT"
+      [typography]="UK_TYPE.BUTTON.TYPOGRAPHY.BUTTON_1"
+      (click)="onSubmit()"
+    >
+      ورود
+    </uk-button>
+  </uk-page-footer>
+</uk-page>

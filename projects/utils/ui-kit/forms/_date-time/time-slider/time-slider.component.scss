@@ -1,0 +1,19 @@
+@use 'core' as *;
+
+:host {
+    display: block;
+    width: 100%;
+}
+
+.uk.time-slider {
+    display: flex;
+    gap: 4px;
+
+    uk-button {
+        display: block;
+        width: 48px;
+    }
+
+    uk-input {
+    }
+}

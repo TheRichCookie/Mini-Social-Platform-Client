@@ -1,0 +1,25 @@
+@use 'core' as *;
+
+:host {
+}
+
+.uk.stop-watch {
+  display: inline-block;
+  position: relative;
+  padding: 0 8px;
+
+  .svg {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+  }
+
+  .number {
+    color: $color-content-primary;
+    @include persian-number();
+  }
+}

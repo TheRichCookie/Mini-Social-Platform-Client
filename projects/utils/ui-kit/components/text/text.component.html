@@ -1,0 +1,22 @@
+<div
+  class="uk text"
+  [ngClass]="[
+    'uk-text-horizontal-alignment-' + horizontalAlignment,
+    'uk-text-vertical-alignment-' + verticalAlignment,
+    'uk-text-bg-color-' + bgColor,
+    'uk-text-fg-color-' + fgColor,
+    'uk-text-typography-' + typography,
+    'uk-text-type-' + textType,
+    'uk-text-display-' + display,
+    'uk-text-padding-' + padding,
+    'uk-text-border-radius-' + borderRadius,
+    'uk-text-numeric-' + numeric,
+    'uk-text-direction-' + direction,
+    'uk-text-text-wrap-' + textWrap,
+    'uk-text-white-space-' + whiteSpace,
+  ]"
+>
+  <span>
+    <ng-content />
+  </span>
+</div>

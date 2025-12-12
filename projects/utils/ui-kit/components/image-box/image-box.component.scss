@@ -1,0 +1,54 @@
+@use 'core' as *;
+
+:host {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+}
+
+.uk.image-box {
+  &.image-box-cursor {
+    &-DEFAULT {
+      cursor: default;
+    }
+
+    &-POINTER {
+      cursor: pointer;
+    }
+  }
+
+  &.image-box-size {
+    &-W-150 {
+      img {
+        width: 150px;
+        height: 150px;
+      }
+    }
+
+    &-W-80 {
+      img {
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+    &-W-60 {
+      img {
+        width: 60px;
+        height: 60px;
+      }
+    }
+
+    &-FLOAT {
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .label {
+    height: pxToRem(28);
+  }
+}

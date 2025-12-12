@@ -1,0 +1,10 @@
+// DEFAULT VALUES
+// "activityBar.background": "#1c2533",
+// "activityBar.foreground": "#d7d7d7",
+// "activityBar.inactiveForeground": "#868686",
+
+{
+  "files.autoSave": "off",
+  "cSpell.words": ["immer", "Jalali", "RECIEVED"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+}

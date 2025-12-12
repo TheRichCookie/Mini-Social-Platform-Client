@@ -1,0 +1,15 @@
+@use "core" as *;
+
+:host {
+}
+
+.uk.form-controller-info {
+    > .content {
+        display: none;
+
+        &:not(:empty) {
+            display: block;
+            margin-top: 0;
+        }
+    }
+}

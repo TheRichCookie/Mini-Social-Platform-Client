@@ -1,0 +1,12 @@
+<div class="uk desktop-form-controller">
+  <div class="label">
+    <ng-content select="[LABEL]" />
+    <strong *ngIf="isRequired" class="is-required"> * </strong>
+  </div>
+  <div class="controller-wrapper">
+    <ng-content select="[CONTROLLER]" />
+  </div>
+  <div class="controller-info-wrapper">
+    <ng-content select="[CONTROLLER-INFO]" />
+  </div>
+</div>

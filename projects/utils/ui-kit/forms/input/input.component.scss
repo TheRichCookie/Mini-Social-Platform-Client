@@ -1,0 +1,125 @@
+@use "core" as *;
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.uk.input {
+  display: flex;
+  align-items: center;
+  outline: none;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 8px;
+  padding: 8px;
+  width: 100%;
+  height: 100%;
+  min-height: 48px;
+
+  &.uk-input {
+    background-color: $color-background-surface-00;
+
+    &-border-color {
+      &-TRANSPARENT {
+        border-color: transparent;
+      }
+      &-GRADE-1 {
+        border-color: $color-border-grade-1;
+      }
+      &-GRADE-2 {
+        border-color: $color-border-grade-2;
+      }
+      &-REFERENCE-PRIMARY-MAIN {
+        border-color: $color-reference-primary-main;
+      }
+      &-CONTENT-ERROR {
+        border-color: $color-content-error;
+      }
+    }
+
+    &-numeric {
+      &-DEFAULT {
+        input {
+          //
+        }
+      }
+      &-PERSIAN {
+        input {
+          @include persian-number();
+        }
+      }
+    }
+
+    &-typography {
+      &-SUBTITLE {
+        input {
+          @include typography-subtitle();
+        }
+      }
+      &-SUBTITLE-STRONG {
+        input {
+          @include typography-subtitle-strong();
+        }
+      }
+    }
+
+    // crud-mode
+    &-crud-mode {
+      &-EDIT {
+        //
+      }
+      &-VIEW {
+        border-color: transparent;
+      }
+    }
+  }
+
+  > .icon-wrapper {
+    display: none;
+
+    &:not(:empty) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 5px;
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  > input {
+    display: block;
+    border: none;
+    width: 100%;
+    height: 100%;
+    background-color: $color-background-surface-00;
+    color: $color-content-high-emphasis;
+    font-size: 12px;
+    line-height: 16px;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:disabled {
+      background-color: #f9f9f9;
+    }
+    &::placeholder {
+      color: $color-content-low-emphasis;
+    }
+  }
+}

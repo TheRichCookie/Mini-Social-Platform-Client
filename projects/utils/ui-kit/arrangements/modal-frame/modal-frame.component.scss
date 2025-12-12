@@ -1,0 +1,123 @@
+@use "core" as *;
+
+$borderRadiusSize: 12px;
+
+:host {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+
+  &.uk-modal-frame {
+    &-border-radius {
+      &-TOP {
+        border-top-right-radius: $borderRadiusSize;
+        border-top-left-radius: $borderRadiusSize;
+      }
+      &-CENTER {
+        border-radius: $borderRadiusSize;
+      }
+      &-BOTTOM {
+        border-bottom-right-radius: $borderRadiusSize;
+        border-bottom-left-radius: $borderRadiusSize;
+      }
+      &-NONE {
+        //
+      }
+    }
+  }
+}
+
+.uk.modal-frame {
+  margin: auto;
+
+  uk-page-header {
+    display: block;
+    background-color: $color-background-surface-00;
+  }
+
+  uk-page-body {
+    display: block;
+    background-color: $color-background-surface-00;
+  }
+
+  uk-page-footer {
+    display: block;
+    background-color: $color-background-surface-00;
+  }
+
+  &.uk-modal-frame {
+    &-body-background-color {
+      &-TRANSPARENT {
+        > main {
+          background-color: transparent;
+        }
+      }
+
+      &-WHITE {
+        > main {
+          background-color: $color-background-surface-00;
+        }
+      }
+    }
+
+    &-padding {
+      &-DEFAULT {
+        .body-container {
+          padding: pxToRem(8) pxToRem(20) pxToRem(8) pxToRem(20);
+        }
+      }
+
+      &-NONE {
+        .body-container {
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  & .header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .header-end {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 8px;
+
+      .header-end-content {
+        display: none;
+
+        &:not(:empty) {
+          display: block;
+        }
+      }
+
+      uk-icon {
+        position: relative;
+
+        &:after {
+          position: absolute;
+          top: 0;
+          left: 0;
+          cursor: pointer;
+          width: 100%;
+          height: 100%;
+          content: "";
+        }
+      }
+    }
+  }
+
+  .top-footer {
+    display: none;
+    margin-right: -20px;
+    margin-bottom: -10px;
+    width: calc(100% + 40px);
+
+    &:not(:empty) {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+<div class="uk square-card-desktop" [ngClass]="['square-card-desktop-cursor-' + cursor]">
+    <div class="top">
+        <ng-content select="[TOP]" />
+    </div>
+
+    <div class="center">
+        <ng-content select="[CENTER]" />
+    </div>
+
+    <div class="bottom">
+        <ng-content select="[BOTTOM]" />
+    </div>
+</div>

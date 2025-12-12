@@ -1,0 +1,10 @@
+<div class="uk-table-select">
+  <uk-select
+    [items]="items"
+    [placeholder]="placeholder"
+    [bindLabel]="bindLabel"
+    [bindValue]="bindValue"
+    (ngModelChange)="onValueChange($event)"
+    [(ngModel)]="selectedValue"
+  />
+</div>

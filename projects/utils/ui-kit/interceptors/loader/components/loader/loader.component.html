@@ -1,0 +1,41 @@
+<section
+    *ngIf="loading"
+    class="uk loader"
+>
+    <div
+        class="wrapper"
+        [ngClass]="{show: loading, hide: !loading}"
+    >
+        <!-- <div class="loading-spinner">
+            <div class="spinner-wrapper">
+                <div class="spinner">
+                    <uk-progress-bar
+                        [barType]="'RADIAL'"
+                        [color]="'white'"
+                        [colorBg]="'transparent'"
+                        [progress]="70"
+                        [showLabel]="false"
+                        [size]="5"
+                    />
+                </div>
+            </div>
+            <div class="percentages">
+                <ng-container *ngFor="let percent of percents">
+                    <uk-progress-bar
+                        *ngIf="percent"
+                        [barType]="'RADIAL'"
+                        [color]="'#679e50'"
+                        [colorBg]="'#9a9a9a'"
+                        [depth]="8"
+                        [progress]="percent"
+                        [size]="4"
+                    />
+                </ng-container>
+            </div>
+        </div> -->
+
+        <div class="loading">
+            <uk-progress-bar [barType]="'ANIMATION'" />
+        </div>
+    </div>
+</section>

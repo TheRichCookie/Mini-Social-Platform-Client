@@ -1,0 +1,35 @@
+<uk-modal-frame
+    [title]="title"
+    (ON_CLOSE)="onCancel()"
+>
+    <div FRAME-BODY>
+        <uk-wheel-selector
+            *ngIf="show"
+            #wheelSelect
+            [data]="data"
+        />
+    </div>
+    <div FRAME-ACTIONS>
+        <uk-button-group>
+            <uk-button
+                [bgColor]="UK_TYPE.BUTTON.BG_COLOR.TRANSPARENT"
+                [borderColor]="UK_TYPE.BUTTON.BORDER_COLOR.COLOR_BUTTON_PRIMARY"
+                [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
+                [display]="UK_TYPE.BUTTON.DISPLAY.BLOCK"
+                [fgColor]="UK_TYPE.BUTTON.FG_COLOR.CONTENT_PRIMARY"
+                [height]="UK_TYPE.BUTTON.HEIGHT.H_40"
+                (click)="onCancel()"
+            >
+                بستن
+            </uk-button>
+            <uk-button
+                [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
+                [display]="UK_TYPE.BUTTON.DISPLAY.BLOCK"
+                [height]="UK_TYPE.BUTTON.HEIGHT.H_40"
+                (click)="onSubmit()"
+            >
+                تایید
+            </uk-button>
+        </uk-button-group>
+    </div>
+</uk-modal-frame>

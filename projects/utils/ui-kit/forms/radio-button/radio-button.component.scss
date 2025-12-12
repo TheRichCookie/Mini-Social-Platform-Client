@@ -1,0 +1,112 @@
+@use "core" as *;
+
+$size: pxToRem(20);
+$innerSize: pxToRem(14);
+$borderColor: $color-border-grade-2;
+$borderColorDisabled: $color-content-disabled;
+$mainColor: white;
+
+$checkMarkBorderWidth: 5px;
+$checkMarkHeight: 10px;
+$checkMarkWidth: 10px;
+$checkMarkBorderColor: rgb(255, 255, 255);
+$checkMarkMultiBorderColor: white;
+$checkMarkBgColor: $color-button-primary;
+
+:host {
+  display: inline-block;
+}
+
+.uk.radio-button {
+  width: 100%;
+  height: 100%;
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+
+    .input {
+      width: $size;
+      height: $size;
+      position: relative;
+
+      > .check-mark {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        border: solid 1px $borderColor;
+        border-radius: 50%;
+        background-color: $mainColor;
+        width: 100%;
+        height: 100%;
+
+        &:after {
+          display: none;
+          position: absolute;
+          top: 4px;
+          left: 4px;
+          transform: rotate(45deg);
+          border: $checkMarkBorderWidth solid $checkMarkBorderColor;
+          border-radius: 100%;
+          width: $checkMarkWidth;
+          height: $checkMarkHeight;
+          content: "";
+        }
+      }
+
+      > input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        z-index: 2;
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+
+        &:checked ~ .check-mark {
+          border-color: $checkMarkBgColor;
+          border: 6px solid $checkMarkBgColor;
+          text-align: center;
+        }
+
+        &:disabled ~ .check-mark {
+          cursor: not-allowed;
+          border-color: $borderColorDisabled;
+        }
+      }
+
+      &.multi-checked {
+        position: relative;
+
+        &:after {
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 2;
+          width: 100%;
+          height: 100%;
+          content: "";
+        }
+
+        > .check-mark {
+          border-color: transparent;
+
+          &:after {
+            display: block;
+            border-right-color: $checkMarkMultiBorderColor;
+            border-bottom-color: $checkMarkMultiBorderColor;
+            content: "";
+          }
+        }
+      }
+    }
+  }
+}

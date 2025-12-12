@@ -1,0 +1,17 @@
+@use 'core' as *;
+
+:host {
+    width: 100%;
+}
+
+.radio-group {
+    &-item {
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        padding: 16px;
+        align-items: center;
+        gap: 10px;
+        height: pxToRem(40);
+    }
+}

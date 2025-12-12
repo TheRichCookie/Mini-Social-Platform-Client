@@ -1,0 +1,96 @@
+@use "core" as *;
+
+:host {
+}
+
+.uk.desktop-form-part {
+  width: 100%;
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+
+    > .reft-side {
+      display: flex;
+      flex-direction: column;
+
+      > .title {
+      }
+      > .sub-title {
+      }
+    }
+
+    > .left-side {
+      display: flex;
+      gap: 12px;
+    }
+
+    &:not(:empty) {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+
+      &:not(:last-child) {
+        margin-bottom: 12px;
+      }
+    }
+  }
+  &.uk-desktop-form-part {
+    &-crud-mode {
+      &-EDIT {
+        //
+      }
+
+      &-VIEW {
+        position: relative;
+
+        &::after {
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 3;
+          width: 100%;
+          height: 100%;
+          content: "";
+        }
+      }
+    }
+
+    &-bottom-padding {
+      &-FALSE {
+      }
+      &-TRUE {
+        padding-bottom: 15px;
+      }
+    }
+
+    &-has-paddings {
+      &-FALSE {
+      }
+      &-TRUE {
+        padding: 24px;
+      }
+    }
+
+    &-has-border {
+      &-TRUE {
+        border: solid 1px $color-border-grade-1;
+        border-radius: 12px;
+      }
+      &-FALSE {
+      }
+    }
+
+    &-title-bottom-border {
+      &-TRUE {
+        > .top {
+          border-bottom: solid 2px $color-border-grade-1;
+          padding-bottom: 15px;
+        }
+      }
+      &-FALSE {
+      }
+    }
+  }
+}

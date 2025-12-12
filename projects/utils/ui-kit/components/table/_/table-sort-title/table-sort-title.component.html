@@ -1,0 +1,20 @@
+<div
+  class="uk table-sort-title"
+  [ngClass]="['uk-table-sort-title-has-sort-' + hasSort]"
+  role="button"
+  tabindex="0"
+  (click)="onSortClick()"
+>
+  @if (hasSort) {
+    <uk-image [source]="sortImage" />
+  }
+  <uk-text
+    [display]="UK_TYPE.TEXT.DISPLAY.BLOCK"
+    [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS"
+    [horizontalAlignment]="UK_TYPE.TEXT.HORIZONTAL_ALIGNMENT.CENTER"
+    [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_2_STRONG"
+    [whiteSpace]="UK_TYPE.TEXT.WHITE_SPACE.NO_WRAP"
+  >
+    <ng-content />
+  </uk-text>
+</div>

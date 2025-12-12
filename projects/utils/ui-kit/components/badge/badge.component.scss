@@ -1,0 +1,162 @@
+@use "core" as *;
+
+$height: pxToRem(40);
+$tb-padding-normal: pxToRem(10);
+$lr-padding-normal: pxToRem(18);
+$tb-padding-small: pxToRem(3);
+$lr-padding-small: pxToRem(10);
+$border-radius-normal: pxToRem(8);
+$border-radius-small: pxToRem(4);
+$inner-margin: pxToRem(5);
+
+$height-normal: pxToRem(38);
+$height-small: pxToRem(24);
+
+:host {
+  width: 100%;
+  text-align: center;
+}
+
+.uk.badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-width: 1px;
+  border-style: solid;
+  padding: pxToRem(2) pxToRem(8);
+  max-width: fit-content;
+  height: 100%;
+  font-weight: 600;
+  font-size: pxToRem(10);
+
+  &.uk-badge {
+    &-type {
+      &-NORMAL {
+        &.uk-badge-is-outline {
+          &-TRUE {
+            border-color: $color-content-low-emphasis;
+            background-color: transparent;
+          }
+
+          &-FALSE {
+            border-color: transparent;
+            background-color: $color-background-surface-01;
+          }
+        }
+      }
+      &-CAUTION {
+        &.uk-badge-is-outline {
+          &-TRUE {
+            border-color: $color-content-caution;
+            background-color: transparent;
+          }
+
+          &-FALSE {
+            border-color: transparent;
+            background-color: $color-background-caution;
+          }
+        }
+      }
+      &-INFO {
+        &.uk-badge-is-outline {
+          &-TRUE {
+            border-color: $color-content-progress;
+            background-color: transparent;
+          }
+
+          &-FALSE {
+            border-color: transparent;
+            background-color: $color-background-progress;
+          }
+        }
+      }
+      &-SUCCESS {
+        &.uk-badge-is-outline {
+          &-TRUE {
+            border-color: $color-content-success;
+            background-color: transparent;
+          }
+
+          &-FALSE {
+            border-color: transparent;
+            background-color: $color-background-success;
+          }
+        }
+      }
+      &-ERROR {
+        &.uk-badge-is-outline {
+          &-TRUE {
+            border-color: $color-content-error;
+            background-color: transparent;
+          }
+
+          &-FALSE {
+            border-color: transparent;
+            background-color: $color-background-error;
+          }
+        }
+      }
+      &-DRAFT {
+        &.uk-badge-is-outline {
+          &-TRUE {
+            border-color: $color-content-low-emphasis;
+            background-color: transparent;
+          }
+
+          &-FALSE {
+            border-color: transparent;
+            background-color: transparent;
+          }
+        }
+      }
+    }
+
+    &-size {
+      &-LARGE {
+        height: 36px;
+      }
+      &-MEDIUM {
+        height: 32px;
+      }
+      &-SMALL {
+        height: 26px;
+      }
+    }
+
+    &-cursor {
+      &-NORMAL {
+      }
+      &-POINTER {
+        position: relative;
+
+        &::after {
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          cursor: pointer;
+          width: 100%;
+          height: 100%;
+          content: "";
+        }
+      }
+    }
+
+    &-border-radius {
+      &-PX-12 {
+        border-radius: pxToRem(12);
+      }
+      &-PX-100 {
+        border-radius: pxToRem(100);
+      }
+    }
+  }
+
+  > .start-icon {
+    margin-left: 8px;
+  }
+
+  > .end-icon {
+    margin-right: 8px;
+  }
+}

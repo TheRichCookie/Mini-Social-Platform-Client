@@ -1,0 +1,18 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "baseUrl": "./",
+        "paths": {
+            "@utils/ui-kit": ["./../utils/ui-kit"],
+            "@utils/ui-kit/*": ["./../utils/ui-kit/*"],
+            "@int/ui-kit": ["src/app/shared/ui-kit"],
+            "@int/ui-kit/*": ["src/app/shared/ui-kit/*"],
+            "@environments": ["src/environments"],
+            "@environments/*": ["src/environments/*"],
+            "@app/*": ["src/app/*"],
+            "@layouts/*": ["src/app/layouts/*"],
+            "@pages/*": ["src/app/pages/*"],
+            "@store/*": ["src/app/shared/store/*"]
+        }
+    }
+}

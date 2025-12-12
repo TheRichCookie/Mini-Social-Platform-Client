@@ -1,193 +1,262 @@
 {
-    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-    "version": 1,
-    "newProjectRoot": "projects",
-    "projects": {
-        "hangout-app": {
-            "projectType": "application",
-            "schematics": {
-                "@schematics/angular:component": {
-                    "style": "scss",
-                    "flat": false,
-                    "skipTests": true,
-                    "type": "component"
-                },
-                "@schematics/angular:class": {
-                    "skipTests": true
-                },
-                "@schematics/angular:directive": {
-                    "skipTests": true
-                },
-                "@schematics/angular:guard": {
-                    "skipTests": true
-                },
-                "@schematics/angular:interceptor": {
-                    "skipTests": true
-                },
-                "@schematics/angular:pipe": {
-                    "skipTests": true
-                },
-                "@schematics/angular:resolver": {
-                    "skipTests": true
-                },
-                "@schematics/angular:service": {
-                    "skipTests": true
-                }
-            },
-            "root": "projects/hangout-app",
-            "sourceRoot": "projects/hangout-app/src",
-            "prefix": "hang",
-            "architect": {
-                "build": {
-                    "builder": "@angular-devkit/build-angular:application",
-                    "options": {
-                        "outputPath": "dist/hangout-app",
-                        "index": "projects/hangout-app/src/index.html",
-                        "browser": "projects/hangout-app/src/main.ts",
-                        "polyfills": ["zone.js"],
-                        "tsConfig": "projects/hangout-app/tsconfig.app.json",
-                        "inlineStyleLanguage": "scss",
-                        "assets": [
-                            {
-                                "glob": "**/*",
-                                "input": "projects/hangout-app/public"
-                            }
-                        ],
-                        "stylePreprocessorOptions": {
-                            "includePaths": ["projects/ui-kit/core/assets/styles/index.scss"]
-                        },
-                        "styles": ["projects/ui-kit/core/assets/styles/index.scss"],
-                        "scripts": []
-                    },
-                    "configurations": {
-                        "production": {
-                            "budgets": [
-                                {
-                                    "type": "initial",
-                                    "maximumWarning": "500kB",
-                                    "maximumError": "1MB"
-                                },
-                                {
-                                    "type": "anyComponentStyle",
-                                    "maximumWarning": "4kB",
-                                    "maximumError": "8kB"
-                                }
-                            ],
-                            "outputHashing": "all"
-                        },
-                        "development": {
-                            "optimization": false,
-                            "extractLicenses": false,
-                            "sourceMap": true
-                        }
-                    },
-                    "defaultConfiguration": "production"
-                },
-                "serve": {
-                    "builder": "@angular-devkit/build-angular:dev-server",
-                    "configurations": {
-                        "production": {
-                            "buildTarget": "hangout-app:build:production"
-                        },
-                        "development": {
-                            "buildTarget": "hangout-app:build:development"
-                        }
-                    },
-                    "defaultConfiguration": "development"
-                },
-                "extract-i18n": {
-                    "builder": "@angular-devkit/build-angular:extract-i18n"
-                },
-                "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
-                    "options": {
-                        "polyfills": ["zone.js", "zone.js/testing"],
-                        "tsConfig": "projects/hangout-app/tsconfig.spec.json",
-                        "inlineStyleLanguage": "scss",
-                        "assets": [
-                            {
-                                "glob": "**/*",
-                                "input": "projects/hangout-app/public"
-                            }
-                        ],
-                        "styles": [
-                            "projects/hangout-app/src/styles.scss",
-                            "projects/baman/ui-kit/assets/styles/index.scss"
-                        ],
-                        "scripts": []
-                    }
-                },
-                "lint": {
-                    "builder": "@angular-eslint/builder:lint",
-                    "options": {
-                        "lintFilePatterns": ["projects/hangout-app/**/*.ts", "projects/hangout-app/**/*.html"],
-                        "eslintConfig": "projects/hangout-app/eslint.config.mjs"
-                    }
-                }
-            }
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "@utils/ui-kit": {
+      "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "changeDetection": "OnPush",
+          "skipTests": true
         },
-        "@ui-kit/core": {
-            "projectType": "library",
-            "root": "projects/ui-kit/core",
-            "sourceRoot": "projects/ui-kit/core",
-            "prefix": "uk",
-            "schematics": {
-                "@schematics/angular:component": {
-                    "style": "scss",
-                    "flat": false,
-                    "skipTests": true,
-                    "type": "component"
-                },
-                "@schematics/angular:class": {
-                    "skipTests": true
-                },
-                "@schematics/angular:directive": {
-                    "skipTests": true
-                },
-                "@schematics/angular:guard": {
-                    "skipTests": true
-                },
-                "@schematics/angular:interceptor": {
-                    "skipTests": true
-                },
-                "@schematics/angular:pipe": {
-                    "skipTests": true
-                },
-                "@schematics/angular:resolver": {
-                    "skipTests": true
-                },
-                "@schematics/angular:service": {
-                    "skipTests": true
-                }
-            },
-            "architect": {
-                "build": {
-                    "builder": "@angular/build:ng-packagr",
-                    "configurations": {
-                        "production": {
-                            "tsConfig": "projects/ui-kit/core/tsconfig.lib.prod.json"
-                        },
-                        "development": {
-                            "tsConfig": "projects/ui-kit/core/tsconfig.lib.json"
-                        }
-                    },
-                    "defaultConfiguration": "production"
-                },
-                "test": {
-                    "builder": "@angular/build:karma",
-                    "options": {
-                        "tsConfig": "projects/ui-kit/core/tsconfig.spec.json",
-                        "polyfills": ["zone.js", "zone.js/testing"]
-                    }
-                },
-                "lint": {
-                    "builder": "@angular-eslint/builder:lint",
-                    "options": {
-                        "lintFilePatterns": ["projects/ui-kit/core/**/*.ts", "projects/ui-kit/core/**/*.html"],
-                        "eslintConfig": "projects/ui-kit/core/eslint.config.mjs"
-                    }
-                }
-            }
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:resolver": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
         }
+      },
+      "root": "projects/utils/ui-kit",
+      "sourceRoot": "projects/utils/ui-kit/src",
+      "prefix": "uk",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/utils/ui-kit/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/utils/ui-kit/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/utils/ui-kit/tsconfig.spec.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/utils/ui-kit/**/*.ts",
+              "projects/utils/ui-kit/**/*.html"
+            ],
+            "eslintConfig": "projects/utils/ui-kit/eslint.config.mjs"
+          }
+        }
+      }
+    },
+    "hangout": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "skipTests": true,
+          "changeDetection": "OnPush"
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:resolver": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        }
+      },
+      "root": "projects/hangout",
+      "sourceRoot": "projects/hangout/src",
+      "prefix": "bmn",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "outputPath": "dist/hangout",
+            "index": "projects/hangout/src/index.html",
+            "browser": "projects/hangout/src/main.ts",
+            "polyfills": ["zone.js", "@angular/localize/init"],
+            "tsConfig": "projects/hangout/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/hangout/src/favicon.ico",
+              "projects/hangout/src/assets",
+              {
+                "glob": "**/*",
+                "input": "projects/hangout/public"
+              },
+              {
+                "glob": "**/*",
+                "input": "./projects/utils/ui-kit/assets/uk-images",
+                "output": "/uk-images/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./projects/utils/ui-kit/assets/uk-animations",
+                "output": "/uk-animations/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./projects/utils/ui-kit/assets/uk-sounds",
+                "output": "/uk-sounds/"
+              }
+            ],
+            "styles": [
+              "projects/utils/ui-kit/assets/styles/index.scss",
+              "projects/hangout/src/assets/styles/index.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["projects/utils/ui-kit/assets/styles/_core"]
+            }
+          },
+          "configurations": {
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            },
+            "test": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1.5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "5kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/hangout/src/environments/environment.ts",
+                  "with": "projects/hangout/src/environments/environment.test.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "stage": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1.5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "5kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/hangout/src/environments/environment.ts",
+                  "with": "projects/hangout/src/environments/environment.stage.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1.5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "5kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/hangout/src/environments/environment.ts",
+                  "with": "projects/hangout/src/environments/environment.production.ts"
+                }
+              ],
+              "outputHashing": "all"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "hangout:build:production"
+            },
+            "development": {
+              "buildTarget": "hangout:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular/build:extract-i18n"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/hangout/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/hangout/public"
+              }
+            ],
+            "styles": ["projects/hangout/src/styles.scss"]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/hangout/**/*.ts",
+              "projects/hangout/**/*.html"
+            ],
+            "eslintConfig": "projects/hangout/eslint.config.mjs"
+          }
+        }
+      }
     }
+  },
+  "cli": {
+    "analytics": false
+  }
 }

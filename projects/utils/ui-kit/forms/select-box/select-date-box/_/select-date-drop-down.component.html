@@ -1,0 +1,69 @@
+<div class="uk select-date-drop-down">
+  <uk-scroll
+    [maxHeight]="230"
+    [showScrollbar]="UK_TYPE.UK.BOOLEAN.TRUE"
+    [contentHasSideMargin]="UK_TYPE.UK.BOOLEAN.TRUE"
+  >
+    @if (hasPredefinedOptions) {
+      <div class="date-ranges">
+        <uk-radio-button-group [(ngModel)]="selectedDateRangeOptions">
+          <div class="options">
+            @for (
+              rangeDateOption of rangeDateOptions;
+              track rangeDateOption.id
+            ) {
+              <div class="option">
+                <uk-radio-button
+                  [hasLabel]="true"
+                  [disabled]="false"
+                  [id]="rangeDateOption.id"
+                  [name]="'dateRange'"
+                  [(ngModel)]="rangeDate"
+                  (ngModelChange)="onRangeDateChange()"
+                >
+                  {{ rangeDateOption.text }}
+                </uk-radio-button>
+              </div>
+            }
+          </div>
+        </uk-radio-button-group>
+      </div>
+    }
+    @if (!hasPredefinedOptions || rangeDate === dateRangeTypes.CALENDAR) {
+      <ngb-datepicker
+        #d="ngbDatepicker"
+        ngbDatepicker
+        [firstDayOfWeek]="firstDayOfWeek"
+        [navigation]="navigation"
+        [startDate]="startDate"
+        (dateSelect)="onDateSelection($event)"
+        [dayTemplate]="t"
+        [displayMonths]="1"
+      />
+      <div class="footer">
+        <uk-button
+          [disabled]="!toDate"
+          [bgColor]="UK_TYPE.BUTTON.BG_COLOR.PRIMARY_1"
+          [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
+          [fgColor]="UK_TYPE.BUTTON.FG_COLOR.CONTENT_PRIMARY"
+          (click)="onCalendarSubmit()"
+        >
+          تایید
+        </uk-button>
+      </div>
+    }
+  </uk-scroll>
+</div>
+
+<ng-template #t let-date let-focused="focused">
+  <span
+    class="day-range"
+    [class.to-date]="date.equals(toDate)"
+    [class.range]="isRange(date)"
+    [class.faded]="isHovered(date) || isInside(date)"
+    (mouseenter)="hoveredDate = date"
+    (mouseleave)="hoveredDate = null"
+  >
+    {{ date.day }}
+  </span>
+</ng-template>

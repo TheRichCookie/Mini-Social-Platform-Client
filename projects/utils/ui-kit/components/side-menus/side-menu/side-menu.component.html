@@ -1,0 +1,19 @@
+<div
+  class="uk side-menu"
+  [ngClass]="{active: menu.isActive}"
+  (click)="onClick()"
+>
+  <uk-icon
+    [fgColor]="menu.isActive ? UK_TYPE.ICON.FG_COLOR.CONTENT_PRIMARY : UK_TYPE.ICON.FG_COLOR.CONTENT_HIGH_EMPHASIS"
+    [name]="menu.icon"
+    [size]="UK_TYPE.ICON.SIZE.LARGEST"
+  />
+  <uk-text
+    [fgColor]="
+            menu.isActive ? UK_TYPE.TEXT.FG_COLOR.CONTENT_PRIMARY : UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS
+        "
+    [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE_STRONG"
+  >
+    {{ menu.name }}
+  </uk-text>
+</div>

@@ -1,0 +1,91 @@
+@use 'sass:map';
+
+$font-weights: (
+  "regular": 400,
+  "medium": 500,
+  "demiBold": 600,
+);
+@mixin typography($size, $weight, $lineHeight) {
+  font-family: IRANSansX;
+  font-size: #{calc($size / 16) + rem};
+  font-weight: $weight;
+  line-height: #{calc($lineHeight / 16) + rem};
+}
+
+@mixin persian-number {
+  font-feature-settings: "ss01";
+}
+
+@mixin english-number {
+  font-feature-settings: "ss05";
+}
+// usage: @include persian-number();
+
+@mixin typography-h-1 {
+  $weight: map.get($font-weights, "medium");
+  @include typography(28, $weight, 59);
+}
+@mixin typography-h-2 {
+  $weight: map.get($font-weights, "demiBold");
+  @include typography(22, $weight, 46);
+}
+@mixin typography-h-3 {
+  $weight: map.get($font-weights, "medium");
+  @include typography(21, $weight, 44);
+}
+@mixin typography-h-4 {
+  $weight: map.get($font-weights, "demiBold");
+  @include typography(16, $weight, 34);
+}
+@mixin typography-h-5 {
+  $weight: map.get($font-weights, "demiBold");
+  @include typography(14, $weight, 29);
+}
+@mixin typography-subtitle {
+  $weight: map.get($font-weights, "regular");
+  @include typography(13, $weight, 28);
+}
+@mixin typography-subtitle-strong {
+  $weight: map.get($font-weights, "demiBold");
+  @include typography(13, $weight, 28);
+}
+@mixin typography-body-1 {
+  $weight: map.get($font-weights, "regular");
+  @include typography(12, $weight, 26);
+}
+@mixin typography-body-1-strong {
+  $weight: map.get($font-weights, "demiBold");
+  @include typography(12, $weight, 26);
+}
+@mixin typography-body-2 {
+  $weight: map.get($font-weights, "demiBold");
+  @include typography(11, $weight, 24);
+}
+@mixin typography-body-2-strong {
+  $weight: map.get($font-weights, "demiBold");
+  @include typography(11, $weight, 24);
+}
+@mixin typography-caption {
+  $weight: map.get($font-weights, "regular");
+  @include typography(10, $weight, 22);
+}
+@mixin typography-caption-strong {
+  $weight: map.get($font-weights, "demiBold");
+  @include typography(10, $weight, 22);
+}
+@mixin typography-button-1 {
+  $weight: map.get($font-weights, "demiBold");
+  @include typography(14, $weight, 30);
+}
+@mixin typography-button-2 {
+  $weight: map.get($font-weights, "demiBold");
+  @include typography(12, $weight, 26);
+}
+@mixin typography-link-1 {
+  $weight: map.get($font-weights, "demiBold");
+  @include typography(14, $weight, 30);
+}
+@mixin typography-link-2 {
+  $weight: map.get($font-weights, "demiBold");
+  @include typography(12, $weight, 26);
+}

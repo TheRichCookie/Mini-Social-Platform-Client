@@ -1,0 +1,26 @@
+<div
+  class="uk desktop-form-part"
+  [ngClass]="[
+    'uk-desktop-form-part-crud-mode-' + crudMode,
+    'uk-desktop-form-part-bottom-padding-' + bottomPadding,
+    'uk-desktop-form-part-has-paddings-' + hasPaddings,
+    'uk-desktop-form-part-has-border-' + hasBorder,
+    'uk-desktop-form-part-title-bottom-border-' + titleBottomBorder,
+  ]"
+>
+  <div *ngIf="hasHeader" class="top">
+    <div class="reft-side">
+      <div class="title">
+        <ng-content select="[TITLE]" />
+      </div>
+      <div class="sub-title">
+        <ng-content select="[SUB-TITLE]" />
+      </div>
+    </div>
+
+    <div class="left-side">
+      <ng-content select="[LEFT-SIDE]" />
+    </div>
+  </div>
+  <ng-content select="uk-desktop-form-row" />
+</div>

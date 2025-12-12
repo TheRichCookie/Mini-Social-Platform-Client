@@ -1,0 +1,47 @@
+@use "core" as *;
+
+.uk.select-check-box {
+  position: relative;
+  height: 36px;
+
+  .dropdown-box {
+    @include typography-body-1-strong;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.2s ease;
+    border: 1px solid $color-content-low-emphasis;
+    border-radius: 12px;
+    padding: 2px 8px;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  &.uk-select-check-box {
+    &-is-open {
+      &-true {
+        > .dropdown-box {
+          border-color: $color-content-primary;
+        }
+      }
+    }
+    &-has-value {
+      &-true {
+        > .dropdown-box {
+          border-color: $color-content-primary;
+        }
+      }
+    }
+    &-is-disabled {
+      &-true {
+        > .dropdown-box {
+          opacity: 0.5;
+          @include cursorNotAllowedOverlay();
+        }
+      }
+      &-false {
+      }
+    }
+  }
+}

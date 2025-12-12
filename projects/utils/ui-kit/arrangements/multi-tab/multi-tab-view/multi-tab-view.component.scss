@@ -1,0 +1,112 @@
+@use "core" as *;
+
+$fixedPadding: pxToRem(8);
+$contentPadding: pxToRem(15);
+$headerBgColor: rgb(187 187 187);
+$headerHeight: pxToRem(50);
+$sliderHeaderHeight: pxToRem(34);
+$sliderBgColor: rgb(255, 255, 255);
+$liPadding: pxToRem(5);
+
+.uk.multi-tab-view {
+  uk-page-part {
+    header {
+      width: 100%;
+      height: $headerHeight;
+      position: relative;
+      overflow: hidden;
+      > .slider {
+        position: absolute;
+        height: $sliderHeaderHeight;
+        width: 0;
+        left: 3px;
+        z-index: 1;
+        top: pxToRem(3);
+        transition: all 0.3s ease-in;
+      }
+
+      > ul {
+        width: 100%;
+        height: $headerHeight;
+        display: flex;
+        position: relative;
+        z-index: 2;
+
+        > li {
+          @include pointerOverlay();
+          list-style: none;
+          width: 100%;
+          height: $headerHeight;
+          padding: $liPadding;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s ease-in;
+          gap: pxToRem(12);
+          border-bottom: 4px solid transparent;
+          cursor: pointer;
+
+          &.active {
+            border-bottom: 4px solid $color-content-primary;
+          }
+        }
+      }
+    }
+
+    main {
+      > .fixed {
+        display: none;
+
+        &:not(:empty) {
+          display: block;
+          padding: $fixedPadding;
+        }
+      }
+    }
+  }
+
+  &.uk-multi-tab-view {
+    &-header-display {
+      &-BLOCK {
+        uk-page-part {
+          header {
+            > ul {
+              > li {
+              }
+            }
+          }
+        }
+      }
+      &-INLINE {
+        uk-page-part {
+          header {
+            > ul {
+              > li {
+                flex: 0;
+                white-space: nowrap;
+
+                &:not(:last-child) {
+                  margin-left: 8px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &-header-divider {
+      &-FALSE {
+      }
+      &-TRUE {
+        uk-page-part {
+          header {
+            > ul {
+              border-bottom: solid 1px $color-content-primary;
+            }
+          }
+        }
+      }
+    }
+  }
+}

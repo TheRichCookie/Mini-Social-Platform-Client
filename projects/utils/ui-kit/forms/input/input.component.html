@@ -1,0 +1,33 @@
+<div
+  class="uk input"
+  [ngClass]="[
+        'uk-input-border-color-' + borderColor,
+        'uk-input-numeric-' + numeric,
+        'uk-input-crud-mode-' + crudMode,
+        'uk-input-typography-' + typography,
+    ]"
+  [ngStyle]="{'background-color': isDisabled ? '#f9f9f9' : null}"
+>
+  <div class="icon-wrapper">
+    <ng-content select="[START]"/>
+  </div>
+
+  <input
+    [disabled]="isDisabled"
+    [inputMode]="currentInputMode"
+    [mask]="mask"
+    [maxlength]="maxLength"
+    [minlength]="minLength"
+    [patterns]="customPattern"
+    [placeholder]="placeholder"
+    [thousandSeparator]="thousandSeparator"
+    [type]="inputType === 'NUMBER' ? 'number' : 'text'"
+    [(ngModel)]="val"
+    (blur)="onBlur()"
+    (keydown)="onKeyDown($event)"
+    (ngModelChange)="onChange($event)"
+  />
+  <div class="icon-wrapper">
+    <ng-content select="[END]"/>
+  </div>
+</div>

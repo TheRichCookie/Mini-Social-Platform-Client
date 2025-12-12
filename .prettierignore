@@ -9,13 +9,19 @@ stylelint.config.js
 .lintstagedrc.json
 .prettierrc.js
 .validate-branch-namerc.json
+angular.json
 config.commitizen.js
 README.md
-release.config.mjs
+release.config.js
 tsconfig.doc.json
 tsconfig.json
 
 # root folders
 .vscode/
 dist/
+configs/
 documentation/
+
+# others
+projects/test/
+projects/utils/ui-kit/assets/fonts/

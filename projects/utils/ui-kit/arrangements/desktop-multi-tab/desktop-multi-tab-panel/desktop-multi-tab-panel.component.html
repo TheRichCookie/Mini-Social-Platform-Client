@@ -1,0 +1,11 @@
+<div
+    class="uk desktop-multi-tab-panel"
+    [ngClass]="['uk-desktop-multi-tab-panel-is-active-' + active]"
+>
+    <div
+        *ngIf="active"
+        class="content"
+    >
+        <ng-content />
+    </div>
+</div>

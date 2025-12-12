@@ -1,0 +1,23 @@
+<div
+    class="uk page"
+    [ngClass]="[
+        'uk-page-header-background-color-' + headerBackgroundColor,
+        'uk-page-body-background-color-' + bodyBackgroundColor,
+        'uk-page-footer-background-color-' + footerBackgroundColor,
+        'uk-page-top-margin-' + topMargin,
+        'uk-page-bottom-margin-' + bottomMargin,
+        'uk-page-body-over-flow-' + bodyOverFlow,
+        'uk-page-show-header-border-' + (showHeaderBorder ? 'TRUE' : 'FALSE'),
+        'uk-page-show-footer-border-' + (showFooterBorder ? 'TRUE' : 'FALSE'),
+    ]"
+>
+    <header>
+        <ng-content select="uk-page-header" />
+    </header>
+    <main>
+        <ng-content select="uk-page-body" />
+    </main>
+    <footer>
+        <ng-content select="uk-page-footer" />
+    </footer>
+</div>

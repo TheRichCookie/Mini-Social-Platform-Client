@@ -1,4 +1,0 @@
-{
-    "pattern": "^(main|stage|test|develop){1}$|^(feature|fix|hotfix|release)/.+$",
-    "errorMsg": "please check branch-name pattern"
-}

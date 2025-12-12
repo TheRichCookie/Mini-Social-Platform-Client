@@ -1,0 +1,24 @@
+@use "core" as *;
+
+:host {
+    height: 100%;
+    width: 100%;
+}
+
+// .app-uk {
+//     & .check-box-group {
+//         display: flex;
+//         justify-content: space-between;
+//         align-items: center;
+//         gap: pxToRem(16);
+//         margin-top: pxToRem(8);
+//         &:first-child {
+//             margin-top: 0;
+//         }
+//     }
+//     & .checkbox-and-label-container {
+//         display: flex;
+//         gap: pxToRem(16);
+//         align-items: center;
+//     }
+// }

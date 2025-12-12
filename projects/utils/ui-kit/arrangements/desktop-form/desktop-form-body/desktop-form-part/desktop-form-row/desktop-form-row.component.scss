@@ -1,0 +1,90 @@
+@use "core" as *;
+
+$controllerGap: 8px;
+
+:host {
+  &.uk-desktop-form-row {
+    &-has-border {
+      &-TRUE {
+        &:not(:last-child) {
+          &::after {
+            display: block;
+            margin: 8px 0;
+            background-color: $color-border-grade-1;
+            height: 2px;
+            content: "";
+          }
+        }
+      }
+    }
+  }
+}
+
+.uk.desktop-form-row {
+  margin-bottom: 12px;
+
+  &::ng-deep {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $controllerGap;
+
+    uk-desktop-form-controller {
+      flex: 1;
+      overflow-wrap: break-word;
+
+      &.col {
+        &-2 {
+          flex: 2;
+        }
+        &-3 {
+          flex: 3;
+        }
+        &-4 {
+          flex: 4;
+        }
+      }
+    }
+  }
+
+  &.uk-desktop-form-row {
+    &-is-divided {
+      &-TRUE {
+        &::ng-deep {
+          gap: 16px;
+
+          uk-desktop-form-controller {
+            transition: transform 0.3s ease-in-out;
+            &:not(:last-child) {
+              position: relative;
+
+              &:after {
+                position: absolute;
+                bottom: 50%;
+                left: -9px;
+                transform: translateY(50%);
+                border-radius: 8px;
+                background-color: $color-border-grade-1;
+                width: 2px;
+                height: 48px;
+                content: "";
+              }
+            }
+          }
+        }
+      }
+      &-FALSE {
+      }
+    }
+    &-is-flex {
+      &-TRUE {
+        &::ng-deep {
+          uk-desktop-form-controller {
+            flex: 0 1 calc(50% - $controllerGap) !important;
+          }
+        }
+      }
+      &-FALSE {
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+
+:host {
+}
+
+.uk.side-menus {
+    padding: 16px;
+
+    > .wrapper {
+        > uk-text {
+            display: block;
+            margin-right: 25px;
+            margin-bottom: 16px;
+        }
+    }
+}

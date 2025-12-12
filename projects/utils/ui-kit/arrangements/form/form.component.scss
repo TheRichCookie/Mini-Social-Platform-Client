@@ -1,0 +1,22 @@
+@use "core" as *;
+
+:host {
+    .uk.form {
+        &::ng-deep {
+            uk-form-errors {
+                // display: none;
+            }
+        }
+
+        &submitted {
+            &::ng-deep {
+                uk-form-errors {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+.uk.form {
+}

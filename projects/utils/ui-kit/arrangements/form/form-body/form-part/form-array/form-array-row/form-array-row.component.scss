@@ -1,0 +1,19 @@
+@use 'core' as *;
+
+:host {
+}
+
+.uk.form-array-row {
+    display: flex;
+    gap: 8px;
+
+    .controller {
+        flex: 1;
+    }
+
+    .actions {
+        display: flex;
+        align-items: flex-start;
+        padding-top: 26px;
+    }
+}

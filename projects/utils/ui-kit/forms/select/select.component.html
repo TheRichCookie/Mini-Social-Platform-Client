@@ -1,0 +1,43 @@
+<div
+  class="uk select"
+  [ngClass]="[
+    'uk-select-bg-color-' + bgColor,
+    'uk-select-fg-color-' + fgColor,
+    'uk-select-border-color-' + borderColor,
+    'uk-select-border-radius-' + borderRadius,
+    'uk-select-crud-mode-' + crudMode,
+    'uk-select-margin-right-' + marginRight,
+    'uk-select-disabled-' + (disabled ? 'TRUE' : 'FALSE'),
+  ]"
+>
+  <ng-select
+    labelForId="age"
+    notFoundText="ایتمی یافت نشد"
+    class="form-element uk-single-select"
+    [bindLabel]="bindLabel"
+    [bindValue]="bindValue"
+    [clearable]="false"
+    [disabled]="disabled"
+    [id]="fieldName"
+    [items]="items"
+    [minTermLength]="2"
+    [name]="fieldName"
+    [placeholder]="placeholder"
+    [searchable]="false"
+    [(ngModel)]="innerValue"
+    [multiple]="multiple"
+    (blur)="onTouche()"
+    (change)="onChange(innerValue)"
+  />
+  <div class="label-space" [ngClass]="['uk-bg-color-' + bgColor]"></div>
+</div>
+
+<!-- examle of usage
+ <uk-select
+bindLabel="title"
+bindValue="id"
+label="انتخاب نمایید"
+[items]="selectItems"
+[placeholder]="placeholder"
+[(ngModel)]="selectedItem"
+/> -->

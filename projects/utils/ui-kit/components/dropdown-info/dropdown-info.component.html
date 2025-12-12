@@ -1,0 +1,37 @@
+<div class="uk dropdown-info">
+    <uk-basic-card [padding]="UK_TYPE.BASIC_CARD.PADDING.P_8">
+        <div
+            role="button"
+            tabindex="0"
+            class="header"
+            (click)="toggleSlide()"
+            (keydown.enter)="toggleSlide()"
+        >
+            <div class="start">
+                <div class="icon-wrapper">
+                    <ng-content select="uk-icon" />
+                </div>
+                <div class="header-wrapper">
+                    <ng-content select="[HEADER]" />
+                </div>
+            </div>
+            <div class="end">
+                <uk-icon
+                    class="last status-{{ state }}"
+                    [fgColor]="UK_TYPE.ICON.FG_COLOR.CONTENT_SECONDARY"
+                    [name]="UK_TYPE.ICON.NAME.CHEVRON_DOWN"
+                    [size]="UK_TYPE.ICON.SIZE.MEDIUM"
+                />
+            </div>
+        </div>
+        <div
+            class="content"
+            [@slideInOut]="state"
+        >
+            <div class="white-divider"></div>
+            <div class="content-zoon">
+                <ng-content select="[CONTENT]" />
+            </div>
+        </div>
+    </uk-basic-card>
+</div>

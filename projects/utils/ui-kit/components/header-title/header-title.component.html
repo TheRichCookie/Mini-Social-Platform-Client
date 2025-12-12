@@ -1,0 +1,16 @@
+<div class="uk header-title">
+  <uk-icon
+    *ngIf="iconName"
+    [fgColor]="UK_TYPE.ICON.FG_COLOR.CONTENT_SECONDARY"
+    [name]="iconName"
+    [size]="UK_TYPE.ICON.SIZE.LARGE"
+    (click)="onClick()"
+  />
+  <uk-text
+    [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_DARK"
+    [horizontalAlignment]="UK_TYPE.TEXT.HORIZONTAL_ALIGNMENT.START"
+    [typography]="UK_TYPE.TEXT.TYPOGRAPHY.H_4"
+  >
+    <ng-content/>
+  </uk-text>
+</div>

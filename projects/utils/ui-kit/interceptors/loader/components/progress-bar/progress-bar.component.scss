@@ -1,0 +1,179 @@
+@use 'core' as *;
+
+/* Radial Bar styling*/
+$bg-color: #34495e;
+$default-size: 1em;
+$label-font-size: calc(#{$default-size} / 4);
+$label-font-size-redo: $default-size * 4;
+
+// -- mixins
+@mixin size($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin draw-progress($progress, $color) {
+    .pie {
+        .half-circle {
+            border-color: $color;
+        }
+
+        @if $progress <= 50 {
+            .right-side {
+                display: none;
+            }
+        } @else {
+            clip: rect(auto, auto, auto, auto);
+            .right-side2 {
+                transform: rotate(180deg);
+            }
+        }
+    }
+}
+
+@keyframes loading-stripes {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 50px 0;
+    }
+}
+
+.progress-bar-wrapper {
+    .progress-linear {
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        border-radius: 0px;
+        background-color: #f7f7f7;
+        height: 18px;
+        overflow: hidden;
+    }
+
+    .progress-linear .bar {
+        transition: width 0.6s ease;
+        height: 18px;
+    }
+
+    .stripped {
+        // special stripes with linear gradient
+        background-image: linear-gradient(
+            -45deg,
+            rgba(255, 255, 255, 0.2) 25%,
+            transparent 25%,
+            transparent 50%,
+            rgba(255, 255, 255, 0.2) 50%,
+            rgba(255, 255, 255, 0.2) 75%,
+            transparent 75%,
+            transparent
+        );
+        background-size: 50px 50px;
+        background-repeat: repeat;
+    }
+
+    .active {
+        // apply animation
+        animation: loading-stripes 2s linear infinite;
+    }
+
+    // -- selectors
+    //*,
+    //*:before,
+    //*:after {
+    //  box-sizing: border-box;
+    //}
+
+    .set-size {
+        font-size: 0.75rem;
+    }
+
+    .charts-container {
+        &:after {
+            display: table;
+            clear: both;
+            content: '';
+        }
+    }
+
+    .pie-wrapper {
+        @include size($default-size, $default-size);
+        position: relative;
+        margin: 0 auto;
+
+        .pie {
+            @include size(100%, 100%);
+            clip: rect(0, $default-size, $default-size, calc(#{$default-size} / 2));
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            .half-circle {
+                @include size(100%, 100%);
+                border: calc(#{$default-size} / 10) solid #bdc3c7;
+                border-radius: 50%;
+                clip: rect(0, calc(#{$default-size} / 2), $default-size, 0);
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+
+        .label {
+            display: block;
+            position: absolute;
+            top: calc(#{$label-font-size-redo} / 10);
+            right: calc(#{$label-font-size-redo} / 10);
+            bottom: calc(#{$label-font-size-redo} / 10);
+            left: calc(#{$label-font-size-redo} / 10);
+            z-index: 1;
+            cursor: default;
+            border-radius: 50%;
+            background: $bg-color;
+            color: #ecf0f1;
+            font-size: $label-font-size;
+            line-height: calc(#{$label-font-size-redo} * 0.7);
+            text-align: center;
+            .smaller {
+                vertical-align: super;
+                padding-bottom: 20px;
+                color: #bdc3c7;
+                font-size: 0.75rem;
+            }
+        }
+
+        .shadow {
+            @include size(100%, 100%);
+            border: calc(#{$default-size} / 10) solid #bdc3c7;
+            border-radius: 50%;
+        }
+
+        &.style-2 {
+            .label {
+                background: none;
+                color: #7f8c8d;
+
+                .smaller {
+                    color: #bdc3c7;
+                }
+            }
+        }
+        &.progress-radial {
+            @include draw-progress(51, #bdc3c7);
+        }
+    }
+}
+
+.animation-bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #00000070;
+    .animation-wrapper {
+        position: fixed;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        top: 50%;
+    }
+}
+
+

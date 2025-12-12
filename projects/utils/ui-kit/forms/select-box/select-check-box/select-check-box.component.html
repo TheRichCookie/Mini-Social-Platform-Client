@@ -1,0 +1,58 @@
+<div
+  class="uk select-check-box"
+  [ngClass]="[
+    'uk-select-check-box-is-open-' + open,
+    'uk-select-check-box-has-value-' + hasValue(),
+    'uk-select-check-box-is-disabled-' + isDisabled,
+  ]"
+>
+  <div
+    #dropdownBoxEL
+    class="dropdown-box"
+    role="button"
+    tabindex="0"
+    (click)="openDropdown(dropdownBoxEL)"
+    (keydown.enter)="openDropdown(dropdownBoxEL)"
+  >
+    <uk-icon
+      [fgColor]="
+        open || hasValue()
+          ? UK_TYPE.ICON.FG_COLOR.CONTENT_PRIMARY
+          : UK_TYPE.ICON.FG_COLOR.CONTENT_LOW_EMPHASIS
+      "
+      [name]="UK_TYPE.ICON.NAME.GENERAL_FILTER"
+      [size]="UK_TYPE.ICON.SIZE.LARGE"
+    />
+    <uk-text
+      [fgColor]="
+        open || hasValue()
+          ? UK_TYPE.TEXT.FG_COLOR.CONTENT_PRIMARY
+          : UK_TYPE.TEXT.FG_COLOR.CONTENT_LOW_EMPHASIS
+      "
+      [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_1_STRONG"
+    >
+      {{ getOptionLabel() }}
+    </uk-text>
+
+    @if (hasValue() && hasClearButton) {
+      <uk-icon
+        [fgColor]="UK_TYPE.ICON.FG_COLOR.CONTENT_PRIMARY"
+        [name]="UK_TYPE.ICON.NAME.MATH_CLOSE"
+        [size]="UK_TYPE.ICON.SIZE.LARGE"
+        (click)="onClear($event)"
+      />
+    } @else if (open && !hasValue()) {
+      <uk-icon
+        [fgColor]="UK_TYPE.ICON.FG_COLOR.CONTENT_PRIMARY"
+        [name]="UK_TYPE.ICON.NAME.CHEVRON_UP"
+        [size]="UK_TYPE.ICON.SIZE.LARGE"
+      />
+    } @else {
+      <uk-icon
+        [fgColor]="UK_TYPE.ICON.FG_COLOR.CONTENT_LOW_EMPHASIS"
+        [name]="UK_TYPE.ICON.NAME.CHEVRON_DOWN"
+        [size]="UK_TYPE.ICON.SIZE.LARGE"
+      />
+    }
+  </div>
+</div>

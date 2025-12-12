@@ -1,0 +1,210 @@
+// @use 'core' as *;
+
+// $cardBorderRadius: 8px;
+// $cardBorderColor: #ccc;
+// $cardHeadRowColor: $color-background-surface-01;
+// $cardBodyRowColor: transparent;
+// $cardEvenCellBgColor: #efefef;
+// $cardEvenCellBorderColor: #f1f1f1;
+
+// table.smart-table {
+//     &.hover-effect {
+//         tbody {
+//             tr {
+//                 transition: all .3s ease-in;
+//                 &:hover {
+//                     background-color: $color-background-primary-01;
+//                 }
+//             }
+//         }       
+//     }
+// }
+
+// /* Responsive Design */
+// @media (max-width: 1000px) {
+//     table.smart-table {
+//         display: block;
+//         border-collapse: collapse;
+//         width: 100%;
+
+//         th,
+//         td {
+//             border: 1px solid #ccc;
+//             padding: 12px;
+//             text-align: right;
+//         }
+//         th {
+//             background-color: #f4f4f4;
+//         }
+//         thead,
+//         tbody,
+//         th,
+//         td,
+//         tr {
+//             display: block;
+//         }            
+//         tr {
+//             margin-bottom: 15px;
+//         }
+//         td {
+//             position: relative;
+//             padding-right: 50%;
+//             text-align: left;
+//         }
+//         td::before {
+//             position: absolute;
+//             right: 0;
+//             padding-right: 10px;
+//             width: 50%;
+//             content: attr(data-label);
+//             font-weight: bold;
+//             text-align: right;
+//         }    
+//     }
+// }
+
+// @media (min-width: 1001px) {
+//     table.smart-table {
+//         border-spacing: 0;
+//         width: 100%;
+//         text-align: center;
+    
+//         th,
+//         td {
+//             padding: 0.5em;
+//         }
+    
+//         thead {
+//             &.card {
+//                 tr {
+//                     background-color: $cardHeadRowColor;
+    
+//                     &.bg-colored {
+//                         th:nth-child(even) {
+//                             background-color: $cardEvenCellBgColor;
+//                         }                    
+//                     }
+    
+//                     &.border-colored {
+//                         th:nth-child(even) {
+//                             border-right: solid 1px $cardEvenCellBorderColor;
+//                             border-left: solid 1px $cardEvenCellBorderColor;
+//                         }                    
+//                     }
+//                 }
+//             }
+//         }
+    
+//         tbody {
+//             &.card {
+//                 tr {
+//                     background-color: $cardBodyRowColor;
+    
+//                     &.bg-colored {                    
+//                         td:nth-child(even) {
+//                             background-color: $cardEvenCellBgColor;
+//                         }                    
+//                     }
+    
+//                     &.border-colored {                    
+//                         td:nth-child(even) {
+//                             border-right: solid 1px $cardEvenCellBorderColor;
+//                             border-left: solid 1px $cardEvenCellBorderColor;
+//                         }                    
+//                     }
+//                 }
+//             }
+//         }
+    
+//         .card {
+            
+//             .top-row {
+//                 transform: translate(0, 0);
+//                 box-shadow: 0 0.15em 1em rgba(0, 0, 0, 0.1);
+//                 text-align: left;
+//             }
+    
+//             .bottom-row {
+//                 transform: translate(0, 0);
+//                 box-shadow: 0 -0.15em 1em rgba(0, 0, 0, 0.1);
+//                 text-align: left;
+//             }
+    
+    
+    
+//             &:before {
+//                 display: table-row;
+//                 height: 1em;
+//                 content: '';
+//             }
+    
+//             th,
+//             td {
+//                 border: 0 solid $cardBorderColor;
+//             }
+    
+//             th:first-child,
+//             td:first-child {
+//                 border-right-width: 1px;
+//             }
+    
+//             th:last-child,
+//             td:last-child {
+//                 border-left-width: 1px;
+//             }
+    
+//             tr:first-child th,
+//             tr:first-child td {
+//                 border-top-width: 1px;
+//             }
+    
+//             tr:first-child th:first-child,
+//             tr:first-child td:first-child {
+//                 border-top-right-radius: $cardBorderRadius;
+//             }
+    
+//             tr:first-child th:last-child,
+//             tr:first-child td:last-child {
+//                 border-top-left-radius: $cardBorderRadius;
+//             }
+    
+//             tr:last-child th,
+//             tr:last-child td {
+//                 border-bottom-width: 1px;
+//             }
+    
+//             tr:last-child th:first-child,
+//             tr:last-child td:first-child {
+//                 border-bottom-right-radius: $cardBorderRadius;
+//             }
+    
+//             tr:last-child th:last-child,
+//             tr:last-child td:last-child {
+//                 border-bottom-left-radius: $cardBorderRadius;
+//             }
+//         }
+//     }
+// }
+
+
+// // usage:
+// // <table class="responsive-table">
+// //     <tbody>
+// //         <tr>
+// //             <td data-label="Name">John Doe</td>
+// //             <td data-label="Age">25</td>
+// //             <td data-label="City">New York</td>
+// //         </tr>
+// //         <tr>
+// //             <td data-label="Name">Jane Smith</td>
+// //             <td data-label="Age">30</td>
+// //             <td data-label="City">Los Angeles</td>
+// //         </tr>
+// //         <tr>
+// //             <td data-label="Name">Mike Jordan</td>
+// //             <td data-label="Age">22</td>
+// //             <td data-label="City">Chicago</td>
+// //         </tr>
+// //     </tbody>
+// // </table>
+

@@ -1,0 +1,113 @@
+@use "core" as *;
+
+$uploader-border-radius: 8px;
+$preview-width: 64px;
+$preview-height: 64px;
+
+.uk.uploader {
+  > .add-button {
+    display: block;
+    margin-bottom: 8px;
+    position: relative;
+    width: $preview-width;
+    height: $preview-height;
+
+    > input {
+      position: absolute;
+      width: 0;
+      height: 0;
+      opacity: 0;
+    }
+
+    > .button {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+
+  > .gallery {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+
+    > .image {
+      position: relative;
+
+      > .delete {
+        position: absolute;
+        display: flex;
+        border-radius: 50%;
+        justify-content: center;
+        align-items: center;
+        background-color: $color-content-error;
+        padding: 3px;
+        top: -5px;
+        right: -5px;
+        cursor: pointer;
+
+        &.loading {
+          background-color: $color-content-primary;
+        }
+      }
+    }
+  }
+
+  .preview {
+    width: $preview-width;
+    height: $preview-height;
+    background-color: $color-background-surface-02;
+    border: solid 1px $color-border-grade-1;
+    border-radius: $uploader-border-radius;
+    overflow: hidden;
+
+    > .source {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+
+    > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &.image-status {
+      &-FAILED {
+        border: solid 2px $color-content-error;
+      }
+
+      &-LOADING {
+        > .loading {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+
+          > .loader {
+            width: 24px;
+            height: 24px;
+            border: 5px solid $color-background-primary-02;
+            border-bottom-color: $color-content-primary;
+            border-radius: 50%;
+            display: inline-block;
+            animation: rotation 1s linear infinite;
+
+            @keyframes rotation {
+              0% {
+                transform: rotate(0deg);
+              }
+              100% {
+                transform: rotate(360deg);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
