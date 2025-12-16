@@ -1,5 +1,5 @@
 <uk-page
-  class="sign-in"
+  class="sign-up"
   [bodyOverFlow]="UK_TYPE.PAGE.BODY_OVER_FLOW.SCROLL"
   [showFooterBorder]="false"
 >
@@ -20,9 +20,41 @@
       [bottomMargin]="UK_TYPE.PAGE_PART.BOTTOM_MARGIN.NO"
     >
       <form (ngSubmit)="onSubmit()">
-        <uk-form [formGroup]="signInForm">
+        <uk-form [formGroup]="signUpForm">
           <uk-form-body>
             <uk-form-part>
+              <uk-form-row class="form-row username">
+                <uk-form-controller>
+                  <uk-text
+                    [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS"
+                    [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_1"
+                  >
+                    نام کاربری
+                  </uk-text>
+                  <uk-input
+                    [formControl]="signUpForm.controls.username"
+                    [inputType]="UK_TYPE.INPUT.TYPE.TEXT"
+                    [placeholder]="'نام کاربری خود را وارد کنید'"
+                  >
+                    <!-- <uk-icon
+                      *ngIf="loginForm.controls.phoneNumber.value"
+                      END
+                      [fgColor]="UK_TYPE.ICON.FG_COLOR.CONTENT_LOW_EMPHASIS"
+                      [name]="UK_TYPE.ICON.NAME.MATH_CLOSE"
+                      [size]="UK_TYPE.ICON.SIZE.LARGE"
+                      (click)="setClear()"
+                    />  -->
+                  </uk-input>
+                  @if (
+                    signUpFormSubmitted &&
+                    signUpForm.controls["username"].errors
+                  ) {
+                    <uk-form-errors
+                      [errors]="signUpForm.controls['username'].errors"
+                    />
+                  }
+                </uk-form-controller>
+              </uk-form-row>
               <uk-form-row class="form-row email">
                 <uk-form-controller>
                   <uk-text
@@ -32,7 +64,7 @@
                     ایمیل
                   </uk-text>
                   <uk-input
-                    [formControl]="signInForm.controls.email"
+                    [formControl]="signUpForm.controls.email"
                     [inputType]="UK_TYPE.INPUT.TYPE.TEXT"
                     [placeholder]="'ایمیل خود را وارد کنید'"
                   >
@@ -46,10 +78,10 @@
                     /> -->
                   </uk-input>
                   @if (
-                    signInFormSubmitted && signInForm.controls["email"].errors
+                    signUpFormSubmitted && signUpForm.controls["email"].errors
                   ) {
                     <uk-form-errors
-                      [errors]="signInForm.controls['email'].errors"
+                      [errors]="signUpForm.controls['email'].errors"
                     />
                   }
                 </uk-form-controller>
@@ -63,7 +95,7 @@
                     رمز عبور
                   </uk-text>
                   <uk-input
-                    [formControl]="signInForm.controls.password"
+                    [formControl]="signUpForm.controls.password"
                     [inputType]="UK_TYPE.INPUT.TYPE.TEXT"
                     [placeholder]="'رمز عبور خود را وارد کنید'"
                   >
@@ -74,14 +106,14 @@
                       [name]="UK_TYPE.ICON.NAME.MATH_CLOSE"
                       [size]="UK_TYPE.ICON.SIZE.LARGE"
                       (click)="setClear()"
-                    /> -->
+                    />  -->
                   </uk-input>
                   @if (
-                    signInFormSubmitted &&
-                    signInForm.controls["password"].errors
+                    signUpFormSubmitted &&
+                    signUpForm.controls["password"].errors
                   ) {
                     <uk-form-errors
-                      [errors]="signInForm.controls['password'].errors"
+                      [errors]="signUpForm.controls['password'].errors"
                     />
                   }
                 </uk-form-controller>
@@ -98,10 +130,10 @@
           [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS"
           [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_1"
         >
-          حساب کاربری ندارید؟
+          قبلاً ثبت‌ نام کرده‌اید؟
         </uk-text>
-        <uk-link [routerLink]="[`../${APP_ROUTES.AUTH.CHILDREN.SIGN_UP}`]"
-          >همین‌جا ثبت‌ نام کنید
+        <uk-link [routerLink]="[`../${APP_ROUTES.AUTH.CHILDREN.SIGN_IN}`]"
+          >وارد شوید
         </uk-link>
       </div>
     </uk-page-part>

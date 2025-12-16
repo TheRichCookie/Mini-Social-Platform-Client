@@ -39,12 +39,12 @@ import {UK_TYPE} from '@utils/ui-kit/definitions';
 import {UkInputComponent} from '@utils/ui-kit/forms';
 import {UkAlertService} from '@utils/ui-kit/services';
 
-import type {HangAuthStatus, HangSignInForm} from '../_models/bmn-auth.model';
-import {SELECT_AUTH_SIGN_IN_RECEIVED_TIME_RESPONSE} from '../_store/auth.selectors';
+import type {HangAuthStatus, HangSignUpForm} from '../_models/bmn-auth.model';
+import {SELECT_AUTH_SIGN_UP_RECEIVED_TIME_RESPONSE} from '../_store/auth.selectors';
 
 @Component({
   standalone: true,
-  selector: 'hang-sign-in',
+  selector: 'hang-sign-up',
   imports: [
     CommonModule,
     UkButtonComponent,
@@ -66,11 +66,11 @@ import {SELECT_AUTH_SIGN_IN_RECEIVED_TIME_RESPONSE} from '../_store/auth.selecto
     UkLinkComponent,
     RouterLink,
   ],
-  templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.scss'],
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HangSignInComponent {
+export class HangSignUpComponent {
   private readonly store = inject(Store);
   private readonly alertService = inject(UkAlertService);
   private readonly router = inject(Router);
@@ -79,11 +79,15 @@ export class HangSignInComponent {
   public readonly UK_TYPE = UK_TYPE;
   public readonly APP_ROUTES = APP_ROUTES;
   public mobileInputErrorMessage = '';
-  public signInFormSubmitted = false;
+  public signUpFormSubmitted = false;
 
   public status: HangAuthStatus = 'EMPTY';
 
-  public signInForm = new FormGroup<HangSignInForm>({
+  public signUpForm = new FormGroup<HangSignUpForm>({
+    username: new FormControl<string>('', {
+      nonNullable: true,
+      validators: [Validators.required],
+    }),
     email: new FormControl<string>('', {
       nonNullable: true,
       validators: [Validators.required],
@@ -96,7 +100,7 @@ export class HangSignInComponent {
 
   constructor() {
     this.store
-      .select(SELECT_AUTH_SIGN_IN_RECEIVED_TIME_RESPONSE)
+      .select(SELECT_AUTH_SIGN_UP_RECEIVED_TIME_RESPONSE)
       .pipe(takeUntilDestroyed())
       .subscribe((receivedTime) => {
         if (receivedTime) {
@@ -108,19 +112,19 @@ export class HangSignInComponent {
   }
 
   public onSubmit(): void {
-    this.signInFormSubmitted = true;
+    this.signUpFormSubmitted = true;
 
-    if (this.signInForm.invalid) {
+    if (this.signUpForm.invalid) {
       this.status = 'ERROR';
       this.changeDetectorRef.markForCheck();
 
       return;
     }
 
-    const REQUEST = this.signInForm.getRawValue();
+    const REQUEST = this.signUpForm.getRawValue();
 
     this.store.dispatch(
-      AUTH_ACTIONS.SIGN_IN_ACTIONS.$SIGN_IN_POST({request: REQUEST}),
+      AUTH_ACTIONS.SIGN_UP_ACTIONS.$SIGN_UP_POST({request: REQUEST}),
     );
   }
 }

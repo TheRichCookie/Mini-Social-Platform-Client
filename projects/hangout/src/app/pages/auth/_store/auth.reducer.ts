@@ -3,25 +3,25 @@ import {createReducer} from '@ngrx/store';
 import {AUTH_INITIAL_STATE} from '@pages/auth/_store/auth.initial.state';
 import {immerOn} from 'ngrx-immer/store';
 
-import * as AUTH_ACTIONS from './auth.action';
+import * as AUTH_ACTIONS from './auth.actions';
 import type {HangAuthState} from './auth.state';
 
 const reducer = createReducer(
   AUTH_INITIAL_STATE,
 
-  immerOn(AUTH_ACTIONS.UPDATE_SIGN_IN_AUTH, (state, props) => {
+  immerOn(AUTH_ACTIONS.SIGN_IN_ACTIONS.$SIGN_IN_UPDATE, (state, props) => {
     state.signIn.request = props.request;
     state.signIn.response = props.response;
     state.signIn.receivedTime = props.receivedTime;
   }),
 
-  immerOn(AUTH_ACTIONS.UPDATE_SIGN_UP_AUTH, (state, props) => {
+  immerOn(AUTH_ACTIONS.SIGN_UP_ACTIONS.$SIGN_UP_UPDATE, (state, props) => {
     state.signUp.request = props.request;
     state.signUp.response = props.response;
     state.signUp.receivedTime = props.receivedTime;
   }),
 
-  immerOn(AUTH_ACTIONS.UPDATE_OTP_AUTH, (state, props) => {
+  immerOn(AUTH_ACTIONS.OTP_ACTIONS.$OTP_UPDATE, (state, props) => {
     state.otp.request = props.request;
     state.otp.response = props.response;
     state.otp.receivedTime = props.receivedTime;

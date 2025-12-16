@@ -4,6 +4,7 @@ import {HangAuthComponent} from '@pages/auth/__/auth.component';
 
 import {HangEnterOtpComponent} from '../enter-otp/enter-otp.component';
 import {HangSignInComponent} from '../sign-in/sign-in.component';
+import {HangSignUpComponent} from '../sign-up/sign-up.component';
 
 export const AUTH_ROUTES: HangRoutes = [
   {
@@ -13,6 +14,16 @@ export const AUTH_ROUTES: HangRoutes = [
       {
         path: APP_ROUTES.AUTH.CHILDREN.SIGN_IN,
         component: HangSignInComponent,
+        data: {
+          seo: {
+            title: '',
+          },
+        },
+        // canActivate: [UkNotLoggedInGuard],
+      },
+      {
+        path: APP_ROUTES.AUTH.CHILDREN.SIGN_UP,
+        component: HangSignUpComponent,
         data: {
           seo: {
             title: '',

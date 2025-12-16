@@ -25,6 +25,10 @@ export const SELECT_AUTH_SIGN_UP_RESPONSE = createSelector(
   AUTH_STATE,
   (authState: HangAuthState) => authState.signUp.response,
 );
+export const SELECT_AUTH_SIGN_UP_RECEIVED_TIME_RESPONSE = createSelector(
+  AUTH_STATE,
+  (authState: HangAuthState) => authState.signUp.receivedTime,
+);
 //
 export const SELECT_AUTH_OTP_REQUEST = createSelector(
   AUTH_STATE,

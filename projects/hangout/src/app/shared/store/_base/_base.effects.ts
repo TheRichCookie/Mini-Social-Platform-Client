@@ -1,4 +1,4 @@
-import {HangAuthEffects} from '@app/pages/auth/_store/auth.effect';
+import {HangAuthEffects} from '@app/pages/auth/_store/auth.effects';
 
 import {HangAppEffects} from '../app/app.effect';
 

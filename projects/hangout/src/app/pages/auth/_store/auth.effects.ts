@@ -14,7 +14,7 @@ import {
 } from '@utils/ui-kit/services';
 import {catchError, exhaustMap, of, switchMap} from 'rxjs';
 
-import * as AUTH_ACTION from './auth.action';
+import * as AUTH_ACTION from './auth.actions';
 
 @Injectable({providedIn: 'root'})
 export class HangAuthEffects {
@@ -25,13 +25,13 @@ export class HangAuthEffects {
 
   public signIn$ = createEffect(() => {
     return this.actions.pipe(
-      ofType(AUTH_ACTION.POST_SIGN_IN_AUTH),
+      ofType(AUTH_ACTION.SIGN_IN_ACTIONS.$SIGN_IN_POST),
       exhaustMap((props) =>
         this.authService.signIn(props.request).pipe(
           switchMap((res: HttpResponse<SignInResponseViewModel>) => {
             if (res.status === 200 && res.body) {
               return of(
-                AUTH_ACTION.UPDATE_SIGN_IN_AUTH({
+                AUTH_ACTION.SIGN_IN_ACTIONS.$SIGN_IN_UPDATE({
                   request: props.request,
                   response: res.body,
                   receivedTime: Date.now(),
@@ -63,13 +63,13 @@ export class HangAuthEffects {
 
   public signUp$ = createEffect(() => {
     return this.actions.pipe(
-      ofType(AUTH_ACTION.POST_SIGN_UP_AUTH),
+      ofType(AUTH_ACTION.SIGN_UP_ACTIONS.$SIGN_UP_POST),
       exhaustMap((props) =>
         this.authService.signUp(props.request).pipe(
           switchMap((res: HttpResponse<SignUpResponseViewModel>) => {
             if (res.status === 200 && res.body) {
               return of(
-                AUTH_ACTION.UPDATE_SIGN_UP_AUTH({
+                AUTH_ACTION.SIGN_UP_ACTIONS.$SIGN_UP_UPDATE({
                   request: props.request,
                   response: res.body,
                   receivedTime: Date.now(),
@@ -101,13 +101,13 @@ export class HangAuthEffects {
 
   public otp$ = createEffect(() => {
     return this.actions.pipe(
-      ofType(AUTH_ACTION.POST_OTP_AUTH),
+      ofType(AUTH_ACTION.OTP_ACTIONS.$OTP_POST),
       exhaustMap((props) =>
         this.authService.otp(props.request).pipe(
           switchMap((res: HttpResponse<OtpResponseModel>) => {
             if (res.status === 200 && res.body) {
               return of(
-                AUTH_ACTION.UPDATE_OTP_AUTH({
+                AUTH_ACTION.OTP_ACTIONS.$OTP_UPDATE({
                   request: props.request,
                   response: res.body,
                   receivedTime: Date.now(),

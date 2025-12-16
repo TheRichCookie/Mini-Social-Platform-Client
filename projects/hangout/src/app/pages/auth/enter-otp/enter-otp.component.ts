@@ -17,7 +17,7 @@ import {
 import {Router} from '@angular/router';
 import {Store} from '@ngrx/store';
 import type {HangOtpForm} from '@pages/auth/_models/bmn-auth.model';
-import * as AUTH_ACTIONS from '@pages/auth/_store/auth.action';
+import * as AUTH_ACTIONS from '@pages/auth/_store/auth.actions';
 import {
   UkFormBodyComponent,
   UkFormComponent,
@@ -43,7 +43,7 @@ import {UkOtpInputComponent} from '@utils/ui-kit/forms';
 import {UkAlertService} from '@utils/ui-kit/services';
 import {NgxOtpStatus} from 'ngx-otp-input';
 
-import {SELECT_AUTH_SIGN_IN_RESPONSE} from '../_store/auth.selector';
+import {SELECT_AUTH_SIGN_IN_RESPONSE} from '../_store/auth.selectors';
 
 @Component({
   standalone: true,
@@ -127,7 +127,7 @@ export class HangEnterOtpComponent {
       const REQUEST = this.otpForm.getRawValue();
 
       this.store.dispatch(
-        AUTH_ACTIONS.POST_OTP_AUTH({
+        AUTH_ACTIONS.OTP_ACTIONS.$OTP_POST({
           request: REQUEST,
         }),
       );
