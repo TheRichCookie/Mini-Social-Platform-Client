@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
-import {UK_TYPE} from '@utils/ui-kit/definitions';
 
 @Component({
   selector: 'hang-home',
@@ -9,6 +8,4 @@ import {UK_TYPE} from '@utils/ui-kit/definitions';
   styleUrl: './home.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HangHomeComponent {
-  public readonly UK_TYPE = UK_TYPE;
-}
+export class HangHomeComponent {}

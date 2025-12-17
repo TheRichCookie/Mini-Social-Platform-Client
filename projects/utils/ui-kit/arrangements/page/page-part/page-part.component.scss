@@ -1,6 +1,6 @@
 @use 'core' as *;
 
-$bottomMargin: 16px;
+$bottomMargin: 8px;
 $sideMargin: 20px;
 $titleBottomMargin: 12px;
 
@@ -8,7 +8,7 @@ $titleBottomMargin: 12px;
     display: block;
 
     &:first-child {
-        margin-top: 16px;
+        margin-top: 8px;
 
         &.is-first-child-stick {
             margin-top: 0;

@@ -15,7 +15,7 @@ export const MAIN_LAYOUT_ROUTES: HangRoutes = [
           import('../../../pages/home/_/home.routes').then(
             (r) => r.HOME_ROUTES,
           ),
-        canActivate: [BmnUsersGuard],
+        // canActivate: [BmnUsersGuard],
       },
       {
         path: '',

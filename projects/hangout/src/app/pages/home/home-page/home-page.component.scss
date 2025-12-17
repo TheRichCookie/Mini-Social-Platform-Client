@@ -8,19 +8,4 @@
 
 uk-page.dashboard-page {
   height: 100%;
-
-  .header {
-    > .title {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-      width: 100%;
-    }
-    > uk-divider {
-      display: block;
-      margin-bottom: 24px;
-    }
-  }
 }

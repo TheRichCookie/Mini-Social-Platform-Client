@@ -1,1 +1,46 @@
-@use 'core' as *;
+@import 'core';
+
+$scrollBarWidth: 6px;
+$scrollBarHeight: 6px;
+$scrollBarColorThumb: $color-border-grade-2;
+$scrollBarColorTrack: $color-background-surface-00;
+$scrollBarBorderRadius: 8px;
+
+*,
+*::before,
+*::after {
+    user-select: text !important;
+}
+
+@-moz-document url-prefix() {
+    /* Firefox-only scrollbar styles */
+    * {
+        scrollbar-color: $color-border-grade-2 $color-background-surface-00;
+        scrollbar-width: thin;
+    }
+}
+
+/* Webkit Browsers */
+*::-webkit-scrollbar {
+    width: $scrollBarWidth;
+    height: $scrollBarHeight;
+}
+*::-webkit-scrollbar-thumb {
+    border-radius: $scrollBarBorderRadius;
+    background-color: $scrollBarColorThumb;
+}
+*::-webkit-scrollbar-track {
+    background-color: $scrollBarColorTrack;
+}
+/* Microsoft Edge and IE */
+*::-ms-scrollbar {
+    width: $scrollBarWidth;
+    height: $scrollBarHeight;
+}
+*::-ms-scrollbar-thumb {
+    border-radius: $scrollBarBorderRadius;
+    background-color: $scrollBarColorThumb;
+}
+*::-ms-scrollbar-track {
+    background-color: $scrollBarColorTrack;
+}
