@@ -105,22 +105,22 @@ export class UkAppInitService {
 }
 
 export function ukGetLogo(): string {
-  let logo = '';
+  const logo = '';
 
-  logo += '                                               \n';
-  logo += '---------------------------------------------- \n';
-  logo += ' ██████   █████  ███    ███  █████  ███    ██  \n';
-  logo += ' ██   ██ ██   ██ ████  ████ ██   ██ ████   ██  \n';
-  logo += ' ██████  ███████ ██ ████ ██ ███████ ██ ██  ██  \n';
-  logo += ' ██   ██ ██   ██ ██  ██  ██ ██   ██ ██  ██ ██  \n';
-  logo += ' ██████  ██   ██ ██      ██ ██   ██ ██   ████  \n';
-  logo += '                                               \n';
-  logo += ' TEL: +98 21 910 04055                         \n';
-  logo += ' ADDRESS: No.60, Behrami Street, Between       \n';
-  logo += '          Jordan and Vali-e-Asr, Tehran, Iran. \n';
-  logo += ' WEB: https://web.baman.club/                  \n';
-  logo += '---------------------------------------------- \n';
-  logo += '                                               \n';
+  // logo += '                                               \n';
+  // logo += '---------------------------------------------- \n';
+  // logo += ' ██████   █████  ███    ███  █████  ███    ██  \n';
+  // logo += ' ██   ██ ██   ██ ████  ████ ██   ██ ████   ██  \n';
+  // logo += ' ██████  ███████ ██ ████ ██ ███████ ██ ██  ██  \n';
+  // logo += ' ██   ██ ██   ██ ██  ██  ██ ██   ██ ██  ██ ██  \n';
+  // logo += ' ██████  ██   ██ ██      ██ ██   ██ ██   ████  \n';
+  // logo += '                                               \n';
+  // logo += ' TEL: +98 21 910 04055                         \n';
+  // logo += ' ADDRESS: No.60, Behrami Street, Between       \n';
+  // logo += '          Jordan and Vali-e-Asr, Tehran, Iran. \n';
+  // logo += ' WEB: https://web.baman.club/                  \n';
+  // logo += '---------------------------------------------- \n';
+  // logo += '                                               \n';
 
   return logo;
 }

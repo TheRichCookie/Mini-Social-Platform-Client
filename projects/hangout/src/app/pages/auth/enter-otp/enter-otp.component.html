@@ -17,7 +17,7 @@
           [horizontalAlignment]="UK_TYPE.TEXT.HORIZONTAL_ALIGNMENT.CENTER"
           [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE"
         >
-        کد ارسال شده را وارد کنید.
+          کد ارسال شده را وارد کنید.
         </uk-text>
       </div>
     </uk-page-part>
@@ -36,20 +36,9 @@
                   (ON_COMPLETE)="onComplete($event)"
                   (ON_CHANGE)="onChange()"
                 />
-
-                <!-- @if (otpFormSubmitted) {
+                @if (otpFormSubmitted) {
                   <uk-form-errors [errors]="otpForm.controls['otp'].errors" />
                 }
-                @if (otpInputStatus === ngxOtpStatus.FAILED) {
-                  <uk-form-controller-info>
-                    <uk-text
-                      [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_ERROR"
-                      [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_1"
-                    >
-                      {{ otpInputErrorMessage }}
-                    </uk-text>
-                  </uk-form-controller-info>
-                } -->
               </uk-form-controller>
             </uk-form-row>
           </uk-form-part>
@@ -87,6 +76,7 @@
             [display]="UK_TYPE.BUTTON.DISPLAY.BLOCK"
             [fgColor]="UK_TYPE.BUTTON.FG_COLOR.CONTENT_PRIMARY"
             [typography]="UK_TYPE.BUTTON.TYPOGRAPHY.BUTTON_1"
+            (click)="retrySendOtp()"
           >
             <uk-icon
               START

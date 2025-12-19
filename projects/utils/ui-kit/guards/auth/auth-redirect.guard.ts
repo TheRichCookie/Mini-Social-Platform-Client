@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
 import {UkAlertService} from '../../services/alert/alert.service';
 import {UkAuthenticateService} from '../../services/authenticate/authenticate.service';
 
-export const BmnAuthRedirectGuard: CanActivateFn = async (
+export const UkAuthRedirectGuard: CanActivateFn = async (
   _activatedRouteSnapshot: ActivatedRouteSnapshot,
   _routerStateSnapshot: RouterStateSnapshot,
 ) => {

@@ -4,7 +4,6 @@ export interface SignInRequestViewModel {
   password: string;
 }
 export interface SignInResponseViewModel {
-  message: string;
   userId: string;
 }
 
@@ -15,7 +14,7 @@ export interface SignUpRequestViewModel {
   password: string;
 }
 export interface SignUpResponseViewModel {
-  message: string
+  userId: string
 }
 
 // OTP
@@ -24,7 +23,6 @@ export interface OtpRequestModel {
   otp: string;
 }
 export interface OtpResponseModel {
-  message: string;
   token: string;
 }
 

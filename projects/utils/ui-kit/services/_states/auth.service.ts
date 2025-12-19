@@ -1,4 +1,3 @@
-import type {HttpResponse} from '@angular/common/http';
 import {HttpClient} from '@angular/common/http';
 import {inject, Injectable} from '@angular/core';
 import {UkApiHeaderService} from '@utils/ui-kit/services';
@@ -11,6 +10,7 @@ import type {
   SignInResponseViewModel,
   SignUpRequestViewModel,
   SignUpResponseViewModel,
+  UkResponse,
 } from '../../definitions';
 import {UkConfigApiServices, UkConfigApiVersions} from '../../definitions';
 
@@ -23,7 +23,7 @@ export class UkAuthService {
 
   public signIn(
     req: SignInRequestViewModel,
-  ): Observable<HttpResponse<SignInResponseViewModel>> {
+  ): Observable<UkResponse<SignInResponseViewModel>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.AUTH,
       apiHeaderVersion: UkConfigApiVersions.NONE,
@@ -36,15 +36,18 @@ export class UkAuthService {
       'true',
     );
 
-    return this.httpClient.post<SignInResponseViewModel>(URI, BODY, {
-      headers: NEW_HEADERS,
-      observe: 'response',
-    });
+    return this.httpClient.post<UkResponse<SignInResponseViewModel>>(
+      URI,
+      BODY,
+      {
+        headers: NEW_HEADERS,
+      },
+    );
   }
 
   public signUp(
     req: SignUpRequestViewModel,
-  ): Observable<HttpResponse<SignUpResponseViewModel>> {
+  ): Observable<UkResponse<SignUpResponseViewModel>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.AUTH,
       apiHeaderVersion: UkConfigApiVersions.NONE,
@@ -57,13 +60,16 @@ export class UkAuthService {
       'true',
     );
 
-    return this.httpClient.post<SignUpResponseViewModel>(URI, BODY, {
-      headers: NEW_HEADERS,
-      observe: 'response',
-    });
+    return this.httpClient.post<UkResponse<SignUpResponseViewModel>>(
+      URI,
+      BODY,
+      {
+        headers: NEW_HEADERS,
+      },
+    );
   }
 
-  public otp(req: OtpRequestModel): Observable<HttpResponse<OtpResponseModel>> {
+  public otp(req: OtpRequestModel): Observable<UkResponse<OtpResponseModel>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.AUTH,
       apiHeaderVersion: UkConfigApiVersions.NONE,
@@ -76,9 +82,8 @@ export class UkAuthService {
       'true',
     );
 
-    return this.httpClient.post<OtpResponseModel>(URI, BODY, {
+    return this.httpClient.post<UkResponse<OtpResponseModel>>(URI, BODY, {
       headers: NEW_HEADERS,
-      observe: 'response',
     });
   }
 }

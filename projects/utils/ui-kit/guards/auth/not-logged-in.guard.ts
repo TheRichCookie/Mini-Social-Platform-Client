@@ -4,10 +4,10 @@ import type {
   CanActivateFn,
   RouterStateSnapshot,
 } from '@angular/router';
-import {Router} from '@angular/router';
+import {RedirectCommand, Router} from '@angular/router';
 import {UkAlertService, UkAuthenticateService} from '@utils/ui-kit/services';
 
-export const BmnNotLoggedInGuard: CanActivateFn = async (
+export const UkNotLoggedInGuard: CanActivateFn = async (
   _activatedRouteSnapshot: ActivatedRouteSnapshot,
   _routerStateSnapshot: RouterStateSnapshot,
 ) => {
@@ -16,11 +16,12 @@ export const BmnNotLoggedInGuard: CanActivateFn = async (
   const authenticateService = inject(UkAuthenticateService);
   const isUserAuthorized = await authenticateService.isUserAuthorized();
 
+  const URL = router.parseUrl('/auth/logout');
+
   if (isUserAuthorized) {
     alertService.info('شما قبلا وارد سیستم شدید');
-    void router.navigateByUrl('/auth/logout').then(() => {});
 
-    return false;
+    return new RedirectCommand(URL, {skipLocationChange: false});
   }
 
   return true;

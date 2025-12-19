@@ -15,6 +15,7 @@ import {
   Validators,
 } from '@angular/forms';
 import {Router} from '@angular/router';
+import {APP_ROUTES} from '@app/app.routes';
 import {Store} from '@ngrx/store';
 import type {HangOtpForm} from '@pages/auth/_models/bmn-auth.model';
 import * as AUTH_ACTIONS from '@pages/auth/_store/auth.actions';
@@ -22,7 +23,6 @@ import {
   UkFormBodyComponent,
   UkFormComponent,
   UkFormControllerComponent,
-  UkFormControllerInfoComponent,
   UkFormErrorsComponent,
   UkFormPartComponent,
   UkFormRowComponent,
@@ -38,12 +38,19 @@ import {
   UkStopWatchComponent,
   UkTextComponent,
 } from '@utils/ui-kit/components';
+import type {SignInRequestViewModel} from '@utils/ui-kit/definitions';
 import {UK_TYPE} from '@utils/ui-kit/definitions';
 import {UkOtpInputComponent} from '@utils/ui-kit/forms';
 import {UkAlertService} from '@utils/ui-kit/services';
 import {NgxOtpStatus} from 'ngx-otp-input';
 
-import {SELECT_AUTH_SIGN_IN_RESPONSE} from '../_store/auth.selectors';
+import {
+  SELECT_AUTH_OTP_RESPONSE,
+  SELECT_AUTH_SIGN_IN_RECEIVED_TIME_RESPONSE,
+  SELECT_AUTH_SIGN_IN_REQUEST,
+  SELECT_AUTH_SIGN_IN_RESPONSE,
+  SELECT_AUTH_SIGN_UP_RESPONSE,
+} from '../_store/auth.selectors';
 
 @Component({
   standalone: true,
@@ -68,7 +75,6 @@ import {SELECT_AUTH_SIGN_IN_RESPONSE} from '../_store/auth.selectors';
     UkImageComponent,
     UkTextComponent,
     UkFormErrorsComponent,
-    UkFormControllerInfoComponent,
   ],
   templateUrl: './enter-otp.component.html',
   styleUrls: ['./enter-otp.component.scss'],
@@ -97,21 +103,48 @@ export class HangEnterOtpComponent {
   public readonly alertService = inject(UkAlertService);
   public readonly changeDetectorRef = inject(ChangeDetectorRef);
   public otpInputStatus: NgxOtpStatus | null = null;
+  public singInRequest: SignInRequestViewModel | null = null;
 
   public otpFormSubmitted = false;
   public stopWatchStatus: 'REACHED' | 'WAIT' = 'WAIT';
   public receivedTime = Date.now();
-  public duration = 300;
+  public duration = 300; // 5 minutes in seconds
 
   constructor() {
+    this.store
+      .select(SELECT_AUTH_SIGN_IN_RECEIVED_TIME_RESPONSE)
+      .pipe(takeUntilDestroyed())
+      .subscribe((receivedTime) => {
+        if (receivedTime) {
+          this.receivedTime = receivedTime;
+
+          this.otpInput.clear();
+          this.stopWatchStatus = 'WAIT';
+          this.changeDetectorRef.markForCheck();
+        }
+      });
+    this.store
+      .select(SELECT_AUTH_SIGN_IN_REQUEST)
+      .pipe(takeUntilDestroyed())
+      .subscribe((req) => {
+        if (req) {
+          this.singInRequest = req;
+        }
+      });
     this.store
       .select(SELECT_AUTH_SIGN_IN_RESPONSE)
       .pipe(takeUntilDestroyed())
       .subscribe((res) => {
         if (res.userId) {
-          this.otpForm.controls.userId.patchValue(res.userId, {
-            emitEvent: true,
-          });
+          this.otpForm.controls.userId.patchValue(res.userId);
+        }
+      });
+    this.store
+      .select(SELECT_AUTH_OTP_RESPONSE)
+      .pipe(takeUntilDestroyed())
+      .subscribe((res) => {
+        if (res.token) {
+          void this.router.navigate([`/${APP_ROUTES.HOME}`]);
         }
       });
   }
@@ -147,5 +180,13 @@ export class HangEnterOtpComponent {
     this.otpFormSubmitted = false;
     this.otpInputStatus = null;
     this.changeDetectorRef.markForCheck();
+  }
+
+  public retrySendOtp(): void {
+    this.store.dispatch(
+      AUTH_ACTIONS.SIGN_IN_ACTIONS.$SIGN_IN_POST({
+        request: this.singInRequest!,
+      }),
+    );
   }
 }

@@ -1,14 +1,15 @@
 <div class="comp main-layout">
-    <main [style.max-width.px]="appMobileWidth">
-        <aside>
-            <div class="aside">
-                <hang-sidebar />
-            </div>
-        </aside>
-        <section>
-            <div class="section">
-                <router-outlet />
-            </div>
-        </section>
-    </main>
+  <main [style.max-width.px]="appMobileWidth">
+    <div class="header" [style.max-height.px]="CONFIG.COMMON.APP_HEADER_HEIGHT">
+        <hang-header />
+    </div>
+
+    <div class="main" [style.height]="'calc(100% - ' + CONFIG.COMMON.APP_HEADER_HEIGHT + 'px - ' + CONFIG.COMMON.APP_TAB_BAR_HEIGHT + 'px)'">
+      <router-outlet />
+    </div>
+
+    <div class="nav" [style.max-height.px]="CONFIG.COMMON.APP_TAB_BAR_HEIGHT">
+      <hang-navbar />
+    </div>
+  </main>
 </div>

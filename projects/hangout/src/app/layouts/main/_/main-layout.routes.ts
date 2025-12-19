@@ -1,6 +1,6 @@
 import {APP_ROUTES} from '@app/app.routes';
 import type {HangRoutes} from '@app/layouts/general/_/typed.route';
-import {BmnUsersGuard} from '@utils/ui-kit/guards';
+import {UkUsersGuard} from '@utils/ui-kit/guards';
 
 import {HangMainLayoutComponent} from '../__/main-layout.component';
 
@@ -15,7 +15,7 @@ export const MAIN_LAYOUT_ROUTES: HangRoutes = [
           import('../../../pages/home/_/home.routes').then(
             (r) => r.HOME_ROUTES,
           ),
-        // canActivate: [BmnUsersGuard],
+        canActivate: [UkUsersGuard],
       },
       {
         path: '',

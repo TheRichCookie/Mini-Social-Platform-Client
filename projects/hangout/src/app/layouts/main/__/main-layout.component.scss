@@ -1,62 +1,25 @@
 @use "core" as *;
 
-$pageBgColor: $color-background-surface-02;
-$partBgColor: $color-background-surface-00;
-$asideMinWidth: 280px;
-$borderColor: $color-border-grade-2;
-$borderRadius: 16px;
-$headerHeight: 70px;
-$headerBorderSize: 1px;
-$mainPadding: 24px;
-$mainGapSize: 16px;
-
 :host {
   @include fullHeightBlock();
 }
 
 .comp.main-layout {
-  background-color: $pageBgColor;
+  background: $color-background-surface-02;
   width: 100%;
   height: 100%;
 
-  > main {
-    display: flex;
-    gap: $mainGapSize;
-    margin: auto;
-    padding: $mainPadding;
-    width: 100%;
-    height: calc(100% - $headerHeight - $headerBorderSize);
+  main {
+    flex-direction: column;
+    height: 100%;
+    // position: relative;
+  }
 
-    > aside {
-      width: 100%;
-      max-width: $asideMinWidth;
-      height: 100%;
-      overflow-y: hidden;
+  .header {
+    height: 100%;
+  }
 
-      > .aside {
-        border: solid 1px $borderColor;
-        border-radius: $borderRadius;
-        background-color: $partBgColor;
-        padding: 8px;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-      }
-    }
-
-    > section {
-      width: calc(100% - $asideMinWidth - $mainGapSize);
-      height: 100%;
-
-      > .section {
-        border: solid 1px $borderColor;
-        border-radius: $borderRadius;
-        background-color: $partBgColor;
-        padding: clamp(pxToRem(0), 2vw, pxToRem(24));
-        width: 100%;
-        height: 100%;
-        overflow-y: hidden;
-      }
-    }
+  .nav {
+    height: 100%;
   }
 }

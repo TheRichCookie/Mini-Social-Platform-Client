@@ -104,8 +104,9 @@ export class HangSignUpComponent {
       .pipe(takeUntilDestroyed())
       .subscribe((receivedTime) => {
         if (receivedTime) {
+          this.alertService.success('حساب کاربری ایجاد شد.');
           void this.router.navigate([
-            `/${APP_ROUTES.AUTH.ROOT}/${APP_ROUTES.AUTH.CHILDREN.OTP}`,
+            `/${APP_ROUTES.AUTH.ROOT}/${APP_ROUTES.AUTH.CHILDREN.SIGN_IN}`,
           ]);
         }
       });

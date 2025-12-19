@@ -1,4 +1,3 @@
-import type {HttpResponse} from '@angular/common/http';
 import {inject, Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import * as APP_ACTIONS from '@store/app/app.action';
@@ -6,6 +5,7 @@ import type {
   OtpResponseModel,
   SignInResponseViewModel,
   SignUpResponseViewModel,
+  UkResponse,
 } from '@utils/ui-kit/definitions';
 import {
   UkAlertService,
@@ -20,22 +20,29 @@ import * as AUTH_ACTION from './auth.actions';
 export class HangAuthEffects {
   private readonly actions = inject(Actions);
   private readonly authService = inject(UkAuthService);
-  private readonly authenticateService = inject(UkAuthenticateService);
   private readonly alertService = inject(UkAlertService);
+  private readonly authenticateService = inject(UkAuthenticateService);
 
   public signIn$ = createEffect(() => {
     return this.actions.pipe(
       ofType(AUTH_ACTION.SIGN_IN_ACTIONS.$SIGN_IN_POST),
       exhaustMap((props) =>
         this.authService.signIn(props.request).pipe(
-          switchMap((res: HttpResponse<SignInResponseViewModel>) => {
-            if (res.status === 200 && res.body) {
+          switchMap((res: UkResponse<SignInResponseViewModel>) => {
+            if (res.code === 200) {
               return of(
                 AUTH_ACTION.SIGN_IN_ACTIONS.$SIGN_IN_UPDATE({
                   request: props.request,
-                  response: res.body,
+                  response: res.data,
                   receivedTime: Date.now(),
                 }),
+              );
+            }
+
+            if (res.code === 404) {
+              this.alertService.error(
+                'ورود ناموفق',
+                'کاربری با این مشخصات یافت نشد.',
               );
             }
 
@@ -43,7 +50,7 @@ export class HangAuthEffects {
               APP_ACTIONS.UPDATE_HTTP_FAIL({
                 timestamp: Date.now(),
                 methodName: 'signIn$',
-                error: String(res.status),
+                error: String(res.code),
               }),
             );
           }),
@@ -66,12 +73,12 @@ export class HangAuthEffects {
       ofType(AUTH_ACTION.SIGN_UP_ACTIONS.$SIGN_UP_POST),
       exhaustMap((props) =>
         this.authService.signUp(props.request).pipe(
-          switchMap((res: HttpResponse<SignUpResponseViewModel>) => {
-            if (res.status === 200 && res.body) {
+          switchMap((res: UkResponse<SignUpResponseViewModel>) => {
+            if (res.code === 200) {
               return of(
                 AUTH_ACTION.SIGN_UP_ACTIONS.$SIGN_UP_UPDATE({
                   request: props.request,
-                  response: res.body,
+                  response: res.data,
                   receivedTime: Date.now(),
                 }),
               );
@@ -81,7 +88,7 @@ export class HangAuthEffects {
               APP_ACTIONS.UPDATE_HTTP_FAIL({
                 timestamp: Date.now(),
                 methodName: 'signUp$',
-                error: String(res.status),
+                error: String(res.code),
               }),
             );
           }),
@@ -104,12 +111,14 @@ export class HangAuthEffects {
       ofType(AUTH_ACTION.OTP_ACTIONS.$OTP_POST),
       exhaustMap((props) =>
         this.authService.otp(props.request).pipe(
-          switchMap((res: HttpResponse<OtpResponseModel>) => {
-            if (res.status === 200 && res.body) {
+          switchMap((res: UkResponse<OtpResponseModel>) => {
+            if (res.code === 200) {
+              this.authenticateService.setToken(res.data.token);
+
               return of(
                 AUTH_ACTION.OTP_ACTIONS.$OTP_UPDATE({
                   request: props.request,
-                  response: res.body,
+                  response: res.data,
                   receivedTime: Date.now(),
                 }),
               );
@@ -119,7 +128,7 @@ export class HangAuthEffects {
               APP_ACTIONS.UPDATE_HTTP_FAIL({
                 timestamp: Date.now(),
                 methodName: 'otp$',
-                error: String(res.status),
+                error: String(res.code),
               }),
             );
           }),

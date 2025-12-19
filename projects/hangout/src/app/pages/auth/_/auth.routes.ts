@@ -1,6 +1,8 @@
 import {APP_ROUTES} from '@app/app.routes';
 import type {HangRoutes} from '@app/layouts/general/_/typed.route';
+import {HangOtpGuard} from '@app/shared/utils/ui-kit/guards';
 import {HangAuthComponent} from '@pages/auth/__/auth.component';
+import {UkNotLoggedInGuard} from '@utils/ui-kit/guards';
 
 import {HangEnterOtpComponent} from '../enter-otp/enter-otp.component';
 import {HangSignInComponent} from '../sign-in/sign-in.component';
@@ -14,32 +16,17 @@ export const AUTH_ROUTES: HangRoutes = [
       {
         path: APP_ROUTES.AUTH.CHILDREN.SIGN_IN,
         component: HangSignInComponent,
-        data: {
-          seo: {
-            title: '',
-          },
-        },
-        // canActivate: [UkNotLoggedInGuard],
+        canActivate: [UkNotLoggedInGuard],
       },
       {
         path: APP_ROUTES.AUTH.CHILDREN.SIGN_UP,
         component: HangSignUpComponent,
-        data: {
-          seo: {
-            title: '',
-          },
-        },
-        // canActivate: [UkNotLoggedInGuard],
+        canActivate: [UkNotLoggedInGuard],
       },
       {
         path: APP_ROUTES.AUTH.CHILDREN.OTP,
         component: HangEnterOtpComponent,
-        // canActivate: [BmnNotLoggedInGuard],
-        data: {
-          seo: {
-            title: '',
-          },
-        },
+        canActivate: [HangOtpGuard, UkNotLoggedInGuard],
       },
       {
         path: '',

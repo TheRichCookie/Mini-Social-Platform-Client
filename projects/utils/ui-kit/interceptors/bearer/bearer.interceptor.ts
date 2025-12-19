@@ -4,15 +4,12 @@ import type {
   HttpRequest,
 } from '@angular/common/http';
 import {inject} from '@angular/core';
-import type {RefreshTokenResult} from '@utils/ui-kit/services';
 import {
   UkAuthenticateService,
   UkLoggerPart,
   UkLoggerService,
-  UkRefreshTokenResult,
-  UkRefreshTokenService,
 } from '@utils/ui-kit/services';
-import {catchError, finalize, from, switchMap} from 'rxjs';
+import {from, switchMap} from 'rxjs';
 
 export const BEARER_INTERCEPTOR_FUNCTIONAL: HttpInterceptorFn = (
   request: HttpRequest<unknown>,
@@ -21,9 +18,9 @@ export const BEARER_INTERCEPTOR_FUNCTIONAL: HttpInterceptorFn = (
   const AUTHENTICATE_SERVICE: UkAuthenticateService = inject(
     UkAuthenticateService,
   );
-  const REFRESH_TOKEN_SERVICE: UkRefreshTokenService = inject(
-    UkRefreshTokenService,
-  );
+  // const REFRESH_TOKEN_SERVICE: UkRefreshTokenService = inject(
+  //   UkRefreshTokenService,
+  // );
   const LOGGER_SERVICE = inject(UkLoggerService);
 
   if (request.headers.has('X-Skip-Adding-Bearer')) {
@@ -51,10 +48,10 @@ export const BEARER_INTERCEPTOR_FUNCTIONAL: HttpInterceptorFn = (
     return next(request);
   }
 
-  return from(AUTHENTICATE_SERVICE.isAccessTokenExpired()).pipe(
+  return from(AUTHENTICATE_SERVICE.isTokenExpired()).pipe(
     switchMap((isExpired: boolean) => {
       if (!isExpired || request.headers.has('X-Unnecessary-Token')) {
-        const TOKEN = AUTHENTICATE_SERVICE.accessToken;
+        const TOKEN = AUTHENTICATE_SERVICE.token;
 
         if (TOKEN) {
           const AUTHORIZATION = `Bearer ${TOKEN}`;
@@ -69,85 +66,87 @@ export const BEARER_INTERCEPTOR_FUNCTIONAL: HttpInterceptorFn = (
         return next(request);
       }
 
-      if (!REFRESH_TOKEN_SERVICE.isRefreshing) {
-        LOGGER_SERVICE.info(
-          UkLoggerPart.REFRESH_TOKEN,
-          'refresh token (bearer) not isRefreshing',
-          [],
-        );
+      return next(request);
 
-        return REFRESH_TOKEN_SERVICE.refreshToken().pipe(
-          switchMap((refreshTokenResult) => {
-            if (refreshTokenResult === UkRefreshTokenResult.FAILED) {
-              LOGGER_SERVICE.error(
-                UkLoggerPart.REFRESH_TOKEN,
-                'refresh token (bearer) refreshTokenResult',
-                [refreshTokenResult],
-              );
-              REFRESH_TOKEN_SERVICE.refreshingFailed();
+      // if (!REFRESH_TOKEN_SERVICE.isRefreshing) {
+      //   LOGGER_SERVICE.info(
+      //     UkLoggerPart.REFRESH_TOKEN,
+      //     'refresh token (bearer) not isRefreshing',
+      //     [],
+      //   );
 
-              return next(request.clone());
-            } else {
-              LOGGER_SERVICE.info(
-                UkLoggerPart.REFRESH_TOKEN,
-                'refresh token (bearer) clone request',
-                [],
-              );
-              const AUTHORIZATION = `Bearer ${refreshTokenResult.accessToken}`;
+      // return REFRESH_TOKEN_SERVICE.refreshToken().pipe(
+      //   switchMap((refreshTokenResult) => {
+      //     if (refreshTokenResult === UkRefreshTokenResult.FAILED) {
+      //       LOGGER_SERVICE.error(
+      //         UkLoggerPart.REFRESH_TOKEN,
+      //         'refresh token (bearer) refreshTokenResult',
+      //         [refreshTokenResult],
+      //       );
+      //       REFRESH_TOKEN_SERVICE.refreshingFailed();
 
-              return next(
-                request.clone({
-                  headers: request.headers.append(
-                    'Authorization',
-                    AUTHORIZATION,
-                  ),
-                }),
-              );
-            }
-          }),
-          catchError((error) => {
-            LOGGER_SERVICE.error(
-              UkLoggerPart.REFRESH_TOKEN,
-              'refresh token (bearer) catchError',
-              [
-                {
-                  error,
-                },
-              ],
-            );
-            REFRESH_TOKEN_SERVICE.refreshingFailed();
+      //       return next(request.clone());
+      //     } else {
+      //       LOGGER_SERVICE.info(
+      //         UkLoggerPart.REFRESH_TOKEN,
+      //         'refresh token (bearer) clone request',
+      //         [],
+      //       );
+      //       const AUTHORIZATION = `Bearer ${refreshTokenResult.accessToken}`;
 
-            // return throwError(() => error);
-            return next(request);
-          }),
-          finalize(() => {
-            LOGGER_SERVICE.error(
-              UkLoggerPart.REFRESH_TOKEN,
-              'refresh token (bearer) finalize',
-              [],
-            );
-            REFRESH_TOKEN_SERVICE.discardRefreshing();
-          }),
-        );
-      }
+      //       return next(
+      //         request.clone({
+      //           headers: request.headers.append(
+      //             'Authorization',
+      //             AUTHORIZATION,
+      //           ),
+      //         }),
+      //       );
+      //     }
+      //   }),
+      //   catchError((error) => {
+      //     LOGGER_SERVICE.error(
+      //       UkLoggerPart.REFRESH_TOKEN,
+      //       'refresh token (bearer) catchError',
+      //       [
+      //         {
+      //           error,
+      //         },
+      //       ],
+      //     );
+      //     REFRESH_TOKEN_SERVICE.refreshingFailed();
 
-      return REFRESH_TOKEN_SERVICE.refreshTokenSubject$.pipe(
-        switchMap((refreshTokenResult: RefreshTokenResult) => {
-          if (refreshTokenResult === UkRefreshTokenResult.FAILED) {
-            REFRESH_TOKEN_SERVICE.refreshingFailed();
+      //     // return throwError(() => error);
+      //     return next(request);
+      //   }),
+      //   finalize(() => {
+      //     LOGGER_SERVICE.error(
+      //       UkLoggerPart.REFRESH_TOKEN,
+      //       'refresh token (bearer) finalize',
+      //       [],
+      //     );
+      //     REFRESH_TOKEN_SERVICE.discardRefreshing();
+      //   }),
+      // );
+      // }
 
-            return next(request.clone());
-          } else {
-            const AUTHORIZATION = `Bearer ${refreshTokenResult.accessToken}`;
+      // return REFRESH_TOKEN_SERVICE.refreshTokenSubject$.pipe(
+      //   switchMap((refreshTokenResult: RefreshTokenResult) => {
+      //     if (refreshTokenResult === UkRefreshTokenResult.FAILED) {
+      //       REFRESH_TOKEN_SERVICE.refreshingFailed();
 
-            return next(
-              request.clone({
-                headers: request.headers.append('Authorization', AUTHORIZATION),
-              }),
-            );
-          }
-        }),
-      );
+      //       return next(request.clone());
+      //     } else {
+      //       const AUTHORIZATION = `Bearer ${refreshTokenResult.accessToken}`;
+
+      //       return next(
+      //         request.clone({
+      //           headers: request.headers.append('Authorization', AUTHORIZATION),
+      //         }),
+      //       );
+      //     }
+      //   }),
+      // );
     }),
   );
 };

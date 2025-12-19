@@ -8,20 +8,18 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {APP_ROUTES} from '@app/app.routes';
 import {SELECT_ROUTER_CURRENT_ROUTE} from '@app/shared/store/router/router.selector';
 import {Store} from '@ngrx/store';
-import {UkScrollComponent} from '@utils/ui-kit/arrangements';
-import {UkSideMenusComponent} from '@utils/ui-kit/components';
 import type {UkMenu} from '@utils/ui-kit/definitions';
 import {CONST_CONFIG, UK_TYPE} from '@utils/ui-kit/definitions';
 
 @Component({
   standalone: true,
-  selector: 'hang-sidebar',
-  imports: [UkSideMenusComponent, UkScrollComponent, UkSideMenusComponent],
-  templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.scss',
+  selector: 'hang-navbar',
+  imports: [],
+  templateUrl: './navbar.component.html',
+  styleUrl: './navbar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HangSidebarComponent {
+export class HangNavBarComponent {
   private readonly store = inject(Store);
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
   public appTabBarHeight: number = CONST_CONFIG.COMMON.APP_TAB_BAR_HEIGHT;
