@@ -1,3 +1,40 @@
 <div class="comp navbar">
-  <nav></nav>
+  <nav>
+    <a
+      class="nav-item"
+      [routerLink]="APP_ROUTES.PROFILE.ROOT"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <uk-icon [name]="UK_TYPE.ICON.NAME.USER_CIRCLE" />
+      <uk-text>Profile</uk-text>
+    </a>
+    <a
+      class="nav-item"
+      [routerLink]="APP_ROUTES.FRIENDS.ROOT"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <uk-icon [name]="UK_TYPE.ICON.NAME.USER_FRIENDS" />
+      <uk-text>Add Friend</uk-text>
+    </a>
+    <a
+      class="nav-item"
+      [routerLink]="APP_ROUTES.POST.ROOT"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <uk-icon [name]="UK_TYPE.ICON.NAME.PLUS" />
+      <uk-text>Add Post</uk-text>
+    </a>
+    <a
+      class="nav-item"
+      [routerLink]="APP_ROUTES.HOME.ROOT"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <uk-icon [name]="UK_TYPE.ICON.NAME.HOME" />
+      <uk-text>Home</uk-text>
+    </a>
+  </nav>
 </div>

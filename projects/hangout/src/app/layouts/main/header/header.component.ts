@@ -10,11 +10,12 @@ import {SELECT_ROUTER_CURRENT_ROUTE} from '@app/shared/store/router/router.selec
 import {Store} from '@ngrx/store';
 import type {UkMenu} from '@utils/ui-kit/definitions';
 import {CONST_CONFIG, UK_TYPE} from '@utils/ui-kit/definitions';
+import { UkTextComponent, UkImageComponent } from "@utils/ui-kit/components";
 
 @Component({
   standalone: true,
   selector: 'hang-header',
-  imports: [],
+  imports: [UkTextComponent, UkImageComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -29,31 +30,31 @@ export class HangHeaderComponent {
   public menus: UkMenu[] = [
     {
       name: 'Home',
-      icon: UK_TYPE.ICON.NAME.HOME_HOME,
+      icon: UK_TYPE.ICON.NAME.HOME,
       slug: APP_ROUTES.HOME.ROOT,
       isActive: false,
     },
     {
       name: 'Search',
-      icon: UK_TYPE.ICON.NAME.HOME_HOME,
+      icon: UK_TYPE.ICON.NAME.HOME,
       slug: '',
       isActive: false,
     },
     {
       name: 'Create',
-      icon: UK_TYPE.ICON.NAME.HOME_HOME,
+      icon: UK_TYPE.ICON.NAME.HOME,
       slug: '',
       isActive: false,
     },
     {
       name: 'Messages',
-      icon: UK_TYPE.ICON.NAME.HOME_HOME,
+      icon: UK_TYPE.ICON.NAME.HOME,
       slug: '',
       isActive: false,
     },
     {
       name: 'Profile',
-      icon: UK_TYPE.ICON.NAME.HOME_HOME,
+      icon: UK_TYPE.ICON.NAME.HOME,
       slug: '',
       isActive: false,
     },

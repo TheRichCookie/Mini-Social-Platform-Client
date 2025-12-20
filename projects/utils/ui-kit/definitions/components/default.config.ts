@@ -260,13 +260,13 @@ const SIMPLE = {
   },
   hint: {
     type: UkHintType.ERROR,
-    iconName: UkIconName.INFO_INFO_OUTLINE,
+    iconName: UkIconName.INFO_CIRCLE,
     iconFgColor: UkIconFgColor.CONTENT_ERROR,
     textFgColor: UkTextFgColor.CONTENT_ERROR,
   },
   icon: {
     fgColor: UkIconFgColor.CONTENT_LOW_EMPHASIS,
-    name: UkIconName.EMOJI_POKER,
+    name: UkIconName.AT,
     size: UkIconSize.MEDIUM,
     borderColor: UkIconBorderColor.TRANSPARENT,
     cursor: UkCursor.NORMAL,
@@ -363,8 +363,8 @@ const SIMPLE = {
   },
   rowLink: {
     status: UkRowLinkStatus.ROW,
-    startIconName: UkIconName.EMOJI_POKER,
-    endIconName: UkIconName.EMOJI_POKER,
+    startIconName: UkIconName.AT,
+    endIconName: UkIconName.AT,
     showBottom: UkBooleanType.FALSE,
   },
   searchBar: {
@@ -389,7 +389,7 @@ const SIMPLE = {
     bgColor: UkShapeIconBgColor.OPACITY_PRIMARY_00,
     fgColor: UkIconFgColor.BUTTON_PRIMARY,
     type: UkShapeIconType.SQUARE,
-    iconName: UkIconName.EMOJI_HAPPY,
+    iconName: UkIconName.AT,
     iconSize: UkIconSize.MEDIUM,
     borderColor: UkIconBorderColor.TRANSPARENT,
   },
@@ -413,7 +413,7 @@ const SIMPLE = {
     hasArrow: UkBooleanType.TRUE,
   },
   tile: {
-    iconName: UkIconName.EMOJI_POKER,
+    iconName: UkIconName.AT,
     width: UkTileWidth.W_100,
     cursor: UkCursor.POINTER,
     isSelected: UkBooleanType.FALSE,

@@ -171,13 +171,13 @@ export class UkFileUploaderComponent implements ControlValueAccessor {
   public get shapeIcon(): IconName {
     switch (this.type as UkFileUploaderType) {
       case UK_TYPE.FILE_UPLOADER.TYPE.IMAGE:
-        return UK_TYPE.SHAPE_ICON.ICON_NAME.GENERAL_IMAGE;
+        return UK_TYPE.SHAPE_ICON.ICON_NAME.IMAGE;
       case UK_TYPE.FILE_UPLOADER.TYPE.DOCUMENT:
-        return UK_TYPE.SHAPE_ICON.ICON_NAME.GENERAL_FILE;
+        return UK_TYPE.SHAPE_ICON.ICON_NAME.FILE;
       case UK_TYPE.FILE_UPLOADER.TYPE.SHEET:
-        return UK_TYPE.SHAPE_ICON.ICON_NAME.GENERAL_FILE;
+        return UK_TYPE.SHAPE_ICON.ICON_NAME.FILE;
       default:
-        return UK_TYPE.SHAPE_ICON.ICON_NAME.GENERAL_FILE;
+        return UK_TYPE.SHAPE_ICON.ICON_NAME.FILE;
     }
   }
 

@@ -25,6 +25,12 @@ export const APP_ROUTES = {
   },
   PROFILE: {
     ROOT: 'profile',
+    CHILD: {
+      CREATE: 'create',
+    },
+  },
+  FRIENDS: {
+    ROOT: 'friends',
   },
   MORE: {
     ROOT: 'more',

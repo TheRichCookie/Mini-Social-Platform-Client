@@ -10,11 +10,6 @@ export const HOME_ROUTES: HangRoutes = [
     children: [
       {
         path: '',
-        data: {
-          seo: {
-            title: '',
-          },
-        },
         component: HangHomePageComponent,
       },
     ],

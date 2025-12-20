@@ -9,7 +9,7 @@ $font-weights: (
   font-family: IRANSansX;
   font-size: #{calc($size / 16) + rem};
   font-weight: $weight;
-  line-height: #{calc($lineHeight / 16) + rem};
+  // line-height: #{calc($lineHeight / 16) + rem};
 }
 
 @mixin persian-number {

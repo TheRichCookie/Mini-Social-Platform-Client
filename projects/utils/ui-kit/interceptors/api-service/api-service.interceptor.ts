@@ -22,6 +22,26 @@ export const API_SERVICE_INTERCEPTOR_FUNCTIONAL: HttpInterceptorFn = (
     if (API_SERVICE_HEADER === UkConfigApiServices.AUTH) {
       apiService = CONST_CONFIG.SERVICE.AUTH;
     }
+
+    if (API_SERVICE_HEADER === UkConfigApiServices.COMMENTS) {
+      apiService = CONST_CONFIG.SERVICE.COMMENTS;
+    }
+
+    if (API_SERVICE_HEADER === UkConfigApiServices.FEED) {
+      apiService = CONST_CONFIG.SERVICE.FEED;
+    }
+
+    if (API_SERVICE_HEADER === UkConfigApiServices.LIKES) {
+      apiService = CONST_CONFIG.SERVICE.LIKES;
+    }
+
+    if (API_SERVICE_HEADER === UkConfigApiServices.POSTS) {
+      apiService = CONST_CONFIG.SERVICE.POSTS;
+    }
+
+    if (API_SERVICE_HEADER === UkConfigApiServices.PROFILE) {
+      apiService = CONST_CONFIG.SERVICE.PROFILE;
+    }
   }
 
   const API_SERVICE = apiService.endsWith('/')
