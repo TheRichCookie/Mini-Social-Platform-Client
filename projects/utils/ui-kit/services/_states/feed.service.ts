@@ -1,5 +1,6 @@
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {inject, Injectable} from '@angular/core';
+import type {FeedItemModel} from '@utils/ui-kit/definitions/swagger/feed.dto';
 import {UkApiHeaderService} from '@utils/ui-kit/services';
 import type {Observable} from 'rxjs';
 
@@ -14,9 +15,9 @@ export class UkFeedService {
   private readonly apiHeaderService = inject(UkApiHeaderService);
 
   public getFeed(
-    page = 1,
-    limit = 10,
-  ): Observable<UkResponse<GetFeedResponseViewModel>> {
+    page: number,
+    limit: number,
+  ): Observable<UkResponse<FeedItemModel>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.FEED,
       apiHeaderVersion: UkConfigApiVersions.NONE,
@@ -27,7 +28,7 @@ export class UkFeedService {
       .set('page', page.toString())
       .set('limit', limit.toString());
 
-    return this.httpClient.get<UkResponse<GetFeedResponseViewModel>>(URI, {
+    return this.httpClient.get<UkResponse<FeedItemModel>>(URI, {
       headers: HEADERS,
       params: params,
     });

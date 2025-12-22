@@ -1,5 +1,9 @@
 import {HttpClient} from '@angular/common/http';
 import {inject, Injectable} from '@angular/core';
+import type {
+  AddCommentRequest,
+  CommentModel,
+} from '@utils/ui-kit/definitions/swagger/comment.dto';
 import {UkApiHeaderService} from '@utils/ui-kit/services';
 import type {Observable} from 'rxjs';
 
@@ -13,54 +17,46 @@ export class UkCommentService {
   private readonly httpClient = inject(HttpClient);
   private readonly apiHeaderService = inject(UkApiHeaderService);
 
-  public getPostComments(
-    postId: number,
-  ): Observable<UkResponse<GetPostCommentsResponseViewModel>> {
+  public getPostComments(postId: number): Observable<UkResponse<CommentModel>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.COMMENTS,
       apiHeaderVersion: UkConfigApiVersions.NONE,
     });
     const URI = `/${postId}`;
 
-    return this.httpClient.get<UkResponse<GetPostCommentsResponseViewModel>>(
-      URI,
-      {
-        headers: HEADERS,
-      },
-    );
+    return this.httpClient.get<UkResponse<CommentModel>>(URI, {
+      headers: HEADERS,
+    });
   }
 
   public addComment(
     postId: number,
-    req: AddCommentRequestViewModel,
-  ): Observable<UkResponse<AddCommentResponseViewModel>> {
+    body: AddCommentRequest,
+  ): Observable<UkResponse<CommentModel>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.COMMENTS,
       apiHeaderVersion: UkConfigApiVersions.NONE,
     });
-    const BODY = req;
+
+    const BODY = body;
     const URI = `/${postId}`;
 
-    return this.httpClient.post<UkResponse<AddCommentResponseViewModel>>(
-      URI,
-      BODY,
-      {
-        headers: HEADERS,
-      },
-    );
+    return this.httpClient.post<UkResponse<CommentModel>>(URI, BODY, {
+      headers: HEADERS,
+    });
   }
 
   public deleteComment(
-    postId: number,
     commentId: number,
-  ): Observable<UkResponse<void>> {
+  ): Observable<UkResponse<CommentModel>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.COMMENTS,
       apiHeaderVersion: UkConfigApiVersions.NONE,
     });
-    const URI = `/${postId}`;
 
-    return this.httpClient.delete<UkResponse<void>>(URI, {
+    const URI = `/${commentId}`;
+
+    return this.httpClient.delete<UkResponse<CommentModel>>(URI, {
       headers: HEADERS,
     });
   }

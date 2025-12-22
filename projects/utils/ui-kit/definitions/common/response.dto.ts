@@ -1,5 +1,5 @@
 export interface UkResponse<T> {
-  data: T;
+  data?: T;
   code: number;
   message: string;
 }

@@ -40,3 +40,14 @@ export interface RefreshRequestViewModel {
   accessToken: string | null;
   refreshToken: string | null;
 }
+
+// Profile
+export interface User {
+  id: string;
+  username: string;
+  email: string;
+  avatar?: string;
+  major?: string;
+  bio?: string;
+}
+
