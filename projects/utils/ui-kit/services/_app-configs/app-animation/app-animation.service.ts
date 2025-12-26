@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {Subject} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
-import {UkBooleanType} from '../../../definitions';
+import { UkBooleanType } from '../../../definitions';
 
 @Injectable({
   providedIn: 'root',

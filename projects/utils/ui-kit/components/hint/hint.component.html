@@ -1,19 +1,16 @@
-<div
-    class="uk hint"
-    [ngClass]="['uk-hint-type-' + hintType]"
->
-    <div class="icon-wrapper">
-        <uk-icon
-            [fgColor]="currentIconFgColor"
-            [name]="iconName"
-            [size]="UK_TYPE.ICON.SIZE.LARGEST"
-        />
-    </div>
-    <uk-text
-        [fgColor]="currentLabelFgColor"
-        [horizontalAlignment]="UK_TYPE.TEXT.HORIZONTAL_ALIGNMENT.JUSTIFY"
-        [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_1"
-    >
-        <ng-content />
-    </uk-text>
+<div class="uk hint" [ngClass]="['uk-hint-type-' + hintType]">
+  <div class="icon-wrapper">
+    <uk-icon
+      [fgColor]="currentIconFgColor"
+      [name]="iconName"
+      [size]="UK_TYPE.ICON.SIZE.LARGEST"
+    />
+  </div>
+  <uk-text
+    [fgColor]="currentLabelFgColor"
+    [horizontalAlignment]="UK_TYPE.TEXT.HORIZONTAL_ALIGNMENT.JUSTIFY"
+    [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_1"
+  >
+    <ng-content />
+  </uk-text>
 </div>

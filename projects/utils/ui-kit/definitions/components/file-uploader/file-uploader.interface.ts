@@ -1,4 +1,4 @@
-import type {UkFileUploaderStatus} from './file-uploader.type';
+import type { UkFileUploaderStatus } from './file-uploader.type';
 
 export interface UkImageUpload {
   url: string | null;

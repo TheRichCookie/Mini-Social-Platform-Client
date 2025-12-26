@@ -1,9 +1,9 @@
-import type {UkEnvironment} from '@utils/ui-kit/definitions';
+import type { UkEnvironment } from '@utils/ui-kit/definitions';
 import {
   UkEnvironmentClientId,
   UkEnvironmentName,
 } from '@utils/ui-kit/definitions';
-import {NgxLoggerLevel} from 'ngx-logger';
+import { NgxLoggerLevel } from 'ngx-logger';
 
 export const environment: UkEnvironment = {
   name: UkEnvironmentName.TEST,

@@ -1,7 +1,7 @@
-import {isPlatformBrowser} from '@angular/common';
-import {inject, Injectable, PLATFORM_ID} from '@angular/core';
-import {NGXLogger, NgxLoggerLevel} from 'ngx-logger';
-import {Subject} from 'rxjs';
+import { isPlatformBrowser } from '@angular/common';
+import { inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { NGXLogger, NgxLoggerLevel } from 'ngx-logger';
+import { Subject } from 'rxjs';
 
 export enum UkLoggerColorScheme {
   TRACE = '#c07fe0',

@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import type {Scheme, Theme} from '@material/material-color-utilities';
+import { Injectable } from '@angular/core';
+import type { Scheme, Theme } from '@material/material-color-utilities';
 import {
   applyTheme,
   argbFromHex,
@@ -99,7 +99,7 @@ export class UkAppAnimationService {
   }
 
   public applyTheme(theme: Theme): void {
-    applyTheme(theme, {target: document.body});
+    applyTheme(theme, { target: document.body });
   }
 
   public applyTonalPalette(tonalPalette: TonalPalette): void {

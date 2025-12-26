@@ -1,4 +1,4 @@
-import {QueryList} from '@angular/core';
+import { QueryList } from '@angular/core';
 
 export const UIKIT_EMPTY_QUERY = new QueryList<unknown>();
 export const UIKIT_EMPTY_ARRAY: [] = [];

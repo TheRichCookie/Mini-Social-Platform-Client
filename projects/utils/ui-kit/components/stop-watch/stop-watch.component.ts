@@ -1,4 +1,4 @@
-import type {AfterViewInit} from '@angular/core';
+import type { AfterViewInit } from '@angular/core';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -9,12 +9,12 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {UK_TYPE} from '@utils/ui-kit/definitions';
-import type {Subscription} from 'rxjs';
-import {interval, take} from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { UK_TYPE } from '@utils/ui-kit/definitions';
+import type { Subscription } from 'rxjs';
+import { interval, take } from 'rxjs';
 
-import {UkTextComponent} from '../public-api';
+import { UkTextComponent } from '../public-api';
 
 @Component({
   standalone: true,

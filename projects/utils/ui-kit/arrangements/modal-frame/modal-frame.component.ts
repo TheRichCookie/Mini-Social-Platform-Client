@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -7,13 +7,13 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import {SLIDE_DOWN_UP_TRIGGER} from '@utils/ui-kit/animations';
+import { SLIDE_DOWN_UP_TRIGGER } from '@utils/ui-kit/animations';
 import {
   UkPageBodyComponent,
   UkPageFooterComponent,
   UkPageHeaderComponent,
 } from '@utils/ui-kit/arrangements';
-import {UkIconComponent, UkTextComponent} from '@utils/ui-kit/components';
+import { UkIconComponent, UkTextComponent } from '@utils/ui-kit/components';
 import type {
   BooleanType,
   DeviceMode,
@@ -29,7 +29,7 @@ import {
   UkModalFrameBorderRadius,
 } from '@utils/ui-kit/definitions';
 
-import {UkPageComponent} from '../page/page.component';
+import { UkPageComponent } from '../page/page.component';
 
 @Component({
   standalone: true,

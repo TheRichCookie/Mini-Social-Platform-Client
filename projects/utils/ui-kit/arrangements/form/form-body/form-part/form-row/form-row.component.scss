@@ -3,33 +3,33 @@
 $bottomMargin: pxToRem(8);
 
 :host {
-    display: block;
-    margin-bottom: $bottomMargin;
+  display: block;
+  margin-bottom: $bottomMargin;
 
-    &:last-child {
-        margin-bottom: 0;
-    }
+  &:last-child {
+    margin-bottom: 0;
+  }
 
-    .uk.form-row {
-        &::ng-deep {
-            display: flex;
-            gap: 8px;
+  .uk.form-row {
+    &::ng-deep {
+      display: flex;
+      gap: 8px;
 
-            uk-form-controller {
-                flex: 1;
+      uk-form-controller {
+        flex: 1;
 
-                &.col {
-                    &-2 {
-                        flex: 2;
-                    }
-                    &-3 {
-                        flex: 3;
-                    }
-                    &-4 {
-                        flex: 4;
-                    }
-                }
-            }
+        &.col {
+          &-2 {
+            flex: 2;
+          }
+          &-3 {
+            flex: 3;
+          }
+          &-4 {
+            flex: 4;
+          }
         }
+      }
     }
+  }
 }

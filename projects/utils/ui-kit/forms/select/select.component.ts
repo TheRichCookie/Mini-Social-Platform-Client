@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -13,8 +13,8 @@ import type {
   FormControl,
   FormGroup,
 } from '@angular/forms';
-import {FormsModule, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {NgSelectModule} from '@ng-select/ng-select';
+import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
 import type {
   BooleanType,
   CrudMode,

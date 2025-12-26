@@ -1,142 +1,152 @@
-import {TestBed} from '@angular/core/testing';
-import {JalaliDateCalculatorService, JalaliDateValidatorService} from 'ngx-persian';
+import { TestBed } from '@angular/core/testing';
+import {
+  JalaliDateCalculatorService,
+  JalaliDateValidatorService,
+} from 'ngx-persian';
 
-import {UkNumberService} from '../number/number.service';
-import {UkStringService} from '../string/string.service';
-import {UkDate, UkDateService} from './date.service';
+import { UkNumberService } from '../number/number.service';
+import { UkStringService } from '../string/string.service';
+import type { UkDate } from './date.service';
+import { UkDateService } from './date.service';
 
 describe('UkDateService', () => {
-    let service: UkDateService;
-    let jalaliDateCalculatorService: jasmine.SpyObj<JalaliDateCalculatorService>;
-    let jalaliDateValidatorService: jasmine.SpyObj<JalaliDateValidatorService>;
-    let numberService: jasmine.SpyObj<UkNumberService>;
-    // let stringService: jasmine.SpyObj<UkStringService>;
+  let service: UkDateService;
+  let jalaliDateCalculatorService: jasmine.SpyObj<JalaliDateCalculatorService>;
+  let jalaliDateValidatorService: jasmine.SpyObj<JalaliDateValidatorService>;
+  let numberService: jasmine.SpyObj<UkNumberService>;
+  // let stringService: jasmine.SpyObj<UkStringService>;
 
-    beforeEach(() => {
-        const jalaliCalculatorSpy = jasmine.createSpyObj('JalaliDateCalculatorService', [
-            'convertToGeorgian',
-            'convertToJalali',
-        ]);
-        const jalaliValidatorSpy = jasmine.createSpyObj('JalaliDateValidatorService', [
-            'isJYearLeap',
-            'isValidJDate',
-        ]);
-        const numberServiceSpy = jasmine.createSpyObj('UkNumberService', [
-            'paddedNumber',
-        ]);
-        const stringServiceSpy = jasmine.createSpyObj('UkStringService', ['isString']);
+  beforeEach(() => {
+    const jalaliCalculatorSpy = jasmine.createSpyObj(
+      'JalaliDateCalculatorService',
+      ['convertToGeorgian', 'convertToJalali'],
+    );
+    const jalaliValidatorSpy = jasmine.createSpyObj(
+      'JalaliDateValidatorService',
+      ['isJYearLeap', 'isValidJDate'],
+    );
+    const numberServiceSpy = jasmine.createSpyObj('UkNumberService', [
+      'paddedNumber',
+    ]);
+    const stringServiceSpy = jasmine.createSpyObj('UkStringService', [
+      'isString',
+    ]);
 
-        TestBed.configureTestingModule({
-            providers: [
-                UkDateService,
-                {provide: JalaliDateCalculatorService, useValue: jalaliCalculatorSpy},
-                {provide: JalaliDateValidatorService, useValue: jalaliValidatorSpy},
-                {provide: UkNumberService, useValue: numberServiceSpy},
-                {provide: UkStringService, useValue: stringServiceSpy},
-            ],
-        });
-
-        service = TestBed.inject(UkDateService);
-        jalaliDateCalculatorService = TestBed.inject(
-            JalaliDateCalculatorService,
-        ) as jasmine.SpyObj<JalaliDateCalculatorService>;
-        jalaliDateValidatorService = TestBed.inject(
-            JalaliDateValidatorService,
-        ) as jasmine.SpyObj<JalaliDateValidatorService>;
-        numberService = TestBed.inject(
-            UkNumberService,
-        ) as jasmine.SpyObj<UkNumberService>;
-        // stringService = TestBed.inject(
-        //     UkStringService,
-        // ) as jasmine.SpyObj<UkStringService>;
+    TestBed.configureTestingModule({
+      providers: [
+        UkDateService,
+        { provide: JalaliDateCalculatorService, useValue: jalaliCalculatorSpy },
+        { provide: JalaliDateValidatorService, useValue: jalaliValidatorSpy },
+        { provide: UkNumberService, useValue: numberServiceSpy },
+        { provide: UkStringService, useValue: stringServiceSpy },
+      ],
     });
 
-    it('should convert Jalali date to Georgian date', () => {
-        const jYear = 1400; // Jalali year
-        const jMonth = 1; // Jalali month (zero-based)
-        const jDay = 1; // Jalali day
-        const georgianDate = new Date(2021, 2, 21); // expected Georgian date
+    service = TestBed.inject(UkDateService);
+    jalaliDateCalculatorService = TestBed.inject(JalaliDateCalculatorService);
+    jalaliDateValidatorService = TestBed.inject(JalaliDateValidatorService);
+    numberService = TestBed.inject(
+      UkNumberService,
+    ) as jasmine.SpyObj<UkNumberService>;
+    // stringService = TestBed.inject(
+    //     UkStringService,
+    // ) as jasmine.SpyObj<UkStringService>;
+  });
 
-        jalaliDateCalculatorService.convertToGeorgian.and.returnValue(georgianDate);
+  it('should convert Jalali date to Georgian date', () => {
+    const jYear = 1400; // Jalali year
+    const jMonth = 1; // Jalali month (zero-based)
+    const jDay = 1; // Jalali day
+    const georgianDate = new Date(2021, 2, 21); // expected Georgian date
 
-        const result = service.uKDJalaliToGeorgian(jYear, jMonth, jDay);
+    jalaliDateCalculatorService.convertToGeorgian.and.returnValue(georgianDate);
 
-        expect(result).toEqual(georgianDate);
-        expect(jalaliDateCalculatorService.convertToGeorgian).toHaveBeenCalledWith(
-            jYear,
-            jMonth,
-            jDay,
-        );
-    });
+    const result = service.uKDJalaliToGeorgian(jYear, jMonth, jDay);
 
-    it('should convert Georgian date to Jalali date', () => {
-        const gDate = new Date(2021, 2, 21); // Georgian date
-        const jalaliDateMock: UkDate = {year: 1400, month: 1, day: 1}; // expected Jalali date
+    expect(result).toEqual(georgianDate);
+    expect(jalaliDateCalculatorService.convertToGeorgian).toHaveBeenCalledWith(
+      jYear,
+      jMonth,
+      jDay,
+    );
+  });
 
-        jalaliDateCalculatorService.convertToJalali.and.returnValue(jalaliDateMock);
+  it('should convert Georgian date to Jalali date', () => {
+    const gDate = new Date(2021, 2, 21); // Georgian date
+    const jalaliDateMock: UkDate = { year: 1400, month: 1, day: 1 }; // expected Jalali date
 
-        const result = service.gregorianToUKDJalali(gDate);
+    jalaliDateCalculatorService.convertToJalali.and.returnValue(jalaliDateMock);
 
-        expect(result).toEqual(jalaliDateMock);
-        expect(jalaliDateCalculatorService.convertToJalali).toHaveBeenCalledWith(gDate);
-    });
+    const result = service.gregorianToUKDJalali(gDate);
 
-    it('should determine if a Jalali year is a leap year', () => {
-        jalaliDateValidatorService.isJYearLeap.and.returnValue(true);
-        const result = service.isJYearLeap(1400);
+    expect(result).toEqual(jalaliDateMock);
+    expect(jalaliDateCalculatorService.convertToJalali).toHaveBeenCalledWith(
+      gDate,
+    );
+  });
 
-        expect(result).toBeTrue();
-        expect(jalaliDateValidatorService.isJYearLeap).toHaveBeenCalledWith(1400);
-    });
+  it('should determine if a Jalali year is a leap year', () => {
+    jalaliDateValidatorService.isJYearLeap.and.returnValue(true);
+    const result = service.isJYearLeap(1400);
 
-    it('should validate a Jalali date correctly', () => {
-        jalaliDateValidatorService.isValidJDate.and.returnValue(true);
-        const result = service.isValidJDate(1400, 1, 1);
+    expect(result).toBeTrue();
+    expect(jalaliDateValidatorService.isJYearLeap).toHaveBeenCalledWith(1400);
+  });
 
-        expect(result).toBeTrue();
-        expect(jalaliDateValidatorService.isValidJDate).toHaveBeenCalledWith(1400, 1, 1);
-    });
+  it('should validate a Jalali date correctly', () => {
+    jalaliDateValidatorService.isValidJDate.and.returnValue(true);
+    const result = service.isValidJDate(1400, 1, 1);
 
-    it('should convert epoch to Jalali date', () => {
-        const epoch = 1616320320000; // some epoch time
-        const gDate = new Date(epoch);
-        const jalaliDateMock: UkDate = {year: 1400, month: 1, day: 1}; // expected Jalali date
+    expect(result).toBeTrue();
+    expect(jalaliDateValidatorService.isValidJDate).toHaveBeenCalledWith(
+      1400,
+      1,
+      1,
+    );
+  });
 
-        jalaliDateCalculatorService.convertToJalali.and.returnValue(jalaliDateMock);
+  it('should convert epoch to Jalali date', () => {
+    const epoch = 1616320320000; // some epoch time
+    const gDate = new Date(epoch);
+    const jalaliDateMock: UkDate = { year: 1400, month: 1, day: 1 }; // expected Jalali date
 
-        const result = service.epochToUKDJalali(epoch);
+    jalaliDateCalculatorService.convertToJalali.and.returnValue(jalaliDateMock);
 
-        expect(result).toEqual(jalaliDateMock);
-        expect(jalaliDateCalculatorService.convertToJalali).toHaveBeenCalledWith(gDate);
-    });
+    const result = service.epochToUKDJalali(epoch);
 
-    it('should convert Jalali date to string', () => {
-        const jYear = 1400;
-        const jMonth = 1; // zero-based
-        const jDay = 1;
-        const expectedString = '1400/01/01';
+    expect(result).toEqual(jalaliDateMock);
+    expect(jalaliDateCalculatorService.convertToJalali).toHaveBeenCalledWith(
+      gDate,
+    );
+  });
 
-        numberService.paddedNumber.and.callFake((n: number) =>
-            String(n).padStart(2, '0'),
-        );
+  it('should convert Jalali date to string', () => {
+    const jYear = 1400;
+    const jMonth = 1; // zero-based
+    const jDay = 1;
+    const expectedString = '1400/01/01';
 
-        const result = service.uKDJalaliToString(jYear, jMonth, jDay);
+    numberService.paddedNumber.and.callFake((n: number) =>
+      String(n).padStart(2, '0'),
+    );
 
-        expect(result).toEqual(expectedString);
-        expect(numberService.paddedNumber).toHaveBeenCalledTimes(2); // should be called for month and day
-    });
+    const result = service.uKDJalaliToString(jYear, jMonth, jDay);
 
-    it('should get the current Jalali date', () => {
-        // const today = new Date();
+    expect(result).toEqual(expectedString);
+    expect(numberService.paddedNumber).toHaveBeenCalledTimes(2); // should be called for month and day
+  });
 
-        jalaliDateCalculatorService.convertToJalali.and.returnValue({
-            year: 1400,
-            month: 1,
-            day: 5,
-        }); // mock today
+  it('should get the current Jalali date', () => {
+    // const today = new Date();
 
-        const result = service.getCurrentUKDJalali();
+    jalaliDateCalculatorService.convertToJalali.and.returnValue({
+      year: 1400,
+      month: 1,
+      day: 5,
+    }); // mock today
 
-        expect(result).toEqual({year: 1400, month: 1, day: 5});
-    });
+    const result = service.getCurrentUKDJalali();
+
+    expect(result).toEqual({ year: 1400, month: 1, day: 5 });
+  });
 });

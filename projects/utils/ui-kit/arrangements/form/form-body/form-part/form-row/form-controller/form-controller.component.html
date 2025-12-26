@@ -1,21 +1,18 @@
 <div class="uk form-controller">
-    <div class="label">
-        <strong
-            *ngIf="isRequired"
-            class="is-required"
-        >
-            <uk-text
-                [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_ERROR"
-                [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_1"
-            >
-                *
-            </uk-text>
-        </strong>
-        <ng-content select="uk-text" />
-    </div>
-    <div class="controller-wrapper">
-        <ng-content />
-    </div>
-    <ng-content select="uk-form-errors" />
-    <ng-content select="uk-form-controller-info" />
+  <div class="label">
+    <strong *ngIf="isRequired" class="is-required">
+      <uk-text
+        [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_ERROR"
+        [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_1"
+      >
+        *
+      </uk-text>
+    </strong>
+    <ng-content select="uk-text" />
+  </div>
+  <div class="controller-wrapper">
+    <ng-content />
+  </div>
+  <ng-content select="uk-form-errors" />
+  <ng-content select="uk-form-controller-info" />
 </div>

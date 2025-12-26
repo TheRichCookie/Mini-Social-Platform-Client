@@ -71,15 +71,21 @@ $color-tag-tag-800: var(--tag-tag-800);
 $color-tag-tag-850: var(--tag-tag-850);
 $color-tag-tag-900: var(--tag-tag-900);
 // primaryReference
-$color-reference-primary-primary-lightness: var(--reference-primary-primary-lightness);
+$color-reference-primary-primary-lightness: var(
+  --reference-primary-primary-lightness
+);
 $color-reference-primary-primary-light: var(--reference-primary-primary-light);
 $color-reference-primary-main: var(--reference-primary-main);
 $color-reference-primary-dark: var(--reference-primary-dark);
 $color-reference-primary-darker: var(--reference-primary-darker);
 $color-reference-primary-darkest: var(--reference-primary-darkest);
 // referenceSecondary
-$color-reference-secondary-primary-lightness: var(--reference-secondary-primary-lightness);
-$color-reference-secondary-primary-light: var(--reference-secondary-primary-light);
+$color-reference-secondary-primary-lightness: var(
+  --reference-secondary-primary-lightness
+);
+$color-reference-secondary-primary-light: var(
+  --reference-secondary-primary-light
+);
 $color-reference-secondary-main: var(--reference-secondary-main);
 $color-reference-secondary-dark: var(--reference-secondary-dark);
 $color-reference-secondary-darker: var(--reference-secondary-darker);

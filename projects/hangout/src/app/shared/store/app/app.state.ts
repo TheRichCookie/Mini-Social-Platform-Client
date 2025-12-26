@@ -1,4 +1,4 @@
-import type {UkHttpFail, UkWorldUtcTime} from '@utils/ui-kit/definitions';
+import type { UkHttpFail, UkWorldUtcTime } from '@utils/ui-kit/definitions';
 
 export interface HangAppState {
   layout: {

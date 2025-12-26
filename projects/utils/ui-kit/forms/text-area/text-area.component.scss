@@ -1,76 +1,76 @@
-@use 'core' as *;
+@use "core" as *;
 
 :host {
-    display: inline-flex;
-    width: 100%;
+  display: inline-flex;
+  width: 100%;
 }
 
 .uk.text-area {
-    display: block;
-    border-width: 1px;
-    border-style: solid;
+  display: block;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 16px;
+  width: 100%;
+  height: 100%;
+
+  textarea {
+    align-items: center;
+    outline: none;
+    border: none;
     border-radius: 16px;
+    background-color: transparent;
+    padding: 8px;
     width: 100%;
     height: 100%;
+    resize: none;
+    color: $color-content-secondary;
+    font-size: 0.7rem;
 
-    textarea {
-        align-items: center;
-        outline: none;
-        border: none;
-        border-radius: 16px;
-        background-color: transparent;
-        padding: 8px;
-        width: 100%;
-        height: 100%;
-        resize: none;
-        color: $color-content-secondary;
-        font-size: 0.7rem;
+    &::placeholder {
+      opacity: 0.5;
+      color: #91949a;
+      font-size: 0.7rem;
+    }
+  }
 
-        &::placeholder {
-            opacity: 0.5;
-            color: #91949a;
-            font-size: 0.7rem;
-        }
+  &.uk-text-area {
+    &-border-color {
+      &-TRANSPARENT {
+        border-color: transparent;
+      }
+      &-SECONDARY-700 {
+        border-color: $color-content-secondary;
+      }
+      &-ERROR-500 {
+        border-color: $color-content-error;
+      }
+      &-REFERENCE-PRIMARY-MAIN {
+      }
+      &-CONTENT-ERROR {
+      }
     }
 
-    &.uk-text-area {
-        &-border-color {
-            &-TRANSPARENT {
-                border-color: transparent;
-            }
-            &-SECONDARY-700 {
-                border-color: $color-content-secondary;
-            }
-            &-ERROR-500 {
-                border-color: $color-content-error;
-            }
-            &-REFERENCE-PRIMARY-MAIN {
-            }
-            &-CONTENT-ERROR {
-            }
-        }
-
-        &-typography {
-            &-BODY-1-STRONG {
-                @include typography-body-1-strong();
-            }
-            &-BODY-2-STRONG {
-                @include typography-body-2-strong();
-            }
-        }
-
-        &-fg-color {
-            &-CONTENT-HIGH-EMPHASIS {
-                // color: $color-content-high-emphasis;
-            }
-        }
-
-        &-disabled {
-            &-TRUE {
-                background-color: $color-content-secondary;
-            }
-            &-FALSE {
-            }
-        }
+    &-typography {
+      &-BODY-1-STRONG {
+        @include typography-body-1-strong();
+      }
+      &-BODY-2-STRONG {
+        @include typography-body-2-strong();
+      }
     }
+
+    &-fg-color {
+      &-CONTENT-HIGH-EMPHASIS {
+        // color: $color-content-high-emphasis;
+      }
+    }
+
+    &-disabled {
+      &-TRUE {
+        background-color: $color-content-secondary;
+      }
+      &-FALSE {
+      }
+    }
+  }
 }

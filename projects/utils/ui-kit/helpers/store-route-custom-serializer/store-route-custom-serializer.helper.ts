@@ -1,6 +1,6 @@
-import type {Params, RouterStateSnapshot} from '@angular/router';
-import type {RouterReducerState} from '@ngrx/router-store';
-import {RouterStateSerializer} from '@ngrx/router-store';
+import type { Params, RouterStateSnapshot } from '@angular/router';
+import type { RouterReducerState } from '@ngrx/router-store';
+import { RouterStateSerializer } from '@ngrx/router-store';
 
 export interface UkRouterStateUrl {
   url: string;
@@ -22,12 +22,12 @@ export class UkStoreRouteCustomSerializer extends RouterStateSerializer<UkRouter
 
     const {
       url,
-      root: {queryParams},
+      root: { queryParams },
     } = routerState;
-    const {params} = route;
+    const { params } = route;
 
     // Only return an object including the URL, params and query params
     // instead of the entire snapshot
-    return {url, params, queryParams};
+    return { url, params, queryParams };
   }
 }

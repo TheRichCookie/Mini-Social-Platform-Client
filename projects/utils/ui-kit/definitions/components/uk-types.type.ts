@@ -27,7 +27,7 @@ import {
   UkTableCardSize,
   UkTableLayoutTypes,
 } from '@utils/ui-kit/definitions';
-import {UkEmptyStateStyle} from '@utils/ui-kit/definitions/components/empty-state/empty-state.type';
+import { UkEmptyStateStyle } from '@utils/ui-kit/definitions/components/empty-state/empty-state.type';
 
 import {
   UkBannerContentStartStatus,
@@ -70,16 +70,16 @@ import {
   UkBasicCardPadding,
   UkBasicCardRadius,
 } from './card/basic-card.type';
-import {UkDataBgColor, UkDataBorderColor} from './data/data.type';
-import {UkDesktopMultiTabHeaderDisplay} from './desktop-multi-tab/desktop-multi-tab.type';
+import { UkDataBgColor, UkDataBorderColor } from './data/data.type';
+import { UkDesktopMultiTabHeaderDisplay } from './desktop-multi-tab/desktop-multi-tab.type';
 import {
   UkDividerBgColor,
   UkDividerDisplay,
   UkDividerMargin,
   UkDividerSize,
 } from './divider/divider.type';
-import {UkFormBgColor} from './form/form.type';
-import {UkHintType} from './hint/hint.type';
+import { UkFormBgColor } from './form/form.type';
+import { UkHintType } from './hint/hint.type';
 import {
   UkIconBorderColor,
   UkIconFgColor,
@@ -92,9 +92,9 @@ import {
   UkInputNumeric,
   UkInputType,
 } from './input/input.type';
-import {UkKeyValHorizontalAlignment} from './key-val/key-val.type';
-import {UkLoadingColor} from './loading/loading.type';
-import {UkPageBackgroundColor, UkPageBodyOverFlow} from './page/page.type';
+import { UkKeyValHorizontalAlignment } from './key-val/key-val.type';
+import { UkLoadingColor } from './loading/loading.type';
+import { UkPageBackgroundColor, UkPageBodyOverFlow } from './page/page.type';
 import {
   UkSelectBgColor,
   UkSelectBorderColor,

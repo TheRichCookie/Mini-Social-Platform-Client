@@ -1,5 +1,5 @@
-import {CommonModule, NgClass} from '@angular/common';
-import type {OnInit} from '@angular/core';
+import { CommonModule, NgClass } from '@angular/common';
+import type { OnInit } from '@angular/core';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -10,18 +10,18 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {UkIconComponent, UkTextComponent} from '@utils/ui-kit/components';
-import {UK_TYPE} from '@utils/ui-kit/definitions';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { UkIconComponent, UkTextComponent } from '@utils/ui-kit/components';
+import { UK_TYPE } from '@utils/ui-kit/definitions';
 import type {
   UkDateRangeDataModel,
   UkDateRangeOptionModel,
 } from '@utils/ui-kit/definitions/components/select-date-box/select-date-box.interface';
-import {UkDateRangeTypes} from '@utils/ui-kit/definitions/components/select-date-box/select-date-box.interface';
-import {UkDateService, UkOverlayService} from '@utils/ui-kit/services';
-import {take} from 'rxjs';
+import { UkDateRangeTypes } from '@utils/ui-kit/definitions/components/select-date-box/select-date-box.interface';
+import { UkDateService, UkOverlayService } from '@utils/ui-kit/services';
+import { take } from 'rxjs';
 
-import {UkSelectDateDropdownComponent} from './_/select-date-drop-down.component';
+import { UkSelectDateDropdownComponent } from './_/select-date-drop-down.component';
 
 @Component({
   standalone: true,

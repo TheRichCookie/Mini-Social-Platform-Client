@@ -39,7 +39,6 @@ export enum UkInputFgColor {
 }
 export type InputFgColor = `${UkInputFgColor}`;
 
-
 export enum UkInputMask {
   SEPARATOR = 'separator',
 }

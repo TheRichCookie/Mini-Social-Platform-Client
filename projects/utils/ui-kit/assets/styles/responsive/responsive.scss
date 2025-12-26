@@ -28,20 +28,20 @@
 
 // ############################################## solution #2
 .horizontal {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
 
-    .vertical {
-        &.w-2 {
-            flex: 1 1 calc(50% - 10px);
-            // height: 100px;
-        }
-
-        &.w-3 {
-            flex: 1 1 calc(33.333% - 10px);
-            // height: 100px;
-        }
+  .vertical {
+    &.w-2 {
+      flex: 1 1 calc(50% - 10px);
+      // height: 100px;
     }
+
+    &.w-3 {
+      flex: 1 1 calc(33.333% - 10px);
+      // height: 100px;
+    }
+  }
 }

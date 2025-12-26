@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 export type CameraPermissionState = 'denied' | 'granted' | 'prompt';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class UkCameraService {
   private currentStream: MediaStream | null = null;
 
@@ -25,7 +25,7 @@ export class UkCameraService {
     if (facing) {
       constraints.video = {
         ...(typeof constraints.video === 'object' ? constraints.video : {}),
-        facingMode: {ideal: facing},
+        facingMode: { ideal: facing },
       };
     }
 
@@ -94,8 +94,8 @@ export class UkCameraService {
 
     return {
       video: {
-        width: {ideal: width},
-        height: {ideal: height},
+        width: { ideal: width },
+        height: { ideal: height },
         // facingMode: { ideal: facing },
       },
       audio: false,

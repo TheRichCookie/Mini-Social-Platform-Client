@@ -1,4 +1,4 @@
-@use 'core' as *;
+@use "core" as *;
 
 $scrollBarWidth: 6px;
 $scrollBarHeight: 6px;
@@ -9,38 +9,38 @@ $scrollBarBorderRadius: 8px;
 *,
 *::before,
 *::after {
-    user-select: text !important;
+  user-select: text !important;
 }
 
 @-moz-document url-prefix() {
-    /* Firefox-only scrollbar styles */
-    * {
-        scrollbar-color: $color-border-grade-2 $color-background-surface-00;
-        scrollbar-width: thin;
-    }
+  /* Firefox-only scrollbar styles */
+  * {
+    scrollbar-color: $color-border-grade-2 $color-background-surface-00;
+    scrollbar-width: thin;
+  }
 }
 
 /* Webkit Browsers */
 *::-webkit-scrollbar {
-    width: $scrollBarWidth;
-    height: $scrollBarHeight;
+  width: $scrollBarWidth;
+  height: $scrollBarHeight;
 }
 *::-webkit-scrollbar-thumb {
-    border-radius: $scrollBarBorderRadius;
-    background-color: $scrollBarColorThumb;
+  border-radius: $scrollBarBorderRadius;
+  background-color: $scrollBarColorThumb;
 }
 *::-webkit-scrollbar-track {
-    background-color: $scrollBarColorTrack;
+  background-color: $scrollBarColorTrack;
 }
 /* Microsoft Edge and IE */
 *::-ms-scrollbar {
-    width: $scrollBarWidth;
-    height: $scrollBarHeight;
+  width: $scrollBarWidth;
+  height: $scrollBarHeight;
 }
 *::-ms-scrollbar-thumb {
-    border-radius: $scrollBarBorderRadius;
-    background-color: $scrollBarColorThumb;
+  border-radius: $scrollBarBorderRadius;
+  background-color: $scrollBarColorThumb;
 }
 *::-ms-scrollbar-track {
-    background-color: $scrollBarColorTrack;
+  background-color: $scrollBarColorTrack;
 }

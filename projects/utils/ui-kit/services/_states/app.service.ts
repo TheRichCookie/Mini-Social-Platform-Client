@@ -24,9 +24,6 @@ export class UkAppService {
       .set('X-Skip-Error-Handler', 'true')
       .set('X-Skip-On-Authenticating', 'true');
 
-    // const URI = 'https://timeapi.io/api/Time/current/zone?timeZone=Etc/UTC';
-    // const URI =
-    //   'https://tapi.samanplus.ir/cartable/q/customer/contract/749967125494241280';
     const URI = 'http://localhost:4000/api/currentTime';
 
     return this.httpClient.get<UkWorldUtcTime>(URI, {

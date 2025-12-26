@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
-import type {UkPeriodType, UkTimeFormat} from '../../definitions';
+import type { UkPeriodType, UkTimeFormat } from '../../definitions';
 
 export interface UkTime {
   hours: number | string;

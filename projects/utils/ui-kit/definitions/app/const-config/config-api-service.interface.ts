@@ -5,6 +5,9 @@ export interface UkConfigApiService {
   LIKES: string;
   POSTS: string;
   PROFILE: string;
+  FOLLOW: string;
+  USERS: string;
+  NOTIFICATIONS: string;
 }
 
 export enum UkConfigApiServices {
@@ -15,6 +18,9 @@ export enum UkConfigApiServices {
   LIKES = 'likes',
   POSTS = 'posts',
   PROFILE = 'profile',
+  FOLLOW = 'follow',
+  USERS = 'users',
+  NOTIFICATIONS = 'notifications',
 }
 
 export type ConfigApiServices = `${UkConfigApiServices}`;

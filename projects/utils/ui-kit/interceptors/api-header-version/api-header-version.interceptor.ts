@@ -1,5 +1,5 @@
-import type {HttpInterceptorFn} from '@angular/common/http';
-import {CONST_CONFIG, UkConfigApiVersions} from '@utils/ui-kit/definitions';
+import type { HttpInterceptorFn } from '@angular/common/http';
+import { CONST_CONFIG, UkConfigApiVersions } from '@utils/ui-kit/definitions';
 
 export const API_HEADER_VERSION_INTERCEPTOR_FUNCTIONAL: HttpInterceptorFn = (
   request,

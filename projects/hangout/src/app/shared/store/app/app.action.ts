@@ -1,8 +1,8 @@
-import {createAction, props} from '@ngrx/store';
-import type {UkWorldUtcTime} from '@utils/ui-kit/definitions';
+import { createAction, props } from '@ngrx/store';
+import type { UkWorldUtcTime } from '@utils/ui-kit/definitions';
 
-import type {HangAppLoading} from '../_/models/app-loading.interface';
-import type {HangAppState} from './app.state';
+import type { HangAppLoading } from '../_/models/app-loading.interface';
+import type { HangAppState } from './app.state';
 
 // reset
 export const RESET_STATE = createAction('[APP] RESET_STATE');
@@ -11,18 +11,18 @@ export const RESET_STATE = createAction('[APP] RESET_STATE');
 export const UPDATE_APP_BY_RESET = createAction('[APP] UPDATE_APP_BY_RESET');
 export const UPDATE_APP_BY_REPLACE = createAction(
   '[APP] UPDATE_APP_BY_REPLACE',
-  props<{app: HangAppState}>(),
+  props<{ app: HangAppState }>(),
 );
 
 // layout
 export const UPDATE_LAYOUT_SHOW_TABS = createAction(
   '[APP] UPDATE_LAYOUT_SHOW_TABS',
-  props<{status: boolean}>(),
+  props<{ status: boolean }>(),
 );
 
 export const UPDATE_LAYOUT_SHOW_HEADER = createAction(
   '[APP] UPDATE_LAYOUT_SHOW_HEADER',
-  props<{status: boolean}>(),
+  props<{ status: boolean }>(),
 );
 
 export const UPDATE_HEADER_TITLE = createAction(

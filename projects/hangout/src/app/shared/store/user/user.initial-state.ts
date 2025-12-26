@@ -1,4 +1,4 @@
-import type {HangUserState} from './user.state';
+import type { HangUserState } from './user.state';
 
 const USER_DATA: HangUserState['userData'] = {
   receivedTime: undefined!,

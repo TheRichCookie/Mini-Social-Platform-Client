@@ -46,7 +46,7 @@
       background-repeat: no-repeat;
       width: 100%;
       height: 100%;
-      content: '';
+      content: "";
     }
 
     &:after {
@@ -60,7 +60,7 @@
       background-repeat: no-repeat;
       width: 100%;
       height: 100%;
-      content: '';
+      content: "";
     }
   }
 
@@ -80,7 +80,11 @@
   .picker-handle-layer .picker-top {
     transform: translate3d(0, 0, 5.625em);
     border-bottom: 0.55px solid rgba(74, 73, 89, 0.5);
-    background: linear-gradient(to bottom, white 2%, rgba(255, 255, 255, 0.1) 100%);
+    background: linear-gradient(
+      to bottom,
+      white 2%,
+      rgba(255, 255, 255, 0.1) 100%
+    );
   }
 
   .picker-handle-layer .picker-middle {
@@ -93,7 +97,11 @@
     .picker-bottom {
       transform: translate3d(0, 0, 5.625em);
       border-top: 0.55px solid rgba(74, 73, 89, 0.5);
-      background: linear-gradient(to top, white 2%, rgba(255, 255, 255, 0.1) 100%);
+      background: linear-gradient(
+        to top,
+        white 2%,
+        rgba(255, 255, 255, 0.1) 100%
+      );
     }
   }
 }

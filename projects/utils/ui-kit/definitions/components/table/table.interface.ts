@@ -1,7 +1,7 @@
-import type {EnumTranslation} from '@utils/ui-kit/helpers/enum-type-safe/enum-type-safe.helper';
+import type { EnumTranslation } from '@utils/ui-kit/helpers/enum-type-safe/enum-type-safe.helper';
 
-import type {TableDateFilterMode, TableLayoutTypes} from './table.type';
-import {UkTableDateFilterMode} from './table.type';
+import type { TableDateFilterMode, TableLayoutTypes } from './table.type';
+import { UkTableDateFilterMode } from './table.type';
 
 export interface UkTableOptions {
   paginator: boolean;

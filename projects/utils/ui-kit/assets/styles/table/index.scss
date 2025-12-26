@@ -16,7 +16,7 @@
 //                     background-color: $color-background-primary-01;
 //                 }
 //             }
-//         }       
+//         }
 //     }
 // }
 
@@ -42,7 +42,7 @@
 //         td,
 //         tr {
 //             display: block;
-//         }            
+//         }
 //         tr {
 //             margin-bottom: 15px;
 //         }
@@ -59,7 +59,7 @@
 //             content: attr(data-label);
 //             font-weight: bold;
 //             text-align: right;
-//         }    
+//         }
 //     }
 // }
 
@@ -68,116 +68,114 @@
 //         border-spacing: 0;
 //         width: 100%;
 //         text-align: center;
-    
+
 //         th,
 //         td {
 //             padding: 0.5em;
 //         }
-    
+
 //         thead {
 //             &.card {
 //                 tr {
 //                     background-color: $cardHeadRowColor;
-    
+
 //                     &.bg-colored {
 //                         th:nth-child(even) {
 //                             background-color: $cardEvenCellBgColor;
-//                         }                    
+//                         }
 //                     }
-    
+
 //                     &.border-colored {
 //                         th:nth-child(even) {
 //                             border-right: solid 1px $cardEvenCellBorderColor;
 //                             border-left: solid 1px $cardEvenCellBorderColor;
-//                         }                    
+//                         }
 //                     }
 //                 }
 //             }
 //         }
-    
+
 //         tbody {
 //             &.card {
 //                 tr {
 //                     background-color: $cardBodyRowColor;
-    
-//                     &.bg-colored {                    
+
+//                     &.bg-colored {
 //                         td:nth-child(even) {
 //                             background-color: $cardEvenCellBgColor;
-//                         }                    
+//                         }
 //                     }
-    
-//                     &.border-colored {                    
+
+//                     &.border-colored {
 //                         td:nth-child(even) {
 //                             border-right: solid 1px $cardEvenCellBorderColor;
 //                             border-left: solid 1px $cardEvenCellBorderColor;
-//                         }                    
+//                         }
 //                     }
 //                 }
 //             }
 //         }
-    
+
 //         .card {
-            
+
 //             .top-row {
 //                 transform: translate(0, 0);
 //                 box-shadow: 0 0.15em 1em rgba(0, 0, 0, 0.1);
 //                 text-align: left;
 //             }
-    
+
 //             .bottom-row {
 //                 transform: translate(0, 0);
 //                 box-shadow: 0 -0.15em 1em rgba(0, 0, 0, 0.1);
 //                 text-align: left;
 //             }
-    
-    
-    
+
 //             &:before {
 //                 display: table-row;
 //                 height: 1em;
 //                 content: '';
 //             }
-    
+
 //             th,
 //             td {
 //                 border: 0 solid $cardBorderColor;
 //             }
-    
+
 //             th:first-child,
 //             td:first-child {
 //                 border-right-width: 1px;
 //             }
-    
+
 //             th:last-child,
 //             td:last-child {
 //                 border-left-width: 1px;
 //             }
-    
+
 //             tr:first-child th,
 //             tr:first-child td {
 //                 border-top-width: 1px;
 //             }
-    
+
 //             tr:first-child th:first-child,
 //             tr:first-child td:first-child {
 //                 border-top-right-radius: $cardBorderRadius;
 //             }
-    
+
 //             tr:first-child th:last-child,
 //             tr:first-child td:last-child {
 //                 border-top-left-radius: $cardBorderRadius;
 //             }
-    
+
 //             tr:last-child th,
 //             tr:last-child td {
 //                 border-bottom-width: 1px;
 //             }
-    
+
 //             tr:last-child th:first-child,
 //             tr:last-child td:first-child {
 //                 border-bottom-right-radius: $cardBorderRadius;
 //             }
-    
+
 //             tr:last-child th:last-child,
 //             tr:last-child td:last-child {
 //                 border-bottom-left-radius: $cardBorderRadius;
@@ -185,7 +183,6 @@
 //         }
 //     }
 // }
-
 
 // // usage:
 // // <table class="responsive-table">
@@ -207,4 +204,3 @@
 // //         </tr>
 // //     </tbody>
 // // </table>
-

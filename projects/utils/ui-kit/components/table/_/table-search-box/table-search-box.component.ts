@@ -6,21 +6,21 @@ import {
   inject,
   Input,
 } from '@angular/core';
-import type {ControlValueAccessor} from '@angular/forms';
+import type { ControlValueAccessor } from '@angular/forms';
 import {
   FormControl,
   NG_VALUE_ACCESSOR,
   ReactiveFormsModule,
 } from '@angular/forms';
-import {UkIconComponent} from '@utils/ui-kit/components';
-import type {FilterTable} from '@utils/ui-kit/definitions';
+import { UkIconComponent } from '@utils/ui-kit/components';
+import type { FilterTable } from '@utils/ui-kit/definitions';
 import {
   FilterOperator,
   UIKIT_EMPTY_FUNCTION,
   UIKIT_EMPTY_FUNCTION_UNI_ARGUMENT,
   UK_TYPE,
 } from '@utils/ui-kit/definitions';
-import {UkInputComponent} from '@utils/ui-kit/forms';
+import { UkInputComponent } from '@utils/ui-kit/forms';
 
 export type UkTableSearchBoxStatus = 'ACTIVE' | 'EMPTY';
 
@@ -49,7 +49,7 @@ export class UkTableSearchBoxComponent implements ControlValueAccessor {
   public columnName: string | null = null;
 
   public status: UkTableSearchBoxStatus = 'EMPTY';
-  public searchControl = new FormControl<string>('', {nonNullable: true});
+  public searchControl = new FormControl<string>('', { nonNullable: true });
 
   public readonly UK_TYPE = UK_TYPE;
 
@@ -74,7 +74,7 @@ export class UkTableSearchBoxComponent implements ControlValueAccessor {
   }
 
   public onClearClicked(): void {
-    this.searchControl.setValue('', {emitEvent: false});
+    this.searchControl.setValue('', { emitEvent: false });
     this.status = 'EMPTY';
     this.changed(null);
     this.touched();
@@ -88,7 +88,7 @@ export class UkTableSearchBoxComponent implements ControlValueAccessor {
       });
       this.status = 'ACTIVE';
     } else {
-      this.searchControl.setValue('', {emitEvent: false});
+      this.searchControl.setValue('', { emitEvent: false });
       this.status = 'EMPTY';
     }
 
@@ -105,9 +105,9 @@ export class UkTableSearchBoxComponent implements ControlValueAccessor {
 
   public setDisabledState?(isDisabled: boolean): void {
     if (isDisabled) {
-      this.searchControl.disable({emitEvent: false});
+      this.searchControl.disable({ emitEvent: false });
     } else {
-      this.searchControl.enable({emitEvent: false});
+      this.searchControl.enable({ emitEvent: false });
     }
   }
 }

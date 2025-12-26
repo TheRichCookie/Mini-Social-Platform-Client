@@ -1,29 +1,29 @@
 @use "core" as *;
 
 :host {
-    display: block;
+  display: block;
 }
 
 .uk.form-controller {
-    height: 100%;
+  height: 100%;
 
-    .label {
-        display: none;
-        
-        &:not(:empty) {
-            min-height: 24px;
-            display: flex;
-    
-            > .is-required {
-                margin-left: 4px;
-            }
-        }
-    }
+  .label {
+    display: none;
 
-    .controller-wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        min-height: 48px;
+    &:not(:empty) {
+      min-height: 24px;
+      display: flex;
+
+      > .is-required {
+        margin-left: 4px;
+      }
     }
+  }
+
+  .controller-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 48px;
+  }
 }

@@ -1,5 +1,5 @@
-import {inject, Injectable} from '@angular/core';
-import {Actions, createEffect, ofType} from '@ngrx/effects';
+import { inject, Injectable } from '@angular/core';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as APP_ACTIONS from '@store/app/app.action';
 import type {
   OtpResponseModel,
@@ -12,11 +12,11 @@ import {
   UkAuthenticateService,
   UkAuthService,
 } from '@utils/ui-kit/services';
-import {catchError, exhaustMap, of, switchMap} from 'rxjs';
+import { catchError, exhaustMap, of, switchMap } from 'rxjs';
 
 import * as AUTH_ACTION from './auth.actions';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class HangAuthEffects {
   private readonly actions = inject(Actions);
   private readonly authService = inject(UkAuthService);

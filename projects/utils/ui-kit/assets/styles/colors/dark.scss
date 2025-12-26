@@ -73,15 +73,23 @@ body {
     --tag-tag-850: var(--tag-tag-850-DARK);
     --tag-tag-900: var(--tag-tag-900-DARK);
     // primaryReference
-    --reference-primary-primary-DARKness: var(--reference-primary-primary-DARKness-DARK);
-    --reference-primary-primary-DARK: var(--reference-primary-primary-DARK-DARK);
+    --reference-primary-primary-DARKness: var(
+      --reference-primary-primary-DARKness-DARK
+    );
+    --reference-primary-primary-DARK: var(
+      --reference-primary-primary-DARK-DARK
+    );
     --reference-primary-main: var(--reference-primary-main-DARK);
     --reference-primary-dark: var(--reference-primary-dark-DARK);
     --reference-primary-darker: var(--reference-primary-darker-DARK);
     --reference-primary-darkest: var(--reference-primary-darkest-DARK);
     // secondaryReference
-    --reference-secondary-primaryLightness: var(--reference-secondary-primary-DARKness-DARK);
-    --reference-secondary-primaryLight: var(--reference-secondary-primary-DARK-DARK);
+    --reference-secondary-primaryLightness: var(
+      --reference-secondary-primary-DARKness-DARK
+    );
+    --reference-secondary-primaryLight: var(
+      --reference-secondary-primary-DARK-DARK
+    );
     --reference-secondary-main: var(--reference-secondary-main-DARK);
     --reference-secondary-dark: var(--reference-secondary-dark-DARK);
     --reference-secondary-darker: var(--reference-secondary-darker-DARK);

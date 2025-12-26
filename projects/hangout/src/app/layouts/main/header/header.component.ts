@@ -5,17 +5,19 @@ import {
   inject,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {Router} from '@angular/router';
 import {APP_ROUTES} from '@app/app.routes';
 import {SELECT_ROUTER_CURRENT_ROUTE} from '@app/shared/store/router/router.selector';
 import {Store} from '@ngrx/store';
+import {UkTextComponent} from '@utils/ui-kit/components';
 import type {UkMenu} from '@utils/ui-kit/definitions';
 import {CONST_CONFIG, UK_TYPE} from '@utils/ui-kit/definitions';
-import { UkTextComponent, UkImageComponent } from "@utils/ui-kit/components";
+import {UkNotificationService, UkSocketService} from '@utils/ui-kit/services';
 
 @Component({
   standalone: true,
   selector: 'hang-header',
-  imports: [UkTextComponent, UkImageComponent],
+  imports: [UkTextComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -23,7 +25,12 @@ import { UkTextComponent, UkImageComponent } from "@utils/ui-kit/components";
 export class HangHeaderComponent {
   private readonly store = inject(Store);
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
+  private readonly notificationService = inject(UkNotificationService);
+  private readonly socket = inject(UkSocketService);
+  private readonly router = inject(Router);
   public appTabBarHeight: number = CONST_CONFIG.COMMON.APP_TAB_BAR_HEIGHT;
+
+  public unread = 0;
 
   public slugsLowerCase: string[] = [];
 
@@ -61,6 +68,13 @@ export class HangHeaderComponent {
   ];
 
   constructor() {
+    this.loadNotifications();
+
+    this.socket.notification$.subscribe((n) => {
+      if (!n) return;
+      this.unread = this.unread + 1;
+      this.changeDetectorRef.markForCheck();
+    });
     this.store
       .select(SELECT_ROUTER_CURRENT_ROUTE)
       .pipe(takeUntilDestroyed())
@@ -83,5 +97,20 @@ export class HangHeaderComponent {
         this.menus = JSON.parse(JSON.stringify(this.menus));
         this.changeDetectorRef.markForCheck();
       });
+  }
+
+  public loadNotifications(): void {
+    this.notificationService.getNotifications().subscribe((res: any) => {
+      if (res?.data) {
+        const unread = (res.data as any[]).filter((x) => !x.isRead).length;
+
+        this.unread = unread;
+        this.changeDetectorRef.markForCheck();
+      }
+    });
+  }
+
+  public goNotifications(): void {
+    void this.router.navigate(['/notifications']);
   }
 }

@@ -1,5 +1,5 @@
-import {CommonModule} from '@angular/common';
-import type {OnInit} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import type { OnInit } from '@angular/core';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -9,18 +9,18 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {UkButtonComponent, UkIconComponent} from '@utils/ui-kit/components';
+import { FormsModule } from '@angular/forms';
+import { UkButtonComponent, UkIconComponent } from '@utils/ui-kit/components';
 import {
   DEFAULT,
   type SearchBarStatus,
   UK_TYPE,
   UkSearchBarStatus,
 } from '@utils/ui-kit/definitions';
-import {UkNumberService, UkStringService} from '@utils/ui-kit/services';
+import { UkNumberService, UkStringService } from '@utils/ui-kit/services';
 
-import {UkInputComponent} from '../input/input.component';
-import {UkSelectComponent} from '../select/select.component';
+import { UkInputComponent } from '../input/input.component';
+import { UkSelectComponent } from '../select/select.component';
 
 export interface UkSearchBarResult {
   searchValue: string | null;
@@ -125,7 +125,7 @@ export class UkSearchBarComponent implements OnInit {
 
   public onClearAndSubmit(): void {
     this.onClearSearch();
-    this.onSubmitSearch({showRemoveButton: false, resetData: true});
+    this.onSubmitSearch({ showRemoveButton: false, resetData: true });
   }
 
   public onSubmitSearch(options: {

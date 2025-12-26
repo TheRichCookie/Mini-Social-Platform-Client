@@ -10,7 +10,7 @@ import {
   trigger,
 } from '@angular/animations';
 
-import {UkRouteAnimationType} from './route-animation-types';
+import { UkRouteAnimationType } from './route-animation-types';
 
 const transitionTime = '600ms ';
 const transitionTimeForSpecial = '450ms ';
@@ -102,7 +102,10 @@ export const basePageAnimations = trigger('basePageAnimation', [
       opacity: 1,
     }),
   ),
-  state(UkRouteAnimationType.FADE, style({width: '100%', left: 0, opacity: 1})),
+  state(
+    UkRouteAnimationType.FADE,
+    style({ width: '100%', left: 0, opacity: 1 }),
+  ),
 
   // ^^^^^^
   transition('up => void', [
@@ -119,7 +122,7 @@ export const basePageAnimations = trigger('basePageAnimation', [
           top: '-100vh',
         }),
       ),
-      query('@*', animateChild(), {optional: true}),
+      query('@*', animateChild(), { optional: true }),
     ]),
   ]),
   transition('void => up', [
@@ -136,7 +139,7 @@ export const basePageAnimations = trigger('basePageAnimation', [
           top: '0',
         }),
       ),
-      query('@*', animateChild(), {optional: true}),
+      query('@*', animateChild(), { optional: true }),
     ]),
   ]),
 
@@ -155,7 +158,7 @@ export const basePageAnimations = trigger('basePageAnimation', [
           top: '100vh',
         }),
       ),
-      query('@*', animateChild(), {optional: true}),
+      query('@*', animateChild(), { optional: true }),
     ]),
   ]),
   transition('void => down', [
@@ -172,7 +175,7 @@ export const basePageAnimations = trigger('basePageAnimation', [
           top: '0px',
         }),
       ),
-      query('@*', animateChild(), {optional: true}),
+      query('@*', animateChild(), { optional: true }),
     ]),
   ]),
 
@@ -191,7 +194,7 @@ export const basePageAnimations = trigger('basePageAnimation', [
           transform: 'translateX(0)',
         }),
       ),
-      query('@*', animateChild(), {optional: true}),
+      query('@*', animateChild(), { optional: true }),
     ]),
   ]),
   transition('left => void', [
@@ -208,7 +211,7 @@ export const basePageAnimations = trigger('basePageAnimation', [
           transform: 'translateX(-100%)',
         }),
       ),
-      query('@*', animateChild(), {optional: true}),
+      query('@*', animateChild(), { optional: true }),
     ]),
   ]),
 
@@ -227,7 +230,7 @@ export const basePageAnimations = trigger('basePageAnimation', [
           transform: 'translateX(0)',
         }),
       ),
-      query('@*', animateChild(), {optional: true}),
+      query('@*', animateChild(), { optional: true }),
     ]),
   ]),
   transition('right => void', [
@@ -244,7 +247,7 @@ export const basePageAnimations = trigger('basePageAnimation', [
           transform: 'translateX(100%)',
         }),
       ),
-      query('@*', animateChild(), {optional: true}),
+      query('@*', animateChild(), { optional: true }),
     ]),
   ]),
 
@@ -263,7 +266,7 @@ export const basePageAnimations = trigger('basePageAnimation', [
           transform: 'scale(1)',
         }),
       ),
-      query('@*', animateChild(), {optional: true}),
+      query('@*', animateChild(), { optional: true }),
     ]),
   ]),
   transition('zoom-in => void', [
@@ -280,7 +283,7 @@ export const basePageAnimations = trigger('basePageAnimation', [
           transform: `scale(${scaleMax})`,
         }),
       ),
-      query('@*', animateChild(), {optional: true}),
+      query('@*', animateChild(), { optional: true }),
     ]),
   ]),
 
@@ -299,7 +302,7 @@ export const basePageAnimations = trigger('basePageAnimation', [
           transform: 'scale(1)',
         }),
       ),
-      query('@*', animateChild(), {optional: true}),
+      query('@*', animateChild(), { optional: true }),
     ]),
   ]),
   transition('zoom-out => void', [
@@ -330,7 +333,7 @@ export const basePageAnimations = trigger('basePageAnimation', [
           opacity: 1,
         }),
       ),
-      query('@*', animateChild(), {optional: true}),
+      query('@*', animateChild(), { optional: true }),
     ]),
   ]),
   transition('fade => void', [
@@ -345,7 +348,7 @@ export const basePageAnimations = trigger('basePageAnimation', [
           opacity: 0,
         }),
       ),
-      query('@*', animateChild(), {optional: true}),
+      query('@*', animateChild(), { optional: true }),
     ]),
   ]),
 
@@ -379,7 +382,7 @@ export const basePageAnimations = trigger('basePageAnimation', [
             transform: 'translateX(0) scale(1)',
           }),
         ),
-        query('@*', animateChild(), {optional: true}),
+        query('@*', animateChild(), { optional: true }),
       ]),
     ]),
   ]),
@@ -405,7 +408,7 @@ export const basePageAnimations = trigger('basePageAnimation', [
             transform: 'translateX(-100%) scale(0.7)',
           }),
         ),
-        query('@*', animateChild(), {optional: true}),
+        query('@*', animateChild(), { optional: true }),
       ]),
     ]),
   ]),
@@ -438,7 +441,7 @@ export const basePageAnimations = trigger('basePageAnimation', [
             transform: 'translateX(0) scale(1)',
           }),
         ),
-        query('@*', animateChild(), {optional: true}),
+        query('@*', animateChild(), { optional: true }),
       ]),
     ]),
   ]),
@@ -464,7 +467,7 @@ export const basePageAnimations = trigger('basePageAnimation', [
             transform: 'translateX(100%) scale(0.7)',
           }),
         ),
-        query('@*', animateChild(), {optional: true}),
+        query('@*', animateChild(), { optional: true }),
       ]),
     ]),
   ]),

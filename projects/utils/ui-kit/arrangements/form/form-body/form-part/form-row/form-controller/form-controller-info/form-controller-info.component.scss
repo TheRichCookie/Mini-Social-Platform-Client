@@ -4,12 +4,12 @@
 }
 
 .uk.form-controller-info {
-    > .content {
-        display: none;
+  > .content {
+    display: none;
 
-        &:not(:empty) {
-            display: block;
-            margin-top: 0;
-        }
+    &:not(:empty) {
+      display: block;
+      margin-top: 0;
     }
+  }
 }

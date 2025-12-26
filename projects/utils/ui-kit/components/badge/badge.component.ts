@@ -1,6 +1,6 @@
-import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {UkIconComponent, UkTextComponent} from '@utils/ui-kit/components';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { UkIconComponent, UkTextComponent } from '@utils/ui-kit/components';
 import type {
   BadgeBorderRadius,
   BadgeSize,

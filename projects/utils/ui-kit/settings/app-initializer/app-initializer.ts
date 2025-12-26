@@ -1,11 +1,9 @@
-import {inject, provideAppInitializer} from '@angular/core';
-import {UkAppInitService} from '@utils/ui-kit/services';
+import { inject, provideAppInitializer } from '@angular/core';
+import { UkAppInitService, UkSocketService } from '@utils/ui-kit/services';
 
 export const APP_INITIALIZERS = [
-  provideAppInitializer(async () => inject(UkAppInitService).initApp()),
-  provideAppInitializer(async () =>
-    inject(UkAppInitService).checkTokenExpiration(),
-  ),
-  provideAppInitializer(async () => inject(UkAppInitService).appPreparation()),
-  provideAppInitializer(async () => inject(UkAppInitService).printLogo()),
+  provideAppInitializer(() => inject(UkAppInitService).initApp()),
+  provideAppInitializer(() => inject(UkAppInitService).appPreparation()),
+  provideAppInitializer(() => inject(UkAppInitService).printLogo()),
+  provideAppInitializer(() => inject(UkSocketService).connect()),
 ];

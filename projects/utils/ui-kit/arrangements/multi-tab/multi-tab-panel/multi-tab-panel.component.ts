@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -6,7 +6,7 @@ import {
   inject,
   Input,
 } from '@angular/core';
-import type {UkIconName} from '@utils/ui-kit/definitions';
+import type { UkIconName } from '@utils/ui-kit/definitions';
 
 @Component({
   standalone: true,

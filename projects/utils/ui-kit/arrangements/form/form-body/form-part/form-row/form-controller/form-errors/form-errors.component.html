@@ -1,166 +1,150 @@
 <div class="uk form-errors">
-    <div class="errors">
-        <ng-container *ngIf="errors && errors['required']">
-            <div class="error">
-                <uk-text
-                    [fgColor]="ERROR_FG_COLOR"
-                    [typography]="ERROR_TYPOGRAPHY"
-                >
-                    این مورد الزامی است
-                </uk-text>
-            </div>
-        </ng-container>
-        <ng-container *ngIf="errors && errors['pattern']">
-            <div class="error">
-                <uk-text
-                    [fgColor]="ERROR_FG_COLOR"
-                    [typography]="ERROR_TYPOGRAPHY"
-                >
-                    الگوی مناسب رعایت نشده
-                </uk-text>
-            </div>
-        </ng-container>
-        <ng-container *ngIf="errors && errors['minlength']">
-            <div class="error">
-                <uk-text
-                    [fgColor]="ERROR_FG_COLOR"
-                    [typography]="ERROR_TYPOGRAPHY"
-                >
-                    حداقل {{ errors['minlength']['requiredLength'] }} حرف
-                </uk-text>
-            </div>
-        </ng-container>
-        <ng-container *ngIf="errors && errors['notUnique']">
-            <div class="error">
-                <uk-text
-                    [fgColor]="ERROR_FG_COLOR"
-                    [typography]="ERROR_TYPOGRAPHY"
-                >
-                    مقدار قبلا وارد شده
-                </uk-text>
-            </div>
-        </ng-container>
-        <ng-container *ngIf="errors && errors['email']">
-            <div class="error">
-                <uk-text
-                    [fgColor]="ERROR_FG_COLOR"
-                    [typography]="ERROR_TYPOGRAPHY"
-                >
-                    لطفا ایمیل را به درستی وارد نمایید
-                </uk-text>
-            </div>
-        </ng-container>
-        <ng-container *ngIf="errors && errors['phoneNumber']">
-            <div class="error">
-                <uk-text
-                    [fgColor]="ERROR_FG_COLOR"
-                    [typography]="ERROR_TYPOGRAPHY"
-                >
-                    لطفا شماره را به درستی وارد نمایید
-                </uk-text>
-            </div>
-        </ng-container>
-        <ng-container *ngIf="errors && errors[CUSTOM_VALIDATION_ERRORS.EMPTY_OR_NUMBER_INVALID]">
-            <div class="error">
-                <uk-text
-                    [fgColor]="ERROR_FG_COLOR"
-                    [typography]="ERROR_TYPOGRAPHY"
-                >
-                    مقدار وارد شده باید عدد باشد
-                </uk-text>
-            </div>
-        </ng-container>
-        <ng-container *ngIf="errors && errors[CUSTOM_VALIDATION_ERRORS.FILE_AND_SOURCE_MISSING]">
-            <div class="error">
-                <uk-text
-                    [fgColor]="ERROR_FG_COLOR"
-                    [typography]="ERROR_TYPOGRAPHY"
-                >
-                    فایل را انتخاب نمایید
-                </uk-text>
-            </div>
-        </ng-container>
-        <ng-container *ngIf="errors && errors[CUSTOM_VALIDATION_ERRORS.NATIONAL_CODE]">
-            <ng-container
-                *ngIf="errors[CUSTOM_VALIDATION_ERRORS.NATIONAL_CODE][CUSTOM_NATIONAL_CODE_ERRORS.NOT_EQUAL_DIGITS]"
-            >
-                <div class="error">
-                    <uk-text
-                        [fgColor]="ERROR_FG_COLOR"
-                        [typography]="ERROR_TYPOGRAPHY"
-                    >
-                        ورودی کامل نیست
-                    </uk-text>
-                </div>
-            </ng-container>
-            <ng-container
-                *ngIf="errors[CUSTOM_VALIDATION_ERRORS.NATIONAL_CODE][CUSTOM_NATIONAL_CODE_ERRORS.NOT_VALID_CODE]"
-            >
-                <div class="error">
-                    <uk-text
-                        [fgColor]="ERROR_FG_COLOR"
-                        [typography]="ERROR_TYPOGRAPHY"
-                    >
-                        کد ملی معتبر نیست
-                    </uk-text>
-                </div>
-            </ng-container>
-        </ng-container>
-        <ng-container *ngIf="errors && errors[CUSTOM_VALIDATION_ERRORS.IRANIAN_BANK_CARD_NUMBER]">
-            <ng-container
-                *ngIf="
-                    errors[CUSTOM_VALIDATION_ERRORS.IRANIAN_BANK_CARD_NUMBER][
-                        CUSTOM_IRANIAN_BANK_CARD_NUMBER_ERRORS.NOT_VALID_NUMBER
-                    ]
-                "
-            >
-                <div class="error">
-                    <uk-text
-                        [fgColor]="ERROR_FG_COLOR"
-                        [typography]="ERROR_TYPOGRAPHY"
-                    >
-                        شماره کارت معتبر نیست
-                    </uk-text>
-                </div>
-            </ng-container>
-        </ng-container>
-        <ng-container *ngIf="errors && errors[CUSTOM_VALIDATION_ERRORS.IRANIAN_BANK_CARD_IBAN_NUMBER]">
-            <ng-container
-                *ngIf="
-                    errors[CUSTOM_VALIDATION_ERRORS.IRANIAN_BANK_CARD_IBAN_NUMBER][
-                        CUSTOM_IRANIAN_BANK_CARD_NUMBER_ERRORS.NOT_VALID_NUMBER
-                    ]
-                "
-            >
-                <div class="error">
-                    <uk-text
-                        [fgColor]="ERROR_FG_COLOR"
-                        [typography]="ERROR_TYPOGRAPHY"
-                    >
-                        شماره شبا معتبر نیست
-                    </uk-text>
-                </div>
-            </ng-container>
-        </ng-container>
-        <ng-container *ngIf="errors && errors[CUSTOM_VALIDATION_ERRORS.VALUE_TRUE_REQUIRED]">
-            <div class="error">
-                <uk-text
-                    [fgColor]="ERROR_FG_COLOR"
-                    [typography]="ERROR_TYPOGRAPHY"
-                >
-                    نیازمند تایید است
-                </uk-text>
-            </div>
-        </ng-container>
-        <ng-container *ngIf="errors && errors[CUSTOM_VALIDATION_ERRORS.ARRAY_AT_LEAST_LENGTH]">
-            <div class="error">
-                <uk-text
-                    [fgColor]="ERROR_FG_COLOR"
-                    [typography]="ERROR_TYPOGRAPHY"
-                >
-                    آرایه نیازمند حداقل است
-                </uk-text>
-            </div>
-        </ng-container>
-    </div>
+  <div class="errors">
+    <ng-container *ngIf="errors && errors['required']">
+      <div class="error">
+        <uk-text [fgColor]="ERROR_FG_COLOR" [typography]="ERROR_TYPOGRAPHY">
+          این مورد الزامی است
+        </uk-text>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="errors && errors['pattern']">
+      <div class="error">
+        <uk-text [fgColor]="ERROR_FG_COLOR" [typography]="ERROR_TYPOGRAPHY">
+          الگوی مناسب رعایت نشده
+        </uk-text>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="errors && errors['minlength']">
+      <div class="error">
+        <uk-text [fgColor]="ERROR_FG_COLOR" [typography]="ERROR_TYPOGRAPHY">
+          حداقل {{ errors["minlength"]["requiredLength"] }} حرف
+        </uk-text>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="errors && errors['notUnique']">
+      <div class="error">
+        <uk-text [fgColor]="ERROR_FG_COLOR" [typography]="ERROR_TYPOGRAPHY">
+          مقدار قبلا وارد شده
+        </uk-text>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="errors && errors['email']">
+      <div class="error">
+        <uk-text [fgColor]="ERROR_FG_COLOR" [typography]="ERROR_TYPOGRAPHY">
+          لطفا ایمیل را به درستی وارد نمایید
+        </uk-text>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="errors && errors['phoneNumber']">
+      <div class="error">
+        <uk-text [fgColor]="ERROR_FG_COLOR" [typography]="ERROR_TYPOGRAPHY">
+          لطفا شماره را به درستی وارد نمایید
+        </uk-text>
+      </div>
+    </ng-container>
+    <ng-container
+      *ngIf="errors && errors[CUSTOM_VALIDATION_ERRORS.EMPTY_OR_NUMBER_INVALID]"
+    >
+      <div class="error">
+        <uk-text [fgColor]="ERROR_FG_COLOR" [typography]="ERROR_TYPOGRAPHY">
+          مقدار وارد شده باید عدد باشد
+        </uk-text>
+      </div>
+    </ng-container>
+    <ng-container
+      *ngIf="errors && errors[CUSTOM_VALIDATION_ERRORS.FILE_AND_SOURCE_MISSING]"
+    >
+      <div class="error">
+        <uk-text [fgColor]="ERROR_FG_COLOR" [typography]="ERROR_TYPOGRAPHY">
+          فایل را انتخاب نمایید
+        </uk-text>
+      </div>
+    </ng-container>
+    <ng-container
+      *ngIf="errors && errors[CUSTOM_VALIDATION_ERRORS.NATIONAL_CODE]"
+    >
+      <ng-container
+        *ngIf="
+          errors[CUSTOM_VALIDATION_ERRORS.NATIONAL_CODE][
+            CUSTOM_NATIONAL_CODE_ERRORS.NOT_EQUAL_DIGITS
+          ]
+        "
+      >
+        <div class="error">
+          <uk-text [fgColor]="ERROR_FG_COLOR" [typography]="ERROR_TYPOGRAPHY">
+            ورودی کامل نیست
+          </uk-text>
+        </div>
+      </ng-container>
+      <ng-container
+        *ngIf="
+          errors[CUSTOM_VALIDATION_ERRORS.NATIONAL_CODE][
+            CUSTOM_NATIONAL_CODE_ERRORS.NOT_VALID_CODE
+          ]
+        "
+      >
+        <div class="error">
+          <uk-text [fgColor]="ERROR_FG_COLOR" [typography]="ERROR_TYPOGRAPHY">
+            کد ملی معتبر نیست
+          </uk-text>
+        </div>
+      </ng-container>
+    </ng-container>
+    <ng-container
+      *ngIf="
+        errors && errors[CUSTOM_VALIDATION_ERRORS.IRANIAN_BANK_CARD_NUMBER]
+      "
+    >
+      <ng-container
+        *ngIf="
+          errors[CUSTOM_VALIDATION_ERRORS.IRANIAN_BANK_CARD_NUMBER][
+            CUSTOM_IRANIAN_BANK_CARD_NUMBER_ERRORS.NOT_VALID_NUMBER
+          ]
+        "
+      >
+        <div class="error">
+          <uk-text [fgColor]="ERROR_FG_COLOR" [typography]="ERROR_TYPOGRAPHY">
+            شماره کارت معتبر نیست
+          </uk-text>
+        </div>
+      </ng-container>
+    </ng-container>
+    <ng-container
+      *ngIf="
+        errors && errors[CUSTOM_VALIDATION_ERRORS.IRANIAN_BANK_CARD_IBAN_NUMBER]
+      "
+    >
+      <ng-container
+        *ngIf="
+          errors[CUSTOM_VALIDATION_ERRORS.IRANIAN_BANK_CARD_IBAN_NUMBER][
+            CUSTOM_IRANIAN_BANK_CARD_NUMBER_ERRORS.NOT_VALID_NUMBER
+          ]
+        "
+      >
+        <div class="error">
+          <uk-text [fgColor]="ERROR_FG_COLOR" [typography]="ERROR_TYPOGRAPHY">
+            شماره شبا معتبر نیست
+          </uk-text>
+        </div>
+      </ng-container>
+    </ng-container>
+    <ng-container
+      *ngIf="errors && errors[CUSTOM_VALIDATION_ERRORS.VALUE_TRUE_REQUIRED]"
+    >
+      <div class="error">
+        <uk-text [fgColor]="ERROR_FG_COLOR" [typography]="ERROR_TYPOGRAPHY">
+          نیازمند تایید است
+        </uk-text>
+      </div>
+    </ng-container>
+    <ng-container
+      *ngIf="errors && errors[CUSTOM_VALIDATION_ERRORS.ARRAY_AT_LEAST_LENGTH]"
+    >
+      <div class="error">
+        <uk-text [fgColor]="ERROR_FG_COLOR" [typography]="ERROR_TYPOGRAPHY">
+          آرایه نیازمند حداقل است
+        </uk-text>
+      </div>
+    </ng-container>
+  </div>
 </div>

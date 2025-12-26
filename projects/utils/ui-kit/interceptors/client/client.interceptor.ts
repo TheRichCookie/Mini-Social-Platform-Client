@@ -1,8 +1,8 @@
-import type {HttpInterceptorFn, HttpRequest} from '@angular/common/http';
-import {inject} from '@angular/core';
-import {UkPlatformsCommonService} from '@utils/ui-kit/services';
-import type {UkApiConfig} from '@utils/ui-kit/settings';
-import {GENERAL_TOKEN} from '@utils/ui-kit/settings';
+import type { HttpInterceptorFn, HttpRequest } from '@angular/common/http';
+import { inject } from '@angular/core';
+import { UkPlatformsCommonService } from '@utils/ui-kit/services';
+import type { UkApiConfig } from '@utils/ui-kit/settings';
+import { GENERAL_TOKEN } from '@utils/ui-kit/settings';
 
 export const CLIENT_INTERCEPTOR_FUNCTIONAL: HttpInterceptorFn = (
   request,

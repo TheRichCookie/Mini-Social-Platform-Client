@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/adjacent-overload-signatures */
-import {CommonModule} from '@angular/common';
-import type {AfterViewInit} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import type { AfterViewInit } from '@angular/core';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -13,14 +13,14 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {ControlValueAccessor} from '@angular/forms';
-import {FormsModule, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {take} from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import type { ControlValueAccessor } from '@angular/forms';
+import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { take } from 'rxjs';
 
-import {UkTextComponent} from '../../../components';
-import {UkIconComponent} from '../../../components/icon/icon.component';
-import type {CrudMode, DateSelectSeparator} from '../../../definitions';
+import { UkTextComponent } from '../../../components';
+import { UkIconComponent } from '../../../components/icon/icon.component';
+import type { CrudMode, DateSelectSeparator } from '../../../definitions';
 import {
   DEFAULT,
   UIKIT_EMPTY_FUNCTION,
@@ -29,13 +29,13 @@ import {
   UkDateSelectEmptyStatus,
   UkDateSelectSeparator,
 } from '../../../definitions';
-import type {UkDate} from '../../../services';
+import type { UkDate } from '../../../services';
 import {
   JALALI_MONTHS,
   UkDateService,
   UkOverlayService,
 } from '../../../services';
-import {UkDateSelectOverlayComponent} from './date-select-overlay/date-select-overlay.component';
+import { UkDateSelectOverlayComponent } from './date-select-overlay/date-select-overlay.component';
 
 @Component({
   standalone: true,

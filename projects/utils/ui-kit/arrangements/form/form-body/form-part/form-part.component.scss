@@ -1,196 +1,196 @@
 @use "core" as *;
 
 @keyframes rowFadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 :host {
+  .uk.form-part {
+    // animation
+    &::ng-deep {
+      uk-form-row {
+        opacity: 0;
+        animation: rowFadeIn 0.8s forwards;
+      }
+
+      @for $i from 2 through 20 {
+        &:nth-child(#{$i}) {
+          @if $i <= 8 {
+            animation-delay: #{($i - 1) * 0.2}s;
+          } @else {
+            animation-delay: #{(9 - 1) * 0.2}s;
+          }
+        }
+      }
+    }
+  }
+
+  &.equal-animation {
     .uk.form-part {
-        // animation
-        &::ng-deep {
-            uk-form-row {
-                opacity: 0;
-                animation: rowFadeIn 0.8s forwards;
-            }
-
-            @for $i from 2 through 20 {
-                &:nth-child(#{$i}) {
-                    @if $i <= 8 {
-                        animation-delay: #{($i - 1) * 0.2}s;
-                    } @else {
-                        animation-delay: #{(9 - 1) * 0.2}s;
-                    }
-                }
-            }
+      &::ng-deep {
+        uk-form-row {
+          animation-delay: 0.2s;
         }
+      }
     }
-
-    &.equal-animation {
-        .uk.form-part {
-            &::ng-deep {
-                uk-form-row {
-                    animation-delay: 0.2s;
-                }
-            }
-        }
-    }
+  }
 }
 
 .uk.form-part {
-    > .header {
-        display: flex;
-        justify-content: space-between;
+  > .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    > .start {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      > .action {
+        display: none;
         align-items: center;
+        gap: 4px;
 
-        > .start {
+        &:not(:empty) {
+          display: flex;
+          align-items: center;
+          padding: 24px 0 0;
+          // height: 48px;
+        }
+      }
+
+      > .title {
+        display: flex;
+        align-items: center;
+        padding: 24px 0 0;
+        // height: 48px;
+
+        &.content {
+          display: none;
+
+          &:not(:empty) {
             display: flex;
-            align-items: center;
-            gap: 8px;
-
-            > .action {
-                display: none;
-                align-items: center;
-                gap: 4px;
-
-                &:not(:empty) {
-                    display: flex;
-                    align-items: center;
-                    padding: 24px 0 0;
-                    // height: 48px;
-                }
-            }
-
-            > .title {
-                display: flex;
-                align-items: center;
-                padding: 24px 0 0;
-                // height: 48px;
-
-                &.content {
-                    display: none;
-
-                    &:not(:empty) {
-                        display: flex;
-                    }
-                }
-            }
+          }
         }
-        > .end {
-            > .action {
-                display: none;
-                position: relative;
-                align-items: center;
-                gap: 4px;
-                z-index: 9;
+      }
+    }
+    > .end {
+      > .action {
+        display: none;
+        position: relative;
+        align-items: center;
+        gap: 4px;
+        z-index: 9;
 
-                &:not(:empty) {
-                    display: flex;
-                    align-items: center;
-                    margin-left: 8px;
-                    padding: 24px 0 48px;
-                    height: 48px;
-                }
-            }
+        &:not(:empty) {
+          display: flex;
+          align-items: center;
+          margin-left: 8px;
+          padding: 24px 0 48px;
+          height: 48px;
         }
+      }
+    }
+  }
+
+  &.uk-form-part {
+    // background-color
+    &-background-color {
+      &-TRANSPARENT {
+        background-color: transparent;
+      }
+
+      &-WHITE {
+        background-color: white;
+      }
     }
 
-    &.uk-form-part {
-        // background-color
-        &-background-color {
-            &-TRANSPARENT {
-                background-color: transparent;
-            }
+    // crud-mode
+    &-crud-mode {
+      &-EDIT {
+        &::ng-deep {
+          > uk-form-row {
+            &::ng-deep {
+              > .uk.form-row {
+                > uk-form-controller {
+                  &::ng-deep {
+                    > .uk.form-controller {
+                      border: solid 1px transparent;
 
-            &-WHITE {
-                background-color: white;
-            }
-        }
-
-        // crud-mode
-        &-crud-mode {
-            &-EDIT {
-                &::ng-deep {
-                    > uk-form-row {
-                        &::ng-deep {
-                            > .uk.form-row {
-                                > uk-form-controller {
-                                    &::ng-deep {
-                                        > .uk.form-controller {
-                                            border: solid 1px transparent;
-
-                                            > .label {
-                                                margin-top: 8px;
-                                                min-height: 32px;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                      > .label {
+                        margin-top: 8px;
+                        min-height: 32px;
+                      }
                     }
+                  }
                 }
+              }
             }
+          }
+        }
+      }
 
-            &-VIEW {
-                position: relative;
+      &-VIEW {
+        position: relative;
 
-                &::after {
-                    display: block;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    content: '';
-                }
-                &::ng-deep {
-                    > uk-form-row {
-                        &::ng-deep {
-                            > .uk.form-row {
-                                > uk-form-controller {
-                                    &::ng-deep {
-                                        > .uk.form-controller {
-                                            border: solid 1px red;
-                                            border-radius: 12px;
+        &::after {
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          content: "";
+        }
+        &::ng-deep {
+          > uk-form-row {
+            &::ng-deep {
+              > .uk.form-row {
+                > uk-form-controller {
+                  &::ng-deep {
+                    > .uk.form-controller {
+                      border: solid 1px red;
+                      border-radius: 12px;
 
-                                            > .label {
-                                                margin-top: 8px;
-                                                margin-right: 4px;
-                                                min-height: 32px;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                      > .label {
+                        margin-top: 8px;
+                        margin-right: 4px;
+                        min-height: 32px;
+                      }
                     }
+                  }
                 }
+              }
             }
+          }
         }
-
-        &-is-disabled {
-            &-TRUE {
-                position: relative;
-
-                &::after {
-                    display: block;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    content: '';
-                }
-            }
-
-            &-FALSE {
-                //
-            }
-        }
+      }
     }
+
+    &-is-disabled {
+      &-TRUE {
+        position: relative;
+
+        &::after {
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          content: "";
+        }
+      }
+
+      &-FALSE {
+        //
+      }
+    }
+  }
 }

@@ -1,4 +1,4 @@
-import type {CommonErrorResponse} from '@utils/ui-kit/definitions';
+import type { CommonErrorResponse } from '@utils/ui-kit/definitions';
 
 export interface HangUserState {
   userData: {

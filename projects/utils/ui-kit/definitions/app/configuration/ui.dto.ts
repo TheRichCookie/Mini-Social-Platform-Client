@@ -1,5 +1,5 @@
-import type {UkAppTheme} from './app-theme.enum';
-import type {UkAppZoom} from './app-zoom.enum';
+import type { UkAppTheme } from './app-theme.enum';
+import type { UkAppZoom } from './app-zoom.enum';
 
 export interface UkUi {
   appTheme: UkAppTheme;

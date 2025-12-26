@@ -1,190 +1,190 @@
-@use 'core' as *;
+@use "core" as *;
 
 $pageHeader: 55px;
 $pageFooter: 70px;
 $borderColor: $color-border-grade-2;
 
 :host {
-    @include fullHeightBlock();
+  @include fullHeightBlock();
 }
 
 .uk.page {
-    @include fullHeightFlex();
-    height: 100%;
+  @include fullHeightFlex();
+  height: 100%;
 
-    header {
-        display: none;
-        position: relative;
+  header {
+    display: none;
+    position: relative;
 
-        &:not(:empty) {
-            display: block;
-            border-bottom: solid 1px $borderColor;
-            height: $pageHeader;
+    &:not(:empty) {
+      display: block;
+      border-bottom: solid 1px $borderColor;
+      height: $pageHeader;
+    }
+  }
+
+  main {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
+
+  footer {
+    display: none;
+    position: relative;
+
+    &:not(:empty) {
+      display: block;
+      border-top: solid 1px $borderColor;
+      height: $pageFooter;
+    }
+  }
+
+  &.uk-page {
+    // header backgroundColor
+    &-header-background-color {
+      &-TRANSPARENT {
+        > header {
+          background-color: transparent;
         }
+      }
+
+      &-SECONDARY-900 {
+        > header {
+          background-color: $color-border-grade-1;
+        }
+      }
+
+      &-SECONDARY-800 {
+        > header {
+          background-color: $color-border-grade-2;
+        }
+      }
+
+      &-SECONDARY-TRANSPARENT-50 {
+        > header {
+          background-color: $color-border-grade-0;
+        }
+      }
     }
 
-    main {
-        display: flex;
-        flex: 1;
-        flex-direction: column;
+    // body backgroundColor
+    &-body-background-color {
+      &-TRANSPARENT {
+        > main {
+          background-color: transparent;
+        }
+      }
+
+      &-SECONDARY-900 {
+        > main {
+          background-color: $color-border-grade-1;
+        }
+      }
+
+      &-SECONDARY-800 {
+        > main {
+          background-color: $color-background-surface-00;
+        }
+      }
     }
 
-    footer {
-        display: none;
-        position: relative;
-
-        &:not(:empty) {
-            display: block;
-            border-top: solid 1px $borderColor;
-            height: $pageFooter;
+    // footer backgroundColor
+    &-footer-background-color {
+      &-TRANSPARENT {
+        > footer {
+          background-color: transparent;
         }
+      }
+
+      &-SECONDARY-900 {
+        > footer {
+          background-color: $color-border-grade-1;
+        }
+      }
+
+      &-SECONDARY-800 {
+        > footer {
+          background-color: $color-border-grade-2;
+        }
+      }
     }
 
-    &.uk-page {
-        // header backgroundColor
-        &-header-background-color {
-            &-TRANSPARENT {
-                > header {
-                    background-color: transparent;
-                }
-            }
-
-            &-SECONDARY-900 {
-                > header {
-                    background-color: $color-border-grade-1;
-                }
-            }
-
-            &-SECONDARY-800 {
-                > header {
-                    background-color: $color-border-grade-2;
-                }
-            }
-
-            &-SECONDARY-TRANSPARENT-50 {
-                > header {
-                    background-color: $color-border-grade-0;
-                }
-            }
+    // top margin
+    &-top-margin {
+      &-TRUE {
+        > main {
+          margin-top: 12px;
         }
+      }
 
-        // body backgroundColor
-        &-body-background-color {
-            &-TRANSPARENT {
-                > main {
-                    background-color: transparent;
-                }
-            }
-
-            &-SECONDARY-900 {
-                > main {
-                    background-color: $color-border-grade-1;
-                }
-            }
-
-            &-SECONDARY-800 {
-                > main {
-                    background-color: $color-background-surface-00;
-                }
-            }
-        }
-
-        // footer backgroundColor
-        &-footer-background-color {
-            &-TRANSPARENT {
-                > footer {
-                    background-color: transparent;
-                }
-            }
-
-            &-SECONDARY-900 {
-                > footer {
-                    background-color: $color-border-grade-1;
-                }
-            }
-
-            &-SECONDARY-800 {
-                > footer {
-                    background-color: $color-border-grade-2;
-                }
-            }
-        }
-
-        // top margin
-        &-top-margin {
-            &-TRUE {
-                > main {
-                    margin-top: 12px;
-                }
-            }
-
-            &-FALSE {
-                margin-top: 0;
-            }
-        }
-
-        // bottom margin
-        &-bottom-margin {
-            &-TRUE {
-                > main {
-                    margin-bottom: 12px;
-                }
-            }
-
-            &-FALSE {
-                margin-bottom: 0;
-            }
-        }
-
-        // body-over-flow
-        &-body-over-flow {
-            &-UNSET {
-                > main {
-                    //
-                }
-            }
-
-            &-SCROLL {
-                > main {
-                    overflow-y: scroll;
-                    -ms-overflow-style: none;
-                    scrollbar-width: none;
-                }
-            }
-
-            &-HIDDEN {
-                > main {
-                    overflow-y: hidden;
-                }
-            }
-        }
-
-        //
-        &-show-header-border {
-            &-TRUE {
-                header {
-                    border-bottom: solid 1px $borderColor;
-                }
-            }
-            &-FALSE {
-                header {
-                    border-bottom: solid 1px transparent;
-                }
-            }
-        }
-
-        //
-        &-show-footer-border {
-            &-TRUE {
-                footer {
-                    border-top: solid 1px $borderColor;
-                }
-            }
-            &-FALSE {
-                footer {
-                    border-top: solid 0px transparent;
-                }
-            }
-        }
+      &-FALSE {
+        margin-top: 0;
+      }
     }
+
+    // bottom margin
+    &-bottom-margin {
+      &-TRUE {
+        > main {
+          margin-bottom: 12px;
+        }
+      }
+
+      &-FALSE {
+        margin-bottom: 0;
+      }
+    }
+
+    // body-over-flow
+    &-body-over-flow {
+      &-UNSET {
+        > main {
+          //
+        }
+      }
+
+      &-SCROLL {
+        > main {
+          overflow-y: scroll;
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      }
+
+      &-HIDDEN {
+        > main {
+          overflow-y: hidden;
+        }
+      }
+    }
+
+    //
+    &-show-header-border {
+      &-TRUE {
+        header {
+          border-bottom: solid 1px $borderColor;
+        }
+      }
+      &-FALSE {
+        header {
+          border-bottom: solid 1px transparent;
+        }
+      }
+    }
+
+    //
+    &-show-footer-border {
+      &-TRUE {
+        footer {
+          border-top: solid 1px $borderColor;
+        }
+      }
+      &-FALSE {
+        footer {
+          border-top: solid 0px transparent;
+        }
+      }
+    }
+  }
 }

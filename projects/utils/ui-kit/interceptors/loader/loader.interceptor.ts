@@ -4,17 +4,17 @@ import type {
   HttpInterceptorFn,
   HttpRequest,
 } from '@angular/common/http';
-import {HttpEventType, HttpResponse} from '@angular/common/http';
-import {inject} from '@angular/core';
-import type {Observable} from 'rxjs';
-import {catchError, takeUntil, tap, timer} from 'rxjs';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { inject } from '@angular/core';
+import type { Observable } from 'rxjs';
+import { catchError, takeUntil, tap, timer } from 'rxjs';
 
-import {UkOverlayStatus} from '../../definitions';
+import { UkOverlayStatus } from '../../definitions';
 import {
   UkLoggerPart,
   UkLoggerService,
 } from './../../services/logger/logger.service';
-import {UkLoaderService} from './service/loader/loader.service';
+import { UkLoaderService } from './service/loader/loader.service';
 
 export const LOADER_INTERCEPTOR_FUNCTIONAL: HttpInterceptorFn = (
   req: HttpRequest<unknown>,

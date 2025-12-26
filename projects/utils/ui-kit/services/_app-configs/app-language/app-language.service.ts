@@ -1,8 +1,8 @@
-import {DOCUMENT} from '@angular/common';
-import {inject, Injectable} from '@angular/core';
-import {Subject} from 'rxjs';
+import { DOCUMENT } from '@angular/common';
+import { inject, Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
-import type {UkLanguage} from '../../../definitions';
+import type { UkLanguage } from '../../../definitions';
 
 @Injectable({
   providedIn: 'root',

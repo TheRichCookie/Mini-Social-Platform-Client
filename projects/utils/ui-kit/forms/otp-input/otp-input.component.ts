@@ -1,5 +1,5 @@
-import {CommonModule} from '@angular/common';
-import type {OnDestroy, OnInit} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import type { OnDestroy, OnInit } from '@angular/core';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -22,8 +22,8 @@ import {
   UIKIT_EMPTY_FUNCTION,
   UIKIT_EMPTY_FUNCTION_UNI_ARGUMENT,
 } from '@utils/ui-kit/definitions';
-import type {NgxOtpInputComponentOptions, NgxOtpStatus} from 'ngx-otp-input';
-import {NgxOtpInputComponent} from 'ngx-otp-input';
+import type { NgxOtpInputComponentOptions, NgxOtpStatus } from 'ngx-otp-input';
+import { NgxOtpInputComponent } from 'ngx-otp-input';
 
 @Component({
   standalone: true,

@@ -4,7 +4,7 @@
         "baseUrl": "./",
         "paths": {
             "@utils/ui-kit": ["./../../utils/ui-kit"],
-            "@utils/ui-kit/*": ["./../../utils/ui-kit/*"],
+            "@utils/ui-kit/*": ["./../../utils/ui-kit/*"]
         }
     }
 }

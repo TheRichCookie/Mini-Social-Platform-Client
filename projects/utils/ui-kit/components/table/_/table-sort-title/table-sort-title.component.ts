@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -10,8 +10,8 @@ import {
   UkImageComponent,
   UkTextComponent,
 } from '@utils/ui-kit/components/public-api';
-import type {UkSortModel} from '@utils/ui-kit/definitions';
-import {UK_TYPE, UkSortOrderType} from '@utils/ui-kit/definitions';
+import type { UkSortModel } from '@utils/ui-kit/definitions';
+import { UK_TYPE, UkSortOrderType } from '@utils/ui-kit/definitions';
 
 @Component({
   selector: 'uk-table-sort-title',

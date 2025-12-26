@@ -1,8 +1,8 @@
-import type {HttpInterceptorFn} from '@angular/common/http';
-import {HttpRequest, HttpResponse} from '@angular/common/http';
-import {inject} from '@angular/core';
-import {UkLoggerPart, UkLoggerService} from '@utils/ui-kit/services';
-import {tap} from 'rxjs';
+import type { HttpInterceptorFn } from '@angular/common/http';
+import { HttpRequest, HttpResponse } from '@angular/common/http';
+import { inject } from '@angular/core';
+import { UkLoggerPart, UkLoggerService } from '@utils/ui-kit/services';
+import { tap } from 'rxjs';
 
 export const LOGGING_HTTP_REQUEST_INTERCEPTOR_FUNCTIONAL: HttpInterceptorFn = (
   req,

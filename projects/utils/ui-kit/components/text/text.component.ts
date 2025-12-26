@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -20,7 +20,7 @@ import type {
   TextWhiteSpace,
   UkTextDirection,
 } from '@utils/ui-kit/definitions';
-import {DEFAULT, UkTextDisplay} from '@utils/ui-kit/definitions';
+import { DEFAULT, UkTextDisplay } from '@utils/ui-kit/definitions';
 
 @Component({
   standalone: true,

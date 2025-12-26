@@ -3,10 +3,10 @@ import type {
   HttpInterceptorFn,
   HttpRequest,
 } from '@angular/common/http';
-import {HttpErrorResponse} from '@angular/common/http';
-import {inject} from '@angular/core';
-import {UkLoggerPart, UkLoggerService} from '@utils/ui-kit/services';
-import {catchError} from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
+import { inject } from '@angular/core';
+import { UkLoggerPart, UkLoggerService } from '@utils/ui-kit/services';
+import { catchError } from 'rxjs';
 
 import {
   ukInjectDefaultErrorHandler,
@@ -33,56 +33,6 @@ export const ERROR_HANDLER_INTERCEPTOR_FUNCTIONAL: HttpInterceptorFn = (
             },
           ],
         );
-
-        // return REFRESH_TOKEN_SERVICE.refreshToken().pipe(
-        //   switchMap((refreshTokenResult: RefreshTokenResult) => {
-        //     if (refreshTokenResult === UkRefreshTokenResult.FAILED) {
-        //       LOGGER_SERVICE.error(
-        //         UkLoggerPart.REFRESH_TOKEN,
-        //         'refresh token (error-handler) refreshTokenResult',
-        //         [refreshTokenResult],
-        //       );
-        //       REFRESH_TOKEN_SERVICE.refreshingFailed();
-
-        //       return next(req.clone());
-        //     } else {
-        //       LOGGER_SERVICE.info(
-        //         UkLoggerPart.REFRESH_TOKEN,
-        //         'refresh token (error-handler) clone request',
-        //         [],
-        //       );
-        //       const AUTHORIZATION = `Bearer ${refreshTokenResult.accessToken}`;
-        //       const clonedRequest = req.clone({
-        //         headers: req.headers.set('Authorization', AUTHORIZATION),
-        //       });
-
-        //       return next(clonedRequest);
-        //     }
-        //   }),
-        //   catchError((_error) => {
-        //     LOGGER_SERVICE.error(
-        //       UkLoggerPart.REFRESH_TOKEN,
-        //       'refresh token (error-handler) catchError',
-        //       [
-        //         {
-        //           _error,
-        //         },
-        //       ],
-        //     );
-        //     REFRESH_TOKEN_SERVICE.refreshingFailed();
-
-        //     // return throwError(() => refreshError);
-        //     return next(req);
-        //   }),
-        //   finalize(() => {
-        //     LOGGER_SERVICE.error(
-        //       UkLoggerPart.REFRESH_TOKEN,
-        //       'refresh token (error-handler) finalize',
-        //       [],
-        //     );
-        //     REFRESH_TOKEN_SERVICE.discardRefreshing();
-        //   }),
-        // );
       }
 
       if (error instanceof Error) {
@@ -90,10 +40,6 @@ export const ERROR_HANDLER_INTERCEPTOR_FUNCTIONAL: HttpInterceptorFn = (
       }
 
       if (error instanceof HttpErrorResponse) {
-        // if (req.headers.has('X-Skip-On-Refreshing-Token')) {
-        //   REFRESH_TOKEN_SERVICE.discardRefreshing();
-        // }
-
         const handler = handlers.find((_handler) => _handler.matcher(error));
 
         return handler

@@ -1,13 +1,10 @@
 <div
-    role="button"
-    tabindex="0"
-    class="uk image"
-    [ngClass]="['uk-image-object-fit-' + objectFit]"
-    (click)="downloadImage()"
-    (keydown.enter)="downloadImage()"
+  role="button"
+  tabindex="0"
+  class="uk image"
+  [ngClass]="['uk-image-object-fit-' + objectFit]"
+  (click)="downloadImage()"
+  (keydown.enter)="downloadImage()"
 >
-    <img
-        [alt]="alt"
-        [src]="source"
-    />
+  <img [alt]="alt" [src]="source" />
 </div>

@@ -1,15 +1,15 @@
 <div
   class="uk input"
   [ngClass]="[
-        'uk-input-border-color-' + borderColor,
-        'uk-input-numeric-' + numeric,
-        'uk-input-crud-mode-' + crudMode,
-        'uk-input-typography-' + typography,
-    ]"
-  [ngStyle]="{'background-color': isDisabled ? '#f9f9f9' : null}"
+    'uk-input-border-color-' + borderColor,
+    'uk-input-numeric-' + numeric,
+    'uk-input-crud-mode-' + crudMode,
+    'uk-input-typography-' + typography,
+  ]"
+  [ngStyle]="{ 'background-color': isDisabled ? '#f9f9f9' : null }"
 >
   <div class="icon-wrapper">
-    <ng-content select="[START]"/>
+    <ng-content select="[START]" />
   </div>
 
   <input
@@ -28,6 +28,6 @@
     (ngModelChange)="onChange($event)"
   />
   <div class="icon-wrapper">
-    <ng-content select="[END]"/>
+    <ng-content select="[END]" />
   </div>
 </div>

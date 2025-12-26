@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -6,11 +6,11 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import {UK_TYPE} from '@utils/ui-kit/definitions';
+import { UK_TYPE } from '@utils/ui-kit/definitions';
 
-import type {IconName} from '../../definitions';
-import {UkIconComponent} from '../icon/icon.component';
-import {UkTextComponent} from '../public-api';
+import type { IconName } from '../../definitions';
+import { UkIconComponent } from '../icon/icon.component';
+import { UkTextComponent } from '../public-api';
 
 @Component({
   standalone: true,

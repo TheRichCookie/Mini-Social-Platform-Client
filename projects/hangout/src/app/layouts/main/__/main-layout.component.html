@@ -1,10 +1,19 @@
 <div class="comp main-layout">
   <main [style.max-width.px]="appMobileWidth">
     <div class="header" [style.max-height.px]="CONFIG.COMMON.APP_HEADER_HEIGHT">
-        <hang-header />
+      <hang-header />
     </div>
 
-    <div class="main" [style.height]="'calc(100% - ' + CONFIG.COMMON.APP_HEADER_HEIGHT + 'px - ' + CONFIG.COMMON.APP_TAB_BAR_HEIGHT + 'px)'">
+    <div
+      class="main"
+      [style.height]="
+        'calc(100% - ' +
+        CONFIG.COMMON.APP_HEADER_HEIGHT +
+        'px - ' +
+        CONFIG.COMMON.APP_TAB_BAR_HEIGHT +
+        'px)'
+      "
+    >
       <router-outlet />
     </div>
 

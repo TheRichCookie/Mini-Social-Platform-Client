@@ -1,7 +1,7 @@
-import {inject} from '@angular/core';
+import { inject } from '@angular/core';
 
-import {UkAlertService} from '../../alert/alert.service';
-import type {PlatformType} from '../platforms-common.service';
+import { UkAlertService } from '../../alert/alert.service';
+import type { PlatformType } from '../platforms-common.service';
 
 export class UkShare {
   private readonly alertService = inject(UkAlertService);
@@ -52,7 +52,7 @@ export class UkShare {
     }
 
     try {
-      await navigator.share({title, text, url});
+      await navigator.share({ title, text, url });
     } catch (error) {
       const err = error as Error;
 
@@ -87,10 +87,10 @@ export class UkShare {
   }
 
   private async webShareImage(image: ArrayBuffer | string): Promise<void> {
-    const file = new File([image], 'shared-image.png', {type: 'png'});
+    const file = new File([image], 'shared-image.png', { type: 'png' });
     const fileArray = [file];
 
-    if (!navigator.canShare?.({files: fileArray})) {
+    if (!navigator.canShare?.({ files: fileArray })) {
       this.alertService.error('مرورگر شما از اشتراک گذاری پشتیبانی نمی کند');
 
       return;

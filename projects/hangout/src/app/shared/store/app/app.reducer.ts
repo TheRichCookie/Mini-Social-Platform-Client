@@ -1,10 +1,10 @@
-import type {Action} from '@ngrx/store';
-import {createReducer, on} from '@ngrx/store';
+import type { Action } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import * as APP_ACTIONS from '@store/app/app.action';
-import {produce} from 'immer';
+import { produce } from 'immer';
 
-import {APP_INITIAL_STATE} from './app.initial-state';
-import type {HangAppState} from './app.state';
+import { APP_INITIAL_STATE } from './app.initial-state';
+import type { HangAppState } from './app.state';
 
 const reducer = createReducer(
   APP_INITIAL_STATE,

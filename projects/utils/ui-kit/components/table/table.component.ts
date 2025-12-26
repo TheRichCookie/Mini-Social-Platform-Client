@@ -1,5 +1,5 @@
-import {CommonModule} from '@angular/common';
-import type {TemplateRef} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import type { TemplateRef } from '@angular/core';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -15,10 +15,10 @@ import {
   UkIconComponent,
   UkPaginationComponent,
 } from '@utils/ui-kit/components';
-import {DEFAULT, UK_TYPE} from '@utils/ui-kit/definitions';
-import {TableModule} from 'primeng/table';
+import { DEFAULT, UK_TYPE } from '@utils/ui-kit/definitions';
+import { TableModule } from 'primeng/table';
 
-import type {UkTableOptions} from '../../definitions/components/table/table.interface';
+import type { UkTableOptions } from '../../definitions/components/table/table.interface';
 
 @Component({
   standalone: true,

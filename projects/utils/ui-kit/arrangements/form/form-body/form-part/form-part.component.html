@@ -1,37 +1,34 @@
 <div
-    class="uk form-part"
-    [ngClass]="[
-        'uk-form-part-background-color-' + backgroundColor,
-        'uk-form-part-crud-mode-' + crudMode,
-        'uk-form-part-is-disabled-' + isDisabled,
-    ]"
+  class="uk form-part"
+  [ngClass]="[
+    'uk-form-part-background-color-' + backgroundColor,
+    'uk-form-part-crud-mode-' + crudMode,
+    'uk-form-part-is-disabled-' + isDisabled,
+  ]"
 >
-    <div class="header">
-        <div class="start">
-            <div class="action">
-                <ng-content select="[START_ACTION]" />
-            </div>
-            <div
-                *ngIf="title"
-                class="title"
-            >
-                <!-- <uk-text
+  <div class="header">
+    <div class="start">
+      <div class="action">
+        <ng-content select="[START_ACTION]" />
+      </div>
+      <div *ngIf="title" class="title">
+        <!-- <uk-text
                     [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS"
                     [horizontalAlignment]="UK_TYPE.TEXT.HORIZONTAL_ALIGNMENT.START"
                     [typography]="UK_TYPE.TEXT.TYPOGRAPHY.H_4"
                 >
                     {{ title }}
                 </uk-text> -->
-            </div>
-            <div class="title content">
-                <ng-content select="[TITLE]" />
-            </div>
-        </div>
-        <div class="end">
-            <div class="action">
-                <ng-content select="[END_ACTION]" />
-            </div>
-        </div>
+      </div>
+      <div class="title content">
+        <ng-content select="[TITLE]" />
+      </div>
     </div>
-    <ng-content select="uk-form-row, uk-form-array" />
+    <div class="end">
+      <div class="action">
+        <ng-content select="[END_ACTION]" />
+      </div>
+    </div>
+  </div>
+  <ng-content select="uk-form-row, uk-form-array" />
 </div>

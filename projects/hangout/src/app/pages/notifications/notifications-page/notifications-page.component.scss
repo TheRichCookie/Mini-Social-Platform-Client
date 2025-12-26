@@ -1,0 +1,27 @@
+.notifications-page .list {
+  padding: 12px;
+}
+.notifications-page .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+.notifications-page .item.read {
+  opacity: 0.6;
+}
+.notifications-page .meta {
+  display: flex;
+  flex-direction: column;
+}
+.notifications-page .type {
+  font-weight: 600;
+}
+.notifications-page .actions button {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+}

@@ -1,4 +1,4 @@
-import type {IconName} from '../icon/icon.type';
+import type { IconName } from '../icon/icon.type';
 
 export interface UkStepperItem {
   route: string;

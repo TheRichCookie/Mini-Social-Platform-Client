@@ -1,44 +1,41 @@
-<div
-    class="uk date-picker"
-    [ngClass]="['uk-date-picker-' + cursor]"
->
-    <ng-container *ngIf="dataPickerType === DATE_PICKER_TYPE.INLINE">
-        <ngb-datepicker
-            #dp
-            [disabled]="isDisabled"
-            [firstDayOfWeek]="6"
-            [ngModel]="model"
-            (dateSelect)="onModelChange($event)"
-            (navigate)="date = $event.next"
-            [startDate]="model"
-            (ngModelChange)="onModelChange($event)"
-        />
-    </ng-container>
+<div class="uk date-picker" [ngClass]="['uk-date-picker-' + cursor]">
+  <ng-container *ngIf="dataPickerType === DATE_PICKER_TYPE.INLINE">
+    <ngb-datepicker
+      #dp
+      [disabled]="isDisabled"
+      [firstDayOfWeek]="6"
+      [ngModel]="model"
+      (dateSelect)="onModelChange($event)"
+      (navigate)="date = $event.next"
+      [startDate]="model"
+      (ngModelChange)="onModelChange($event)"
+    />
+  </ng-container>
 
-    <ng-container *ngIf="dataPickerType === DATE_PICKER_TYPE.POPUP">
-        <div class="control-wrapper">
-            <uk-button (click)="dp.open()">
-                <uk-icon
-                    [cursor]="UK_TYPE.ICON.CURSOR.POINTER"
-                    [fgColor]="UK_TYPE.ICON.FG_COLOR.CONTENT_SECONDARY"
-                    [name]="UK_TYPE.ICON.NAME.AT"
-                    [size]="UK_TYPE.ICON.SIZE.LARGE"
-                />
-            </uk-button>
-            <input
-                #dp="ngbDatepicker"
-                name="dp"
-                ngbDatepicker
-                placeholder="yyyy-mm-dd"
-                class="form-control"
-                [disabled]="isDisabled"
-                [firstDayOfWeek]="6"
-                [ngModel]="model"
-                (click)="dp.toggle()"
-                (dateSelect)="onModelChange($event)"
-                (ngModelChange)="onModelChange($event)"
-                [startDate]="model"
-            />
-        </div>
-    </ng-container>
+  <ng-container *ngIf="dataPickerType === DATE_PICKER_TYPE.POPUP">
+    <div class="control-wrapper">
+      <uk-button (click)="dp.open()">
+        <uk-icon
+          [cursor]="UK_TYPE.ICON.CURSOR.POINTER"
+          [fgColor]="UK_TYPE.ICON.FG_COLOR.CONTENT_SECONDARY"
+          [name]="UK_TYPE.ICON.NAME.AT"
+          [size]="UK_TYPE.ICON.SIZE.LARGE"
+        />
+      </uk-button>
+      <input
+        #dp="ngbDatepicker"
+        name="dp"
+        ngbDatepicker
+        placeholder="yyyy-mm-dd"
+        class="form-control"
+        [disabled]="isDisabled"
+        [firstDayOfWeek]="6"
+        [ngModel]="model"
+        (click)="dp.toggle()"
+        (dateSelect)="onModelChange($event)"
+        (ngModelChange)="onModelChange($event)"
+        [startDate]="model"
+      />
+    </div>
+  </ng-container>
 </div>

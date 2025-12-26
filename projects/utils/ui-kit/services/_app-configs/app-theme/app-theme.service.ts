@@ -1,6 +1,6 @@
-import {DOCUMENT} from '@angular/common';
-import {inject, Injectable} from '@angular/core';
-import {Subject} from 'rxjs';
+import { DOCUMENT } from '@angular/common';
+import { inject, Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 export enum UkAppTheme {
   DARK = 'DARK',

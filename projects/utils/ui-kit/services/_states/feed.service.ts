@@ -1,11 +1,13 @@
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {inject, Injectable} from '@angular/core';
-import type {FeedItemModel} from '@utils/ui-kit/definitions/swagger/feed.dto';
 import {UkApiHeaderService} from '@utils/ui-kit/services';
 import type {Observable} from 'rxjs';
 
-import type {UkResponse} from '../../definitions';
 import {UkConfigApiServices, UkConfigApiVersions} from '../../definitions';
+import type {
+  CommonResponseViewModel,
+  FeedArrayResponse,
+} from '../../definitions/swagger/swagger';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +19,7 @@ export class UkFeedService {
   public getFeed(
     page: number,
     limit: number,
-  ): Observable<UkResponse<FeedItemModel>> {
+  ): Observable<CommonResponseViewModel<FeedArrayResponse>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.FEED,
       apiHeaderVersion: UkConfigApiVersions.NONE,
@@ -28,9 +30,12 @@ export class UkFeedService {
       .set('page', page.toString())
       .set('limit', limit.toString());
 
-    return this.httpClient.get<UkResponse<FeedItemModel>>(URI, {
-      headers: HEADERS,
-      params: params,
-    });
+    return this.httpClient.get<CommonResponseViewModel<FeedArrayResponse>>(
+      URI,
+      {
+        headers: HEADERS,
+        params: params,
+      },
+    );
   }
 }

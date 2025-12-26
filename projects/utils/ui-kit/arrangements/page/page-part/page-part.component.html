@@ -1,15 +1,15 @@
 <div
-    class="uk page-part"
-    [ngClass]="[
-        'uk-page-part-bottom-margin-' + bottomMargin,
-        'uk-page-part-background-color-' + backgroundColor,
-        'uk-page-part-side-paddings-' + sidePaddings,
-        'uk-page-part-top-padding-' + topPadding,
-        'uk-page-part-bottom-padding-' + bottomPadding,
-    ]"
+  class="uk page-part"
+  [ngClass]="[
+    'uk-page-part-bottom-margin-' + bottomMargin,
+    'uk-page-part-background-color-' + backgroundColor,
+    'uk-page-part-side-paddings-' + sidePaddings,
+    'uk-page-part-top-padding-' + topPadding,
+    'uk-page-part-bottom-padding-' + bottomPadding,
+  ]"
 >
-    <div class="title">
-        <ng-content select="[PART_TITLE]" />
-    </div>
-    <ng-content />
+  <div class="title">
+    <ng-content select="[PART_TITLE]" />
+  </div>
+  <ng-content />
 </div>

@@ -1,11 +1,13 @@
 import {HttpClient} from '@angular/common/http';
 import {inject, Injectable} from '@angular/core';
-import type {LikesCount} from '@utils/ui-kit/definitions/swagger/like.dto';
 import {UkApiHeaderService} from '@utils/ui-kit/services';
 import type {Observable} from 'rxjs';
 
-import type {UkResponse} from '../../definitions';
 import {UkConfigApiServices, UkConfigApiVersions} from '../../definitions';
+import type {
+  CommonResponseViewModel,
+  LikesCountResponse,
+} from '../../definitions/swagger/swagger';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +16,9 @@ export class UkLikeService {
   private readonly httpClient = inject(HttpClient);
   private readonly apiHeaderService = inject(UkApiHeaderService);
 
-  public getLikes(postId: string): Observable<UkResponse<LikesCount>> {
+  public getLikes(
+    postId: string,
+  ): Observable<CommonResponseViewModel<LikesCountResponse>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.LIKES,
       apiHeaderVersion: UkConfigApiVersions.NONE,
@@ -22,12 +26,15 @@ export class UkLikeService {
 
     const URI = `/${postId}`;
 
-    return this.httpClient.get<UkResponse<LikesCount>>(URI, {
-      headers: HEADERS,
-    });
+    return this.httpClient.get<CommonResponseViewModel<LikesCountResponse>>(
+      URI,
+      {
+        headers: HEADERS,
+      },
+    );
   }
 
-  public toggleLike(postId: string): Observable<UkResponse<object>> {
+  public toggleLike(postId: string): Observable<CommonResponseViewModel<void>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.LIKES,
       apiHeaderVersion: UkConfigApiVersions.NONE,
@@ -36,7 +43,7 @@ export class UkLikeService {
     const BODY = {};
     const URI = `/${postId}`;
 
-    return this.httpClient.post<UkResponse<object>>(URI, BODY, {
+    return this.httpClient.post<CommonResponseViewModel<void>>(URI, BODY, {
       headers: HEADERS,
     });
   }

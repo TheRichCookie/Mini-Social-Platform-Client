@@ -1,6 +1,6 @@
-import {createSelector} from '@ngrx/store';
-import type {HangAuthState} from '@pages/auth/_store/auth.state';
-import type {HangBaseState} from '@store/_base/_base.state';
+import { createSelector } from '@ngrx/store';
+import type { HangAuthState } from '@pages/auth/_store/auth.state';
+import type { HangBaseState } from '@store/_base/_base.state';
 
 export const AUTH_STATE = (state: HangBaseState): HangAuthState => state.auth;
 

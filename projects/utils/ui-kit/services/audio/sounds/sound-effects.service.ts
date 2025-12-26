@@ -1,8 +1,8 @@
-import {inject, Injectable} from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 
-import {UkAudioService} from '../audio.service';
-import {sprite} from './sound-effects.const';
-import type {SoundEffects} from './sound-effects.enum';
+import { UkAudioService } from '../audio.service';
+import { sprite } from './sound-effects.const';
+import type { SoundEffects } from './sound-effects.enum';
 
 @Injectable({
   providedIn: 'root',

@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -6,10 +6,10 @@ import {
   Input,
   TemplateRef,
 } from '@angular/core';
-import type {BooleanType, RowLinkStatus} from '@utils/ui-kit/definitions';
-import {DEFAULT, UK_TYPE} from '@utils/ui-kit/definitions';
+import type { BooleanType, RowLinkStatus } from '@utils/ui-kit/definitions';
+import { DEFAULT, UK_TYPE } from '@utils/ui-kit/definitions';
 
-import {UkTextComponent} from '../text/text.component';
+import { UkTextComponent } from '../text/text.component';
 
 @Component({
   selector: 'uk-row-link',
@@ -22,10 +22,10 @@ export class UkRowLinkComponent {
   @Input()
   public status: RowLinkStatus = DEFAULT.rowLink.status;
 
-  @ContentChild('START_ICON', {read: TemplateRef})
+  @ContentChild('START_ICON', { read: TemplateRef })
   public startIconTemplate!: TemplateRef<unknown>;
 
-  @ContentChild('END_ICON', {read: TemplateRef})
+  @ContentChild('END_ICON', { read: TemplateRef })
   public endIconTemplate!: TemplateRef<unknown>;
 
   @Input()

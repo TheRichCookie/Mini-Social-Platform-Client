@@ -1,2 +1,2 @@
-import config from './configs/code-quality/lint/index.mjs';
+import config from "./configs/code-quality/lint/index.mjs";
 export default config;

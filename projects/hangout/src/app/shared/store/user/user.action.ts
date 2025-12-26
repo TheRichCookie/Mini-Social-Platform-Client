@@ -1,5 +1,5 @@
-import {createAction, props} from '@ngrx/store';
-import type {CommonErrorResponse} from '@utils/ui-kit/definitions';
+import { createAction, props } from '@ngrx/store';
+import type { CommonErrorResponse } from '@utils/ui-kit/definitions';
 
 // general
 export const SET_USER_DATA = createAction(

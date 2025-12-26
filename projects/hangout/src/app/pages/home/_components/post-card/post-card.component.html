@@ -1,0 +1,29 @@
+<div class="post-card">
+  <div class="post-header">
+    <div class="avatar">{{ post.author.username.charAt(0) }}</div>
+    <div class="meta">
+      <div class="username">{{ post.author.username }}</div>
+      <div class="time">{{ post.createdAt | date: "short" }}</div>
+    </div>
+  </div>
+
+  <div class="post-body">{{ post.content }}</div>
+
+  <div class="post-actions">
+    <button (click)="toggleLike()" [class.liked]="post.isLikedByUser">
+      {{ post.isLikedByUser ? "Unlike" : "Like" }} ({{ post.likeCount }})
+    </button>
+  </div>
+
+  <div class="comments">
+    <div *ngFor="let c of post.comments">
+      <div class="comment-user">{{ c.user.username }}:</div>
+      <div class="comment-text">{{ c.text }}</div>
+    </div>
+  </div>
+
+  <div class="add-comment">
+    <input [(ngModel)]="newComment" placeholder="Write a comment..." />
+    <button (click)="addComment()">Send</button>
+  </div>
+</div>

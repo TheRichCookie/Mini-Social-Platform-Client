@@ -1,4 +1,4 @@
-import type {FormControl} from '@angular/forms';
+import type { FormControl } from '@angular/forms';
 
 export interface HangSignInForm {
   email: FormControl<string>;

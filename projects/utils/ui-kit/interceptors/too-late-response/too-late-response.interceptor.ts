@@ -1,7 +1,7 @@
-import type {HttpInterceptorFn} from '@angular/common/http';
-import {inject} from '@angular/core';
-import {UkLoggerPart, UkLoggerService} from '@utils/ui-kit/services';
-import {finalize} from 'rxjs';
+import type { HttpInterceptorFn } from '@angular/common/http';
+import { inject } from '@angular/core';
+import { UkLoggerPart, UkLoggerService } from '@utils/ui-kit/services';
+import { finalize } from 'rxjs';
 
 export const TOO_LATE_RESPONSE_INTERCEPTOR_FUNCTIONAL: HttpInterceptorFn = (
   req,

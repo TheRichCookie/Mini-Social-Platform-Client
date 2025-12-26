@@ -1,14 +1,15 @@
 import {HttpClient} from '@angular/common/http';
 import {inject, Injectable} from '@angular/core';
-import type {
-  AddCommentRequest,
-  CommentModel,
-} from '@utils/ui-kit/definitions/swagger/comment.dto';
 import {UkApiHeaderService} from '@utils/ui-kit/services';
 import type {Observable} from 'rxjs';
 
-import type {UkResponse} from '../../definitions';
 import {UkConfigApiServices, UkConfigApiVersions} from '../../definitions';
+import type {
+  AddCommentRequest,
+  AddCommentResponse,
+  CommentArrayResponse,
+  CommonResponseViewModel,
+} from '../../definitions/swagger/swagger';
 
 @Injectable({
   providedIn: 'root',
@@ -17,22 +18,27 @@ export class UkCommentService {
   private readonly httpClient = inject(HttpClient);
   private readonly apiHeaderService = inject(UkApiHeaderService);
 
-  public getPostComments(postId: number): Observable<UkResponse<CommentModel>> {
+  public getPostComments(
+    postId: string,
+  ): Observable<CommonResponseViewModel<CommentArrayResponse>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.COMMENTS,
       apiHeaderVersion: UkConfigApiVersions.NONE,
     });
     const URI = `/${postId}`;
 
-    return this.httpClient.get<UkResponse<CommentModel>>(URI, {
-      headers: HEADERS,
-    });
+    return this.httpClient.get<CommonResponseViewModel<CommentArrayResponse>>(
+      URI,
+      {
+        headers: HEADERS,
+      },
+    );
   }
 
   public addComment(
-    postId: number,
+    postId: string,
     body: AddCommentRequest,
-  ): Observable<UkResponse<CommentModel>> {
+  ): Observable<CommonResponseViewModel<AddCommentResponse>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.COMMENTS,
       apiHeaderVersion: UkConfigApiVersions.NONE,
@@ -41,14 +47,18 @@ export class UkCommentService {
     const BODY = body;
     const URI = `/${postId}`;
 
-    return this.httpClient.post<UkResponse<CommentModel>>(URI, BODY, {
-      headers: HEADERS,
-    });
+    return this.httpClient.post<CommonResponseViewModel<AddCommentResponse>>(
+      URI,
+      BODY,
+      {
+        headers: HEADERS,
+      },
+    );
   }
 
   public deleteComment(
-    commentId: number,
-  ): Observable<UkResponse<CommentModel>> {
+    commentId: string,
+  ): Observable<CommonResponseViewModel<void>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.COMMENTS,
       apiHeaderVersion: UkConfigApiVersions.NONE,
@@ -56,7 +66,7 @@ export class UkCommentService {
 
     const URI = `/${commentId}`;
 
-    return this.httpClient.delete<UkResponse<CommentModel>>(URI, {
+    return this.httpClient.delete<CommonResponseViewModel<void>>(URI, {
       headers: HEADERS,
     });
   }

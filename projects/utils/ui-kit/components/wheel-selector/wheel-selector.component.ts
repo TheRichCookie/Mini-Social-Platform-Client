@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import {CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
 import type {
   AfterViewInit,
   ElementRef,
@@ -19,11 +19,11 @@ import {
   ViewChildren,
 } from '@angular/core';
 
-import {UK_TYPE} from '../../definitions';
-import {UkTextComponent} from '../text/text.component';
-import type {UkWheelSelectorModel} from './wheel-selector.models';
+import { UK_TYPE } from '../../definitions';
+import { UkTextComponent } from '../text/text.component';
+import type { UkWheelSelectorModel } from './wheel-selector.models';
 
-export type {UkWheelSelectorModel as UkWheelSelector};
+export type { UkWheelSelectorModel as UkWheelSelector };
 declare let Audio: new () => HTMLAudioElement;
 
 interface DraggingInfo {
@@ -55,8 +55,8 @@ export class UkWheelSelectorComponent
   public data: UkWheelSelectorModel[] = [];
 
   @Output()
-  public readonly ON_CHANGE: EventEmitter<{gIndex: number; iIndex: number}> =
-    new EventEmitter<{gIndex: number; iIndex: number}>();
+  public readonly ON_CHANGE: EventEmitter<{ gIndex: number; iIndex: number }> =
+    new EventEmitter<{ gIndex: number; iIndex: number }>();
 
   @ViewChildren('pickerGroupLayer')
   public pickerGroupLayer!: QueryList<ElementRef<HTMLElement>>;
@@ -176,10 +176,10 @@ export class UkWheelSelectorComponent
   public addEventsForElement(el: HTMLElement): void {
     const _ = this.touchOrMouse.isTouchable;
     const eventHandlerList = [
-      {name: _ ? 'touchstart' : 'mousedown', handler: this.handleStart},
-      {name: _ ? 'touchmove' : 'mousemove', handler: this.handleMove},
-      {name: _ ? 'touchend' : 'mouseup', handler: this.handleEnd},
-      {name: _ ? 'touchcancel' : 'mouseleave', handler: this.handleCancel},
+      { name: _ ? 'touchstart' : 'mousedown', handler: this.handleStart },
+      { name: _ ? 'touchmove' : 'mousemove', handler: this.handleMove },
+      { name: _ ? 'touchend' : 'mouseup', handler: this.handleEnd },
+      { name: _ ? 'touchcancel' : 'mouseleave', handler: this.handleCancel },
     ];
 
     if (!_) {
@@ -393,7 +393,7 @@ export class UkWheelSelectorComponent
         this.currentIndexList[gIndex] = movedIndex;
 
         if (movedIndex !== this.lastCurrentIndexList[gIndex]) {
-          this.ON_CHANGE.emit({gIndex, iIndex: movedIndex});
+          this.ON_CHANGE.emit({ gIndex, iIndex: movedIndex });
         }
 
         this.lastCurrentIndexList = ([] as number[]).concat(
@@ -446,7 +446,7 @@ export class UkWheelSelectorComponent
   public getItemStyle(
     gIndex: number,
     iIndex: number,
-  ): {transform: string; opacity?: string} {
+  ): { transform: string; opacity?: string } {
     const gapCount = this.currentIndexList[gIndex] - iIndex;
 
     if (Math.abs(gapCount) < 90 / this.itemPerDegree) {
@@ -468,9 +468,9 @@ export class UkWheelSelectorComponent
     }
 
     if (gapCount > 0) {
-      return {transform: 'rotateX(90deg) translate3d(0, 0, 5.625em)'};
+      return { transform: 'rotateX(90deg) translate3d(0, 0, 5.625em)' };
     }
 
-    return {transform: 'rotateX(-90deg) translate3d(0, 0, 5.625em)'};
+    return { transform: 'rotateX(-90deg) translate3d(0, 0, 5.625em)' };
   }
 }

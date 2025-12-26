@@ -1,14 +1,14 @@
 <div class="uk star-field">
-    @for (star of stars; track $index) {
-        <div
-            class="star"
-            [style.--base-opacity]="star.baseOpacity"
-            [style.--flight-duration]="star.duration"
-            [style.animationDelay]="star.delay"
-            [style.height]="star.size"
-            [style.left]="star.left"
-            [style.opacity]="star.baseOpacity"
-            [style.width]="star.size"
-        ></div>
-    }
+  @for (star of stars; track $index) {
+    <div
+      class="star"
+      [style.--base-opacity]="star.baseOpacity"
+      [style.--flight-duration]="star.duration"
+      [style.animationDelay]="star.delay"
+      [style.height]="star.size"
+      [style.left]="star.left"
+      [style.opacity]="star.baseOpacity"
+      [style.width]="star.size"
+    ></div>
+  }
 </div>

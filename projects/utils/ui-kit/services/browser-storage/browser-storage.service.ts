@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import type {UkStorage, UkStoringProperty} from '@utils/ui-kit/definitions';
-import {UkLocalStoring, UkTempStoring} from '@utils/ui-kit/definitions';
+import { Injectable } from '@angular/core';
+import type { UkStorage, UkStoringProperty } from '@utils/ui-kit/definitions';
+import { UkLocalStoring, UkTempStoring } from '@utils/ui-kit/definitions';
 
 @Injectable({
   providedIn: 'root',

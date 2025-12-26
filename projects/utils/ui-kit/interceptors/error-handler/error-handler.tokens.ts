@@ -1,14 +1,18 @@
-import type {EnvironmentProviders} from '@angular/core';
-import {inject, InjectionToken, makeEnvironmentProviders} from '@angular/core';
+import type { EnvironmentProviders } from '@angular/core';
+import {
+  inject,
+  InjectionToken,
+  makeEnvironmentProviders,
+} from '@angular/core';
 
 import type {
   UkHttpErrorHandler,
   UkMatchableHttpErrorHandler,
 } from './error-handler.abstract';
-import {UkCorsErrorHandler} from './handlers/cors-error.handler';
-import {UkDefaultErrorHandler} from './handlers/default-error.handler';
-import {UkInternalServerErrorHandler} from './handlers/internal-server-error.handler';
-import {UkNotFoundErrorHandler} from './handlers/not-found-error.handler';
+import { UkCorsErrorHandler } from './handlers/cors-error.handler';
+import { UkDefaultErrorHandler } from './handlers/default-error.handler';
+import { UkInternalServerErrorHandler } from './handlers/internal-server-error.handler';
+import { UkNotFoundErrorHandler } from './handlers/not-found-error.handler';
 
 export const MATCHABLE_ERROR_HANDLERS_TOKEN =
   new InjectionToken<UkMatchableHttpErrorHandler>(

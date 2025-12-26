@@ -1,20 +1,21 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import {
-  DEFAULT,
+
+import type {
   DividerBgColor,
   DividerDisplay,
   DividerMargin,
   DividerSize,
 } from '../../definitions';
+import { DEFAULT } from '../../definitions';
 
 @Component({
   standalone: true,
   selector: 'uk-divider',
   imports: [CommonModule],
   templateUrl: './divider.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './divider.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UkDividerComponent {
   @Input()

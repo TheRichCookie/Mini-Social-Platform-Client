@@ -1,9 +1,14 @@
 <uk-page class="home-page" [bodyOverFlow]="UK_TYPE.PAGE.BODY_OVER_FLOW.SCROLL">
   <uk-page-body [fullHeight]="true">
     <uk-page-part [bottomMargin]="UK_TYPE.PAGE_PART.BOTTOM_MARGIN.NO">
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
+      <div class="feed">
+        <hang-post-card
+          *ngFor="let p of posts()"
+          [post]="p"
+          (liked)="onLiked($event)"
+          (commented)="onCommented($event)"
+        ></hang-post-card>
+      </div>
     </uk-page-part>
   </uk-page-body>
 </uk-page>

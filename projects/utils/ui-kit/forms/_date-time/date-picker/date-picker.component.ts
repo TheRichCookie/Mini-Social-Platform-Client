@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -7,16 +7,16 @@ import {
   inject,
   Input,
 } from '@angular/core';
-import type {ControlValueAccessor} from '@angular/forms';
-import {FormsModule, NG_VALUE_ACCESSOR} from '@angular/forms';
-import type {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import type { ControlValueAccessor } from '@angular/forms';
+import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+import type { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import {
   NgbCalendar,
   NgbCalendarPersian,
   NgbDatepickerI18n,
   NgbDatepickerModule,
 } from '@ng-bootstrap/ng-bootstrap';
-import type {DatePickerType, UkCursor} from '@utils/ui-kit/definitions';
+import type { DatePickerType, UkCursor } from '@utils/ui-kit/definitions';
 import {
   DEFAULT,
   UIKIT_EMPTY_FUNCTION,
@@ -24,11 +24,11 @@ import {
   UK_TYPE,
   UkDatePickerType,
 } from '@utils/ui-kit/definitions';
-import {UkDateService} from '@utils/ui-kit/services';
+import { UkDateService } from '@utils/ui-kit/services';
 
-import {UkButtonComponent} from '../../../components/button/button.component';
-import {UkIconComponent} from '../../../components/icon/icon.component';
-import {UkDatepickerI18nPersian} from './date-picker-i18n-persian';
+import { UkButtonComponent } from '../../../components/button/button.component';
+import { UkIconComponent } from '../../../components/icon/icon.component';
+import { UkDatepickerI18nPersian } from './date-picker-i18n-persian';
 
 @Component({
   selector: 'uk-date-picker',
@@ -48,8 +48,8 @@ import {UkDatepickerI18nPersian} from './date-picker-i18n-persian';
       useExisting: forwardRef(() => UkDatePickerComponent),
       multi: true,
     },
-    {provide: NgbCalendar, useClass: NgbCalendarPersian},
-    {provide: NgbDatepickerI18n, useClass: UkDatepickerI18nPersian},
+    { provide: NgbCalendar, useClass: NgbCalendarPersian },
+    { provide: NgbDatepickerI18n, useClass: UkDatepickerI18nPersian },
   ],
 })
 export class UkDatePickerComponent implements ControlValueAccessor {
@@ -64,7 +64,7 @@ export class UkDatePickerComponent implements ControlValueAccessor {
 
   public today = inject(NgbCalendar).getToday();
   public model!: NgbDateStruct;
-  public date!: {year: number; month: number};
+  public date!: { year: number; month: number };
   public isDisabled = false;
   public readonly UK_TYPE = UK_TYPE;
   public readonly DATE_PICKER_TYPE = UkDatePickerType;

@@ -1,15 +1,13 @@
-import type {OnDestroy} from '@angular/core';
+import type { OnDestroy } from '@angular/core';
 import {
   ChangeDetectionStrategy,
   Component,
   HostBinding,
   inject,
 } from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {Subscription} from 'rxjs';
+import { UkRouteAnimationService } from '@utils/ui-kit/animations';
 
-import {basePageAnimations} from './animations';
-import {UkRouteAnimationService} from '@utils/ui-kit/animations';
+import { basePageAnimations } from './animations';
 
 @Component({
   standalone: true,

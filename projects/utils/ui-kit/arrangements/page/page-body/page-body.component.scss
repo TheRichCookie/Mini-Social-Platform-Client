@@ -1,25 +1,25 @@
-@use 'core' as *;
+@use "core" as *;
 
 :host {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    width: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
 }
 
 .uk.page-body {
-    position: relative;
-    flex: 1;
+  position: relative;
+  flex: 1;
 
-    &.uk-page-body {
-        &-full-height {
-            &-TRUE {
-                display: flex;
-                flex-direction: column;
-                height: 100%;
-            }
-            &-FALSE {
-            }
-        }
+  &.uk-page-body {
+    &-full-height {
+      &-TRUE {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      &-FALSE {
+      }
     }
+  }
 }

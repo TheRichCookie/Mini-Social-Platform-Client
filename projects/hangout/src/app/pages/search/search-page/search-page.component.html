@@ -1,0 +1,29 @@
+<div class="search-root">
+  <input
+    [formControl]="ctrl"
+    placeholder="Search users by name"
+    [disabled]="loading()"
+  />
+
+  <div *ngIf="loading()" class="loading">Searching…</div>
+
+  <div *ngIf="error()" class="error">
+    {{ error() }} <button (click)="ctrl.setValue(ctrl.value)">Retry</button>
+  </div>
+
+  <div *ngIf="!loading() && results().length === 0" class="empty">
+    No results
+  </div>
+
+  <ul class="results">
+    <li *ngFor="let u of results()" class="item">
+      <div class="info">
+        <div class="name">{{ u.name || u.username }}</div>
+        <div class="meta">{{ u.email }}</div>
+      </div>
+      <button (click)="toggleFollow(u.id)" [disabled]="loading()">
+        {{ u.isFollowing ? "Unfollow" : "Follow" }}
+      </button>
+    </li>
+  </ul>
+</div>

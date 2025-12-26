@@ -31,6 +31,7 @@ import { fileURLToPath } from "node:url";
 export default tsEslint.config(
   {
     files: ["**/*.ts"],
+    ignores: ["**/.swagger/**"],
     languageOptions: {
       parserOptions: {
         ecmaVersion: 2021,

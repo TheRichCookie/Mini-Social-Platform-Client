@@ -1,8 +1,8 @@
-import type {HttpInterceptorFn} from '@angular/common/http';
-import {inject} from '@angular/core';
-import {UkConfigApiBaseUrls} from '@utils/ui-kit/definitions';
-import type {UkApiConfig} from '@utils/ui-kit/settings';
-import {GENERAL_TOKEN} from '@utils/ui-kit/settings';
+import type { HttpInterceptorFn } from '@angular/common/http';
+import { inject } from '@angular/core';
+import { UkConfigApiBaseUrls } from '@utils/ui-kit/definitions';
+import type { UkApiConfig } from '@utils/ui-kit/settings';
+import { GENERAL_TOKEN } from '@utils/ui-kit/settings';
 
 export const BASE_URL_INTERCEPTOR_FUNCTIONAL: HttpInterceptorFn = (
   request,
@@ -19,16 +19,16 @@ export const BASE_URL_INTERCEPTOR_FUNCTIONAL: HttpInterceptorFn = (
     return next(request);
   }
 
-  if (
-    request.url.startsWith('https://api.baman.club') ||
-    request.url.startsWith('assets/i18n')
-  ) {
-    return next(request);
-  }
+  // if (
+  //   request.url.startsWith('https://api.baman.club') ||
+  //   request.url.startsWith('assets/i18n')
+  // ) {
+  //   return next(request);
+  // }
 
   if (request.headers.has('X-Skip-Base-URL')) {
     return next(
-      request.clone({headers: request.headers.delete('X-Skip-Base-URL')}),
+      request.clone({ headers: request.headers.delete('X-Skip-Base-URL') }),
     );
   }
 
@@ -49,7 +49,7 @@ export const BASE_URL_INTERCEPTOR_FUNCTIONAL: HttpInterceptorFn = (
     ? requestUrl.slice(1, requestUrl.length)
     : requestUrl;
 
-  const API_REQ = request.clone({url: `${BASE_URL}/${REQ_URL}`});
+  const API_REQ = request.clone({ url: `${BASE_URL}/${REQ_URL}` });
 
   return next(API_REQ);
 };

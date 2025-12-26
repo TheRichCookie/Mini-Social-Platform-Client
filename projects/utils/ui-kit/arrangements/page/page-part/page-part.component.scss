@@ -1,95 +1,95 @@
-@use 'core' as *;
+@use "core" as *;
 
 $bottomMargin: 8px;
 $sideMargin: 20px;
 $titleBottomMargin: 12px;
 
 :host {
-    display: block;
+  display: block;
 
-    &:first-child {
-        margin-top: 8px;
+  &:first-child {
+    margin-top: 8px;
 
-        &.is-first-child-stick {
-            margin-top: 0;
-        }
+    &.is-first-child-stick {
+      margin-top: 0;
     }
+  }
 
-    &.bottom-margin-auto {
-        margin-bottom: $bottomMargin;
+  &.bottom-margin-auto {
+    margin-bottom: $bottomMargin;
 
-        &:last-child {
-            margin-bottom: 0;
-        }
+    &:last-child {
+      margin-bottom: 0;
     }
+  }
 
-    &.bottom-margin-no {
-        margin-bottom: 0;
-    }
+  &.bottom-margin-no {
+    margin-bottom: 0;
+  }
 
-    &.bottom-margin-yes {
-        margin-bottom: $bottomMargin;
-    }
+  &.bottom-margin-yes {
+    margin-bottom: $bottomMargin;
+  }
 }
 
 .uk.page-part {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 
-    > .title {
-        display: none;
+  > .title {
+    display: none;
 
-        &:not(:empty) {
-            display: block;
-            margin-bottom: $titleBottomMargin;
-        }
+    &:not(:empty) {
+      display: block;
+      margin-bottom: $titleBottomMargin;
+    }
+  }
+
+  &.uk-page-part {
+    // sidePaddings
+    &-side-paddings {
+      &-BOTH {
+        padding-right: $sideMargin;
+        padding-left: $sideMargin;
+      }
+
+      &-NONE {
+        padding-right: 0;
+        padding-left: 0;
+      }
     }
 
-    &.uk-page-part {
-        // sidePaddings
-        &-side-paddings {
-            &-BOTH {
-                padding-right: $sideMargin;
-                padding-left: $sideMargin;
-            }
+    // topPadding
+    &-top-padding {
+      &-TRUE {
+        padding-top: 16px;
+      }
 
-            &-NONE {
-                padding-right: 0;
-                padding-left: 0;
-            }
-        }
-
-        // topPadding
-        &-top-padding {
-            &-TRUE {
-                padding-top: 16px;
-            }
-
-            &-FALSE {
-                padding-top: 0;
-            }
-        }
-
-        // bottomPadding
-        &-bottom-padding {
-            &-TRUE {
-                padding-bottom: 16px;
-            }
-
-            &-FALSE {
-                padding-bottom: 0;
-            }
-        }
-
-        // backgroundColor
-        &-background-color {
-            &-TRANSPARENT {
-                background-color: transparent;
-            }
-
-            &-WHITE {
-                background-color: $color-background-surface-00;
-            }
-        }
+      &-FALSE {
+        padding-top: 0;
+      }
     }
+
+    // bottomPadding
+    &-bottom-padding {
+      &-TRUE {
+        padding-bottom: 16px;
+      }
+
+      &-FALSE {
+        padding-bottom: 0;
+      }
+    }
+
+    // backgroundColor
+    &-background-color {
+      &-TRANSPARENT {
+        background-color: transparent;
+      }
+
+      &-WHITE {
+        background-color: $color-background-surface-00;
+      }
+    }
+  }
 }

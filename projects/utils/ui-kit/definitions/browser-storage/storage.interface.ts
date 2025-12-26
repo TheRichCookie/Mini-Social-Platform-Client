@@ -1,4 +1,4 @@
-import type {UkStoringProperty} from './storing-property.enum';
+import type { UkStoringProperty } from './storing-property.enum';
 
 export interface UkStorage {
   get: (key: UkStoringProperty, defaultValue?: string | null) => string | null;

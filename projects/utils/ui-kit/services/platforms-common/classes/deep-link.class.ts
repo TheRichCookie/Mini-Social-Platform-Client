@@ -1,7 +1,7 @@
-import {inject, Injectable} from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 
-import {UkAlertService} from '../../alert/alert.service';
-import type {PlatformType} from '../platforms-common.service';
+import { UkAlertService } from '../../alert/alert.service';
+import type { PlatformType } from '../platforms-common.service';
 
 @Injectable()
 export class UkDeepLink {

@@ -1,33 +1,32 @@
 .uk.image {
+  width: 100%;
+  height: 100%;
+
+  img {
     width: 100%;
     height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+  }
 
-    img {
-        width: 100%;
-        height: 100%;
-        display: block;
-        object-fit: cover;
-        object-position: center;
+  &.uk-image {
+    &-object-fit {
+      &-COVER {
+        img {
+          object-fit: cover;
+        }
+      }
+      &-CONTAIN {
+        img {
+          object-fit: contain;
+        }
+      }
+      &-FILL {
+        img {
+          object-fit: fill;
+        }
+      }
     }
-
-
-    &.uk-image {
-        &-object-fit {
-            &-COVER {
-                img {
-                    object-fit: cover;
-                }
-            }
-            &-CONTAIN {
-                img {
-                    object-fit: contain;
-                }
-            }
-            &-FILL {
-                img {
-                    object-fit: fill;
-                }
-            }
-        }        
-    }
+  }
 }

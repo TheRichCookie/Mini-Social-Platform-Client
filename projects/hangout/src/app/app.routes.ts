@@ -32,6 +32,12 @@ export const APP_ROUTES = {
   FRIENDS: {
     ROOT: 'friends',
   },
+  SEARCH: {
+    ROOT: 'search',
+  },
+  NOTIFICATION: {
+    ROOT: 'notifications',
+  },
   MORE: {
     ROOT: 'more',
   },

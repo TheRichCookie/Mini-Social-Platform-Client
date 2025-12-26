@@ -1,5 +1,5 @@
-import {CommonModule} from '@angular/common';
-import type {ElementRef} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import type { ElementRef } from '@angular/core';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -8,8 +8,8 @@ import {
   inject,
   ViewChild,
 } from '@angular/core';
-import type {ControlValueAccessor} from '@angular/forms';
-import {NG_VALUE_ACCESSOR} from '@angular/forms';
+import type { ControlValueAccessor } from '@angular/forms';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import {
   UIKIT_EMPTY_FUNCTION,
   UIKIT_EMPTY_FUNCTION_UNI_ARGUMENT,
@@ -33,17 +33,17 @@ export class UkTimePickerComponent implements ControlValueAccessor {
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
   private isDragging = false;
 
-  @ViewChild('hourSvg', {static: true})
+  @ViewChild('hourSvg', { static: true })
   public hourSvg!: ElementRef<SVGSVGElement>;
 
-  @ViewChild('minuteSvg', {static: true})
+  @ViewChild('minuteSvg', { static: true })
   public minuteSvg!: ElementRef<SVGSVGElement>;
 
   public selectedHour = 12;
   public selectedMinute = 0;
   public isPM = false;
-  public hours = Array.from({length: 12}, (_, i) => i + 1);
-  public minutes = Array.from({length: 60}, (_, i) => i + 1);
+  public hours = Array.from({ length: 12 }, (_, i) => i + 1);
+  public minutes = Array.from({ length: 60 }, (_, i) => i + 1);
 
   public changed = UIKIT_EMPTY_FUNCTION_UNI_ARGUMENT;
   public touched = UIKIT_EMPTY_FUNCTION;

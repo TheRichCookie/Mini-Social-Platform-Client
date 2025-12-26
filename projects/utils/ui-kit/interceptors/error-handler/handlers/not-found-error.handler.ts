@@ -1,12 +1,12 @@
-import type {HttpRequest, HttpResponse} from '@angular/common/http';
-import {HttpErrorResponse, HttpStatusCode} from '@angular/common/http';
-import {Injectable} from '@angular/core';
-import type {Observable} from 'rxjs';
-import {throwError} from 'rxjs';
+import type { HttpRequest, HttpResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import type { Observable } from 'rxjs';
+import { throwError } from 'rxjs';
 
-import type {UkMatchableHttpErrorHandler} from '../error-handler.abstract';
+import type { UkMatchableHttpErrorHandler } from '../error-handler.abstract';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class UkNotFoundErrorHandler implements UkMatchableHttpErrorHandler {
   public handleError(
     req: HttpRequest<unknown>,

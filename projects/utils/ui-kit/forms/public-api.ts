@@ -1,8 +1,6 @@
 export * from './_date-time/date-picker/date-picker.component';
 export * from './_date-time/date-select/date-select.component';
-export * from './_date-time/date-time-picker/date-time-picker.component';
 export * from './_date-time/time-picker/time-picker.component';
-export * from './_date-time/time-slider/controller/time-slider-controller.component';
 export * from './check-box/check-box.component';
 export * from './check-box-group/check-box-group.component';
 export * from './file-uploader/file-uploader.component';
@@ -10,7 +8,6 @@ export * from './input/input.component';
 export * from './otp-input/otp-input.component';
 export * from './radio-button/radio-button.component';
 export * from './radio-button-group/radio-button-group.component';
-export * from './range-slider/range-slider.component';
 export * from './search-bar/search-bar.component';
 export * from './select/select.component';
 export * from './select-box/select-check-box/select-check-box.component';

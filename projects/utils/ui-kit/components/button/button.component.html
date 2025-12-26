@@ -3,20 +3,20 @@
   [class.disabled]="disabled"
   [disabled]="disabled"
   [ngClass]="[
-        'uk-button-bg-color-' + bgColor,
-        'uk-button-fg-color-' + fgColor,
-        'uk-button-display-' + display,
-        'uk-button-border-color-' + borderColor,
-        'uk-button-padding-' + padding,
-        'uk-button-cursor-' + cursor,
-        'uk-button-height-' + height,
-        'uk-button-border-radius-' + borderRadius,
-        'uk-button-uk-type-' + ukType,
-    ]"
+    'uk-button-bg-color-' + bgColor,
+    'uk-button-fg-color-' + fgColor,
+    'uk-button-display-' + display,
+    'uk-button-border-color-' + borderColor,
+    'uk-button-padding-' + padding,
+    'uk-button-cursor-' + cursor,
+    'uk-button-height-' + height,
+    'uk-button-border-radius-' + borderRadius,
+    'uk-button-uk-type-' + ukType,
+  ]"
   [type]="buttonType"
 >
   <div class="start-wrapper">
-    <ng-content select="[START]"/>
+    <ng-content select="[START]" />
   </div>
   <uk-text
     [fgColor]="disabled ? UK_TYPE.TEXT.FG_COLOR.CONTENT_DISABLED : fgColor"
@@ -24,9 +24,9 @@
     [typography]="typography"
     [verticalAlignment]="'CENTER'"
   >
-    <ng-content/>
+    <ng-content />
   </uk-text>
   <div class="end-wrapper">
-    <ng-content select="[END]"/>
+    <ng-content select="[END]" />
   </div>
 </button>

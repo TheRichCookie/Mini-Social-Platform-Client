@@ -1,6 +1,6 @@
-import type {OnDestroy, OnInit} from '@angular/core';
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import type {UkStar} from '@utils/ui-kit/definitions/components/star-field/star-field.interface';
+import type { OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import type { UkStar } from '@utils/ui-kit/definitions/components/star-field/star-field.interface';
 
 @Component({
   selector: 'uk-star-field',

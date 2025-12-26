@@ -6,20 +6,20 @@ import {
   inject,
   Input,
 } from '@angular/core';
-import type {ControlValueAccessor} from '@angular/forms';
+import type { ControlValueAccessor } from '@angular/forms';
 import {
   FormsModule,
   NG_VALUE_ACCESSOR,
   ReactiveFormsModule,
 } from '@angular/forms';
-import type {FilterTable} from '@utils/ui-kit/definitions';
+import type { FilterTable } from '@utils/ui-kit/definitions';
 import {
   FilterOperator,
   UIKIT_EMPTY_FUNCTION,
   UIKIT_EMPTY_FUNCTION_UNI_ARGUMENT,
   UK_TYPE,
 } from '@utils/ui-kit/definitions';
-import {UkSelectComponent} from '@utils/ui-kit/forms';
+import { UkSelectComponent } from '@utils/ui-kit/forms';
 
 @Component({
   standalone: true,

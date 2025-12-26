@@ -1,4 +1,4 @@
-@use 'core' as *;
+@use "core" as *;
 
 $heightLarge: pxToRem(75);
 $heightMEDIUM: pxToRem(55);
@@ -20,7 +20,7 @@ $heightSMALL: pxToRem(40);
   position: relative;
 
   &::after {
-    content: '';
+    content: "";
     display: block;
     position: absolute;
     width: 100%;

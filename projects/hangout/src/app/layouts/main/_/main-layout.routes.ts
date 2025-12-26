@@ -26,6 +26,14 @@ export const MAIN_LAYOUT_ROUTES: HangRoutes = [
         canActivate: [UkUsersGuard],
       },
       {
+        path: APP_ROUTES.SEARCH.ROOT,
+        loadChildren: async () =>
+          import('../../../pages/search/_/search.routes').then(
+            (r) => r.SEARCH_ROUTES,
+          ),
+        canActivate: [UkUsersGuard],
+      },
+      {
         path: APP_ROUTES.FRIENDS.ROOT,
         loadChildren: async () =>
           import('../../../pages/friend/_/friend.routes').then(
@@ -38,6 +46,14 @@ export const MAIN_LAYOUT_ROUTES: HangRoutes = [
         loadChildren: async () =>
           import('../../../pages/profile/_/profile.routes').then(
             (r) => r.PROFILE_ROUTES,
+          ),
+        canActivate: [UkUsersGuard],
+      },
+      {
+        path: APP_ROUTES.NOTIFICATION.ROOT,
+        loadChildren: async () =>
+          import('../../../pages/notifications/_/notifications.routes').then(
+            (r) => r.NOTIFICATIONS_ROUTES,
           ),
         canActivate: [UkUsersGuard],
       },

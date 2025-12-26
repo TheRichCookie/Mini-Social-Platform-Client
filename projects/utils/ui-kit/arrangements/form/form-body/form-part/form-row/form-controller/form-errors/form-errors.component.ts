@@ -1,8 +1,8 @@
-import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import type {ValidationErrors} from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import type { ValidationErrors } from '@angular/forms';
 
-import {UkTextComponent} from '../../../../../../../components/text/text.component';
+import { UkTextComponent } from '../../../../../../../components/text/text.component';
 import {
   UK_TYPE,
   UkCustomIranianBankCardNumberErrors,

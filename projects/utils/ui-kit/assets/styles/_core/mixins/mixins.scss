@@ -1,33 +1,34 @@
 @mixin transition($type: all, $duration: 0.3s, $ease: ease-in) {
-    transition: $type $duration $ease;
+  transition: $type $duration $ease;
 }
 
 @mixin shadow() {
-    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
-    // box-shadow: 1px 1px 2px 0px #0000004D;
-    // box-shadow: 0px -2px 4px -2px #c7c7c7;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
+  // box-shadow: 1px 1px 2px 0px #0000004D;
+  // box-shadow: 0px -2px 4px -2px #c7c7c7;
 }
 // usage:
 // @include shadow();
 
 @mixin empty-status {
-    position: relative;
+  position: relative;
 
-    &::after {
-        content: '';
-        display: block;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        background-color: #2b2a2a;
-        opacity: 0.75;
-        cursor: not-allowed;
-        z-index: 9999;
-        cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAATJQTFRFAAAAampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqvb1Z8QAAAGZ0Uk5TAAIPJzQzJg4NRrju/f/tsUQLFbn19LUUSdT+561qR0hrsOnPQcItCQrV0wZ8+6oEddlFAQx98GE27KSX+PkH3xuJcQOR+nsWr36n/IUdmN3qP8MS755Dn8vyQrIZeqbOPM1ArmwlO8oFOwAAAVhJREFUeJyFkWlfAVEUxkdmzGAeSwy6tlFhUkM1ElLatClSlKWUlu//FbqziHrjvDnn+d/7O/ee5zDMorAt2VnOwdv+YcHpcouA6PH6/PN8ORCEFVIoPOORFZBoLJ5IyqlVgrX13/uUpzNZvVTYDSBndRMCIPKmWWe3VNouLxjCGSRpixe2g1B3IO3qQnMhmjF5cY+gtF+uoKpRxbsRM/oz2kENh/GjbAx1nkq7iLjBj08IpNMCw8hQ7VSzQELnZ+cNkAuFVkmApYkDIjRdXgG1a3MsgKPJIUKm7940gVveOKCtHPoYHniVuxTQaGkGV7xo64NoKdx3HkSQ1qP56U4XPePKk0Q8QPO5aBnRx2BoVP6Q7uroxeKvBGPLrPAbUHo3Tez0CSbK1N6PHFD5lBORr1EXmJRnC/HnpemiBmOFmQvBV61Tw9V2b/hntfqveQfLfQsasyh+AMDRKMTQTbjhAAAAAElFTkSuQmCC),
-            auto;
-    }
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: #2b2a2a;
+    opacity: 0.75;
+    cursor: not-allowed;
+    z-index: 9999;
+    cursor:
+      url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAATJQTFRFAAAAampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqvb1Z8QAAAGZ0Uk5TAAIPJzQzJg4NRrju/f/tsUQLFbn19LUUSdT+561qR0hrsOnPQcItCQrV0wZ8+6oEddlFAQx98GE27KSX+PkH3xuJcQOR+nsWr36n/IUdmN3qP8MS755Dn8vyQrIZeqbOPM1ArmwlO8oFOwAAAVhJREFUeJyFkWlfAVEUxkdmzGAeSwy6tlFhUkM1ElLatClSlKWUlu//FbqziHrjvDnn+d/7O/ee5zDMorAt2VnOwdv+YcHpcouA6PH6/PN8ORCEFVIoPOORFZBoLJ5IyqlVgrX13/uUpzNZvVTYDSBndRMCIPKmWWe3VNouLxjCGSRpixe2g1B3IO3qQnMhmjF5cY+gtF+uoKpRxbsRM/oz2kENh/GjbAx1nkq7iLjBj08IpNMCw8hQ7VSzQELnZ+cNkAuFVkmApYkDIjRdXgG1a3MsgKPJIUKm7940gVveOKCtHPoYHniVuxTQaGkGV7xo64NoKdx3HkSQ1qP56U4XPePKk0Q8QPO5aBnRx2BoVP6Q7uroxeKvBGPLrPAbUHo3Tez0CSbK1N6PHFD5lBORr1EXmJRnC/HnpemiBmOFmQvBV61Tw9V2b/hntfqveQfLfQsasyh+AMDRKMTQTbjhAAAAAElFTkSuQmCC),
+      auto;
+  }
 }
 // usage:
 // &.empty-status {
@@ -36,72 +37,71 @@
 // [ngClass]="{'empty-status': appStatusService.empty}"
 
 @mixin darkOverlayBgBlur {
-    background: rgba(33, 33, 33, 0.39);
-    @include shadow();
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(33, 33, 33, 0.3);
+  background: rgba(33, 33, 33, 0.39);
+  @include shadow();
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(33, 33, 33, 0.3);
 }
 // usage:
 // @include darkOverlayBgBlur();
 
 @mixin pointerOverlay {
-    position: relative;
+  position: relative;
 
-    &:after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        z-index: 9;
-        display: block;
-        cursor: pointer;
-    }
+  &:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 9;
+    display: block;
+    cursor: pointer;
+  }
 }
 // usage:
 // @include pointerOverlay();
 
 @mixin fullHeightBlock() {
-    display: block;
-    height: 100%;
-    min-height: 100%;
+  display: block;
+  height: 100%;
+  min-height: 100%;
 }
 // usage:
 // @include fullHeightBlock();
 
 @mixin fullHeightFlex() {
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }
 // usage:
 // @include fullHeightBlock();
 
 @mixin simpleList() {
-    padding: 0 pxToRem(24) 0 0;
+  padding: 0 pxToRem(24) 0 0;
 }
 // usage:
 // @include simpleList();
 
 @mixin simpleListItem() {
-    min-height: pxToRem(16);
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    position: relative;
-    margin-bottom: pxToRem(4);
+  min-height: pxToRem(16);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  margin-bottom: pxToRem(4);
 
-    &:before {
-        font-family: 'app-icon' !important;
-        content: '\e91f';
-        position: absolute;
-        right: pxToRem(-24);
-    }
+  &:before {
+    font-family: "app-icon" !important;
+    content: "\e91f";
+    position: absolute;
+    right: pxToRem(-24);
+  }
 }
 // usage:
 // @include simpleListItem();
-
 
 @mixin cursorPointerOverlay {
   position: relative;
@@ -115,10 +115,9 @@
     cursor: pointer;
     width: 100%;
     height: 100%;
-    content: '';
+    content: "";
   }
 }
-
 
 @mixin cursorNotAllowedOverlay {
   position: relative;
@@ -132,6 +131,6 @@
     cursor: not-allowed;
     width: 100%;
     height: 100%;
-    content: '';
+    content: "";
   }
 }

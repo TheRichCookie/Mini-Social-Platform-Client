@@ -1,16 +1,13 @@
-<div
-    class="uk switch"
-    [ngClass]="['uk-switch-cursor-' + cursor]"
->
-    <div class="input-wrapper">
-        <input
-            type="checkbox"
-            [id]="id"
-            [(ngModel)]="value"
-            [disabled]="isDisabled"
-            (click)="onChange(value)"
-        />
-        <div class="input-control"></div>
-    </div>
-    <ng-content select="uk-text" />
+<div class="uk switch" [ngClass]="['uk-switch-cursor-' + cursor]">
+  <div class="input-wrapper">
+    <input
+      type="checkbox"
+      [id]="id"
+      [(ngModel)]="value"
+      [disabled]="isDisabled"
+      (click)="onChange(value)"
+    />
+    <div class="input-control"></div>
+  </div>
+  <ng-content select="uk-text" />
 </div>

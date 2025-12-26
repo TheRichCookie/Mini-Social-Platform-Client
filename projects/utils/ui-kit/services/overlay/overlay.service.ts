@@ -3,10 +3,10 @@ import type {
   ConnectedPosition,
   OverlayRef,
 } from '@angular/cdk/overlay';
-import {Overlay, OverlayConfig} from '@angular/cdk/overlay';
-import {ComponentPortal} from '@angular/cdk/portal';
-import type {ComponentRef} from '@angular/core';
-import {DestroyRef, inject, Injectable} from '@angular/core';
+import { Overlay, OverlayConfig } from '@angular/cdk/overlay';
+import { ComponentPortal } from '@angular/cdk/portal';
+import type { ComponentRef } from '@angular/core';
+import { DestroyRef, inject, Injectable } from '@angular/core';
 
 export interface UkOverlayServiceOutput<T> {
   overlayRef: OverlayRef;
@@ -20,7 +20,7 @@ export interface UkCustomOverlayConfig extends OverlayConfig {
     | 'CENTER_BOTTOM'
     | 'CENTER'
     | 'CUSTOM_POSITION'
-    | {left: number; top: number};
+    | { left: number; top: number };
   inputs?: Map<string, unknown>;
 }
 

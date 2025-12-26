@@ -1,43 +1,31 @@
-<div
-    class="uk row-link"
-    [ngClass]="['uk-row-link-status-' + status]"
->
-    <div class="top">
-        <div
-            *ngIf="startIconTemplate"
-            class="icon start-icon"
-        >
-            <ng-container *ngTemplateOutlet="startIconTemplate" />
-        </div>
-        <div class="tetx">
-            <uk-text
-                [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS"
-                [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE_STRONG"
-            >
-                {{ title }}
-            </uk-text>
-        </div>
-        <div
-            *ngIf="endIconTemplate && status !== UK_TYPE.ROW_LINK.STATUS.BOX"
-            class="icon end-icon"
-        >
-<!--            <ng-container *endIconTemplate="startIconTemplate" />-->
-            >
-        </div>
+<div class="uk row-link" [ngClass]="['uk-row-link-status-' + status]">
+  <div class="top">
+    <div *ngIf="startIconTemplate" class="icon start-icon">
+      <ng-container *ngTemplateOutlet="startIconTemplate" />
+    </div>
+    <div class="tetx">
+      <uk-text
+        [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS"
+        [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE_STRONG"
+      >
+        {{ title }}
+      </uk-text>
     </div>
     <div
-        *ngIf="showBottom === UK_TYPE.UK.BOOLEAN.TRUE"
-        class="bottom"
+      *ngIf="endIconTemplate && status !== UK_TYPE.ROW_LINK.STATUS.BOX"
+      class="icon end-icon"
     >
-        <div
-            *ngIf="startIconTemplate"
-            class="icon-place-holder"
-        ></div>
-        <uk-text
-            [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_LOW_EMPHASIS"
-            [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_2"
-        >
-            {{ subTitle }}
-        </uk-text>
+      <!--            <ng-container *endIconTemplate="startIconTemplate" />-->
+      >
     </div>
+  </div>
+  <div *ngIf="showBottom === UK_TYPE.UK.BOOLEAN.TRUE" class="bottom">
+    <div *ngIf="startIconTemplate" class="icon-place-holder"></div>
+    <uk-text
+      [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_LOW_EMPHASIS"
+      [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_2"
+    >
+      {{ subTitle }}
+    </uk-text>
+  </div>
 </div>

@@ -1,40 +1,35 @@
 <div
-    role="button"
-    tabindex="0"
-    class="uk date-select"
-    [ngClass]="['uk-date-select-crud-mode-' + crudMode]"
-    (click)="showOverlay()"
-    (keydown.enter)="showOverlay()"
+  role="button"
+  tabindex="0"
+  class="uk date-select"
+  [ngClass]="['uk-date-select-crud-mode-' + crudMode]"
+  (click)="showOverlay()"
+  (keydown.enter)="showOverlay()"
 >
-    <div
-        *ngIf="J_DATE.day || J_DATE.month || J_DATE.year"
-        class="mode value"
+  <div *ngIf="J_DATE.day || J_DATE.month || J_DATE.year" class="mode value">
+    <uk-text
+      [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS"
+      [numeric]="UK_TYPE.TEXT.NUMERIC.PERSIAN"
+      [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_1"
     >
-        <uk-text
-            [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS"
-            [numeric]="UK_TYPE.TEXT.NUMERIC.PERSIAN"
-            [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_1"
-        >
-            {{ J_DATE.day }} {{ getSeparator() }} {{ persianMonths[J_DATE.month] }} {{ getSeparator() }}
-            {{ J_DATE.year }}
-        </uk-text>
-    </div>
+      {{ J_DATE.day }} {{ getSeparator() }} {{ persianMonths[J_DATE.month] }}
+      {{ getSeparator() }}
+      {{ J_DATE.year }}
+    </uk-text>
+  </div>
 
-    <div
-        *ngIf="!J_DATE.day && !J_DATE.month && !J_DATE.year"
-        class="mode empty"
+  <div *ngIf="!J_DATE.day && !J_DATE.month && !J_DATE.year" class="mode empty">
+    <uk-text
+      [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS"
+      [numeric]="UK_TYPE.TEXT.NUMERIC.PERSIAN"
+      [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_1"
     >
-        <uk-text
-            [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS"
-            [numeric]="UK_TYPE.TEXT.NUMERIC.PERSIAN"
-            [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_1"
-        >
-            {{ placeholder }}
-        </uk-text>
-    </div>
+      {{ placeholder }}
+    </uk-text>
+  </div>
 
-    <uk-icon
-        [name]="UK_TYPE.ICON.NAME.CHEVRON_DOWN"
-        [size]="UK_TYPE.ICON.SIZE.LARGE"
-    />
+  <uk-icon
+    [name]="UK_TYPE.ICON.NAME.CHEVRON_DOWN"
+    [size]="UK_TYPE.ICON.SIZE.LARGE"
+  />
 </div>

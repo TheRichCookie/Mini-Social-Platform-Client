@@ -1,7 +1,7 @@
-import type {HangAuthState} from '@pages/auth/_store/auth.state';
+import type { HangAuthState } from '@pages/auth/_store/auth.state';
 
 export const SIGN_IN: HangAuthState['signIn'] = {
-  request: {email: undefined!, password: undefined!},
+  request: { email: undefined!, password: undefined! },
   response: {
     userId: undefined!,
   },
@@ -13,7 +13,7 @@ export const SIGN_IN: HangAuthState['signIn'] = {
 };
 
 export const SIGN_UP: HangAuthState['signUp'] = {
-  request: {username: undefined!, email: undefined!, password: undefined!},
+  request: { username: undefined!, email: undefined!, password: undefined! },
   response: {
     userId: undefined!,
   },
@@ -25,7 +25,7 @@ export const SIGN_UP: HangAuthState['signUp'] = {
 };
 
 export const OTP: HangAuthState['otp'] = {
-  request: {userId: undefined!, otp: undefined!},
+  request: { userId: undefined!, otp: undefined! },
   response: {
     token: undefined!,
   },

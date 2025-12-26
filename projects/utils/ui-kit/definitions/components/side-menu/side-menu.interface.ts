@@ -1,4 +1,4 @@
-import type {IconName} from '@utils/ui-kit/definitions';
+import type { IconName } from '@utils/ui-kit/definitions';
 
 export interface UkMenu {
   name: string;

@@ -1,4 +1,4 @@
-import type {UkStorage} from './storage.interface';
+import type { UkStorage } from './storage.interface';
 
 export class UkLocalStoring implements UkStorage {
   public get(key: string, defaultValue: string | null = null): string | null {

@@ -9,7 +9,7 @@ export function ukUrlValidator(): ValidatorFn {
     const value = control.value;
 
     if (!value.startsWith('https') || !value.includes('.io')) {
-      return {url: true};
+      return { url: true };
     }
 
     return null;

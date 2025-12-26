@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -7,8 +7,8 @@ import {
   inject,
   Input,
 } from '@angular/core';
-import type {ControlValueAccessor} from '@angular/forms';
-import {FormsModule, NG_VALUE_ACCESSOR} from '@angular/forms';
+import type { ControlValueAccessor } from '@angular/forms';
+import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import type {
   CrudMode,
   InputBorderColor,
@@ -24,7 +24,7 @@ import {
   UK_TYPE,
   UkInputMode,
 } from '@utils/ui-kit/definitions';
-import {NgxMaskDirective, provideNgxMask} from 'ngx-mask';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 @Component({
   standalone: true,
@@ -113,11 +113,11 @@ export class UkInputComponent implements ControlValueAccessor {
 
   public get customPattern(): Record<
     string,
-    {pattern: RegExp; optional?: boolean; symbol?: string}
+    { pattern: RegExp; optional?: boolean; symbol?: string }
   > {
     if (this.numberPattern === 'ENGLISH_PERSIAN_NUMBER') {
       return {
-        D: {pattern: /[0-9\u06F0-\u06F9]/}, // 0-9 + Persian digits
+        D: { pattern: /[0-9\u06F0-\u06F9]/ }, // 0-9 + Persian digits
       };
     }
 

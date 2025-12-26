@@ -1,8 +1,8 @@
-import type {MemoizedSelector} from '@ngrx/store';
-import {createSelector} from '@ngrx/store';
+import type { MemoizedSelector } from '@ngrx/store';
+import { createSelector } from '@ngrx/store';
 
-import type {HangBaseState} from '../_base/_base.state';
-import type {HangRouterState} from './router.state';
+import type { HangBaseState } from '../_base/_base.state';
+import type { HangRouterState } from './router.state';
 
 const ROUTER_STATE = (store: HangBaseState): HangRouterState => store.router;
 

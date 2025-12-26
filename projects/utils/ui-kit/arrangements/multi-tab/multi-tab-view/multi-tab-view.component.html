@@ -1,90 +1,88 @@
 <div
-    class="uk multi-tab-view"
-    [ngClass]="[
-        'uk-multi-tab-view-header-display-' + headerDisplay,
-        'uk-multi-tab-view-header-divider-' + headerDivider,
-    ]"
+  class="uk multi-tab-view"
+  [ngClass]="[
+    'uk-multi-tab-view-header-display-' + headerDisplay,
+    'uk-multi-tab-view-header-divider-' + headerDivider,
+  ]"
 >
-    <uk-page-part
-        [backgroundColor]="UK_TYPE.PAGE_PART.BACKGROUND_COLOR.TRANSPARENT"
-        [bottomMargin]="UK_TYPE.PAGE_PART.BOTTOM_MARGIN.NO"
-        [isFirstChildStick]="UK_TYPE.PAGE.TOP_MARGIN.TRUE"
-        [sidePaddings]="
-            sidePaddings === UK_TYPE.UK.BOOLEAN.FALSE
-                ? UK_TYPE.PAGE_PART.SIDE_PADDINGS.NONE
-                : UK_TYPE.PAGE_PART.SIDE_PADDINGS.BOTH
-        "
-    >
-        <header>
-            <div class="slider slider-COUNT-{{ tabPanels.length }} slider-SELECTED-{{ selectedIndex }}"></div>
-            <ul>
-                @for (tabPanel of tabPanels; track tabPanel; let i = $index) {
-                    <li
-                    [class.active]="tabPanel.active"
-                    (click)="selectTab(tabPanel, i)"
-                    (keydown.enter)="selectTab(tabPanel, i)"
-                    tabindex="0"
-                    role="button"
-                >
-                    <uk-icon
-                        *ngIf="tabPanel.iconBefore"
-                        [fgColor]="
-                            tabPanel.active
-                                ? UK_TYPE.ICON.FG_COLOR.CONTENT_PRIMARY
-                                : UK_TYPE.ICON.FG_COLOR.CONTENT_SECONDARY
-                        "
-                        [name]="tabPanel.iconBefore"
-                        [size]="UK_TYPE.ICON.SIZE.MEDIUM"
-                    />
-                    <uk-text
-                        [fgColor]="
-                            tabPanel.active
-                                ? UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS
-                                : UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS
-                        "
-                        [horizontalAlignment]="UK_TYPE.TEXT.HORIZONTAL_ALIGNMENT.CENTER"
-                        [typography]="
-                            tabPanel.active
-                                ? UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE_STRONG
-                                : UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE
-                        "
-                    >
-                        {{ tabPanel.header }}
-                    </uk-text>
-                    <uk-icon
-                        *ngIf="tabPanel.iconAfter"
-                        [fgColor]="
-                            tabPanel.active
-                                ? UK_TYPE.ICON.FG_COLOR.CONTENT_PRIMARY
-                                : UK_TYPE.ICON.FG_COLOR.CONTENT_SECONDARY
-                        "
-                        [name]="tabPanel.iconAfter"
-                    />
-                </li>
-                  }
-            </ul>
-        </header>
-    </uk-page-part>
+  <uk-page-part
+    [backgroundColor]="UK_TYPE.PAGE_PART.BACKGROUND_COLOR.TRANSPARENT"
+    [bottomMargin]="UK_TYPE.PAGE_PART.BOTTOM_MARGIN.NO"
+    [isFirstChildStick]="UK_TYPE.PAGE.TOP_MARGIN.TRUE"
+    [sidePaddings]="
+      sidePaddings === UK_TYPE.UK.BOOLEAN.FALSE
+        ? UK_TYPE.PAGE_PART.SIDE_PADDINGS.NONE
+        : UK_TYPE.PAGE_PART.SIDE_PADDINGS.BOTH
+    "
+  >
+    <header>
+      <div
+        class="slider slider-COUNT-{{ tabPanels.length }} slider-SELECTED-{{
+          selectedIndex
+        }}"
+      ></div>
+      <ul>
+        @for (tabPanel of tabPanels; track tabPanel; let i = $index) {
+          <li
+            [class.active]="tabPanel.active"
+            (click)="selectTab(tabPanel, i)"
+            (keydown.enter)="selectTab(tabPanel, i)"
+            tabindex="0"
+            role="button"
+          >
+            <uk-icon
+              *ngIf="tabPanel.iconBefore"
+              [fgColor]="
+                tabPanel.active
+                  ? UK_TYPE.ICON.FG_COLOR.CONTENT_PRIMARY
+                  : UK_TYPE.ICON.FG_COLOR.CONTENT_SECONDARY
+              "
+              [name]="tabPanel.iconBefore"
+              [size]="UK_TYPE.ICON.SIZE.MEDIUM"
+            />
+            <uk-text
+              [fgColor]="
+                tabPanel.active
+                  ? UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS
+                  : UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS
+              "
+              [horizontalAlignment]="UK_TYPE.TEXT.HORIZONTAL_ALIGNMENT.CENTER"
+              [typography]="
+                tabPanel.active
+                  ? UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE_STRONG
+                  : UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE
+              "
+            >
+              {{ tabPanel.header }}
+            </uk-text>
+            <uk-icon
+              *ngIf="tabPanel.iconAfter"
+              [fgColor]="
+                tabPanel.active
+                  ? UK_TYPE.ICON.FG_COLOR.CONTENT_PRIMARY
+                  : UK_TYPE.ICON.FG_COLOR.CONTENT_SECONDARY
+              "
+              [name]="tabPanel.iconAfter"
+            />
+          </li>
+        }
+      </ul>
+    </header>
+  </uk-page-part>
 
-    <uk-page-part
-        [backgroundColor]="UK_TYPE.PAGE_PART.BACKGROUND_COLOR.TRANSPARENT"
-        [sidePaddings]="UK_TYPE.PAGE_PART.SIDE_PADDINGS.NONE"
-    >
-        <main>
-            <div
-                #ref
-                class="fixed"
-            >
-                <ng-content select="[FIXED]" />
-            </div>
-            <div
-                class="content"
-                [ngClass]="{'has-fixed': ref.children.length}"
-            >
-                <ng-content />
-            </div>
-        </main>
-    </uk-page-part>
+  <uk-page-part
+    [backgroundColor]="UK_TYPE.PAGE_PART.BACKGROUND_COLOR.TRANSPARENT"
+    [sidePaddings]="UK_TYPE.PAGE_PART.SIDE_PADDINGS.NONE"
+  >
+    <main>
+      <div #ref class="fixed">
+        <ng-content select="[FIXED]" />
+      </div>
+      <div class="content" [ngClass]="{ 'has-fixed': ref.children.length }">
+        <ng-content />
+      </div>
+    </main>
+  </uk-page-part>
 </div>
 
 <!--

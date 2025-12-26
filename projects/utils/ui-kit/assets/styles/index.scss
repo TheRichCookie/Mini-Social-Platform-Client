@@ -1,13 +1,12 @@
-@use './_core/core.scss' as *;
-@use './packages/index.scss' as *;
-@use './fonts/index.scss' as *;
-@use './responsive/index.scss' as *;
-@use './colors/index.scss' as *;
-@use './form/index.scss' as *;
-@use './table/index.scss' as *;
-@use './global/global.scss' as *;
-@use './master' as *;
-
+@use "./_core/core.scss" as *;
+@use "./packages/index.scss" as *;
+@use "./fonts/index.scss" as *;
+@use "./responsive/index.scss" as *;
+@use "./colors/index.scss" as *;
+@use "./form/index.scss" as *;
+@use "./table/index.scss" as *;
+@use "./global/global.scss" as *;
+@use "./master" as *;
 
 // @use './otp-input' as zz;
 

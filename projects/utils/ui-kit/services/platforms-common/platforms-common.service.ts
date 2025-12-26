@@ -1,11 +1,11 @@
-import {inject, Injectable} from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 
-import {UkAlertService} from '../alert/alert.service';
-import {UkCallNumber} from './classes/call-number.class';
-import {UkClipboard} from './classes/clipboard.class';
-import {UkDeepLink} from './classes/deep-link.class';
-import {UkLocation} from './classes/location.class';
-import {UkShare} from './classes/share.class';
+import { UkAlertService } from '../alert/alert.service';
+import { UkCallNumber } from './classes/call-number.class';
+import { UkClipboard } from './classes/clipboard.class';
+import { UkDeepLink } from './classes/deep-link.class';
+import { UkLocation } from './classes/location.class';
+import { UkShare } from './classes/share.class';
 
 declare global {
   interface Window {
