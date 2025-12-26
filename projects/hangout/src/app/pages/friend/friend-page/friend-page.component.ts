@@ -1,12 +1,12 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {CommonModule} from '@angular/common';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {
   UkPageBodyComponent,
   UkPageComponent,
   UkPagePartComponent,
 } from '@utils/ui-kit/arrangements';
-import { UK_TYPE } from '@utils/ui-kit/definitions';
+import {UK_TYPE} from '@utils/ui-kit/definitions';
 
 @Component({
   selector: 'hang-friend-page',

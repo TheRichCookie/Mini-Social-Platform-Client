@@ -6,7 +6,7 @@ import type {Observable} from 'rxjs';
 import {UkConfigApiServices, UkConfigApiVersions} from '../../definitions';
 import type {
   CommonResponseViewModel,
-  NotificationArrayResponse,
+  NotificationModel,
 } from '../../definitions/swagger/swagger';
 
 @Injectable({
@@ -16,36 +16,35 @@ export class UkNotificationService {
   private readonly httpClient = inject(HttpClient);
   private readonly apiHeaderService = inject(UkApiHeaderService);
 
-  public getNotifications(): Observable<NotificationArrayResponse> {
+  public getNotifications(): Observable<
+    CommonResponseViewModel<NotificationModel[]>
+  > {
     const HEADERS = this.apiHeaderService.init({
-      apiService: UkConfigApiServices.PROFILE, // fallback
-      apiHeaderVersion: UkConfigApiVersions.NONE,
-    });
-    // The api-service interceptor will prefix the correct service when using UkConfigApiServices.NOTIFICATIONS
-    const HEADERS_WITH_SERVICE = this.apiHeaderService.init({
-      apiService: (UkConfigApiServices as any).NOTIFICATIONS,
+      apiService: UkConfigApiServices.NOTIFICATIONS,
       apiHeaderVersion: UkConfigApiVersions.NONE,
     });
 
     const URI = '';
 
-    return this.httpClient.get<NotificationArrayResponse>(URI, {
-      headers: HEADERS_WITH_SERVICE,
-    });
+    return this.httpClient.get<CommonResponseViewModel<NotificationModel[]>>(
+      URI,
+      {
+        headers: HEADERS,
+      },
+    );
   }
 
-  public markAsRead(id: string): Observable<CommonResponseViewModel> {
+  public markAsRead(id: string): Observable<CommonResponseViewModel<void>> {
     const HEADERS = this.apiHeaderService.init({
-      apiService: (UkConfigApiServices as any).NOTIFICATIONS,
+      apiService: UkConfigApiServices.NOTIFICATIONS,
       apiHeaderVersion: UkConfigApiVersions.NONE,
     });
 
+    const BODY = {};
     const URI = `/${id}/read`;
 
-    return this.httpClient.put<CommonResponseViewModel>(
-      URI,
-      {},
-      {headers: HEADERS},
-    );
+    return this.httpClient.put<CommonResponseViewModel<void>>(URI, BODY, {
+      headers: HEADERS,
+    });
   }
 }

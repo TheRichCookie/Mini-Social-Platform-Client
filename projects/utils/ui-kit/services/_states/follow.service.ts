@@ -6,7 +6,7 @@ import type {Observable} from 'rxjs';
 import {UkConfigApiServices, UkConfigApiVersions} from '../../definitions';
 import type {
   CommonResponseViewModel,
-  CountResponse,
+  CountDataModel,
 } from '../../definitions/swagger/swagger';
 
 @Injectable({
@@ -32,42 +32,42 @@ export class UkFollowService {
 
   public getFollowDetail(
     userId: string,
-  ): Observable<CommonResponseViewModel<CountResponse>> {
+  ): Observable<CommonResponseViewModel<CountDataModel>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.FOLLOW,
       apiHeaderVersion: UkConfigApiVersions.NONE,
     });
     const URI = `/${userId}`;
 
-    return this.httpClient.get<CommonResponseViewModel<CountResponse>>(URI, {
+    return this.httpClient.get<CommonResponseViewModel<CountDataModel>>(URI, {
       headers: HEADERS,
     });
   }
 
   public getFollowersCount(
     userId: string,
-  ): Observable<CommonResponseViewModel<CountResponse>> {
+  ): Observable<CommonResponseViewModel<CountDataModel>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.FOLLOW,
       apiHeaderVersion: UkConfigApiVersions.NONE,
     });
     const URI = `/${userId}/followers`;
 
-    return this.httpClient.get<CommonResponseViewModel<CountResponse>>(URI, {
+    return this.httpClient.get<CommonResponseViewModel<CountDataModel>>(URI, {
       headers: HEADERS,
     });
   }
 
   public getFollowingCount(
     userId: string,
-  ): Observable<CommonResponseViewModel<CountResponse>> {
+  ): Observable<CommonResponseViewModel<CountDataModel>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.FOLLOW,
       apiHeaderVersion: UkConfigApiVersions.NONE,
     });
     const URI = `/${userId}/following`;
 
-    return this.httpClient.get<CommonResponseViewModel<CountResponse>>(URI, {
+    return this.httpClient.get<CommonResponseViewModel<CountDataModel>>(URI, {
       headers: HEADERS,
     });
   }

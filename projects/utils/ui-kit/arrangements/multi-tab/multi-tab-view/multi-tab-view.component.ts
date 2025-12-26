@@ -1,6 +1,6 @@
-import type { BooleanInput } from '@angular/cdk/coercion';
-import { CommonModule } from '@angular/common';
-import type { AfterContentInit, QueryList } from '@angular/core';
+import type {BooleanInput} from '@angular/cdk/coercion';
+import {CommonModule} from '@angular/common';
+import type {AfterContentInit, QueryList} from '@angular/core';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -9,13 +9,13 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { UkTextComponent } from '@utils/ui-kit/components';
-import type { MultiTabHeaderDisplay } from '@utils/ui-kit/definitions';
-import { DEFAULT, UK_TYPE } from '@utils/ui-kit/definitions';
+import {UkTextComponent} from '@utils/ui-kit/components';
+import type {MultiTabHeaderDisplay} from '@utils/ui-kit/definitions';
+import {DEFAULT, UK_TYPE} from '@utils/ui-kit/definitions';
 
-import { UkPagePartComponent } from '../../../arrangements';
-import { UkIconComponent } from '../../../components/icon/icon.component';
-import { UkMultiTabPanelComponent } from '../multi-tab-panel/multi-tab-panel.component';
+import {UkPagePartComponent} from '../../../arrangements';
+import {UkIconComponent} from '../../../components/icon/icon.component';
+import {UkMultiTabPanelComponent} from '../multi-tab-panel/multi-tab-panel.component';
 
 @Component({
   standalone: true,

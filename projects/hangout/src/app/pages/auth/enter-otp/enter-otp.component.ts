@@ -1,4 +1,4 @@
-import { CommonModule, Location } from '@angular/common';
+import {CommonModule, Location} from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -6,7 +6,7 @@ import {
   inject,
   ViewChild,
 } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
   FormControl,
   FormGroup,
@@ -14,10 +14,10 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
-import { APP_ROUTES } from '@app/app.routes';
-import { Store } from '@ngrx/store';
-import type { HangOtpForm } from '@pages/auth/_models/bmn-auth.model';
+import {Router} from '@angular/router';
+import {APP_ROUTES} from '@app/app.routes';
+import {Store} from '@ngrx/store';
+import type {HangOtpForm} from '@pages/auth/_models/bmn-auth.model';
 import * as AUTH_ACTIONS from '@pages/auth/_store/auth.actions';
 import {
   UkFormBodyComponent,
@@ -38,12 +38,12 @@ import {
   UkStopWatchComponent,
   UkTextComponent,
 } from '@utils/ui-kit/components';
-import type { SignInRequestViewModel } from '@utils/ui-kit/definitions';
-import { UK_TYPE } from '@utils/ui-kit/definitions';
-import { UkOtpInputComponent } from '@utils/ui-kit/forms';
-import { UkAlertService } from '@utils/ui-kit/services';
-import { NgxOtpStatus } from 'ngx-otp-input';
+import {UK_TYPE} from '@utils/ui-kit/definitions';
+import {UkOtpInputComponent} from '@utils/ui-kit/forms';
+import {UkAlertService} from '@utils/ui-kit/services';
+import {NgxOtpStatus} from 'ngx-otp-input';
 
+import type {AuthSignInRequest} from '../../../../../../utils/ui-kit/definitions/swagger/swagger';
 import {
   SELECT_AUTH_OTP_RESPONSE,
   SELECT_AUTH_SIGN_IN_RECEIVED_TIME_RESPONSE,
@@ -102,7 +102,7 @@ export class HangEnterOtpComponent {
   public readonly alertService = inject(UkAlertService);
   public readonly changeDetectorRef = inject(ChangeDetectorRef);
   public otpInputStatus: NgxOtpStatus | null = null;
-  public singInRequest: SignInRequestViewModel | null = null;
+  public singInRequest: AuthSignInRequest | null = null;
 
   public otpFormSubmitted = false;
   public stopWatchStatus: 'REACHED' | 'WAIT' = 'WAIT';

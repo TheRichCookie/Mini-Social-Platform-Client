@@ -3,8 +3,13 @@ import {inject, Injectable} from '@angular/core';
 import {UkApiHeaderService} from '@utils/ui-kit/services';
 import type {Observable} from 'rxjs';
 
-import type {UserProfileResponse, UpdateProfileRequest, PostArrayResponse} from '../../definitions/swagger/swagger';
 import {UkConfigApiServices, UkConfigApiVersions} from '../../definitions';
+import type {
+  CommonResponseViewModel,
+  PostModel,
+  UpdateProfileRequest,
+  UserModel,
+} from '../../definitions/swagger/swagger';
 
 @Injectable({
   providedIn: 'root',
@@ -15,35 +20,35 @@ export class UkProfileService {
 
   public getProfile(
     userId: string,
-  ): Observable<UserProfileResponse> {
+  ): Observable<CommonResponseViewModel<UserModel>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.PROFILE,
       apiHeaderVersion: UkConfigApiVersions.NONE,
     });
     const URI = `/${userId}`;
 
-    return this.httpClient.get<UserProfileResponse>(URI, {
+    return this.httpClient.get<CommonResponseViewModel<UserModel>>(URI, {
       headers: HEADERS,
     });
   }
 
   public getUserProfilePosts(
     userId: string,
-  ): Observable<PostArrayResponse> {
+  ): Observable<CommonResponseViewModel<PostModel[]>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.PROFILE,
       apiHeaderVersion: UkConfigApiVersions.NONE,
     });
     const URI = `/${userId}/posts`;
 
-    return this.httpClient.get<PostArrayResponse>(URI, {
+    return this.httpClient.get<CommonResponseViewModel<PostModel[]>>(URI, {
       headers: HEADERS,
     });
   }
 
   public updateProfile(
     req: UpdateProfileRequest,
-  ): Observable<UserProfileResponse> {
+  ): Observable<CommonResponseViewModel<UserModel>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.PROFILE,
       apiHeaderVersion: UkConfigApiVersions.NONE,
@@ -51,6 +56,12 @@ export class UkProfileService {
     const BODY = req;
     const URI = '';
 
-    return this.httpClient.patch<UserProfileResponse>(URI, BODY, { headers: HEADERS });
+    return this.httpClient.patch<CommonResponseViewModel<UserModel>>(
+      URI,
+      BODY,
+      {
+        headers: HEADERS,
+      },
+    );
   }
 }

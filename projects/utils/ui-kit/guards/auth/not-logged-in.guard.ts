@@ -1,11 +1,11 @@
-import { inject } from '@angular/core';
+import {inject} from '@angular/core';
 import type {
   ActivatedRouteSnapshot,
   CanActivateFn,
   RouterStateSnapshot,
 } from '@angular/router';
-import { RedirectCommand, Router } from '@angular/router';
-import { UkAlertService, UkAuthenticateService } from '@utils/ui-kit/services';
+import {RedirectCommand, Router} from '@angular/router';
+import {UkAlertService, UkAuthenticateService} from '@utils/ui-kit/services';
 
 export const UkNotLoggedInGuard: CanActivateFn = async (
   _activatedRouteSnapshot: ActivatedRouteSnapshot,
@@ -21,7 +21,7 @@ export const UkNotLoggedInGuard: CanActivateFn = async (
   if (isUserAuthorized) {
     alertService.info('شما قبلا وارد سیستم شدید');
 
-    return new RedirectCommand(URL, { skipLocationChange: false });
+    return new RedirectCommand(URL, {skipLocationChange: false});
   }
 
   return true;

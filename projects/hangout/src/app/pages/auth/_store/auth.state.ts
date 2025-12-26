@@ -1,16 +1,16 @@
 import type {
-  OtpRequestModel,
-  OtpResponseModel,
-  SignInRequestViewModel,
-  SignInResponseViewModel,
-  SignUpRequestViewModel,
-  SignUpResponseViewModel,
-} from '@utils/ui-kit/definitions';
+  AuthOtpVerificationRequest,
+  AuthSignInRequest,
+  AuthSignUpRequest,
+  OtpVerificationDataModel,
+  SignInDataModel,
+  SignUpDataModel,
+} from '../../../../../../utils/ui-kit/definitions/swagger/swagger';
 
 export interface HangAuthState {
   signIn: {
-    request: SignInRequestViewModel;
-    response: SignInResponseViewModel;
+    request: AuthSignInRequest;
+    response: SignInDataModel;
     receivedTime: number;
     error: {
       receivedTime: number;
@@ -18,8 +18,8 @@ export interface HangAuthState {
     };
   };
   signUp: {
-    request: SignUpRequestViewModel;
-    response: SignUpResponseViewModel;
+    request: AuthSignUpRequest;
+    response: SignUpDataModel;
     receivedTime: number;
     error: {
       receivedTime: number;
@@ -27,8 +27,8 @@ export interface HangAuthState {
     };
   };
   otp: {
-    request: OtpRequestModel;
-    response: OtpResponseModel;
+    request: AuthOtpVerificationRequest;
+    response: OtpVerificationDataModel;
     receivedTime: number;
     error: {
       receivedTime: number;

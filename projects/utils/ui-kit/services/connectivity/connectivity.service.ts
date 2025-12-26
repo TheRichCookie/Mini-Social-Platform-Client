@@ -1,8 +1,8 @@
-import { inject, Injectable, NgZone } from '@angular/core';
-import type { Observable } from 'rxjs';
-import { BehaviorSubject } from 'rxjs';
+import {inject, Injectable, NgZone} from '@angular/core';
+import type {Observable} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 
-import { UkLoggerPart, UkLoggerService } from '../logger/logger.service';
+import {UkLoggerPart, UkLoggerService} from '../logger/logger.service';
 
 @Injectable({
   providedIn: 'root',

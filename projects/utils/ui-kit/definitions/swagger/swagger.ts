@@ -47,11 +47,11 @@ export interface AuthOtpVerificationRequest {
 
 export interface CommonResponseViewModel<T> {
   /** @example 200 */
-  code?: number;
+  code: number;
   /** @example "نتیجه عملیات" */
-  message?: string;
+  message: string;
   /** @example {} */
-  data?: T;
+  data: T;
 }
 
 export interface SignUpDataModel {

@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import type { AfterViewInit, OnDestroy } from '@angular/core';
+import {CommonModule} from '@angular/common';
+import type {AfterViewInit, OnDestroy} from '@angular/core';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -9,17 +9,17 @@ import {
   inject,
   Input,
 } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import type { ControlValueAccessor } from '@angular/forms';
-import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { UkTextComponent } from '@utils/ui-kit/components';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import type {ControlValueAccessor} from '@angular/forms';
+import {FormsModule, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {UkTextComponent} from '@utils/ui-kit/components';
 import {
   UIKIT_EMPTY_FUNCTION,
   UIKIT_EMPTY_FUNCTION_UNI_ARGUMENT,
   UK_TYPE,
 } from '@utils/ui-kit/definitions';
-import { UkRadioButtonGroupComponent } from '@utils/ui-kit/forms';
-import type { Subscription } from 'rxjs';
+import {UkRadioButtonGroupComponent} from '@utils/ui-kit/forms';
+import type {Subscription} from 'rxjs';
 
 @Component({
   standalone: true,

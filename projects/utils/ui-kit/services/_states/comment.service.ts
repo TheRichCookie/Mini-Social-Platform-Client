@@ -6,8 +6,7 @@ import type {Observable} from 'rxjs';
 import {UkConfigApiServices, UkConfigApiVersions} from '../../definitions';
 import type {
   AddCommentRequest,
-  AddCommentResponse,
-  CommentArrayResponse,
+  CommentModel,
   CommonResponseViewModel,
 } from '../../definitions/swagger/swagger';
 
@@ -20,25 +19,22 @@ export class UkCommentService {
 
   public getPostComments(
     postId: string,
-  ): Observable<CommonResponseViewModel<CommentArrayResponse>> {
+  ): Observable<CommonResponseViewModel<CommentModel[]>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.COMMENTS,
       apiHeaderVersion: UkConfigApiVersions.NONE,
     });
     const URI = `/${postId}`;
 
-    return this.httpClient.get<CommonResponseViewModel<CommentArrayResponse>>(
-      URI,
-      {
-        headers: HEADERS,
-      },
-    );
+    return this.httpClient.get<CommonResponseViewModel<CommentModel[]>>(URI, {
+      headers: HEADERS,
+    });
   }
 
   public addComment(
     postId: string,
     body: AddCommentRequest,
-  ): Observable<CommonResponseViewModel<AddCommentResponse>> {
+  ): Observable<CommonResponseViewModel<CommentModel>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.COMMENTS,
       apiHeaderVersion: UkConfigApiVersions.NONE,
@@ -47,7 +43,7 @@ export class UkCommentService {
     const BODY = body;
     const URI = `/${postId}`;
 
-    return this.httpClient.post<CommonResponseViewModel<AddCommentResponse>>(
+    return this.httpClient.post<CommonResponseViewModel<CommentModel>>(
       URI,
       BODY,
       {

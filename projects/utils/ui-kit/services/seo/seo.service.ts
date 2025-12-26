@@ -1,6 +1,6 @@
-import { DOCUMENT } from '@angular/common';
-import { inject, Injectable } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
+import {DOCUMENT} from '@angular/common';
+import {inject, Injectable} from '@angular/core';
+import {Meta, Title} from '@angular/platform-browser';
 
 export interface UkSeoConfig {
   title?: string;
@@ -10,7 +10,7 @@ export interface UkSeoConfig {
   noIndex?: boolean;
 }
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class UkSeoService {
   private readonly meta = inject(Meta);
   private readonly title = inject(Title);
@@ -68,7 +68,7 @@ export class UkSeoService {
     attr: 'name' | 'property' = 'name',
   ): void {
     if (!content) return;
-    this.meta.updateTag({ [attr]: name, content });
+    this.meta.updateTag({[attr]: name, content});
   }
 
   private updateCanonical(url: string): void {

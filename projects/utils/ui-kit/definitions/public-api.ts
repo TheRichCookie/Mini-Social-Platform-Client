@@ -3,5 +3,3 @@ export * from './browser-storage';
 export * from './common';
 export * from './components';
 export * from './environment';
-export * from './models/requests';
-export * from './user';

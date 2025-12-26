@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import type { LinkTarget } from '@utils/ui-kit/definitions';
-import { UkLinkTarget } from '@utils/ui-kit/definitions';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import type {LinkTarget} from '@utils/ui-kit/definitions';
+import {UkLinkTarget} from '@utils/ui-kit/definitions';
 
 @Component({
   standalone: true,

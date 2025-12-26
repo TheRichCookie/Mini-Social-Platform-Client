@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { UK_TYPE } from '@utils/ui-kit/definitions';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
+import {UK_TYPE} from '@utils/ui-kit/definitions';
 
 @Component({
   selector: 'hang-auth',

@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import type { AfterViewInit } from '@angular/core';
+import {CommonModule} from '@angular/common';
+import type {AfterViewInit} from '@angular/core';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -11,12 +11,12 @@ import {
   ViewChild,
 } from '@angular/core';
 
-import { UkButtonGroupComponent } from '../../../../arrangements/button-group/button-group.component';
-import { UkModalFrameComponent } from '../../../../arrangements/modal-frame/modal-frame.component';
-import { UkButtonComponent } from '../../../../components/button/button.component';
-import type { UkWheelSelector } from '../../../../components/wheel-selector/wheel-selector.component';
-import { UkWheelSelectorComponent } from '../../../../components/wheel-selector/wheel-selector.component';
-import { UK_TYPE } from '../../../../definitions/public-api';
+import {UkButtonGroupComponent} from '../../../../arrangements/button-group/button-group.component';
+import {UkModalFrameComponent} from '../../../../arrangements/modal-frame/modal-frame.component';
+import {UkButtonComponent} from '../../../../components/button/button.component';
+import type {UkWheelSelector} from '../../../../components/wheel-selector/wheel-selector.component';
+import {UkWheelSelectorComponent} from '../../../../components/wheel-selector/wheel-selector.component';
+import {UK_TYPE} from '../../../../definitions/public-api';
 import {
   UkAlertService,
   type UkDate,
@@ -78,7 +78,7 @@ export class UkDateSelectOverlayComponent implements AfterViewInit {
     'اسفند',
   ];
 
-  public persianDays = Array.from({ length: 31 }, (_, i) => `${i + 1}`);
+  public persianDays = Array.from({length: 31}, (_, i) => `${i + 1}`);
 
   public readonly UK_TYPE = UK_TYPE;
   public title = 'انتخاب تاریخ';
@@ -131,7 +131,7 @@ export class UkDateSelectOverlayComponent implements AfterViewInit {
     const START_YEAR = CURRENT_YEAR - LENGTH + 1;
 
     this.persianYears = Array.from(
-      { length: LENGTH },
+      {length: LENGTH},
       (_, i) => `${START_YEAR + i}`,
     );
     this.data[0].list = this.persianYears;

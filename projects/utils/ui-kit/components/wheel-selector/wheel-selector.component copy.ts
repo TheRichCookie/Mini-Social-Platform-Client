@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import type {
   AfterViewInit,
   ElementRef,
@@ -19,15 +19,15 @@ import {
   ViewChildren,
 } from '@angular/core';
 
-import { UK_TYPE } from '../../definitions';
-import { UkTextComponent } from '../text/text.component';
-import type { UkWheelSelectorModel } from './wheel-selector.models';
+import {UK_TYPE} from '../../definitions';
+import {UkTextComponent} from '../text/text.component';
+import type {UkWheelSelectorModel} from './wheel-selector.models';
 
 // type EventHandler = (event: KeyboardEvent | MouseEvent | TouchEvent | WheelEvent) => void;
 
 declare let Audio: new () => HTMLAudioElement;
 
-export type { UkWheelSelectorModel as UkWheelSelector };
+export type {UkWheelSelectorModel as UkWheelSelector};
 
 // interface DraggingInfo {
 //   isDragging: boolean;
@@ -174,10 +174,10 @@ export class UkWheelSelectorComponent
   public addEventsForElement(el: HTMLElement): void {
     const _ = this.touchOrMouse.isTouchable;
     const eventHandlerList = [
-      { name: _ ? 'touchstart' : 'mousedown', handler: this.handleStart },
-      { name: _ ? 'touchmove' : 'mousemove', handler: this.handleMove },
-      { name: _ ? 'touchend' : 'mouseup', handler: this.handleEnd },
-      { name: _ ? 'touchcancel' : 'mouseleave', handler: this.handleCancel },
+      {name: _ ? 'touchstart' : 'mousedown', handler: this.handleStart},
+      {name: _ ? 'touchmove' : 'mousemove', handler: this.handleMove},
+      {name: _ ? 'touchend' : 'mouseup', handler: this.handleEnd},
+      {name: _ ? 'touchcancel' : 'mouseleave', handler: this.handleCancel},
     ];
 
     if (!_) {
@@ -440,7 +440,7 @@ export class UkWheelSelectorComponent
   public getItemStyle(
     gIndex: number,
     iIndex: number,
-  ): { transform: string; opacity?: string; transition?: string } {
+  ): {transform: string; opacity?: string; transition?: string} {
     const angle = this.itemPerDegree * (iIndex - this.currentIndexList[gIndex]);
     const scale = angle ? 0.8 + Math.abs(angle) * 0.04 : 1;
     const opacity = angle ? 0.6 + Math.abs(angle) * 0.1 : 1;

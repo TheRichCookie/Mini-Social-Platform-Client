@@ -1,7 +1,7 @@
-import type { HangRoutes } from '@app/layouts/general/_/typed.route';
+import type {HangRoutes} from '@app/layouts/general/_/typed.route';
 
-import { HangProfileComponent } from '../__/profile.component';
-import { HangProfilePageComponent } from '../profile-page/profile-page.component';
+import {HangProfileComponent} from '../__/profile.component';
+import {HangProfilePageComponent} from '../profile-page/profile-page.component';
 
 export const PROFILE_ROUTES: HangRoutes = [
   {

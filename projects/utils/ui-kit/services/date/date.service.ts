@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 // import {JalaliDateCalculatorService, JalaliDateValidatorService} from 'ngx-persian';
 import {
   isLeapJalaaliYear,
@@ -7,8 +7,8 @@ import {
   toJalaali,
 } from 'jalaali-js';
 
-import { UkNumberService } from '../number/number.service';
-import { UkStringService } from '../string/string.service';
+import {UkNumberService} from '../number/number.service';
+import {UkStringService} from '../string/string.service';
 
 // in UkDate month is zero base
 export interface UkDate {

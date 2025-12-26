@@ -1,13 +1,13 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import type { EmptyStateStyle } from '@utils/ui-kit/definitions/components/empty-state/empty-state.type';
+import {CommonModule} from '@angular/common';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import type {EmptyStateStyle} from '@utils/ui-kit/definitions/components/empty-state/empty-state.type';
 
-import { UkAnimationComponent } from '../../animations';
-import type { IconFgColor } from '../../definitions';
-import { DEFAULT, UK_TYPE } from '../../definitions';
-import { UkIconComponent } from '../icon/icon.component';
-import { UkImageBoxComponent } from '../image-box/image-box.component';
-import { UkTextComponent } from '../public-api';
+import {UkAnimationComponent} from '../../animations';
+import type {IconFgColor} from '../../definitions';
+import {DEFAULT, UK_TYPE} from '../../definitions';
+import {UkIconComponent} from '../icon/icon.component';
+import {UkImageBoxComponent} from '../image-box/image-box.component';
+import {UkTextComponent} from '../public-api';
 
 @Component({
   standalone: true,

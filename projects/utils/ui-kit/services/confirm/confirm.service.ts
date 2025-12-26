@@ -1,7 +1,7 @@
-import type { OverlayRef } from '@angular/cdk/overlay';
-import { Overlay } from '@angular/cdk/overlay';
-import { inject, Injectable, NgZone } from '@angular/core';
-import { fromEvent, take } from 'rxjs';
+import type {OverlayRef} from '@angular/cdk/overlay';
+import {Overlay} from '@angular/cdk/overlay';
+import {inject, Injectable, NgZone} from '@angular/core';
+import {fromEvent, take} from 'rxjs';
 
 export interface UkConfirmConfig {
   title: string;

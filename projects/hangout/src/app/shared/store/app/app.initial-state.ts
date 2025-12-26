@@ -1,4 +1,4 @@
-import type { HangAppState } from './app.state';
+import type {HangAppState} from './app.state';
 
 export const APP_INITIAL_STATE: HangAppState = {
   layout: {

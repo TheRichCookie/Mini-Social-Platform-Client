@@ -1,4 +1,4 @@
-import type { UkPoint } from './point.interface';
+import type {UkPoint} from './point.interface';
 
 export interface UkMapMarker {
   point: UkPoint;

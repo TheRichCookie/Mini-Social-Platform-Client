@@ -1,9 +1,9 @@
-import { DestroyRef, inject, Injectable } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Router } from '@angular/router';
-import { Subject, timer } from 'rxjs';
+import {DestroyRef, inject, Injectable} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {Router} from '@angular/router';
+import {Subject, timer} from 'rxjs';
 
-import { UkRouteAnimationType } from './route-animation-types';
+import {UkRouteAnimationType} from './route-animation-types';
 
 @Injectable({
   providedIn: 'root',

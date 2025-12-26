@@ -1,9 +1,9 @@
-import { inject, Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import {inject, Injectable} from '@angular/core';
+import {Actions, createEffect, ofType} from '@ngrx/effects';
 import * as APP_ACTIONS from '@store/app/app.action';
-import type { UkWorldUtcTime } from '@utils/ui-kit/definitions';
-import { UkAppService } from '@utils/ui-kit/services';
-import { catchError, exhaustMap, of, switchMap } from 'rxjs';
+import type {UkWorldUtcTime} from '@utils/ui-kit/definitions';
+import {UkAppService} from '@utils/ui-kit/services';
+import {catchError, exhaustMap, of, switchMap} from 'rxjs';
 
 @Injectable()
 export class HangAppEffects {

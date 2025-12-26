@@ -1,7 +1,7 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import type { UkCursor } from '@utils/ui-kit/definitions';
-import { DEFAULT } from '@utils/ui-kit/definitions';
+import {CommonModule} from '@angular/common';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import type {UkCursor} from '@utils/ui-kit/definitions';
+import {DEFAULT} from '@utils/ui-kit/definitions';
 
 @Component({
   standalone: true,

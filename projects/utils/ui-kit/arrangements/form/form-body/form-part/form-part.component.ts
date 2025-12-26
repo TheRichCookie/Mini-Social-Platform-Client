@@ -1,9 +1,9 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import type { BooleanType, FormBgColor } from '@utils/ui-kit/definitions';
-import { DEFAULT, UK_TYPE } from '@utils/ui-kit/definitions';
+import {CommonModule} from '@angular/common';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import type {BooleanType, FormBgColor} from '@utils/ui-kit/definitions';
+import {DEFAULT, UK_TYPE} from '@utils/ui-kit/definitions';
 
-import type { CrudMode } from '../../../../definitions';
+import type {CrudMode} from '../../../../definitions';
 
 @Component({
   standalone: true,

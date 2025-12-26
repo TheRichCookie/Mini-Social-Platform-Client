@@ -10,8 +10,8 @@ import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-sass';
 import 'prismjs/components/prism-scss';
 
-import { isPlatformBrowser } from '@angular/common';
-import { inject, Injectable, PLATFORM_ID } from '@angular/core';
+import {isPlatformBrowser} from '@angular/common';
+import {inject, Injectable, PLATFORM_ID} from '@angular/core';
 
 declare let Prism: {
   highlightAll: () => void;

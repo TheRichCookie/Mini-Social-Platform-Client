@@ -31,7 +31,7 @@ exports.parsers = {
              * @note: add the scripts field if it's provided
              * the scripts must be unsorted
              */
-            // eslint-disable-next-line no-prototype-builtins
+             
             if (json && json.hasOwnProperty('scripts')) {
                 sorted.scripts = unsortedScripts;
             }

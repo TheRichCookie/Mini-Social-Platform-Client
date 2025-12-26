@@ -1,14 +1,14 @@
-import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
+import {HttpClient} from '@angular/common/http';
+import {inject, Injectable} from '@angular/core';
+import {Router} from '@angular/router';
+import {Store} from '@ngrx/store';
 // import {JwtHelperService} from '@auth0/angular-jwt';
-import { UkStoringProperty } from '@utils/ui-kit/definitions';
-import type { Observable } from 'rxjs';
-import { BehaviorSubject } from 'rxjs';
+import {UkStoringProperty} from '@utils/ui-kit/definitions';
+import type {Observable} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 
-import { UkBrowserStorageService } from '../browser-storage/browser-storage.service';
-import { UkJwtService, UkLoggerService } from '../public-api';
+import {UkBrowserStorageService} from '../browser-storage/browser-storage.service';
+import {UkJwtService, UkLoggerService} from '../public-api';
 
 // const jwtHelperService = new JwtHelperService();
 

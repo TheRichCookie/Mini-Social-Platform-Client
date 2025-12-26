@@ -1,10 +1,10 @@
-import type { Action } from '@ngrx/store';
-import { createReducer } from '@ngrx/store';
-import { AUTH_INITIAL_STATE } from '@pages/auth/_store/auth.initial.state';
-import { immerOn } from 'ngrx-immer/store';
+import type {Action} from '@ngrx/store';
+import {createReducer} from '@ngrx/store';
+import {AUTH_INITIAL_STATE} from '@pages/auth/_store/auth.initial.state';
+import {immerOn} from 'ngrx-immer/store';
 
 import * as AUTH_ACTIONS from './auth.actions';
-import type { HangAuthState } from './auth.state';
+import type {HangAuthState} from './auth.state';
 
 const reducer = createReducer(
   AUTH_INITIAL_STATE,

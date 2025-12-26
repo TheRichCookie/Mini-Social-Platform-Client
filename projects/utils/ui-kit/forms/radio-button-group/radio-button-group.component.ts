@@ -1,9 +1,9 @@
-import { CommonModule } from '@angular/common';
-import type { Provider } from '@angular/core';
-import { ChangeDetectionStrategy, Component, forwardRef } from '@angular/core';
-import type { ControlValueAccessor } from '@angular/forms';
-import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Subject } from 'rxjs';
+import {CommonModule} from '@angular/common';
+import type {Provider} from '@angular/core';
+import {ChangeDetectionStrategy, Component, forwardRef} from '@angular/core';
+import type {ControlValueAccessor} from '@angular/forms';
+import {FormsModule, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {Subject} from 'rxjs';
 
 const RADIO_BUTTON_GROUP_VALUE_ACCESSOR: Provider = {
   provide: NG_VALUE_ACCESSOR,

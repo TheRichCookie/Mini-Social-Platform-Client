@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { APP_ROUTES } from '@app/app.routes';
-import { UkIconComponent, UkTextComponent } from '@utils/ui-kit/components';
-import { UK_TYPE } from '@utils/ui-kit/definitions';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {RouterModule} from '@angular/router';
+import {APP_ROUTES} from '@app/app.routes';
+import {UkIconComponent, UkTextComponent} from '@utils/ui-kit/components';
+import {UK_TYPE} from '@utils/ui-kit/definitions';
 
 @Component({
   standalone: true,

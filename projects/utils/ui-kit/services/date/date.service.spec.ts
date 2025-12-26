@@ -1,13 +1,13 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {
   JalaliDateCalculatorService,
   JalaliDateValidatorService,
 } from 'ngx-persian';
 
-import { UkNumberService } from '../number/number.service';
-import { UkStringService } from '../string/string.service';
-import type { UkDate } from './date.service';
-import { UkDateService } from './date.service';
+import {UkNumberService} from '../number/number.service';
+import {UkStringService} from '../string/string.service';
+import type {UkDate} from './date.service';
+import {UkDateService} from './date.service';
 
 describe('UkDateService', () => {
   let service: UkDateService;
@@ -35,10 +35,10 @@ describe('UkDateService', () => {
     TestBed.configureTestingModule({
       providers: [
         UkDateService,
-        { provide: JalaliDateCalculatorService, useValue: jalaliCalculatorSpy },
-        { provide: JalaliDateValidatorService, useValue: jalaliValidatorSpy },
-        { provide: UkNumberService, useValue: numberServiceSpy },
-        { provide: UkStringService, useValue: stringServiceSpy },
+        {provide: JalaliDateCalculatorService, useValue: jalaliCalculatorSpy},
+        {provide: JalaliDateValidatorService, useValue: jalaliValidatorSpy},
+        {provide: UkNumberService, useValue: numberServiceSpy},
+        {provide: UkStringService, useValue: stringServiceSpy},
       ],
     });
 
@@ -73,7 +73,7 @@ describe('UkDateService', () => {
 
   it('should convert Georgian date to Jalali date', () => {
     const gDate = new Date(2021, 2, 21); // Georgian date
-    const jalaliDateMock: UkDate = { year: 1400, month: 1, day: 1 }; // expected Jalali date
+    const jalaliDateMock: UkDate = {year: 1400, month: 1, day: 1}; // expected Jalali date
 
     jalaliDateCalculatorService.convertToJalali.and.returnValue(jalaliDateMock);
 
@@ -108,7 +108,7 @@ describe('UkDateService', () => {
   it('should convert epoch to Jalali date', () => {
     const epoch = 1616320320000; // some epoch time
     const gDate = new Date(epoch);
-    const jalaliDateMock: UkDate = { year: 1400, month: 1, day: 1 }; // expected Jalali date
+    const jalaliDateMock: UkDate = {year: 1400, month: 1, day: 1}; // expected Jalali date
 
     jalaliDateCalculatorService.convertToJalali.and.returnValue(jalaliDateMock);
 
@@ -147,6 +147,6 @@ describe('UkDateService', () => {
 
     const result = service.getCurrentUKDJalali();
 
-    expect(result).toEqual({ year: 1400, month: 1, day: 5 });
+    expect(result).toEqual({year: 1400, month: 1, day: 5});
   });
 });

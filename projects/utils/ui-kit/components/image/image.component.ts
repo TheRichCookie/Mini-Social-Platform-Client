@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import type { OnDestroy } from '@angular/core';
+import {CommonModule} from '@angular/common';
+import type {OnDestroy} from '@angular/core';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -10,11 +10,11 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import type { ImageObjectFit, UkFileType } from '@utils/ui-kit/definitions';
-import { DEFAULT } from '@utils/ui-kit/definitions';
-import type { Subscription } from 'rxjs';
+import type {ImageObjectFit, UkFileType} from '@utils/ui-kit/definitions';
+import {DEFAULT} from '@utils/ui-kit/definitions';
+import type {Subscription} from 'rxjs';
 
-import { UkAlertService, UkLoggerService } from '../../services';
+import {UkAlertService, UkLoggerService} from '../../services';
 
 export interface UkSecureSource {
   sourceType: UkFileType;

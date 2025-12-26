@@ -1,7 +1,7 @@
-import type { PipeTransform } from '@angular/core';
-import { inject, Pipe } from '@angular/core';
+import type {PipeTransform} from '@angular/core';
+import {inject, Pipe} from '@angular/core';
 
-import { UkDateService } from '../../services';
+import {UkDateService} from '../../services';
 
 @Pipe({
   name: 'epochToJalali',

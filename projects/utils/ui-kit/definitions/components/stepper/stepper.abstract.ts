@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
-import type { UkStepperItems } from './stepper.interface';
+import type {UkStepperItems} from './stepper.interface';
 
 @Injectable()
 export abstract class UkStepperAbstract {

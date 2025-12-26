@@ -1,8 +1,8 @@
-import { BidiModule } from '@angular/cdk/bidi';
-import { OverlayModule } from '@angular/cdk/overlay'; // for cdkOverlay scroll handling
-import { ScrollingModule } from '@angular/cdk/scrolling'; // for cdkOverlay scroll handling
-import { CommonModule } from '@angular/common';
-import type { ElementRef } from '@angular/core';
+import {BidiModule} from '@angular/cdk/bidi';
+import {OverlayModule} from '@angular/cdk/overlay'; // for cdkOverlay scroll handling
+import {ScrollingModule} from '@angular/cdk/scrolling'; // for cdkOverlay scroll handling
+import {CommonModule} from '@angular/common';
+import type {ElementRef} from '@angular/core';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -13,11 +13,11 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { NgScrollbarModule } from 'ngx-scrollbar';
+import {NgScrollbarModule} from 'ngx-scrollbar';
 
-import { UkAnimationComponent } from '../../animations/animation/animation.component';
-import type { BooleanType } from '../../definitions';
-import { DEFAULT, UK_TYPE } from '../../definitions';
+import {UkAnimationComponent} from '../../animations/animation/animation.component';
+import type {BooleanType} from '../../definitions';
+import {DEFAULT, UK_TYPE} from '../../definitions';
 
 @Component({
   standalone: true,
@@ -84,7 +84,7 @@ export class UkScrollComponent {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public onScroll(event: any): void {
     const SCROLL_Y = event.target.scrollTop;
-    const { scrollHeight } = event.target;
+    const {scrollHeight} = event.target;
     const OFFSET_HEIGHT = event.target.offsetHeight;
 
     if (SCROLL_Y <= 10) {

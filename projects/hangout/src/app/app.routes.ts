@@ -26,7 +26,7 @@ export const APP_ROUTES = {
   PROFILE: {
     ROOT: 'profile',
     CHILD: {
-      CREATE: 'create',
+      edit: 'edit',
     },
   },
   FRIENDS: {
@@ -37,9 +37,6 @@ export const APP_ROUTES = {
   },
   NOTIFICATION: {
     ROOT: 'notifications',
-  },
-  MORE: {
-    ROOT: 'more',
   },
 };
 

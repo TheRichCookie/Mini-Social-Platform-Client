@@ -1,15 +1,15 @@
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   inject,
 } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { UkLoggerPart, UkLoggerService } from '@utils/ui-kit/services';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {UkLoggerPart, UkLoggerService} from '@utils/ui-kit/services';
 
-import { UkLoaderService } from '../../service/loader/loader.service';
-import { UkProgressBarComponent } from '../progress-bar/progress-bar.component';
+import {UkLoaderService} from '../../service/loader/loader.service';
+import {UkProgressBarComponent} from '../progress-bar/progress-bar.component';
 
 @Component({
   standalone: true,

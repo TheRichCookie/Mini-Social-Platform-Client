@@ -1,20 +1,15 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  Input,
-} from '@angular/core';
-import type { AnimationItem } from 'lottie-web';
+import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import type {AnimationItem} from 'lottie-web';
 import type {
   AnimationOptions,
   BMCompleteEvent,
   BMCompleteLoopEvent,
 } from 'ngx-lottie';
-import { LottieComponent } from 'ngx-lottie';
+import {LottieComponent} from 'ngx-lottie';
 
-import type { BooleanType } from '../../definitions';
-import { UkBooleanType } from '../../definitions';
-import { UkLoggerPart, UkLoggerService } from '../../services';
+import type {BooleanType} from '../../definitions';
+import {UkBooleanType} from '../../definitions';
+import {UkLoggerPart, UkLoggerService} from '../../services';
 
 @Component({
   standalone: true,

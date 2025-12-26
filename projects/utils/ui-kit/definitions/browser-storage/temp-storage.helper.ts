@@ -1,4 +1,4 @@
-import type { UkStorage } from './storage.interface';
+import type {UkStorage} from './storage.interface';
 
 export class UkTempStoring implements UkStorage {
   private storage: Record<string, string> = {}; // Temporary Storage Class Field Memory.

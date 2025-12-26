@@ -1,13 +1,13 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import type {
   ImageBoxPicture,
   ImageBoxSize,
   UkCursor,
 } from '@utils/ui-kit/definitions';
-import { DEFAULT, UK_TYPE } from '@utils/ui-kit/definitions';
+import {DEFAULT, UK_TYPE} from '@utils/ui-kit/definitions';
 
-import { UkTextComponent } from '../public-api';
+import {UkTextComponent} from '../public-api';
 
 @Component({
   standalone: true,

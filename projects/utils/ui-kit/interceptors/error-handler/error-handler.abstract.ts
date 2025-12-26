@@ -3,7 +3,7 @@ import type {
   HttpRequest,
   HttpResponse,
 } from '@angular/common/http';
-import type { Observable } from 'rxjs';
+import type {Observable} from 'rxjs';
 
 export interface UkHttpErrorHandler {
   handleError(

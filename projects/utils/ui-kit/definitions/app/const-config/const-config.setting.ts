@@ -1,5 +1,5 @@
-import { UkConfigApiVersions } from './config-api-version.interface';
-import type { UkConstConfig } from './const-config';
+import {UkConfigApiVersions} from './config-api-version.interface';
+import type {UkConstConfig} from './const-config';
 
 export const CONST_CONFIG: UkConstConfig = {
   COMPANY_INFO: {

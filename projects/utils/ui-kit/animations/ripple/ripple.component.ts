@@ -1,6 +1,6 @@
-import { Directive, ElementRef, HostListener, inject } from '@angular/core';
+import {Directive, ElementRef, HostListener, inject} from '@angular/core';
 
-@Directive({ standalone: true, selector: '[ukRipple]' })
+@Directive({standalone: true, selector: '[ukRipple]'})
 export class UkRippleDirective {
   private readonly elementRef = inject(ElementRef);
   private initialPosition = '';

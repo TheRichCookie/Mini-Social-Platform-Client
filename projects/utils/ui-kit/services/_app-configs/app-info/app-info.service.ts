@@ -1,7 +1,7 @@
 /* eslint-disable sort-imports */
-import { VERSION as cdkVersion } from '@angular/cdk';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { isPlatformBrowser } from '@angular/common';
+import {VERSION as cdkVersion} from '@angular/cdk';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import {isPlatformBrowser} from '@angular/common';
 import {
   DestroyRef,
   inject,
@@ -9,11 +9,11 @@ import {
   PLATFORM_ID,
   VERSION as angularVersion,
 } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { VERSION as materialVersion } from '@angular/material/core';
-import { CONST_CONFIG } from '@utils/ui-kit/definitions';
-import type { Observable } from 'rxjs';
-import { BehaviorSubject, debounceTime, fromEvent, Subject } from 'rxjs';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {VERSION as materialVersion} from '@angular/material/core';
+import {CONST_CONFIG} from '@utils/ui-kit/definitions';
+import type {Observable} from 'rxjs';
+import {BehaviorSubject, debounceTime, fromEvent, Subject} from 'rxjs';
 
 export interface UkAppInfo {
   isDeviceHandset: boolean;

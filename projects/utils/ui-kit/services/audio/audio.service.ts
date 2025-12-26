@@ -1,8 +1,8 @@
 // src/app/services/audio.service.ts
 
-import { inject, Injectable } from '@angular/core';
-import type { SoundSpriteDefinitions } from 'howler';
-import { Howl, Howler } from 'howler';
+import {inject, Injectable} from '@angular/core';
+import type {SoundSpriteDefinitions} from 'howler';
+import {Howl, Howler} from 'howler';
 
 import {
   UkLoggerPart,

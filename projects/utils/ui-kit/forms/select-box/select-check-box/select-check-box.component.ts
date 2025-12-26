@@ -1,4 +1,4 @@
-import { NgClass } from '@angular/common';
+import {NgClass} from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -8,19 +8,19 @@ import {
   inject,
   Input,
 } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import type { ControlValueAccessor } from '@angular/forms';
-import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { UkIconComponent, UkTextComponent } from '@utils/ui-kit/components';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import type {ControlValueAccessor} from '@angular/forms';
+import {FormsModule, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {UkIconComponent, UkTextComponent} from '@utils/ui-kit/components';
 import {
   UIKIT_EMPTY_FUNCTION,
   UIKIT_EMPTY_FUNCTION_UNI_ARGUMENT,
   UK_TYPE,
 } from '@utils/ui-kit/definitions';
-import { UkOverlayService } from '@utils/ui-kit/services';
-import { take } from 'rxjs';
+import {UkOverlayService} from '@utils/ui-kit/services';
+import {take} from 'rxjs';
 
-import { UkSelectCheckBoxDropDownComponent } from './_/select-check-box-drop-down.component';
+import {UkSelectCheckBoxDropDownComponent} from './_/select-check-box-drop-down.component';
 
 @Component({
   standalone: true,

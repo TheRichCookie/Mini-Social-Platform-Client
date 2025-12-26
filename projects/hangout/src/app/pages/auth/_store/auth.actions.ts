@@ -1,21 +1,22 @@
 import {createActionGroup, props} from '@ngrx/store';
+
 import type {
-  OtpRequestModel,
-  OtpResponseModel,
-  SignInRequestViewModel,
-  SignInResponseViewModel,
-  SignUpRequestViewModel,
-  SignUpResponseViewModel,
-} from '@utils/ui-kit/definitions';
+  AuthOtpVerificationRequest,
+  AuthSignInRequest,
+  AuthSignUpRequest,
+  OtpVerificationDataModel,
+  SignInDataModel,
+  SignUpDataModel,
+} from '../../../../../../utils/ui-kit/definitions/swagger/swagger';
 
 // Sign In
 export const SIGN_IN_ACTIONS = createActionGroup({
   source: 'AUTH',
   events: {
-    $SIGN_IN_POST: props<{request: SignInRequestViewModel}>(),
+    $SIGN_IN_POST: props<{request: AuthSignInRequest}>(),
     $SIGN_IN_UPDATE: props<{
-      request: SignInRequestViewModel;
-      response: SignInResponseViewModel;
+      request: AuthSignInRequest;
+      response: SignInDataModel;
       receivedTime: number;
     }>(),
   },
@@ -25,10 +26,10 @@ export const SIGN_IN_ACTIONS = createActionGroup({
 export const SIGN_UP_ACTIONS = createActionGroup({
   source: 'AUTH',
   events: {
-    $SIGN_UP_POST: props<{request: SignUpRequestViewModel}>(),
+    $SIGN_UP_POST: props<{request: AuthSignUpRequest}>(),
     $SIGN_UP_UPDATE: props<{
-      request: SignUpRequestViewModel;
-      response: SignUpResponseViewModel;
+      request: AuthSignUpRequest;
+      response: SignUpDataModel;
       receivedTime: number;
     }>(),
   },
@@ -38,10 +39,10 @@ export const SIGN_UP_ACTIONS = createActionGroup({
 export const OTP_ACTIONS = createActionGroup({
   source: 'AUTH',
   events: {
-    $OTP_POST: props<{request: OtpRequestModel}>(),
+    $OTP_POST: props<{request: AuthOtpVerificationRequest}>(),
     $OTP_UPDATE: props<{
-      request: OtpRequestModel;
-      response: OtpResponseModel;
+      request: AuthOtpVerificationRequest;
+      response: OtpVerificationDataModel;
       receivedTime: number;
     }>(),
   },

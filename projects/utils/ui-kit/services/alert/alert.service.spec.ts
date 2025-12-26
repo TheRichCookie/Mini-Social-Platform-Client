@@ -1,7 +1,7 @@
-import { TestBed } from '@angular/core/testing';
-import { ToastrService } from 'ngx-toastr';
+import {TestBed} from '@angular/core/testing';
+import {ToastrService} from 'ngx-toastr';
 
-import { UkAlertService } from './alert.service';
+import {UkAlertService} from './alert.service';
 
 describe('UkAlertService', () => {
   let alertService: UkAlertService;
@@ -17,7 +17,7 @@ describe('UkAlertService', () => {
     TestBed.configureTestingModule({
       providers: [
         UkAlertService,
-        { provide: ToastrService, useValue: toastrServiceSpy },
+        {provide: ToastrService, useValue: toastrServiceSpy},
       ],
     });
 

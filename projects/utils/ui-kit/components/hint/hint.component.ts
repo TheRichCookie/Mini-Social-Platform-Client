@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -20,7 +20,7 @@ import {
   UkTextFgColor,
 } from '@utils/ui-kit/definitions';
 
-import { UkIconComponent, UkTextComponent } from '../index';
+import {UkIconComponent, UkTextComponent} from '../index';
 
 @Component({
   standalone: true,

@@ -21,3 +21,5 @@ npx swagger-typescript-api generate \-p http://localhost:5000/swagger \-o src/ap
 ## Node Types
 npm install -D @types/node
 
+## ESlint Command
+npx eslint . --ext .js,.ts,.jsx,.tsx --fix

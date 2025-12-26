@@ -1,10 +1,7 @@
-import type {
-  HttpErrorResponse,
-  HttpInterceptorFn,
-} from '@angular/common/http';
-import { inject } from '@angular/core';
-import { UkLoggerPart, UkLoggerService } from '@utils/ui-kit/services';
-import { retry, throwError, timer } from 'rxjs';
+import type {HttpErrorResponse, HttpInterceptorFn} from '@angular/common/http';
+import {inject} from '@angular/core';
+import {UkLoggerPart, UkLoggerService} from '@utils/ui-kit/services';
+import {retry, throwError, timer} from 'rxjs';
 
 const RETRY_CONFIG = {
   count: 2, // this number in indicate retry, so we have count+1 request

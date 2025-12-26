@@ -1,4 +1,4 @@
-import { inject } from '@angular/core';
+import {inject} from '@angular/core';
 import {
   type ActivatedRouteSnapshot,
   type CanActivateFn,
@@ -6,7 +6,7 @@ import {
   Router,
   type RouterStateSnapshot,
 } from '@angular/router';
-import { UkAuthenticateService } from '@utils/ui-kit/services';
+import {UkAuthenticateService} from '@utils/ui-kit/services';
 
 export const UkUsersGuard: CanActivateFn = async (
   _activatedRouteSnapshot: ActivatedRouteSnapshot,
@@ -19,7 +19,7 @@ export const UkUsersGuard: CanActivateFn = async (
   const URL = router.parseUrl('/auth');
 
   if (!isUserAuthorized) {
-    return new RedirectCommand(URL, { skipLocationChange: false });
+    return new RedirectCommand(URL, {skipLocationChange: false});
   }
 
   return true;

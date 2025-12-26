@@ -3,13 +3,13 @@ import type {
   HttpInterceptorFn,
   HttpRequest,
 } from '@angular/common/http';
-import { inject } from '@angular/core';
+import {inject} from '@angular/core';
 import {
   UkAuthenticateService,
   UkLoggerPart,
   UkLoggerService,
 } from '@utils/ui-kit/services';
-import { from, switchMap } from 'rxjs';
+import {from, switchMap} from 'rxjs';
 
 export const BEARER_INTERCEPTOR_FUNCTIONAL: HttpInterceptorFn = (
   request: HttpRequest<unknown>,

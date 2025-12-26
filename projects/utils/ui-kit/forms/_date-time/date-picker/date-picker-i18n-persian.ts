@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import type { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-import { NgbDatepickerI18n } from '@ng-bootstrap/ng-bootstrap';
+import {Injectable} from '@angular/core';
+import type {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import {NgbDatepickerI18n} from '@ng-bootstrap/ng-bootstrap';
 
 const WEEKDAYS_SHORT = ['د', 'س', 'چ', 'پ', 'ج', 'ش', 'ی'];
 const MONTHS = [

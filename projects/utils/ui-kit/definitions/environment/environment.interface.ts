@@ -1,4 +1,4 @@
-import type { NgxLoggerLevel } from 'ngx-logger';
+import type {NgxLoggerLevel} from 'ngx-logger';
 
 export interface UkEnvironment {
   name: UkEnvironmentName;

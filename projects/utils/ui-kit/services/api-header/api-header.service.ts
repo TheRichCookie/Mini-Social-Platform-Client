@@ -1,6 +1,6 @@
-import { HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import type { ConfigApiServices } from '@utils/ui-kit/definitions';
+import {HttpHeaders} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import type {ConfigApiServices} from '@utils/ui-kit/definitions';
 import {
   UkConfigApiBaseUrls,
   UkConfigApiServices,

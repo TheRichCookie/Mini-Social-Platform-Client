@@ -1,8 +1,8 @@
-import { inject, Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
+import {inject, Injectable} from '@angular/core';
+import {Store} from '@ngrx/store';
 import * as APP_ACTIONS from '@store/app/app.action';
 
-import type { HangAppLoading } from './app-loading.interface';
+import type {HangAppLoading} from './app-loading.interface';
 
 @Injectable({
   providedIn: 'root',

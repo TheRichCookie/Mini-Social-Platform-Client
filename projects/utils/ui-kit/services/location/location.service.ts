@@ -1,7 +1,7 @@
-import { inject, Injectable } from '@angular/core';
-import { lastValueFrom, Observable } from 'rxjs';
+import {inject, Injectable} from '@angular/core';
+import {lastValueFrom, Observable} from 'rxjs';
 
-import { UkLoggerPart, UkLoggerService } from '../../services';
+import {UkLoggerPart, UkLoggerService} from '../../services';
 
 export interface UkLocation {
   latitude: number;

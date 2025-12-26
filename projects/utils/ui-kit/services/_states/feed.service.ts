@@ -6,7 +6,7 @@ import type {Observable} from 'rxjs';
 import {UkConfigApiServices, UkConfigApiVersions} from '../../definitions';
 import type {
   CommonResponseViewModel,
-  FeedArrayResponse,
+  FeedPostModel,
 } from '../../definitions/swagger/swagger';
 
 @Injectable({
@@ -19,7 +19,7 @@ export class UkFeedService {
   public getFeed(
     page: number,
     limit: number,
-  ): Observable<CommonResponseViewModel<FeedArrayResponse>> {
+  ): Observable<CommonResponseViewModel<FeedPostModel[]>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.FEED,
       apiHeaderVersion: UkConfigApiVersions.NONE,
@@ -30,12 +30,9 @@ export class UkFeedService {
       .set('page', page.toString())
       .set('limit', limit.toString());
 
-    return this.httpClient.get<CommonResponseViewModel<FeedArrayResponse>>(
-      URI,
-      {
-        headers: HEADERS,
-        params: params,
-      },
-    );
+    return this.httpClient.get<CommonResponseViewModel<FeedPostModel[]>>(URI, {
+      headers: HEADERS,
+      params: params,
+    });
   }
 }

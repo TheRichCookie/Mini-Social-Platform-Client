@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import jsQR from 'jsqr';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class UkQrCodeReaderService {
   public async scanQRCodeFromVideo(
     video: HTMLVideoElement,

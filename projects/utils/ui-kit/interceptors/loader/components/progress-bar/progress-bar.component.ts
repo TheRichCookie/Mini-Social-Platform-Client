@@ -1,7 +1,7 @@
 // https://github.com/rawatanimesh/angular-progress-bar
 
-import { CommonModule } from '@angular/common';
-import type { OnInit } from '@angular/core';
+import {CommonModule} from '@angular/common';
+import type {OnInit} from '@angular/core';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -10,8 +10,8 @@ import {
   Input,
 } from '@angular/core';
 
-import { UkAnimationComponent } from '../../../../animations/animation/animation.component';
-import { UK_TYPE } from '../../../../definitions';
+import {UkAnimationComponent} from '../../../../animations/animation/animation.component';
+import {UK_TYPE} from '../../../../definitions';
 
 @Component({
   standalone: true,

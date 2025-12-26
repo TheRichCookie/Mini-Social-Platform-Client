@@ -1,4 +1,4 @@
-<uk-page
+<!-- <uk-page
   class="profile-page"
   [bodyOverFlow]="UK_TYPE.PAGE.BODY_OVER_FLOW.SCROLL"
 >
@@ -14,7 +14,7 @@
         <div class="head">
           <div class="avatar">{{ p.name?.[0] || p.username?.[0] }}</div>
           <div class="meta">
-            <div class="name">{{ p.name || p.username }}</div>
+            <div class="name">{{ p.name || p.username }}</div>`
             <div class="counts">
               <span>{{ p.followers || 0 }} followers</span>
               <span>{{ p.following || 0 }} following</span>
@@ -30,9 +30,9 @@
           <hang-post-card
             *ngFor="let post of posts()"
             [post]="post"
-          ></hang-post-card>
+          />
         </div>
       </div>
     </uk-page-part>
   </uk-page-body>
-</uk-page>
+</uk-page> -->

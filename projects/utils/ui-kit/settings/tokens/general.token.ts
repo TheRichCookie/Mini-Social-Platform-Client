@@ -1,5 +1,5 @@
-import { InjectionToken } from '@angular/core';
-import type { UkEnvironmentBaseUrl } from '@utils/ui-kit/definitions';
+import {InjectionToken} from '@angular/core';
+import type {UkEnvironmentBaseUrl} from '@utils/ui-kit/definitions';
 
 export interface UkApiConfig {
   baseUrl: UkEnvironmentBaseUrl;

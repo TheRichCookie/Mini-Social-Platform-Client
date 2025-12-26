@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
-import { isPlatformBrowser } from '@angular/common';
-import { inject, Injectable, PLATFORM_ID } from '@angular/core';
-import type { UkAppConfiguration } from '@utils/ui-kit/definitions';
+import {isPlatformBrowser} from '@angular/common';
+import {inject, Injectable, PLATFORM_ID} from '@angular/core';
+import type {UkAppConfiguration} from '@utils/ui-kit/definitions';
 import {
   UkAppDirection,
   UkAppTheme,
@@ -12,13 +12,13 @@ import {
   UkLanguageLocale,
   UkLanguageName,
 } from '@utils/ui-kit/definitions';
-import { NgxLoggerLevel } from 'ngx-logger';
-import type { Observable } from 'rxjs';
-import { ReplaySubject } from 'rxjs';
+import {NgxLoggerLevel} from 'ngx-logger';
+import type {Observable} from 'rxjs';
+import {ReplaySubject} from 'rxjs';
 
-import { UkLoggerService } from '../../logger/logger.service';
-import { UkAppInfoService } from '../app-info/app-info.service';
-import { UkAppSoundEffectService } from '../app-sound-effect/app-sound-effect.service';
+import {UkLoggerService} from '../../logger/logger.service';
+import {UkAppInfoService} from '../app-info/app-info.service';
+import {UkAppSoundEffectService} from '../app-sound-effect/app-sound-effect.service';
 
 @Injectable({
   providedIn: 'root',

@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { ErrorHandler } from '@angular/core';
-import { inject, Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import type {ErrorHandler} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
+import {Subject} from 'rxjs';
 
-import { UkLoggerPart, UkLoggerService } from '../logger/logger.service';
+import {UkLoggerPart, UkLoggerService} from '../logger/logger.service';
 
 export interface UkCustomError {
   message: string;

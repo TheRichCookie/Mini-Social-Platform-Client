@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -19,9 +19,9 @@ import type {
   TextHorizontalAlignment,
   TextTypography,
 } from '@utils/ui-kit/definitions';
-import { DEFAULT, UK_TYPE, UkButtonDisplay } from '@utils/ui-kit/definitions';
+import {DEFAULT, UK_TYPE, UkButtonDisplay} from '@utils/ui-kit/definitions';
 
-import { UkTextComponent } from '../public-api';
+import {UkTextComponent} from '../public-api';
 
 @Component({
   standalone: true,

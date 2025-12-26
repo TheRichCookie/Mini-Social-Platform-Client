@@ -9,9 +9,9 @@ import type {
   AuthSignInRequest,
   AuthSignUpRequest,
   CommonResponseViewModel,
-  OtpVerificationResponse,
-  SignInResponse,
-  SignUpResponse,
+  OtpVerificationDataModel,
+  SignInDataModel,
+  SignUpDataModel,
 } from '../../definitions/swagger/swagger';
 
 @Injectable({
@@ -23,7 +23,7 @@ export class UkAuthService {
 
   public signIn(
     req: AuthSignInRequest,
-  ): Observable<CommonResponseViewModel<SignInResponse>> {
+  ): Observable<CommonResponseViewModel<SignInDataModel>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.AUTH,
       apiHeaderVersion: UkConfigApiVersions.NONE,
@@ -36,7 +36,7 @@ export class UkAuthService {
       'true',
     );
 
-    return this.httpClient.post<CommonResponseViewModel<SignInResponse>>(
+    return this.httpClient.post<CommonResponseViewModel<SignInDataModel>>(
       URI,
       BODY,
       {
@@ -47,7 +47,7 @@ export class UkAuthService {
 
   public signUp(
     req: AuthSignUpRequest,
-  ): Observable<CommonResponseViewModel<SignUpResponse>> {
+  ): Observable<CommonResponseViewModel<SignUpDataModel>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.AUTH,
       apiHeaderVersion: UkConfigApiVersions.NONE,
@@ -60,7 +60,7 @@ export class UkAuthService {
       'true',
     );
 
-    return this.httpClient.post<CommonResponseViewModel<SignUpResponse>>(
+    return this.httpClient.post<CommonResponseViewModel<SignUpDataModel>>(
       URI,
       BODY,
       {
@@ -71,7 +71,7 @@ export class UkAuthService {
 
   public otp(
     req: AuthOtpVerificationRequest,
-  ): Observable<CommonResponseViewModel<OtpVerificationResponse>> {
+  ): Observable<CommonResponseViewModel<OtpVerificationDataModel>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.AUTH,
       apiHeaderVersion: UkConfigApiVersions.NONE,
@@ -85,7 +85,7 @@ export class UkAuthService {
     );
 
     return this.httpClient.post<
-      CommonResponseViewModel<OtpVerificationResponse>
+      CommonResponseViewModel<OtpVerificationDataModel>
     >(URI, BODY, {
       headers: NEW_HEADERS,
     });

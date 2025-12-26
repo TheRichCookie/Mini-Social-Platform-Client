@@ -1,4 +1,4 @@
-import type { SoundSpriteDefinitions } from 'howler';
+import type {SoundSpriteDefinitions} from 'howler';
 
 export const sprite: SoundSpriteDefinitions = {
   cheering: [0, 4720],

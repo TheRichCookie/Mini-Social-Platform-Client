@@ -1,7 +1,7 @@
-import { inject } from '@angular/core';
+import {inject} from '@angular/core';
 
-import { UkAlertService } from '../../alert/alert.service';
-import type { PlatformType } from '../platforms-common.service';
+import {UkAlertService} from '../../alert/alert.service';
+import type {PlatformType} from '../platforms-common.service';
 
 export class UkLocation {
   private readonly alertService = inject(UkAlertService);

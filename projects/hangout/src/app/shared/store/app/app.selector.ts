@@ -1,7 +1,7 @@
-import { createSelector } from '@ngrx/store';
+import {createSelector} from '@ngrx/store';
 
-import type { HangBaseState } from '../_base/_base.state';
-import type { HangAppState } from './app.state';
+import type {HangBaseState} from '../_base/_base.state';
+import type {HangAppState} from './app.state';
 
 const APP_STATE = (store: HangBaseState): HangAppState => store.app;
 

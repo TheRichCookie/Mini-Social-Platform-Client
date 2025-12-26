@@ -6,7 +6,7 @@ import type {Observable} from 'rxjs';
 import {UkConfigApiServices, UkConfigApiVersions} from '../../definitions';
 import type {
   CommonResponseViewModel,
-  LikesCountResponse,
+  LikesCountModel,
 } from '../../definitions/swagger/swagger';
 
 @Injectable({
@@ -18,7 +18,7 @@ export class UkLikeService {
 
   public getLikes(
     postId: string,
-  ): Observable<CommonResponseViewModel<LikesCountResponse>> {
+  ): Observable<CommonResponseViewModel<LikesCountModel>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.LIKES,
       apiHeaderVersion: UkConfigApiVersions.NONE,
@@ -26,12 +26,9 @@ export class UkLikeService {
 
     const URI = `/${postId}`;
 
-    return this.httpClient.get<CommonResponseViewModel<LikesCountResponse>>(
-      URI,
-      {
-        headers: HEADERS,
-      },
-    );
+    return this.httpClient.get<CommonResponseViewModel<LikesCountModel>>(URI, {
+      headers: HEADERS,
+    });
   }
 
   public toggleLike(postId: string): Observable<CommonResponseViewModel<void>> {

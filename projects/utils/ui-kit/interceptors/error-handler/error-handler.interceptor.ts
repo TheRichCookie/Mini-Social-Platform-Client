@@ -3,10 +3,10 @@ import type {
   HttpInterceptorFn,
   HttpRequest,
 } from '@angular/common/http';
-import { HttpErrorResponse } from '@angular/common/http';
-import { inject } from '@angular/core';
-import { UkLoggerPart, UkLoggerService } from '@utils/ui-kit/services';
-import { catchError } from 'rxjs';
+import {HttpErrorResponse} from '@angular/common/http';
+import {inject} from '@angular/core';
+import {UkLoggerPart, UkLoggerService} from '@utils/ui-kit/services';
+import {catchError} from 'rxjs';
 
 import {
   ukInjectDefaultErrorHandler,

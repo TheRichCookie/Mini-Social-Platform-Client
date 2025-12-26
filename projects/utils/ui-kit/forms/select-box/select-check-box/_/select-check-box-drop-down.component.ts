@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import type { OnInit } from '@angular/core';
+import {CommonModule} from '@angular/common';
+import type {OnInit} from '@angular/core';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -9,13 +9,13 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { UkScrollComponent } from '@utils/ui-kit/arrangements';
-import { UkButtonComponent, UkIconComponent } from '@utils/ui-kit/components';
-import { UK_TYPE } from '@utils/ui-kit/definitions';
-import { UkCheckBoxComponent } from '@utils/ui-kit/forms/check-box/check-box.component';
-import { UkCheckBoxGroupComponent } from '@utils/ui-kit/forms/check-box-group/check-box-group.component';
-import { UkInputComponent } from '@utils/ui-kit/forms/public-api';
+import {FormsModule} from '@angular/forms';
+import {UkScrollComponent} from '@utils/ui-kit/arrangements';
+import {UkButtonComponent, UkIconComponent} from '@utils/ui-kit/components';
+import {UK_TYPE} from '@utils/ui-kit/definitions';
+import {UkCheckBoxComponent} from '@utils/ui-kit/forms/check-box/check-box.component';
+import {UkCheckBoxGroupComponent} from '@utils/ui-kit/forms/check-box-group/check-box-group.component';
+import {UkInputComponent} from '@utils/ui-kit/forms/public-api';
 
 @Component({
   standalone: true,

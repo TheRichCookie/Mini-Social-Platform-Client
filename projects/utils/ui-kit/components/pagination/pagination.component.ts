@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -8,11 +8,11 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { UkIconComponent, UkTextComponent } from '@utils/ui-kit/components';
-import { UK_TYPE } from '@utils/ui-kit/definitions';
-import type { PagixReturn } from 'pagix';
-import { pagix } from 'pagix';
-import { PaginatorModule } from 'primeng/paginator';
+import {UkIconComponent, UkTextComponent} from '@utils/ui-kit/components';
+import {UK_TYPE} from '@utils/ui-kit/definitions';
+import type {PagixReturn} from 'pagix';
+import {pagix} from 'pagix';
+import {PaginatorModule} from 'primeng/paginator';
 
 @Component({
   standalone: true,

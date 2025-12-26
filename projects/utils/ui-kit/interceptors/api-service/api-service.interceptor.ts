@@ -1,5 +1,5 @@
-import type { HttpInterceptorFn } from '@angular/common/http';
-import { CONST_CONFIG, UkConfigApiServices } from '@utils/ui-kit/definitions';
+import type {HttpInterceptorFn} from '@angular/common/http';
+import {CONST_CONFIG, UkConfigApiServices} from '@utils/ui-kit/definitions';
 
 export const API_SERVICE_INTERCEPTOR_FUNCTIONAL: HttpInterceptorFn = (
   request,
@@ -54,7 +54,7 @@ export const API_SERVICE_INTERCEPTOR_FUNCTIONAL: HttpInterceptorFn = (
   let clonedRequest = request.clone();
 
   if (apiService) {
-    clonedRequest = request.clone({ url: `${API_SERVICE}/${REQ_URL}` });
+    clonedRequest = request.clone({url: `${API_SERVICE}/${REQ_URL}`});
   }
 
   return next(clonedRequest);

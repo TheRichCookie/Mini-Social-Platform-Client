@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import type { AfterViewInit } from '@angular/core';
+import {CommonModule} from '@angular/common';
+import type {AfterViewInit} from '@angular/core';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -10,8 +10,8 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import type { NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
+import {FormsModule} from '@angular/forms';
+import type {NgbDatepicker} from '@ng-bootstrap/ng-bootstrap';
 import {
   NgbCalendar,
   NgbCalendarPersian,
@@ -19,20 +19,20 @@ import {
   NgbDatepickerI18n,
   NgbDatepickerModule,
 } from '@ng-bootstrap/ng-bootstrap';
-import { UkScrollComponent } from '@utils/ui-kit/arrangements';
-import { UkButtonComponent } from '@utils/ui-kit/components';
-import { UK_TYPE } from '@utils/ui-kit/definitions';
+import {UkScrollComponent} from '@utils/ui-kit/arrangements';
+import {UkButtonComponent} from '@utils/ui-kit/components';
+import {UK_TYPE} from '@utils/ui-kit/definitions';
 import type {
   UkDateRangeDataModel,
   UkDateRangeOptionModel,
 } from '@utils/ui-kit/definitions/components/select-date-box/select-date-box.interface';
-import { UkDateRangeTypes } from '@utils/ui-kit/definitions/components/select-date-box/select-date-box.interface';
+import {UkDateRangeTypes} from '@utils/ui-kit/definitions/components/select-date-box/select-date-box.interface';
 import {
   UkRadioButtonComponent,
   UkRadioButtonGroupComponent,
 } from '@utils/ui-kit/forms/public-api';
-import { type UkDate, UkDateService } from '@utils/ui-kit/services';
-import { UkNgbDatepickerI18nPersian } from '@utils/ui-kit/services/calendar/calendar.service';
+import {type UkDate, UkDateService} from '@utils/ui-kit/services';
+import {UkNgbDatepickerI18nPersian} from '@utils/ui-kit/services/calendar/calendar.service';
 
 @Component({
   standalone: true,
@@ -50,12 +50,12 @@ import { UkNgbDatepickerI18nPersian } from '@utils/ui-kit/services/calendar/cale
   styleUrls: ['./select-date-drop-down.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    { provide: NgbCalendar, useClass: NgbCalendarPersian },
-    { provide: NgbDatepickerI18n, useClass: UkNgbDatepickerI18nPersian },
+    {provide: NgbCalendar, useClass: NgbCalendarPersian},
+    {provide: NgbDatepickerI18n, useClass: UkNgbDatepickerI18nPersian},
   ],
 })
 export class UkSelectDateDropdownComponent implements AfterViewInit {
-  @ViewChild('d', { static: true })
+  @ViewChild('d', {static: true})
   private readonly datepicker!: NgbDatepicker;
 
   private readonly changeDetectorRef = inject(ChangeDetectorRef);

@@ -77,16 +77,7 @@
                     [formControl]="signUpForm.controls.password"
                     [inputType]="UK_TYPE.INPUT.TYPE.TEXT"
                     [placeholder]="'رمز عبور خود را وارد کنید'"
-                  >
-                    <!-- <uk-icon
-                      *ngIf="loginForm.controls.phoneNumber.value"
-                      END
-                      [fgColor]="UK_TYPE.ICON.FG_COLOR.CONTENT_LOW_EMPHASIS"
-                      [name]="UK_TYPE.ICON.NAME.MATH_CLOSE"
-                      [size]="UK_TYPE.ICON.SIZE.LARGE"
-                      (click)="setClear()"
-                    />  -->
-                  </uk-input>
+                  />
                   @if (
                     signUpFormSubmitted &&
                     signUpForm.controls["password"].errors

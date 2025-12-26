@@ -3,7 +3,6 @@ export * from './_date-time/date-select/date-select.component';
 export * from './_date-time/time-picker/time-picker.component';
 export * from './check-box/check-box.component';
 export * from './check-box-group/check-box-group.component';
-export * from './file-uploader/file-uploader.component';
 export * from './input/input.component';
 export * from './otp-input/otp-input.component';
 export * from './radio-button/radio-button.component';

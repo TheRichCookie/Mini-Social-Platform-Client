@@ -1,11 +1,11 @@
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   inject,
 } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
   FormControl,
   FormGroup,
@@ -13,9 +13,9 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
-import { APP_ROUTES } from '@app/app.routes';
-import { Store } from '@ngrx/store';
+import {Router, RouterLink} from '@angular/router';
+import {APP_ROUTES} from '@app/app.routes';
+import {Store} from '@ngrx/store';
 import * as AUTH_ACTIONS from '@pages/auth/_store/auth.actions';
 import {
   UkFormBodyComponent,
@@ -35,12 +35,12 @@ import {
   UkLinkComponent,
   UkTextComponent,
 } from '@utils/ui-kit/components';
-import { UK_TYPE } from '@utils/ui-kit/definitions';
-import { UkInputComponent } from '@utils/ui-kit/forms';
-import { UkAlertService } from '@utils/ui-kit/services';
+import {UK_TYPE} from '@utils/ui-kit/definitions';
+import {UkInputComponent} from '@utils/ui-kit/forms';
+import {UkAlertService} from '@utils/ui-kit/services';
 
-import type { HangAuthStatus, HangSignUpForm } from '../_models/bmn-auth.model';
-import { SELECT_AUTH_SIGN_UP_RECEIVED_TIME_RESPONSE } from '../_store/auth.selectors';
+import type {HangAuthStatus, HangSignUpForm} from '../_models/bmn-auth.model';
+import {SELECT_AUTH_SIGN_UP_RECEIVED_TIME_RESPONSE} from '../_store/auth.selectors';
 
 @Component({
   standalone: true,
@@ -125,7 +125,7 @@ export class HangSignUpComponent {
     const REQUEST = this.signUpForm.getRawValue();
 
     this.store.dispatch(
-      AUTH_ACTIONS.SIGN_UP_ACTIONS.$SIGN_UP_POST({ request: REQUEST }),
+      AUTH_ACTIONS.SIGN_UP_ACTIONS.$SIGN_UP_POST({request: REQUEST}),
     );
   }
 }

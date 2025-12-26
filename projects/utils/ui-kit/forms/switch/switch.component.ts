@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -8,9 +8,9 @@ import {
   inject,
   Input,
 } from '@angular/core';
-import type { ControlValueAccessor } from '@angular/forms';
-import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
-import type { UkCursor } from '@utils/ui-kit/definitions';
+import type {ControlValueAccessor} from '@angular/forms';
+import {FormsModule, NG_VALUE_ACCESSOR} from '@angular/forms';
+import type {UkCursor} from '@utils/ui-kit/definitions';
 import {
   DEFAULT,
   UIKIT_EMPTY_FUNCTION,
