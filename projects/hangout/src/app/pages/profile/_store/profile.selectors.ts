@@ -21,7 +21,3 @@ export const SELECT_PROFILE_RECEIVED_TIME = createSelector(
   PROFILE_STATE,
   (s) => s.receivedTime,
 );
-export const SELECT_PROFILE_ERROR = createSelector(
-  PROFILE_STATE,
-  (s) => s.error,
-);

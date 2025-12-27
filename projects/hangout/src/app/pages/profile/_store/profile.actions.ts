@@ -20,6 +20,10 @@ export const PROFILE_ACTIONS = createActionGroup({
       receivedTime: number;
     }>(),
 
-    $TOGGLE_FOLLOW_PROFILE: props<{userId: string}>(),
+    $GET_FOLLOWERS_COUNT: props<{userId: string}>(),
+    $GET_FOLLOWERS_COUNT_UPDATE: props<{
+      response: PostModel[];
+      receivedTime: number;
+    }>(),
   },
 });

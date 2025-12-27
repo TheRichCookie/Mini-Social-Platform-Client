@@ -4,13 +4,9 @@ import type {
 } from '../../../../../../utils/ui-kit/definitions/swagger/swagger';
 
 export interface HangProfileState {
-  user: UserModel | undefined;
+  user: UserModel;
   posts: PostModel[];
-  followers: number | undefined;
-  following: number | undefined;
-  receivedTime: number | undefined;
-  error: {
-    receivedTime: number | undefined;
-    message: string | undefined;
-  };
+  followers: number;
+  following: number;
+  receivedTime: number;
 }

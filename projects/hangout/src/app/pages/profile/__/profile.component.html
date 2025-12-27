@@ -1,33 +1,3 @@
-<uk-page>
-  <uk-page-body>
-    <div class="hang-profile">
-      <ng-container *ngIf="user$ | async as user">
-        <div class="profile-header">
-          <uk-image [source]="user?.avatar ?? ''" *ngIf="user?.avatar" />
-          <uk-text size="lg">{{ user?.username }}</uk-text>
-          <div class="profile-counts">
-            <uk-text>Followers: {{ (followers$ | async) ?? 0 }}</uk-text>
-            <uk-text>Following: {{ (following$ | async) ?? 0 }}</uk-text>
-          </div>
-          <uk-button (click)="toggleFollow(user?._id)">Follow</uk-button>
-        </div>
-      </ng-container>
-
-      <div class="profile-posts">
-        <uk-list *ngIf="posts$ | async as posts; else empty">
-          <li *ngFor="let p of posts" class="uk-list-item">
-            <uk-tile>
-              <div class="post">
-                <uk-text>{{ p?.content }}</uk-text>
-              </div>
-            </uk-tile>
-          </li>
-        </uk-list>
-
-        <ng-template #empty>
-          <div class="empty-state">No posts yet.</div>
-        </ng-template>
-      </div>
-    </div>
-  </uk-page-body>
-</uk-page>
+<div class="comp profile">
+  <router-outlet />
+</div>
