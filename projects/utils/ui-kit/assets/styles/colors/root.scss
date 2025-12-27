@@ -150,53 +150,33 @@ $lightColors: (
 
 $darkColors: (
   background: (
-    // Surfaces
     surface00: #10162f,
-    // Darker surface
     surface01: #26292c,
-    // Medium dark for elevated elements
     surface02: #313741,
-    // Slightly lighter dark for active elements
-    // Primary/Secondary tints
     primary01: #0c3e8a,
-    // Dark tint of new primary blue
     primary02: #1967d2,
-    // Medium tint of new primary blue
     secondary: #00564c,
-    // Dark tint of new secondary teal
-    // Status colors (Updated)
     caution: #1256b6,
-    // New Caution Yellow
     error: #ea4335,
-    // New Error Red
     progress: #1967d2,
-    // Dark progress blue
     success: #34a853,
-    // New Success Green
     neutral: #3d3d3d,
-    // Misc
     scrimDark: #b3b3b3,
     snackbar: #f0f0f1,
-    // Light snackbar for contrast
   ),
   opacity: (
-    // Primary opacity based on new primary color (#4285F4)
     primary00: rgba(255, 255, 255, 0.08),
-    // White-based opacity for dark theme
     primary01: rgba(255, 255, 255, 0.12),
     primary02: rgba(255, 255, 255, 0.16),
-    // Secondary opacity based on new secondary color (#00A693)
     secondary00: rgba(255, 255, 255, 0.08),
     secondary01: rgba(255, 255, 255, 0.12),
     secondary02: rgba(0, 0, 0, 1),
-    // General opacities
     light00: rgba(0, 0, 0, 0.08),
     light01: rgba(0, 0, 0, 0.12),
     light02: rgba(0, 0, 0, 0.16),
     dark00: rgba(255, 255, 255, 0.08),
     dark01: rgba(255, 255, 255, 0.12),
     dark02: rgba(255, 255, 255, 0.16),
-    // Error opacity based on new error color (#EA4335)
     error00: rgba(234, 67, 53, 0.08),
     error01: rgba(0, 0, 0, 1),
     error02: rgba(234, 67, 53, 0.16),
@@ -206,42 +186,38 @@ $darkColors: (
     disabled: #7d8188,
     lowEmphasis: #91949a,
     highEmphasis: #e0e0e2,
-    // Light gray for contrast
     dark: #e0e0e2,
     neutral: #b0b3b8,
-    // New Content Colors
     primary: #4285f4,
-    // New Primary Main
     secondary: #00a693,
-    // New Secondary Main
     caution: #f4b400,
-    // New Caution Yellow
     error: #ff1500,
-    // New Error Red
     progress: #a3c6ff,
-    // Primary Light for contrast
     success: #34a853,
-    // New Success Green
   ),
   border: (
     grade0: #141a2e,
     grade1: #1e263d,
-    // Dark border
     grade2: #202a46,
-    // Medium dark border
   ),
   button: (
-    // Primary based on #4285F4 (use darker for fill in dark mode)
-    primary: #1967d2,
-    primaryHover: #4285f4,
-    primaryPressed: #5b92f7,
-    primaryHoverOutline: #0c3e8a,
-    primaryHoverPressed: #061f45,
+    // Primary based on #4285F4
+    primary: #667eea,
+    primaryHover: #8094f9,
+    primaryPressed: #4d65d6,
+    primaryHoverOutline: #283470,
+    primaryHoverPressed: #1a224a,
+
     // Secondary based on #00A693
-    secondary: #00897b,
-    secondaryHover: #1cc6b6,
+    secondary: #764ba2,
+    secondaryHover: #9063c2,
+    secondaryPressed: #5d3a82,
+    secondaryHoverOutline: #3e2657,
+
+    // Neutrals
     outline: #91949a,
     disabled: #4b4b4d,
+
     // Error based on #EA4335
     errorFill: #ea4335,
     errorFillHover: #eb594d,

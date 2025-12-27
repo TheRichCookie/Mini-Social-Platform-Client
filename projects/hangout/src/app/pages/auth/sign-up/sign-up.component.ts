@@ -1,4 +1,5 @@
 import {CommonModule} from '@angular/common';
+import type {OnDestroy} from '@angular/core';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -31,6 +32,7 @@ import {
 } from '@utils/ui-kit/arrangements';
 import {
   UkButtonComponent,
+  UkIconComponent,
   UkImageComponent,
   UkLinkComponent,
   UkTextComponent,
@@ -65,12 +67,13 @@ import {SELECT_AUTH_SIGN_UP_RECEIVED_TIME_RESPONSE} from '../_store/auth.selecto
     UkTextComponent,
     UkLinkComponent,
     RouterLink,
+    UkIconComponent,
   ],
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HangSignUpComponent {
+export class HangSignUpComponent implements OnDestroy {
   private readonly store = inject(Store);
   private readonly alertService = inject(UkAlertService);
   private readonly router = inject(Router);
@@ -80,6 +83,7 @@ export class HangSignUpComponent {
   public readonly APP_ROUTES = APP_ROUTES;
   public mobileInputErrorMessage = '';
   public signUpFormSubmitted = false;
+  public showPassword = false;
 
   public status: HangAuthStatus = 'EMPTY';
 
@@ -127,5 +131,13 @@ export class HangSignUpComponent {
     this.store.dispatch(
       AUTH_ACTIONS.SIGN_UP_ACTIONS.$SIGN_UP_POST({request: REQUEST}),
     );
+  }
+
+  public togglePassword(): void {
+    this.showPassword = !this.showPassword;
+  }
+
+  public ngOnDestroy(): void {
+    this.store.dispatch(AUTH_ACTIONS.SIGN_UP_ACTIONS.$SIGN_UP_RESET());
   }
 }

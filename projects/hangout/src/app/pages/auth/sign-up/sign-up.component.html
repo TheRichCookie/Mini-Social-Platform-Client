@@ -16,8 +16,8 @@
     </uk-page-part>
 
     <uk-page-part class="form">
-      <form (ngSubmit)="onSubmit()">
-        <uk-form [formGroup]="signUpForm">
+      <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+        <uk-form>
           <uk-form-body>
             <uk-form-part>
               <uk-form-row class="form-row username">
@@ -53,7 +53,7 @@
                   </uk-text>
                   <uk-input
                     [formControl]="signUpForm.controls.email"
-                    [inputType]="UK_TYPE.INPUT.TYPE.TEXT"
+                    [inputType]="UK_TYPE.INPUT.TYPE.EMAIL"
                     [placeholder]="'ایمیل خود را وارد کنید'"
                   />
                   @if (
@@ -75,9 +75,28 @@
                   </uk-text>
                   <uk-input
                     [formControl]="signUpForm.controls.password"
-                    [inputType]="UK_TYPE.INPUT.TYPE.TEXT"
+                    [inputType]="
+                      showPassword
+                        ? UK_TYPE.INPUT.TYPE.TEXT
+                        : UK_TYPE.INPUT.TYPE.PASSWORD
+                    "
                     [placeholder]="'رمز عبور خود را وارد کنید'"
-                  />
+                  >
+                    <div
+                      tabindex="0"
+                      (keydown.space)="togglePassword()"
+                      (click)="togglePassword()"
+                      role="button"
+                      END
+                    >
+                      @if (showPassword) {
+                        <uk-icon [name]="UK_TYPE.ICON.NAME.EYE_SLASH" />
+                      } @else {
+                        <uk-icon [name]="UK_TYPE.ICON.NAME.EYE" />
+                      }
+                    </div>
+                  </uk-input>
+
                   @if (
                     signUpFormSubmitted &&
                     signUpForm.controls["password"].errors
@@ -111,13 +130,13 @@
 
   <uk-page-footer>
     <uk-button
-      [buttonType]="UK_TYPE.BUTTON.TYPE.SUBMIT"
       [bgColor]="UK_TYPE.BUTTON.BG_COLOR.BUTTON_PRIMARY"
       [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
       [display]="UK_TYPE.BUTTON.DISPLAY.BLOCK"
       [fgColor]="UK_TYPE.BUTTON.FG_COLOR.CONTENT_LIGHT"
       [typography]="UK_TYPE.BUTTON.TYPOGRAPHY.BUTTON_1"
       (click)="onSubmit()"
+      (keydown.enter)="onSubmit()"
     >
       دریافت کد
     </uk-button>

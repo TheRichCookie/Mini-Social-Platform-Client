@@ -8,6 +8,8 @@
   color: $color-content-primary;
   @include typography-body-1-strong();
   cursor: pointer;
+  height: 100%;
+  display: flex;
 
   &:hover {
     text-decoration: underline;

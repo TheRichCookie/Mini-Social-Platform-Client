@@ -52,9 +52,27 @@
                   </uk-text>
                   <uk-input
                     [formControl]="signInForm.controls.password"
-                    [inputType]="UK_TYPE.INPUT.TYPE.TEXT"
+                    [inputType]="
+                      showPassword
+                        ? UK_TYPE.INPUT.TYPE.TEXT
+                        : UK_TYPE.INPUT.TYPE.PASSWORD
+                    "
                     [placeholder]="'رمز عبور خود را وارد کنید'"
-                  />
+                  >
+                    <div
+                      tabindex="0"
+                      (keydown.space)="togglePassword()"
+                      (click)="togglePassword()"
+                      role="button"
+                      END
+                    >
+                      @if (showPassword) {
+                        <uk-icon [name]="UK_TYPE.ICON.NAME.EYE_SLASH" />
+                      } @else {
+                        <uk-icon [name]="UK_TYPE.ICON.NAME.EYE" />
+                      }
+                    </div>
+                  </uk-input>
                   @if (
                     signInFormSubmitted &&
                     signInForm.controls["password"].errors

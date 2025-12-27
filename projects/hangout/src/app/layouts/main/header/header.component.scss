@@ -1,15 +1,16 @@
-// @use "core" as *;
+@use "core" as *;
 
-// :host {
-//   display: block;
-//   width: 100%;
-//   height: 100%;
-// }
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
 
-// .comp.header {
-//   width: 100%;
-//   height: 100%;
-//   background-color: $color-background-surface-01;
+.comp.header {
+  width: 100%;
+  height: 100%;
+  background-color: $color-background-surface-00;
+  border-radius: 0 0 16px 16px;
 
 //   .comp .notification {
 //     display: inline-flex;
@@ -34,4 +35,4 @@
 //     padding: 0 16px;
 //     justify-content: end;
 //   }
-// }
+}

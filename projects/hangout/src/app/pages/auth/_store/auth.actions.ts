@@ -1,4 +1,4 @@
-import {createActionGroup, props} from '@ngrx/store';
+import {createActionGroup, emptyProps, props} from '@ngrx/store';
 
 import type {
   AuthOtpVerificationRequest,
@@ -32,6 +32,7 @@ export const SIGN_UP_ACTIONS = createActionGroup({
       response: SignUpDataModel;
       receivedTime: number;
     }>(),
+    $SIGN_UP_RESET: emptyProps(),
   },
 });
 

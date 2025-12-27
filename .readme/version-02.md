@@ -23,3 +23,7 @@ npm install -D @types/node
 
 ## ESlint Command
 npx eslint . --ext .js,.ts,.jsx,.tsx --fix
+
+## Lottie Command
+npm install lottie-web ngx-lottie
+

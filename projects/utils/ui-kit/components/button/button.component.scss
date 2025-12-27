@@ -30,8 +30,6 @@ $height-small: pxToRem(24);
   justify-content: center;
   align-items: center;
   gap: 4px;
-  border-width: 1px;
-  border-style: solid;
   border-radius: 12px;
   width: 100%;
   text-wrap: nowrap;
@@ -43,7 +41,6 @@ $height-small: pxToRem(24);
         justify-content: center;
         align-items: center;
         width: 100%;
-        // border-radius: $border-radius-small;
       }
 
       &-INLINE {
@@ -59,52 +56,50 @@ $height-small: pxToRem(24);
         background-color: transparent;
       }
       &-BUTTON-PRIMARY {
-        background-color: $color-button-primary;
-      }
-      &-CONTENT-SECONDARY {
-        background-color: $color-content-secondary;
-      }
-      &-ERROR-FILL {
-        background-color: $color-button-error-fill;
+        background: linear-gradient(
+          135deg,
+          $color-button-primary 0%,
+          $color-button-secondary
+        );
       }
       &-BUTTON-SECONDARY {
         background-color: $color-button-secondary;
       }
+      &-ERROR-FILL {
+        background-color: $color-button-error-fill;
+      }
       &-BUTTON-DISABLED {
         background-color: $color-button-disabled;
-      }
-      &-PRIMARY-1 {
-        background-color: $color-background-primary-01;
       }
     }
 
     &-border-color {
       &-TRANSPARENT {
-        border-color: transparent;
+        border: none;
       }
       &-COLOR-BUTTON-OUTLINE {
-        border-color: $color-button-outline;
+        border: 1px solid $color-button-outline;
       }
       &-COLOR-BUTTON-ERROR-FILL {
-        border-color: $color-button-error-fill;
+        border: 1px solid $color-button-error-fill;
       }
       &-COLOR-BUTTON-PRIMARY {
-        border-color: $color-button-primary;
+        border: 1px solid $color-button-primary;
       }
       &-COLOR-BUTTON-SECONDARY {
-        border-color: $color-button-secondary;
+        border: 1px solid $color-button-secondary;
       }
       &-CONTENT-DISABLED {
-        border-color: $color-content-disabled;
+        border: 1px solid $color-content-disabled;
       }
       &-COLOR-BORDER-GRADE-0 {
-        border-color: $color-border-grade-0;
+        border: 1px solid $color-border-grade-0;
       }
       &-COLOR-BORDER-GRADE-1 {
-        border-color: $color-border-grade-1;
+        border: 1px solid $color-border-grade-1;
       }
       &-COLOR-BORDER-GRADE-2 {
-        border-color: $color-border-grade-2;
+        border: 1px solid $color-border-grade-2;
       }
     }
 

@@ -1,9 +1,10 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
+import { UkTextComponent } from "@utils/ui-kit/components";
 
 @Component({
   standalone: true,
   selector: 'hang-header',
-  imports: [],
+  imports: [UkTextComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

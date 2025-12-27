@@ -8,6 +8,7 @@ import {
 } from '@angular/router';
 import {Store} from '@ngrx/store';
 import * as APP_ACTIONS from '@store/app/app.action';
+import {UkStarFieldComponent} from '@utils/ui-kit/components';
 import {UkLoaderComponent} from '@utils/ui-kit/interceptors';
 import {UkSeoService} from '@utils/ui-kit/services';
 import {filter} from 'rxjs';
@@ -17,7 +18,12 @@ import {DEFAULT_HANG_ROUTE_DATA, type HangRouteData} from '../_/typed.route';
 @Component({
   standalone: true,
   selector: 'hang-general-layout',
-  imports: [RouterOutlet, RouterModule, UkLoaderComponent],
+  imports: [
+    RouterOutlet,
+    RouterModule,
+    UkLoaderComponent,
+    UkStarFieldComponent,
+  ],
   templateUrl: './general-layout.component.html',
   styleUrl: './general-layout.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

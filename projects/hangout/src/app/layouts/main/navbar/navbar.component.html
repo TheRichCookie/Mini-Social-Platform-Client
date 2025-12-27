@@ -7,16 +7,6 @@
       [routerLinkActiveOptions]="{ exact: true }"
     >
       <uk-icon [name]="UK_TYPE.ICON.NAME.USER_CIRCLE" />
-      <uk-text>Profile</uk-text>
-    </a>
-    <a
-      class="nav-item"
-      [routerLink]="APP_ROUTES.FRIENDS.ROOT"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-    >
-      <uk-icon [name]="UK_TYPE.ICON.NAME.USER_FRIENDS" />
-      <uk-text>Add Friend</uk-text>
     </a>
     <a
       class="nav-item"
@@ -24,8 +14,15 @@
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
     >
-      <uk-icon [name]="UK_TYPE.ICON.NAME.PLUS" />
-      <uk-text>Add Post</uk-text>
+      <uk-icon [name]="UK_TYPE.ICON.NAME.PLUS" [fgColor]="UK_TYPE.ICON.FG_COLOR.CONTENT_LIGHT" />
+    </a>
+    <a
+      class="nav-item"
+      [routerLink]="APP_ROUTES.FRIENDS.ROOT"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <uk-icon [name]="UK_TYPE.ICON.NAME.SEARCH" />
     </a>
     <a
       class="nav-item"
@@ -34,7 +31,6 @@
       [routerLinkActiveOptions]="{ exact: true }"
     >
       <uk-icon [name]="UK_TYPE.ICON.NAME.HOME" />
-      <uk-text>Home</uk-text>
     </a>
   </nav>
 </div>

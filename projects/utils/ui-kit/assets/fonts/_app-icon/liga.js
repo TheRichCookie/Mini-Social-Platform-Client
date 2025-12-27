@@ -25,6 +25,8 @@
     var icons;
     if (!supportsProperty('fontFeatureSettings')) {
         icons = {
+            'eye': '&#xe92b;',
+            'eye_slash': '&#xe92c;',
             'trash': '&#xe929;',
             'trash_alt': '&#xe92a;',
             'image': '&#xe926;',

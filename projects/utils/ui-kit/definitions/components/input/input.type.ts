@@ -1,6 +1,8 @@
 export enum UkInputType {
-  NUMBER = 'NUMBER',
-  TEXT = 'TEXT',
+  NUMBER = 'number',
+  TEXT = 'text',
+  PASSWORD = 'password',
+  EMAIL = 'email',
 }
 export type InputType = `${UkInputType}`;
 

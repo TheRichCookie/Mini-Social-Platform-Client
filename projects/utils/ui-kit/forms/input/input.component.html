@@ -21,7 +21,7 @@
     [patterns]="customPattern"
     [placeholder]="placeholder"
     [thousandSeparator]="thousandSeparator"
-    [type]="inputType === 'NUMBER' ? 'number' : 'text'"
+    [type]="inputType"
     [(ngModel)]="val"
     (blur)="onBlur()"
     (keydown)="onKeyDown($event)"

@@ -31,6 +31,7 @@ import {
 } from '@utils/ui-kit/arrangements';
 import {
   UkButtonComponent,
+  UkIconComponent,
   UkImageComponent,
   UkLinkComponent,
   UkTextComponent,
@@ -65,6 +66,7 @@ import {SELECT_AUTH_SIGN_IN_RECEIVED_TIME_RESPONSE} from '../_store/auth.selecto
     UkTextComponent,
     UkLinkComponent,
     RouterLink,
+    UkIconComponent,
   ],
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss'],
@@ -80,6 +82,7 @@ export class HangSignInComponent {
   public readonly APP_ROUTES = APP_ROUTES;
   public mobileInputErrorMessage = '';
   public signInFormSubmitted = false;
+  public showPassword = false;
 
   public status: HangAuthStatus = 'EMPTY';
 
@@ -122,5 +125,9 @@ export class HangSignInComponent {
     this.store.dispatch(
       AUTH_ACTIONS.SIGN_IN_ACTIONS.$SIGN_IN_POST({request: REQUEST}),
     );
+  }
+
+  public togglePassword(): void {
+    this.showPassword = !this.showPassword;
   }
 }

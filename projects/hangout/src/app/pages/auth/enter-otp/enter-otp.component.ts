@@ -117,7 +117,6 @@ export class HangEnterOtpComponent {
         if (receivedTime) {
           this.receivedTime = receivedTime;
 
-          this.otpInput.clear();
           this.stopWatchStatus = 'WAIT';
           this.changeDetectorRef.markForCheck();
         }
@@ -187,5 +186,7 @@ export class HangEnterOtpComponent {
         request: this.singInRequest!,
       }),
     );
+
+    this.otpInput.clear();
   }
 }

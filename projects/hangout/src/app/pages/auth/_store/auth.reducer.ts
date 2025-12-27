@@ -26,6 +26,10 @@ const reducer = createReducer(
     state.otp.response = props.response;
     state.otp.receivedTime = props.receivedTime;
   }),
+
+  immerOn(AUTH_ACTIONS.SIGN_UP_ACTIONS.$SIGN_UP_RESET, (state) => {
+    state.signUp = AUTH_INITIAL_STATE.signUp;
+  }),
 );
 
 export const authReducer: (

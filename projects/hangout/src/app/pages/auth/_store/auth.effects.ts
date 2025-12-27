@@ -74,7 +74,7 @@ export class HangAuthEffects {
       exhaustMap((props) =>
         this.authService.signUp(props.request).pipe(
           switchMap((res: CommonResponseViewModel<SignUpDataModel>) => {
-            if (res.code === 200) {
+            if (res.code === 201) {
               return of(
                 AUTH_ACTION.SIGN_UP_ACTIONS.$SIGN_UP_UPDATE({
                   request: props.request,

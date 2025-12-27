@@ -42,6 +42,8 @@ export enum UkIconName {
   CIRCLE_CLOSE = 'circle_close',
   CLOSE = 'close',
   COMMENT = 'comment',
+  EYE = 'eye',
+  EYE_SLASH = 'eye_slash',
   FILE = 'file',
   FILE_ALT = 'file_alt',
   GEAR = 'gear',
