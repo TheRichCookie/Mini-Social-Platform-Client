@@ -1,10 +1,9 @@
 import type {HangRoutes} from '@app/layouts/general/_/typed.route';
-
-import {HangNotificationsPageComponent} from '../notifications-page/notifications-page.component';
+import {HangNotificationsComponent} from '@pages/notifications/__/notifications.component';
 
 export const NOTIFICATIONS_ROUTES: HangRoutes = [
   {
     path: '',
-    component: HangNotificationsPageComponent,
+    component: HangNotificationsComponent,
   },
 ];

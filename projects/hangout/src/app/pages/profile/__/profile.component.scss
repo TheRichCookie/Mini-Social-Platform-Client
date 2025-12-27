@@ -1,11 +1,16 @@
-@use "core" as *;
-
-:host {
-  display: block;
-  width: 100%;
-  height: 100%;
+.hang-profile {
+  padding: 12px;
 }
-
-.comp.profile {
-  height: 100%;
+.profile-header {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.profile-counts {
+  margin-left: auto;
+  display: flex;
+  gap: 12px;
+}
+.profile-posts {
+  margin-top: 16px;
 }

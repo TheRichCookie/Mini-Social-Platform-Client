@@ -1,1 +1,30 @@
-<router-outlet />
+<div class="hang-search">
+  <uk-form>
+    <uk-form-part>
+      <input
+        type="text"
+        [formControl]="queryControl"
+        placeholder="Search users..."
+      />
+      <uk-button (click)="onSearch()">Search</uk-button>
+    </uk-form-part>
+  </uk-form>
+
+  <uk-list *ngIf="results$ | async as users; else empty">
+    <li *ngFor="let u of users; trackBy: trackByUser" class="uk-list-item">
+      <uk-tile>
+        <div class="user-row">
+          <uk-image [source]="u?.profilePic ?? ''" *ngIf="u?.profilePic" />
+          <uk-text>{{ u?.username }}</uk-text>
+          <uk-button appearance="ghost" (click)="toggleFollow(u?._id)"
+            >Follow</uk-button
+          >
+        </div>
+      </uk-tile>
+    </li>
+  </uk-list>
+
+  <ng-template #empty>
+    <div class="empty-state">No users found.</div>
+  </ng-template>
+</div>
