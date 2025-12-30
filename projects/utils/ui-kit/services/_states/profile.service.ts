@@ -1,4 +1,4 @@
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {inject, Injectable} from '@angular/core';
 import {UkApiHeaderService} from '@utils/ui-kit/services';
 import type {Observable} from 'rxjs';
@@ -34,14 +34,27 @@ export class UkProfileService {
 
   public getUserProfilePosts(
     userId: string,
+    query?: {
+      page: number;
+      limit: number;
+    },
   ): Observable<CommonResponseViewModel<PostModel[]>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.PROFILE,
       apiHeaderVersion: UkConfigApiVersions.NONE,
     });
+
+    let params = new HttpParams();
+
+    if (query) {
+      params = params.set('page', query?.page);
+      params = params.set('limit', query?.limit);
+    }
+
     const URI = `/${userId}/posts`;
 
     return this.httpClient.get<CommonResponseViewModel<PostModel[]>>(URI, {
+      params,
       headers: HEADERS,
     });
   }

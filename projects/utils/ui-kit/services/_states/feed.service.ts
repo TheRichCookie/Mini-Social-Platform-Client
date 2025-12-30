@@ -16,19 +16,23 @@ export class UkFeedService {
   private readonly httpClient = inject(HttpClient);
   private readonly apiHeaderService = inject(UkApiHeaderService);
 
-  public getFeed(
-    page: number,
-    limit: number,
-  ): Observable<CommonResponseViewModel<FeedPostModel[]>> {
+  public getFeed(query?: {
+    page: number;
+    limit: number;
+  }): Observable<CommonResponseViewModel<FeedPostModel[]>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.FEED,
       apiHeaderVersion: UkConfigApiVersions.NONE,
     });
-    const URI = '';
 
-    const params = new HttpParams()
-      .set('page', page.toString())
-      .set('limit', limit.toString());
+    let params = new HttpParams();
+
+    if (query) {
+      params = params.set('page', query?.page);
+      params = params.set('limit', query?.limit);
+    }
+
+    const URI = '';
 
     return this.httpClient.get<CommonResponseViewModel<FeedPostModel[]>>(URI, {
       headers: HEADERS,

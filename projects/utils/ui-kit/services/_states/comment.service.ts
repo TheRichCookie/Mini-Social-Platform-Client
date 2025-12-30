@@ -1,4 +1,4 @@
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {inject, Injectable} from '@angular/core';
 import {UkApiHeaderService} from '@utils/ui-kit/services';
 import type {Observable} from 'rxjs';
@@ -19,14 +19,27 @@ export class UkCommentService {
 
   public getPostComments(
     postId: string,
+    query?: {
+      page: number;
+      limit: number;
+    },
   ): Observable<CommonResponseViewModel<CommentModel[]>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.COMMENTS,
       apiHeaderVersion: UkConfigApiVersions.NONE,
     });
+
+    let params = new HttpParams();
+
+    if (query) {
+      params = params.set('page', query?.page);
+      params = params.set('limit', query?.limit);
+    }
+
     const URI = `/${postId}`;
 
     return this.httpClient.get<CommonResponseViewModel<CommentModel[]>>(URI, {
+      params,
       headers: HEADERS,
     });
   }

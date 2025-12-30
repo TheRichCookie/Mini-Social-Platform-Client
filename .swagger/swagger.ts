@@ -121,26 +121,6 @@ export interface AuthorModel {
   profilePic?: string;
 }
 
-export interface CommentUserModel {
-  /** @example "60f7b8e6a2b4c12d34e5f679" */
-  _id?: string;
-  /** @example "johndoe" */
-  username?: string;
-}
-
-export interface CommentDetailModel {
-  /** @example "60f7b8e6a2b4c12d34e5f678" */
-  _id?: string;
-  /** @example "نظر عالی بود" */
-  text?: string;
-  /**
-   * @format date-time
-   * @example "2024-01-01T10:00:00Z"
-   */
-  createdAt?: string;
-  user?: CommentUserModel;
-}
-
 export interface FeedPostModel {
   /** @example "60f7b8e6a2b4c12d34e5f67a" */
   _id?: string;
@@ -149,10 +129,9 @@ export interface FeedPostModel {
   /** @example "این یک پست جدید است" */
   content?: string;
   author?: AuthorModel;
-  comments?: CommentDetailModel[];
-  /** @example 5 */
+  /** @example 12 */
   likeCount?: number;
-  /** @example false */
+  /** @example true */
   isLikedByUser?: boolean;
   /**
    * @format date-time
@@ -161,19 +140,44 @@ export interface FeedPostModel {
   createdAt?: string;
 }
 
-export type FeedArrayResponse = CommonResponseViewModel & {
-  data?: FeedPostModel[];
-};
-
-export interface CountDataModel {
-  /** @example 10 */
-  followers?: number;
-  /** @example 5 */
-  following?: number;
+export interface FeedPaginationData {
+  items?: FeedPostModel[];
+  /** @example 120 */
+  totalCount?: number;
 }
 
-export type CountResponse = CommonResponseViewModel & {
-  data?: CountDataModel;
+export type FeedResponse = CommonResponseViewModel & {
+  data?: FeedPaginationData;
+};
+
+export interface UserModel {
+  /** @example "60f7b8e6a2b4c12d34e5f679" */
+  _id?: string;
+  /** @example "johndoe" */
+  username?: string;
+  /** @example "john@example.com" */
+  email?: string;
+  /** @example "https://example.com/avatar.jpg" */
+  avatar?: string;
+  /** @example "خوش آمدید به من" */
+  bio?: string;
+  /** @example "علوم کامپیوتر" */
+  major?: string;
+  /**
+   * @format date-time
+   * @example "2024-01-01T10:00:00Z"
+   */
+  createdAt?: string;
+}
+
+export interface PaginatedUsersData {
+  items?: UserModel[];
+  /** @example 25 */
+  totalCount?: number;
+}
+
+export type PaginatedUsersResponse = CommonResponseViewModel & {
+  data?: PaginatedUsersData;
 };
 
 export interface LikesCountModel {
@@ -193,7 +197,7 @@ export interface NotificationModel {
   /** @example "60f7b8e6a2b4c12d34e5f67a" */
   senderId?: string;
   /** @example "like" */
-  type?: "like" | "comment" | "follow";
+  type?: 'like' | 'comment' | 'follow';
   /** @example "60f7b8e6a2b4c12d34e5f67b" */
   postId?: string;
   /** @example false */
@@ -205,8 +209,14 @@ export interface NotificationModel {
   createdAt?: string;
 }
 
-export type NotificationArrayResponse = CommonResponseViewModel & {
-  data?: NotificationModel[];
+export interface NotificationPaginationData {
+  items?: NotificationModel[];
+  /** @example 42 */
+  totalCount?: number;
+}
+
+export type NotificationResponse = CommonResponseViewModel & {
+  data?: NotificationPaginationData;
 };
 
 export interface PostModel {
@@ -228,6 +238,16 @@ export interface CreatePostRequest {
   content: string;
 }
 
+export interface PostPaginationData {
+  items?: PostModel[];
+  /** @example 120 */
+  totalCount?: number;
+}
+
+export type PaginatedPostResponse = CommonResponseViewModel & {
+  data?: PostPaginationData;
+};
+
 export type PostArrayResponse = CommonResponseViewModel & {
   data?: PostModel[];
 };
@@ -236,25 +256,21 @@ export type CreatePostResponse = CommonResponseViewModel & {
   data?: PostModel;
 };
 
-export interface UserModel {
-  /** @example "60f7b8e6a2b4c12d34e5f679" */
-  _id?: string;
-  /** @example "johndoe" */
-  username?: string;
-  /** @example "john@example.com" */
-  email?: string;
-  /** @example "خوش آمدید به من" */
-  bio?: string;
-  /** @example "https://example.com/avatar.jpg" */
-  avatar?: string;
-  /** @example "علوم کامپیوتر" */
-  major?: string;
-  /**
-   * @format date-time
-   * @example "2024-01-01T10:00:00Z"
-   */
-  createdAt?: string;
+export interface UserProfileData {
+  user?: UserModel;
+  /** @example 12 */
+  followers?: number;
+  /** @example 5 */
+  following?: number;
+  /** @example false */
+  isMe?: boolean;
+  /** @example true */
+  isFollowing?: boolean;
 }
+
+export type UserProfileResponse = CommonResponseViewModel & {
+  data?: UserProfileData;
+};
 
 export interface UpdateProfileRequest {
   /** @example "خوش آمدید به من" */
@@ -265,8 +281,14 @@ export interface UpdateProfileRequest {
   major?: string;
 }
 
-export type UserProfileResponse = CommonResponseViewModel & {
-  data?: UserModel;
+export interface ProfilePostsPaginationData {
+  items?: PostModel[];
+  /** @example 25 */
+  totalCount?: number;
+}
+
+export type ProfilePostsResponse = CommonResponseViewModel & {
+  data?: ProfilePostsPaginationData;
 };
 
 export interface UserSearchModel {
@@ -291,9 +313,9 @@ export type SearchUsersResponse = CommonResponseViewModel & {
 };
 
 export type QueryParamsType = Record<string | number, any>;
-export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;
+export type ResponseFormat = keyof Omit<Body, 'body' | 'bodyUsed'>;
 
-export interface FullRequestParams extends Omit<RequestInit, "body"> {
+export interface FullRequestParams extends Omit<RequestInit, 'body'> {
   /** set parameter to `true` for call `securityWorker` for this request */
   secure?: boolean;
   /** request path */
@@ -314,20 +336,22 @@ export interface FullRequestParams extends Omit<RequestInit, "body"> {
 
 export type RequestParams = Omit<
   FullRequestParams,
-  "body" | "method" | "query" | "path"
+  'body' | 'method' | 'query' | 'path'
 >;
 
 export interface ApiConfig<SecurityDataType = unknown> {
   baseUrl?: string;
-  baseApiParams?: Omit<RequestParams, "baseUrl" | "cancelToken" | "signal">;
+  baseApiParams?: Omit<RequestParams, 'baseUrl' | 'cancelToken' | 'signal'>;
   securityWorker?: (
     securityData: SecurityDataType | null,
   ) => Promise<RequestParams | void> | RequestParams | void;
   customFetch?: typeof fetch;
 }
 
-export interface HttpResponse<D extends unknown, E extends unknown = unknown>
-  extends Response {
+export interface HttpResponse<
+  D extends unknown,
+  E extends unknown = unknown,
+> extends Response {
   data: D;
   error: E;
 }
@@ -335,26 +359,26 @@ export interface HttpResponse<D extends unknown, E extends unknown = unknown>
 type CancelToken = Symbol | string | number;
 
 export enum ContentType {
-  Json = "application/json",
-  JsonApi = "application/vnd.api+json",
-  FormData = "multipart/form-data",
-  UrlEncoded = "application/x-www-form-urlencoded",
-  Text = "text/plain",
+  Json = 'application/json',
+  JsonApi = 'application/vnd.api+json',
+  FormData = 'multipart/form-data',
+  UrlEncoded = 'application/x-www-form-urlencoded',
+  Text = 'text/plain',
 }
 
 export class HttpClient<SecurityDataType = unknown> {
-  public baseUrl: string = "http://localhost:5000/api";
+  public baseUrl: string = 'http://localhost:5000/api';
   private securityData: SecurityDataType | null = null;
-  private securityWorker?: ApiConfig<SecurityDataType>["securityWorker"];
+  private securityWorker?: ApiConfig<SecurityDataType>['securityWorker'];
   private abortControllers = new Map<CancelToken, AbortController>();
   private customFetch = (...fetchParams: Parameters<typeof fetch>) =>
     fetch(...fetchParams);
 
   private baseApiParams: RequestParams = {
-    credentials: "same-origin",
+    credentials: 'same-origin',
     headers: {},
-    redirect: "follow",
-    referrerPolicy: "no-referrer",
+    redirect: 'follow',
+    referrerPolicy: 'no-referrer',
   };
 
   constructor(apiConfig: ApiConfig<SecurityDataType> = {}) {
@@ -367,7 +391,7 @@ export class HttpClient<SecurityDataType = unknown> {
 
   protected encodeQueryParam(key: string, value: any) {
     const encodedKey = encodeURIComponent(key);
-    return `${encodedKey}=${encodeURIComponent(typeof value === "number" ? value : `${value}`)}`;
+    return `${encodedKey}=${encodeURIComponent(typeof value === 'number' ? value : `${value}`)}`;
   }
 
   protected addQueryParam(query: QueryParamsType, key: string) {
@@ -376,13 +400,13 @@ export class HttpClient<SecurityDataType = unknown> {
 
   protected addArrayQueryParam(query: QueryParamsType, key: string) {
     const value = query[key];
-    return value.map((v: any) => this.encodeQueryParam(key, v)).join("&");
+    return value.map((v: any) => this.encodeQueryParam(key, v)).join('&');
   }
 
   protected toQueryString(rawQuery?: QueryParamsType): string {
     const query = rawQuery || {};
     const keys = Object.keys(query).filter(
-      (key) => "undefined" !== typeof query[key],
+      (key) => 'undefined' !== typeof query[key],
     );
     return keys
       .map((key) =>
@@ -390,25 +414,25 @@ export class HttpClient<SecurityDataType = unknown> {
           ? this.addArrayQueryParam(query, key)
           : this.addQueryParam(query, key),
       )
-      .join("&");
+      .join('&');
   }
 
   protected addQueryParams(rawQuery?: QueryParamsType): string {
     const queryString = this.toQueryString(rawQuery);
-    return queryString ? `?${queryString}` : "";
+    return queryString ? `?${queryString}` : '';
   }
 
   private contentFormatters: Record<ContentType, (input: any) => any> = {
     [ContentType.Json]: (input: any) =>
-      input !== null && (typeof input === "object" || typeof input === "string")
+      input !== null && (typeof input === 'object' || typeof input === 'string')
         ? JSON.stringify(input)
         : input,
     [ContentType.JsonApi]: (input: any) =>
-      input !== null && (typeof input === "object" || typeof input === "string")
+      input !== null && (typeof input === 'object' || typeof input === 'string')
         ? JSON.stringify(input)
         : input,
     [ContentType.Text]: (input: any) =>
-      input !== null && typeof input !== "string"
+      input !== null && typeof input !== 'string'
         ? JSON.stringify(input)
         : input,
     [ContentType.FormData]: (input: any) => {
@@ -422,7 +446,7 @@ export class HttpClient<SecurityDataType = unknown> {
           key,
           property instanceof Blob
             ? property
-            : typeof property === "object" && property !== null
+            : typeof property === 'object' && property !== null
               ? JSON.stringify(property)
               : `${property}`,
         );
@@ -485,7 +509,7 @@ export class HttpClient<SecurityDataType = unknown> {
     ...params
   }: FullRequestParams): Promise<HttpResponse<T, E>> => {
     const secureParams =
-      ((typeof secure === "boolean" ? secure : this.baseApiParams.secure) &&
+      ((typeof secure === 'boolean' ? secure : this.baseApiParams.secure) &&
         this.securityWorker &&
         (await this.securityWorker(this.securityData))) ||
       {};
@@ -495,13 +519,13 @@ export class HttpClient<SecurityDataType = unknown> {
     const responseFormat = format || requestParams.format;
 
     return this.customFetch(
-      `${baseUrl || this.baseUrl || ""}${path}${queryString ? `?${queryString}` : ""}`,
+      `${baseUrl || this.baseUrl || ''}${path}${queryString ? `?${queryString}` : ''}`,
       {
         ...requestParams,
         headers: {
           ...(requestParams.headers || {}),
           ...(type && type !== ContentType.FormData
-            ? { "Content-Type": type }
+            ? { 'Content-Type': type }
             : {}),
         },
         signal:
@@ -509,7 +533,7 @@ export class HttpClient<SecurityDataType = unknown> {
             ? this.createAbortSignal(cancelToken)
             : requestParams.signal) || null,
         body:
-          typeof body === "undefined" || body === null
+          typeof body === 'undefined' || body === null
             ? null
             : payloadFormatter(body),
       },
@@ -567,10 +591,10 @@ export class Api<
     signUpCreate: (data: AuthSignUpRequest, params: RequestParams = {}) =>
       this.request<SignUpResponse, CommonResponseViewModel>({
         path: `/auth/signUp`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -585,10 +609,10 @@ export class Api<
     signInCreate: (data: AuthSignInRequest, params: RequestParams = {}) =>
       this.request<SignInResponse, CommonResponseViewModel>({
         path: `/auth/signIn`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -606,10 +630,10 @@ export class Api<
     ) =>
       this.request<OtpVerificationResponse, CommonResponseViewModel>({
         path: `/auth/otpVerification`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
   };
@@ -630,11 +654,11 @@ export class Api<
     ) =>
       this.request<AddCommentResponse, CommonResponseViewModel>({
         path: `/comments/${postId}`,
-        method: "POST",
+        method: 'POST',
         body: data,
         secure: true,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -646,11 +670,21 @@ export class Api<
      * @summary Get all comments for a post
      * @request GET:/comments/{postId}
      */
-    commentsDetail: (postId: string, params: RequestParams = {}) =>
+    commentsDetail: (
+      postId: string,
+      query?: {
+        /** @example 1 */
+        page?: number;
+        /** @example 10 */
+        limit?: number;
+      },
+      params: RequestParams = {},
+    ) =>
       this.request<CommentArrayResponse, CommonResponseViewModel>({
         path: `/comments/${postId}`,
-        method: "GET",
-        format: "json",
+        method: 'GET',
+        query: query,
+        format: 'json',
         ...params,
       }),
 
@@ -666,9 +700,9 @@ export class Api<
     commentsDelete: (commentId: string, params: RequestParams = {}) =>
       this.request<CommonResponseViewModel, CommonResponseViewModel>({
         path: `/comments/${commentId}`,
-        method: "DELETE",
+        method: 'DELETE',
         secure: true,
-        format: "json",
+        format: 'json',
         ...params,
       }),
   };
@@ -678,6 +712,7 @@ export class Api<
      *
      * @tags Feed
      * @name FeedList
+     * @summary Get feed posts (paginated)
      * @request GET:/feed
      * @secure
      */
@@ -690,12 +725,12 @@ export class Api<
       },
       params: RequestParams = {},
     ) =>
-      this.request<FeedArrayResponse, any>({
+      this.request<FeedResponse, CommonResponseViewModel>({
         path: `/feed`,
-        method: "GET",
+        method: 'GET',
         query: query,
         secure: true,
-        format: "json",
+        format: 'json',
         ...params,
       }),
   };
@@ -705,32 +740,16 @@ export class Api<
      *
      * @tags Follow
      * @name FollowCreate
-     * @summary Toggle follow/unfollow a user
+     * @summary Toggle follow / unfollow a user
      * @request POST:/follow/{userId}
      * @secure
      */
     followCreate: (userId: string, params: RequestParams = {}) =>
       this.request<CommonResponseViewModel, CommonResponseViewModel>({
         path: `/follow/${userId}`,
-        method: "POST",
+        method: 'POST',
         secure: true,
-        format: "json",
-        ...params,
-      }),
-
-    /**
-     * No description
-     *
-     * @tags Follow
-     * @name FollowDetail
-     * @summary Get followers count for a user
-     * @request GET:/follow/{userId}
-     */
-    followDetail: (userId: string, params: RequestParams = {}) =>
-      this.request<CountResponse, CommonResponseViewModel>({
-        path: `/follow/${userId}`,
-        method: "GET",
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -739,14 +758,24 @@ export class Api<
      *
      * @tags Follow
      * @name FollowersList
-     * @summary Get followers count for a user
+     * @summary Get followers list
      * @request GET:/follow/{userId}/followers
      */
-    followersList: (userId: string, params: RequestParams = {}) =>
-      this.request<CountResponse, any>({
+    followersList: (
+      userId: string,
+      query?: {
+        /** @example 1 */
+        page?: number;
+        /** @example 10 */
+        limit?: number;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<PaginatedUsersResponse, CommonResponseViewModel>({
         path: `/follow/${userId}/followers`,
-        method: "GET",
-        format: "json",
+        method: 'GET',
+        query: query,
+        format: 'json',
         ...params,
       }),
 
@@ -755,14 +784,24 @@ export class Api<
      *
      * @tags Follow
      * @name FollowingList
-     * @summary Get following count for a user
+     * @summary Get following list
      * @request GET:/follow/{userId}/following
      */
-    followingList: (userId: string, params: RequestParams = {}) =>
-      this.request<CountResponse, any>({
+    followingList: (
+      userId: string,
+      query?: {
+        /** @example 1 */
+        page?: number;
+        /** @example 10 */
+        limit?: number;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<PaginatedUsersResponse, CommonResponseViewModel>({
         path: `/follow/${userId}/following`,
-        method: "GET",
-        format: "json",
+        method: 'GET',
+        query: query,
+        format: 'json',
         ...params,
       }),
   };
@@ -779,9 +818,9 @@ export class Api<
     likesCreate: (postId: string, params: RequestParams = {}) =>
       this.request<CommonResponseViewModel, CommonResponseViewModel>({
         path: `/likes/${postId}`,
-        method: "POST",
+        method: 'POST',
         secure: true,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -796,8 +835,8 @@ export class Api<
     likesDetail: (postId: string, params: RequestParams = {}) =>
       this.request<LikesCountResponse, CommonResponseViewModel>({
         path: `/likes/${postId}`,
-        method: "GET",
-        format: "json",
+        method: 'GET',
+        format: 'json',
         ...params,
       }),
   };
@@ -807,16 +846,25 @@ export class Api<
      *
      * @tags Notifications
      * @name NotificationsList
-     * @summary Get user notifications
+     * @summary Get user notifications (paginated)
      * @request GET:/notifications
      * @secure
      */
-    notificationsList: (params: RequestParams = {}) =>
-      this.request<NotificationArrayResponse, CommonResponseViewModel>({
+    notificationsList: (
+      query?: {
+        /** @example 1 */
+        page?: number;
+        /** @example 10 */
+        limit?: number;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<NotificationResponse, CommonResponseViewModel>({
         path: `/notifications`,
-        method: "GET",
+        method: 'GET',
+        query: query,
         secure: true,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -832,9 +880,9 @@ export class Api<
     readUpdate: (id: string, params: RequestParams = {}) =>
       this.request<CommonResponseViewModel, CommonResponseViewModel>({
         path: `/notifications/${id}/read`,
-        method: "PUT",
+        method: 'PUT',
         secure: true,
-        format: "json",
+        format: 'json',
         ...params,
       }),
   };
@@ -844,14 +892,23 @@ export class Api<
      *
      * @tags Posts
      * @name PostsList
-     * @summary Get all posts
+     * @summary Get all posts (paginated)
      * @request GET:/posts
      */
-    postsList: (params: RequestParams = {}) =>
-      this.request<PostArrayResponse, CommonResponseViewModel>({
+    postsList: (
+      query?: {
+        /** @example 1 */
+        page?: number;
+        /** @example 10 */
+        limit?: number;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<PaginatedPostResponse, CommonResponseViewModel>({
         path: `/posts`,
-        method: "GET",
-        format: "json",
+        method: 'GET',
+        query: query,
+        format: 'json',
         ...params,
       }),
 
@@ -867,11 +924,11 @@ export class Api<
     postsCreate: (data: CreatePostRequest, params: RequestParams = {}) =>
       this.request<CreatePostResponse, CommonResponseViewModel>({
         path: `/posts`,
-        method: "POST",
+        method: 'POST',
         body: data,
         secure: true,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -886,8 +943,8 @@ export class Api<
     userDetail: (userId: string, params: RequestParams = {}) =>
       this.request<PostArrayResponse, CommonResponseViewModel>({
         path: `/posts/user/${userId}`,
-        method: "GET",
-        format: "json",
+        method: 'GET',
+        format: 'json',
         ...params,
       }),
 
@@ -901,11 +958,11 @@ export class Api<
      * @secure
      */
     postsDelete: (id: string, params: RequestParams = {}) =>
-      this.request<CommonResponseViewModel, CommonResponseViewModel>({
+      this.request<CommonResponseViewModel, void>({
         path: `/posts/${id}`,
-        method: "DELETE",
+        method: 'DELETE',
         secure: true,
-        format: "json",
+        format: 'json',
         ...params,
       }),
   };
@@ -919,10 +976,10 @@ export class Api<
      * @request GET:/profile/{userId}
      */
     profileDetail: (userId: string, params: RequestParams = {}) =>
-      this.request<UserProfileResponse, CommonResponseViewModel>({
+      this.request<UserProfileResponse, CommonResponseViewModel | void>({
         path: `/profile/${userId}`,
-        method: "GET",
-        format: "json",
+        method: 'GET',
+        format: 'json',
         ...params,
       }),
 
@@ -931,21 +988,27 @@ export class Api<
      *
      * @tags Profile
      * @name ProfilePartialUpdate
-     * @summary Update user profile
-     * @request PATCH:/profile
+     * @summary Update my profile
+     * @request PATCH:/profile/{userId}
      * @secure
      */
     profilePartialUpdate: (
+      userId: string,
       data: UpdateProfileRequest,
       params: RequestParams = {},
     ) =>
-      this.request<UserProfileResponse, CommonResponseViewModel>({
-        path: `/profile`,
-        method: "PATCH",
+      this.request<
+        CommonResponseViewModel & {
+          data?: UserModel;
+        },
+        void
+      >({
+        path: `/profile/${userId}`,
+        method: 'PATCH',
         body: data,
         secure: true,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -954,14 +1017,24 @@ export class Api<
      *
      * @tags Profile
      * @name PostsList
-     * @summary Get posts by a user
+     * @summary Get user's profile posts (paginated)
      * @request GET:/profile/{userId}/posts
      */
-    postsList: (userId: string, params: RequestParams = {}) =>
-      this.request<PostArrayResponse, CommonResponseViewModel>({
+    postsList: (
+      userId: string,
+      query?: {
+        /** @example 1 */
+        page?: number;
+        /** @example 10 */
+        limit?: number;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<ProfilePostsResponse, void>({
         path: `/profile/${userId}/posts`,
-        method: "GET",
-        format: "json",
+        method: 'GET',
+        query: query,
+        format: 'json',
         ...params,
       }),
   };
@@ -988,10 +1061,10 @@ export class Api<
     ) =>
       this.request<SearchUsersResponse, CommonResponseViewModel>({
         path: `/users/search`,
-        method: "GET",
+        method: 'GET',
         query: query,
         secure: true,
-        format: "json",
+        format: 'json',
         ...params,
       }),
   };
