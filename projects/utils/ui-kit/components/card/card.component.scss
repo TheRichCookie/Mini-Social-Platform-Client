@@ -1,0 +1,16 @@
+@use "core" as *;
+
+.uk.card {
+  .card {
+    // border: 1px solid $color-border-grade-1;
+    background: linear-gradient(
+      135deg,
+      $color-button-primary 0%,
+      $color-button-secondary
+    );
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    gap: 8px;
+  }
+}

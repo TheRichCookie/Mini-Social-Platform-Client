@@ -32,7 +32,7 @@
     >
       <uk-icon [name]="UK_TYPE.ICON.NAME.HOME" />
     </a>
-    <a
+    <!-- <a
       class="nav-item"
       [routerLink]="APP_ROUTES.NOTIFICATION.ROOT"
       routerLinkActive="active"
@@ -41,6 +41,6 @@
       <uk-icon [name]="UK_TYPE.ICON.NAME.BELL" />
       <uk-badge *ngIf="(unreadCount$ | async) as c; else noBadge" [size]="UK_TYPE.BADGE.SIZE.SMALL" [badgeType]="UK_TYPE.BADGE.TYPE.ERROR">{{ c }}</uk-badge>
       <ng-template #noBadge />
-    </a>
+    </a> -->
   </nav>
 </div>

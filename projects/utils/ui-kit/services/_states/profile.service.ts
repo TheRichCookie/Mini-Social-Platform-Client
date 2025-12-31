@@ -6,9 +6,10 @@ import type {Observable} from 'rxjs';
 import {UkConfigApiServices, UkConfigApiVersions} from '../../definitions';
 import type {
   CommonResponseViewModel,
-  PostModel,
+  PaginatedUsersData,
   UpdateProfileRequest,
   UserModel,
+  UserProfileData,
 } from '../../definitions/swagger/swagger';
 
 @Injectable({
@@ -19,15 +20,16 @@ export class UkProfileService {
   private readonly apiHeaderService = inject(UkApiHeaderService);
 
   public getProfile(
-    userId: string,
-  ): Observable<CommonResponseViewModel<UserModel>> {
+    userId?: string,
+  ): Observable<CommonResponseViewModel<UserProfileData>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.PROFILE,
       apiHeaderVersion: UkConfigApiVersions.NONE,
     });
-    const URI = `/${userId}`;
 
-    return this.httpClient.get<CommonResponseViewModel<UserModel>>(URI, {
+    const URI = userId ? `/${userId}` : '';
+
+    return this.httpClient.get<CommonResponseViewModel<UserProfileData>>(URI, {
       headers: HEADERS,
     });
   }
@@ -38,7 +40,7 @@ export class UkProfileService {
       page: number;
       limit: number;
     },
-  ): Observable<CommonResponseViewModel<PostModel[]>> {
+  ): Observable<CommonResponseViewModel<PaginatedUsersData>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.PROFILE,
       apiHeaderVersion: UkConfigApiVersions.NONE,
@@ -53,10 +55,13 @@ export class UkProfileService {
 
     const URI = `/${userId}/posts`;
 
-    return this.httpClient.get<CommonResponseViewModel<PostModel[]>>(URI, {
-      params,
-      headers: HEADERS,
-    });
+    return this.httpClient.get<CommonResponseViewModel<PaginatedUsersData>>(
+      URI,
+      {
+        params,
+        headers: HEADERS,
+      },
+    );
   }
 
   public updateProfile(

@@ -1,0 +1,17 @@
+<div class="profile-details">
+  <div class="avatar">
+    <uk-shape-icon
+      [shapeIconType]="UK_TYPE.SHAPE_ICON.TYPE.CIRCLE"
+      [iconName]="UK_TYPE.SHAPE_ICON.ICON_NAME.USER"
+    />
+  </div>
+  <div class="user">
+    <div class="username">
+      <div class="user">{{ (user$ | async)?.user?.username }}</div>
+    </div>
+    <div class="follow">
+      <div class="followers">{{ (user$ | async)?.followers }}</div>
+      <div class="following">{{ (user$ | async)?.following }}</div>
+    </div>
+  </div>
+</div>

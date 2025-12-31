@@ -1,17 +1,18 @@
 import type {HangRoutes} from '@app/layouts/general/_/typed.route';
-import {HangProfileComponent} from '@pages/profile/__/profile.component';
+
+import {HangProfilePageComponent} from '../profile-page/profile-page.component';
 
 export const PROFILE_ROUTES: HangRoutes = [
   {
     path: '',
     children: [
       {
-        path: ':id',
-        component: HangProfileComponent,
+        path: '',
+        component: HangProfilePageComponent,
       },
       {
-        path: '',
-        component: HangProfileComponent,
+        path: ':id',
+        component: HangProfilePageComponent,
       },
     ],
   },

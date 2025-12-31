@@ -1,23 +1,29 @@
-import {createFeatureSelector, createSelector} from '@ngrx/store';
+import type {HangBaseState} from '@app/shared/store/_base/_base.state';
+import {createSelector} from '@ngrx/store';
 
 import type {HangProfileState} from './profile.state';
 
-const PROFILE_STATE = createFeatureSelector<HangProfileState>('profile');
+export const PROFILE_STATE = (state: HangBaseState): HangProfileState =>
+  state.profile;
 
-export const SELECT_PROFILE_USER = createSelector(PROFILE_STATE, (s) => s.user);
-export const SELECT_PROFILE_POSTS = createSelector(
+export const SELECT_PROFILE_DETAIL_RES = createSelector(
   PROFILE_STATE,
-  (s) => s.posts,
+  (s) => s.profile.get.response,
 );
-export const SELECT_PROFILE_FOLLOWERS = createSelector(
+export const SELECT_PROFILE_PATCH_RES = createSelector(
   PROFILE_STATE,
-  (s) => s.followers,
+  (s) => s.profile.patch.response,
 );
-export const SELECT_PROFILE_FOLLOWING = createSelector(
+export const SELECT_PROFILE_POSTS_RES = createSelector(
   PROFILE_STATE,
-  (s) => s.following,
+  (s) => s.posts.response,
 );
-export const SELECT_PROFILE_RECEIVED_TIME = createSelector(
+
+export const SELECT_PROFILE_FOLLOWERS_RES = createSelector(
   PROFILE_STATE,
-  (s) => s.receivedTime,
+  (s) => s.followers.response,
+);
+export const SELECT_PROFILE_FOLLOWING_RES = createSelector(
+  PROFILE_STATE,
+  (s) => s.following.response,
 );

@@ -18,9 +18,10 @@ export class HangProfileEffects {
       exhaustMap((props) =>
         this.profileService.getProfile(props.userId).pipe(
           switchMap((res) => {
-            if (res.code === 200) {
+            if (res.code === 200 && res.data) {
               return of(
                 PROFILE_ACTIONS.$GET_PROFILE_DETAIL_UPDATE({
+                  userId: props.userId ?? '',
                   response: res.data,
                   receivedTime: Date.now(),
                 }),
@@ -49,15 +50,55 @@ export class HangProfileEffects {
     );
   });
 
+  public patchProfile$ = createEffect(() => {
+    return this.actions.pipe(
+      ofType(PROFILE_ACTIONS.$PATCH_PROFILE_DETAIL),
+      exhaustMap((props) =>
+        this.profileService.updateProfile(props.body).pipe(
+          switchMap((res) => {
+            if (res.code === 200 && res.data) {
+              return of(
+                PROFILE_ACTIONS.$PATCH_PROFILE_DETAIL_UPDATE({
+                  body: props.body,
+                  response: res.data,
+                  receivedTime: Date.now(),
+                }),
+              );
+            }
+
+            return of(
+              APP_ACTIONS.UPDATE_HTTP_FAIL({
+                timestamp: Date.now(),
+                methodName: 'patchProfile$',
+                error: String(res.code),
+              }),
+            );
+          }),
+          catchError((error) =>
+            of(
+              APP_ACTIONS.UPDATE_HTTP_FAIL({
+                timestamp: Date.now(),
+                methodName: 'patchProfile$',
+                error: error,
+              }),
+            ),
+          ),
+        ),
+      ),
+    );
+  });
+
   public getProfilePosts$ = createEffect(() => {
     return this.actions.pipe(
       ofType(PROFILE_ACTIONS.$GET_PROFILE_POSTS),
       exhaustMap((props) =>
-        this.profileService.getUserProfilePosts(props.userId).pipe(
+        this.profileService.getUserProfilePosts(props.userId, props.query).pipe(
           switchMap((res) => {
-            if (res.code === 200) {
+            if ((res.code === 200, res.data)) {
               return of(
                 PROFILE_ACTIONS.$GET_PROFILE_POSTS_UPDATE({
+                  userId: props.userId,
+                  query: props.query,
                   response: res.data,
                   receivedTime: Date.now(),
                 }),
@@ -77,6 +118,84 @@ export class HangProfileEffects {
               APP_ACTIONS.UPDATE_HTTP_FAIL({
                 timestamp: Date.now(),
                 methodName: 'getProfilePosts$',
+                error: error,
+              }),
+            ),
+          ),
+        ),
+      ),
+    );
+  });
+
+  public getFollowers$ = createEffect(() => {
+    return this.actions.pipe(
+      ofType(PROFILE_ACTIONS.$GET_PROFILE_FOLLOWERS),
+      exhaustMap((props) =>
+        this.followService.getFollowers(props.userId, props.query).pipe(
+          switchMap((res) => {
+            if ((res.code === 200, res.data)) {
+              return of(
+                PROFILE_ACTIONS.$GET_PROFILE_FOLLOWERS_UPDATE({
+                  userId: props.userId,
+                  query: props.query,
+                  response: res.data,
+                  receivedTime: Date.now(),
+                }),
+              );
+            }
+
+            return of(
+              APP_ACTIONS.UPDATE_HTTP_FAIL({
+                timestamp: Date.now(),
+                methodName: 'getFollowers$',
+                error: String(res.code),
+              }),
+            );
+          }),
+          catchError((error) =>
+            of(
+              APP_ACTIONS.UPDATE_HTTP_FAIL({
+                timestamp: Date.now(),
+                methodName: 'getFollowers$',
+                error: error,
+              }),
+            ),
+          ),
+        ),
+      ),
+    );
+  });
+
+  public getFollowing$ = createEffect(() => {
+    return this.actions.pipe(
+      ofType(PROFILE_ACTIONS.$GET_PROFILE_FOLLOWING),
+      exhaustMap((props) =>
+        this.followService.getFollowing(props.userId, props.query).pipe(
+          switchMap((res) => {
+            if ((res.code === 200, res.data)) {
+              return of(
+                PROFILE_ACTIONS.$GET_PROFILE_FOLLOWING_UPDATE({
+                  userId: props.userId,
+                  query: props.query,
+                  response: res.data,
+                  receivedTime: Date.now(),
+                }),
+              );
+            }
+
+            return of(
+              APP_ACTIONS.UPDATE_HTTP_FAIL({
+                timestamp: Date.now(),
+                methodName: 'getFollowing$',
+                error: String(res.code),
+              }),
+            );
+          }),
+          catchError((error) =>
+            of(
+              APP_ACTIONS.UPDATE_HTTP_FAIL({
+                timestamp: Date.now(),
+                methodName: 'getFollowing$',
                 error: error,
               }),
             ),

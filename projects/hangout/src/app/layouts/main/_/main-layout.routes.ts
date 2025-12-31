@@ -41,14 +41,14 @@ export const MAIN_LAYOUT_ROUTES: HangRoutes = [
       //     ),
       //   canActivate: [UkUsersGuard],
       // },
-      // {
-      //   path: APP_ROUTES.PROFILE.ROOT,
-      //   loadChildren: async () =>
-      //     import('../../../pages/profile/_/profile.routes').then(
-      //       (r) => r.PROFILE_ROUTES,
-      //     ),
-      //   canActivate: [UkUsersGuard],
-      // },
+      {
+        path: APP_ROUTES.PROFILE.ROOT,
+        loadChildren: async () =>
+          import('../../../pages/profile/_/profile.routes').then(
+            (r) => r.PROFILE_ROUTES,
+          ),
+        canActivate: [UkUsersGuard],
+      },
       {
         path: APP_ROUTES.NOTIFICATION.ROOT,
         loadChildren: async () =>

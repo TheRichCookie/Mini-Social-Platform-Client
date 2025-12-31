@@ -20,7 +20,7 @@ export class HangFeedEffects {
     return this.actions.pipe(
       ofType(FEED_ACTION.FEED_ACTIONS.$GET_FEED_POST),
       exhaustMap(() =>
-        this.feedService.getFeed(1, 20).pipe(
+        this.feedService.getFeed({page: 1, limit: 20}).pipe(
           switchMap((res: CommonResponseViewModel<FeedPostModel[]>) => {
             if (res.code === 200) {
               return of(

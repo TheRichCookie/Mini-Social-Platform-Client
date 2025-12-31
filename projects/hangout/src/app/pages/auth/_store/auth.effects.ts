@@ -29,7 +29,7 @@ export class HangAuthEffects {
       exhaustMap((props) =>
         this.authService.signIn(props.request).pipe(
           switchMap((res: CommonResponseViewModel<SignInDataModel>) => {
-            if (res.code === 200) {
+            if ((res.code === 200, res.data)) {
               return of(
                 AUTH_ACTION.SIGN_IN_ACTIONS.$SIGN_IN_UPDATE({
                   request: props.request,
@@ -74,7 +74,7 @@ export class HangAuthEffects {
       exhaustMap((props) =>
         this.authService.signUp(props.request).pipe(
           switchMap((res: CommonResponseViewModel<SignUpDataModel>) => {
-            if (res.code === 201) {
+            if ((res.code === 201, res.data)) {
               return of(
                 AUTH_ACTION.SIGN_UP_ACTIONS.$SIGN_UP_UPDATE({
                   request: props.request,
@@ -113,7 +113,7 @@ export class HangAuthEffects {
         this.authService.otp(props.request).pipe(
           switchMap(
             (res: CommonResponseViewModel<OtpVerificationDataModel>) => {
-              if (res.code === 200) {
+              if ((res.code === 200, res.data)) {
                 if (res.data?.token) {
                   this.authenticateService.setToken(res.data?.token);
                 }
@@ -127,7 +127,7 @@ export class HangAuthEffects {
                 );
               }
 
-              if (res.code === 400) {
+              if ((res.code === 400, res.message)) {
                 this.alertService.error(res.message);
               }
 

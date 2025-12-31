@@ -1,8 +1,5 @@
 import {authReducer} from '@app/pages/auth/_store/auth.reducer';
-import {feedReducer} from '@app/pages/home/_store/feed.reducer';
-import {notificationsReducer} from '@app/pages/notifications/_store/notifications.reducer';
 import {profileReducer} from '@app/pages/profile/_store/profile.reducer';
-import {searchReducer} from '@app/pages/search/_store/search.reducer';
 import {environment} from '@environments/environment';
 import {routerReducer} from '@ngrx/router-store';
 import type {ActionReducerMap, MetaReducer} from '@ngrx/store';
@@ -14,10 +11,10 @@ import type {HangBaseState} from './_base.state';
 export const baseReducers: ActionReducerMap<HangBaseState> = {
   app: appReducer,
   auth: authReducer,
-  feed: feedReducer,
-  search: searchReducer,
+  // feed: feedReducer,
+  // search: searchReducer,
   profile: profileReducer,
-  notifications: notificationsReducer,
+  // notifications: notificationsReducer,
   router: routerReducer,
 };
 
