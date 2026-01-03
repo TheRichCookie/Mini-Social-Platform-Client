@@ -1,0 +1,55 @@
+<div class="profile-info">
+  <div class="avatar">
+    <uk-shape-icon
+      [shapeIconType]="UK_TYPE.SHAPE_ICON.TYPE.CIRCLE"
+      [iconName]="UK_TYPE.SHAPE_ICON.ICON_NAME.USER"
+      [size]="UK_TYPE.SHAPE_ICON.SIZE.LARGE"
+    />
+  </div>
+  <div class="username">
+    <uk-text>
+      {{ (user$ | async)?.user?.username }}
+    </uk-text>
+  </div>
+  <div class="user">
+    <div class="follow">
+      <button (click)="PC.actions.openFollowersModal()">
+        <div class="followers">{{ (user$ | async)?.followers }}</div>
+      </button>
+      <button (click)="PC.actions.openFollowingModal()">
+        <div class="following">{{ (user$ | async)?.following }}</div>
+      </button>
+    </div>
+  </div>
+  <div class="info">
+    <div class="bio">
+      {{ (user$ | async)?.user?.bio }}
+    </div>
+    <div class="major">
+      {{ (user$ | async)?.user?.major }}
+    </div>
+  </div>
+  @if ((user$ | async)?.isMe) {
+    <uk-button
+      (click)="PC.actions.openProfileEditModal()"
+      [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
+    >
+      edit
+    </uk-button>
+  }
+  @if ((user$ | async)?.isFollowing && !(user$ | async)?.isMe) {
+    <uk-button
+      (click)="PC.actions.toggleFollow()"
+      [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
+    >
+      unfollow
+    </uk-button>
+  } @else if (!(user$ | async)?.isFollowing && !(user$ | async)?.isMe) {
+    <uk-button
+      (click)="PC.actions.toggleFollow()"
+      [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
+    >
+      follow
+    </uk-button>
+  }
+</div>

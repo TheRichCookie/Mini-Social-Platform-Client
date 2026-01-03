@@ -3,10 +3,10 @@ import {RouterModule} from '@angular/router';
 
 @Component({
   standalone: true,
-  selector: 'hang-profile',
+  selector: 'hang-post-route',
   imports: [RouterModule],
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss'],
+  templateUrl: './post-route.component.html',
+  styleUrls: ['./post-route.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HangProfileComponent {}
+export class HangPostRouteComponent {}

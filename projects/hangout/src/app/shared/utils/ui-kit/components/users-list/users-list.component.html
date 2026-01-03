@@ -1,0 +1,15 @@
+<div class="users-list">
+  @for (item of items; track item[bindId]) {
+    <uk-card (click)="goToProfile(item[bindId])">
+      {{ item[bindLabel] }}
+    </uk-card>
+  }
+  @if (count > limit) {
+    <uk-pagination
+      [pageSize]="limit"
+      [totalItems]="count"
+      [currentPage]="page"
+      (CHANGE_PAGE)="changePage($event)"
+    />
+  }
+</div>

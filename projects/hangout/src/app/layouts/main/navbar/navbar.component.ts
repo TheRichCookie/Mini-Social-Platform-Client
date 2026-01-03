@@ -15,4 +15,6 @@ import {UK_TYPE} from '@utils/ui-kit/definitions';
 export class HangNavBarComponent {
   public readonly UK_TYPE = UK_TYPE;
   public readonly APP_ROUTES = APP_ROUTES;
+
+  public isActive = false;
 }

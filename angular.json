@@ -99,7 +99,7 @@
       },
       "root": "projects/hangout",
       "sourceRoot": "projects/hangout/src",
-      "prefix": "bmn",
+      "prefix": "hang",
       "architect": {
         "build": {
           "builder": "@angular/build:application",

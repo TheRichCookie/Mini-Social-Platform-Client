@@ -16,20 +16,26 @@ export class UkUserService {
   private readonly httpClient = inject(HttpClient);
   private readonly apiHeaderService = inject(UkApiHeaderService);
 
-  public searchUsers(
-    q: string,
-    page?: number,
-    limit?: number,
-  ): Observable<CommonResponseViewModel<SearchUsersDataModel>> {
+  public searchUsers(query: {
+    q?: string;
+    page: number;
+    limit: number;
+  }): Observable<CommonResponseViewModel<SearchUsersDataModel>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.USERS,
       apiHeaderVersion: UkConfigApiVersions.NONE,
     });
 
-    const params = new HttpParams()
-      .set('q', q)
-      .set('page', page?.toString() ?? '')
-      .set('limit', limit?.toString() ?? '');
+    let params = new HttpParams();
+
+    if (query) {
+      params = params.set('page', query?.page);
+      params = params.set('limit', query?.limit);
+
+      if (query.q) {
+        params = params.set('q', query?.q);
+      }
+    }
 
     const URI = '/search';
 

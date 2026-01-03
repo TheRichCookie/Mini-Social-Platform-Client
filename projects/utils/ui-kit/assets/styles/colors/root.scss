@@ -152,7 +152,7 @@ $darkColors: (
   background: (
     surface00: #10162f,
     surface01: #26292c,
-    surface02: #313741,
+    surface02: #000000,
     primary01: #0c3e8a,
     primary02: #1967d2,
     secondary: #00564c,
@@ -198,7 +198,7 @@ $darkColors: (
   border: (
     grade0: #141a2e,
     grade1: #1e263d,
-    grade2: #202a46,
+    grade2: rgba(255, 255, 255, 0.1),
   ),
   button: (
     // Primary based on #4285F4

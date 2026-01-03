@@ -1,0 +1,17 @@
+<uk-page [bodyOverFlow]="UK_TYPE.PAGE.BODY_OVER_FLOW.SCROLL">
+  <uk-page-body [fullHeight]="true">
+    <uk-page-part>
+      <uk-search-bar (SEARCH)="PC.actions.onSearch($event)" />
+    </uk-page-part>
+    <uk-page-part>
+      <hang-users-list
+        [items]="PC.props.list"
+        [limit]="PC.props.request.query.limit"
+        [page]="PC.props.request.query.page"
+        [count]="PC.props.count"
+        bindLabel="username"
+        bindId="_id"
+      />
+    </uk-page-part>
+  </uk-page-body>
+</uk-page>

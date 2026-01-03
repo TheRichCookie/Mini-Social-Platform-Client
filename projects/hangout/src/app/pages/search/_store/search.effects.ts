@@ -1,14 +1,14 @@
 import {inject, Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import * as APP_ACTIONS from '@store/app/app.action';
-import {UkFollowService, UkUserService} from '@utils/ui-kit/services';
-import {catchError, exhaustMap, map, of, switchMap} from 'rxjs';
-
 import type {
   CommonResponseViewModel,
   SearchUsersDataModel,
-} from '../../../../../../utils/ui-kit/definitions/swagger/swagger';
-import * as SEARCH_ACTION from './search.actions';
+} from '@utils/ui-kit/definitions';
+import {UkFollowService, UkUserService} from '@utils/ui-kit/services';
+import {catchError, exhaustMap, map, of} from 'rxjs';
+
+import {SEARCH_ACTIONS} from './search.actions';
 
 @Injectable({providedIn: 'root'})
 export class HangSearchEffects {
@@ -18,13 +18,14 @@ export class HangSearchEffects {
 
   public getSearch$ = createEffect(() => {
     return this.actions.pipe(
-      ofType(SEARCH_ACTION.SEARCH_ACTIONS.$GET_SEARCH_USERS_POST),
+      ofType(SEARCH_ACTIONS.$GET_SEARCH_USERS),
       exhaustMap((props) =>
-        this.userService.searchUsers(props.query || '').pipe(
+        this.userService.searchUsers(props.query).pipe(
           map((res: CommonResponseViewModel<SearchUsersDataModel>) => {
-            if (res.code === 200) {
-              return SEARCH_ACTION.SEARCH_ACTIONS.$GET_SEARCH_USERS_UPDATE({
-                response: res.data?.users ?? [],
+            if (res.code === 200 && res.data) {
+              return SEARCH_ACTIONS.$GET_SEARCH_USERS_UPDATE({
+                query: props.query,
+                response: res.data,
                 receivedTime: Date.now(),
               });
             }
@@ -40,32 +41,6 @@ export class HangSearchEffects {
               APP_ACTIONS.UPDATE_HTTP_FAIL({
                 timestamp: Date.now(),
                 methodName: 'getSearch$',
-                error: error,
-              }),
-            ),
-          ),
-        ),
-      ),
-    );
-  });
-
-  public toggleFollow$ = createEffect(() => {
-    return this.actions.pipe(
-      ofType(SEARCH_ACTION.SEARCH_ACTIONS.$TOGGLE_FOLLOW_USER),
-      exhaustMap((props) =>
-        this.followService.toggleFollow(props.userId).pipe(
-          switchMap(() =>
-            of(
-              SEARCH_ACTION.SEARCH_ACTIONS.$GET_SEARCH_USERS_POST({
-                query: '',
-              }),
-            ),
-          ),
-          catchError((error) =>
-            of(
-              APP_ACTIONS.UPDATE_HTTP_FAIL({
-                timestamp: Date.now(),
-                methodName: 'toggleFollow$',
                 error: error,
               }),
             ),

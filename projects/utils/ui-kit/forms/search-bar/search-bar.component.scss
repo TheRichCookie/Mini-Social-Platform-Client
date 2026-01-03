@@ -1,63 +1,23 @@
 @use "core" as *;
 
-$search-bar-border-radius: 8px;
-
 :host {
   display: block;
+  height: 58px;
   width: 100%;
 }
 
 .uk.search-bar {
-  display: flex;
-  gap: 8px;
   width: 100%;
-  height: 48px;
+  height: 100%;
 
-  .search-container {
-    display: flex;
-    transition: border-color 0.2s;
+  .input {
+    border-radius: 16px;
     border: 1px solid $color-border-grade-2;
-    border-radius: 8px;
+    background-color: $color-background-surface-02;
+    color: $color-content-high-emphasis;
+    opacity: 0.6;
     width: 100%;
-
-    &:focus-within {
-      border-color: $color-button-primary;
-
-      uk-select {
-        > ::ng-deep {
-          .uk.select {
-            border-color: $color-button-primary;
-          }
-        }
-      }
-    }
-
-    uk-select {
-      width: 160px;
-      > ::ng-deep {
-        .uk.select {
-          border-width: 1px;
-          border-color: $color-border-grade-2;
-          border-top: none;
-          border-right: none;
-          border-bottom: none;
-          border-radius: 0;
-
-          .ng-select-container {
-            border-radius: $search-bar-border-radius;
-          }
-        }
-      }
-    }
-
-    uk-input {
-      flex: 1;
-      border: none;
-
-      &::ng-deep .uk.input {
-        box-shadow: none;
-        border: none;
-      }
-    }
+    height: 100%;
+    padding: 0 8px;
   }
 }

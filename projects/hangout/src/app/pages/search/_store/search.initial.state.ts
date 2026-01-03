@@ -1,8 +1,21 @@
 import type {HangSearchState} from './search.state';
 
-export const SEARCH_INITIAL_STATE: HangSearchState = {
-  query: undefined!,
-  response: [],
+const SEARCH_INITIAL = {
+  request: {
+    query: {
+      q: undefined!,
+      page: undefined!,
+      limit: undefined!,
+    },
+  },
+  response: {
+    users: [],
+    total: undefined!,
+    totalPages: undefined!,
+  },
   receivedTime: undefined!,
-  error: {receivedTime: undefined!, message: undefined!},
+};
+
+export const SEARCH_INITIAL_STATE: HangSearchState = {
+  search: SEARCH_INITIAL,
 };

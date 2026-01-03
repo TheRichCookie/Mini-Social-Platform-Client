@@ -1,35 +1,33 @@
 @use "core" as *;
 
 :host {
-  display: inline-flex;
+  display: block;
   width: 100%;
 }
 
 .uk.text-area {
-  display: block;
-  border-width: 1px;
-  border-style: solid;
-  border-radius: 16px;
   width: 100%;
   height: 100%;
+  border-radius: 8px;
+  border: 1px solid $color-border-grade-2;
+  background-color: $color-background-surface-02;
+  overflow: hidden;
 
   textarea {
-    align-items: center;
+    display: block;
     outline: none;
     border: none;
-    border-radius: 16px;
-    background-color: transparent;
     padding: 8px;
     width: 100%;
     height: 100%;
     resize: none;
-    color: $color-content-secondary;
-    font-size: 0.7rem;
+    background-color: $color-background-surface-02;
+    color: $color-content-high-emphasis;
+    opacity: 0.6;
 
     &::placeholder {
       opacity: 0.5;
-      color: #91949a;
-      font-size: 0.7rem;
+      color: $color-content-high-emphasis;
     }
   }
 

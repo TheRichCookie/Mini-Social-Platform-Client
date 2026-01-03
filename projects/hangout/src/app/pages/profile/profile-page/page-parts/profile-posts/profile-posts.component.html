@@ -1,0 +1,16 @@
+<div class="profile-info">
+  @for (post of PC.props.list; track post._id) {
+    <div>
+      {{post.content}}
+    </div>
+    <button (click)="PC.actions.deletePost(post._id)">
+      delete
+    </button>
+  }
+  <uk-pagination
+    [pageSize]="PC.props.request.query.limit"
+    [totalItems]="PC.props.count"
+    [currentPage]="PC.props.request.query.page"
+    (CHANGE_PAGE)="PC.actions.changePage($event)"
+  />
+</div>

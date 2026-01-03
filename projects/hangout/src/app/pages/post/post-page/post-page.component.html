@@ -1,0 +1,38 @@
+<uk-page>
+  <uk-page-body [fullHeight]="true">
+    <uk-page-part>
+      <form [formGroup]="postForm">
+        <uk-form>
+          <uk-form-body>
+            <uk-form-part>
+              <uk-form-row>
+                <uk-form-controller>
+                  <uk-text
+                    [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS"
+                    [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_1"
+                  >
+                    ایجاد پست
+                  </uk-text>
+                  <uk-text-area
+                    [formControl]="postForm.controls.content"
+                    [placeholder]="'پست'"
+                  />
+                </uk-form-controller>
+              </uk-form-row>
+              <uk-form-row>
+                <uk-form-controller>
+                  <uk-button
+                    [display]="UK_TYPE.BUTTON.DISPLAY.BLOCK"
+                    [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
+                    (click)="PC.actions.addPost()"
+                    >ایجاد پست</uk-button
+                  >
+                </uk-form-controller>
+              </uk-form-row>
+            </uk-form-part>
+          </uk-form-body>
+        </uk-form>
+      </form>
+    </uk-page-part>
+  </uk-page-body>
+</uk-page>

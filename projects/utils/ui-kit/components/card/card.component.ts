@@ -1,5 +1,5 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {UK_TYPE} from '@utils/ui-kit/definitions';
 
 import {UkShapeIconComponent} from '../shape-icon/shape-icon.component';
@@ -14,8 +14,5 @@ import {UkTextComponent} from '../text/text.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UkCardComponent {
-  @Input()
-  public text = 'امیر';
-
   public readonly UK_TYPE = UK_TYPE;
 }

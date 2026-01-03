@@ -40,7 +40,7 @@ import {UK_TYPE} from '@utils/ui-kit/definitions';
 import {UkInputComponent} from '@utils/ui-kit/forms';
 import {UkAlertService} from '@utils/ui-kit/services';
 
-import type {HangAuthStatus, HangSignInForm} from '../_models/bmn-auth.model';
+import type {HangAuthStatus, HangSignInForm} from '../_models/auth.model';
 import {SELECT_AUTH_SIGN_IN_RECEIVED_TIME_RESPONSE} from '../_store/auth.selectors';
 
 @Component({

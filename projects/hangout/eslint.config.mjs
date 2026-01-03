@@ -34,7 +34,7 @@ export default tseslint.config(
         {
           format: ["PascalCase"],
           modifiers: ["exported", "abstract"],
-          prefix: ["AbstractBmn", "Hang"],
+          prefix: ["AbstractHang", "Hang"],
           selector: "class",
         },
         {
@@ -82,7 +82,7 @@ export default tseslint.config(
         {
           format: ["PascalCase"],
           modifiers: ["abstract"],
-          prefix: ["AbstractBmn", "Hang"],
+          prefix: ["AbstractHang", "Hang"],
           selector: "class",
         },
         {

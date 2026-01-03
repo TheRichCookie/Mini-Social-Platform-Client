@@ -5,9 +5,9 @@ import {
   UkPageComponent,
   UkPagePartComponent,
 } from '@utils/ui-kit/arrangements';
-import {UkCardComponent} from '@utils/ui-kit/components';
 
-import {HangProfileDetailsComponent} from './components/details/profile-details.component';
+import {HangProfileInfoComponent} from './page-parts/profile-info/profile-info.component';
+import {HangProfilePostsComponent} from './page-parts/profile-posts/profile-posts.component';
 
 @Component({
   standalone: true,
@@ -17,8 +17,8 @@ import {HangProfileDetailsComponent} from './components/details/profile-details.
     UkPageComponent,
     UkPageBodyComponent,
     UkPagePartComponent,
-    HangProfileDetailsComponent,
-    UkCardComponent,
+    HangProfileInfoComponent,
+    HangProfilePostsComponent,
   ],
   templateUrl: './profile-page.component.html',
   styleUrls: ['./profile-page.component.scss'],

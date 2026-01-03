@@ -16,8 +16,8 @@ import {
 } from '@angular/forms';
 import {Router} from '@angular/router';
 import {APP_ROUTES} from '@app/app.routes';
+import type {HangOtpForm} from '@app/pages/auth/_models/auth.model';
 import {Store} from '@ngrx/store';
-import type {HangOtpForm} from '@pages/auth/_models/bmn-auth.model';
 import * as AUTH_ACTIONS from '@pages/auth/_store/auth.actions';
 import {
   UkFormBodyComponent,
