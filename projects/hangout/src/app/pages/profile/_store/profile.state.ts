@@ -1,5 +1,6 @@
 import type {
   PaginatedUsersData,
+  PostPaginationData,
   UpdateProfileRequest,
   UserModel,
   UserProfileData,
@@ -37,7 +38,7 @@ export interface HangProfileState {
           limit: number;
         };
       };
-      response: PaginatedUsersData;
+      response: PostPaginationData;
       receivedTime: number;
     };
     delete: {

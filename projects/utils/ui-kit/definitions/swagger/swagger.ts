@@ -189,13 +189,21 @@ export type LikesCountResponse = CommonResponseViewModel & {
   data?: LikesCountModel;
 };
 
+export interface SenderModel {
+  /** @example "60f7b8e6a2b4c12d34e5f67a" */
+  _id?: string;
+  /** @example "johndoe" */
+  username?: string;
+  /** @example "https://example.com/avatar.jpg" */
+  avatar?: string;
+}
+
 export interface NotificationModel {
   /** @example "60f7b8e6a2b4c12d34e5f678" */
   _id?: string;
   /** @example "60f7b8e6a2b4c12d34e5f679" */
   userId?: string;
-  /** @example "60f7b8e6a2b4c12d34e5f67a" */
-  senderId?: string;
+  sender?: SenderModel;
   /** @example "like" */
   type?: 'like' | 'comment' | 'follow';
   /** @example "60f7b8e6a2b4c12d34e5f67b" */
@@ -303,9 +311,7 @@ export interface UserSearchModel {
 export interface SearchUsersDataModel {
   users?: UserSearchModel[];
   /** @example 25 */
-  total?: number;
-  /** @example 3 */
-  totalPages?: number;
+  totalCount?: number;
 }
 
 export type SearchUsersResponse = CommonResponseViewModel & {

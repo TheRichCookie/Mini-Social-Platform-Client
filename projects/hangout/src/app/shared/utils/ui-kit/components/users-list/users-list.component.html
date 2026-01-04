@@ -1,15 +1,16 @@
 <div class="users-list">
-  @for (item of items; track item[bindId]) {
-    <uk-card (click)="goToProfile(item[bindId])">
-      {{ item[bindLabel] }}
-    </uk-card>
-  }
-  @if (count > limit) {
-    <uk-pagination
-      [pageSize]="limit"
-      [totalItems]="count"
-      [currentPage]="page"
-      (CHANGE_PAGE)="changePage($event)"
-    />
-  }
+  <uk-scroll
+    (LOAD_MORE)="loadMore()"
+    (NO_OVERFLOW)="noOverflow()"
+    [showScrollbar]="UK_TYPE.UK.BOOLEAN.FALSE"
+    [appearance]="'auto'"
+    [isLoading]="isLoading"
+    [maxHeight]="500"
+  >
+    @for (item of items; track item[bindId]) {
+      <uk-card (click)="goToProfile(item[bindId])">
+        {{ item[bindLabel] }}
+      </uk-card>
+    }
+  </uk-scroll>
 </div>

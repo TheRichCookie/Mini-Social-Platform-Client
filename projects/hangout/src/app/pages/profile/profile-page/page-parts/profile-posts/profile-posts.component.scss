@@ -10,11 +10,27 @@
   width: 100%;
   display: flex;
 
-  .user {
+  uk-scroll {
     width: 100%;
 
-    .follow {
-      display: flex;
+    .post {
+      &:not(:last-child) {
+        margin-bottom: 8px;
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid $color-border-grade-2;
+        background-color: $color-background-surface-02;
+        border-radius: 8px;
+        padding: 8px;
+        gap: 8px;
+
+        .icon {
+          display: flex;
+        }
+      }
     }
   }
 }

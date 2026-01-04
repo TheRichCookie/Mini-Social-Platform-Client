@@ -1,4 +1,5 @@
 import {CommonModule} from '@angular/common';
+import type {OnDestroy} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
@@ -24,7 +25,7 @@ import {type CreatePostRequest, UK_TYPE} from '@utils/ui-kit/definitions';
 import {UkTextAreaComponent} from '@utils/ui-kit/forms';
 import {UkAlertService} from '@utils/ui-kit/services';
 
-import {POST_ACTIONS} from '../_store/post.actions';
+import {POST_ACTIONS, POST_RESET_ACTIONS} from '../_store/post.actions';
 import {SELECT_ADD_POST_RES} from '../_store/post.selectors';
 
 export interface HangPostForm {
@@ -60,7 +61,7 @@ interface PageController {
   styleUrls: ['./post-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HangPostPageComponent {
+export class HangPostPageComponent implements OnDestroy {
   private readonly store = inject(Store);
   private readonly alertService = inject(UkAlertService);
 
@@ -98,5 +99,9 @@ export class HangPostPageComponent {
         this.alertService.success('پست ایجاد شد');
       }
     });
+  }
+
+  public ngOnDestroy(): void {
+    this.store.dispatch(POST_RESET_ACTIONS.$RESET_POST());
   }
 }

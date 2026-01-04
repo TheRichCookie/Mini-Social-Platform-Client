@@ -4,6 +4,7 @@ import {
   ChangeDetectorRef,
   Component,
   inject,
+  ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -24,6 +25,7 @@ interface PageController {
   props: {
     list: UserSearchModel[];
     count: number;
+    isLoading: boolean;
     request: {
       query: {
         q?: string;
@@ -34,7 +36,7 @@ interface PageController {
   };
   actions: {
     get: () => void;
-    changePage: (page: number) => void;
+    loadMore: () => void;
     onSearch: (value: string) => void;
   };
 }
@@ -47,10 +49,10 @@ interface PageController {
     FormsModule,
     ReactiveFormsModule,
     UkSearchBarComponent,
-    HangUsersListComponent,
     UkPageComponent,
     UkPageBodyComponent,
     UkPagePartComponent,
+    HangUsersListComponent,
   ],
   templateUrl: './search-page.component.html',
   styleUrls: ['./search-page.component.scss'],
@@ -60,6 +62,9 @@ export class HangSearchPageComponent {
   private readonly store = inject(Store);
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
 
+  @ViewChild(HangUsersListComponent)
+  public usersListComponent!: HangUsersListComponent;
+
   public readonly searchResult$ = this.store.select(SELECT_SEARCH_USERS_RES);
 
   public readonly UK_TYPE = UK_TYPE;
@@ -68,6 +73,7 @@ export class HangSearchPageComponent {
     props: {
       list: [],
       count: 0,
+      isLoading: false,
       request: {
         query: {
           q: '',
@@ -82,12 +88,29 @@ export class HangSearchPageComponent {
 
         this.store.dispatch(SEARCH_ACTIONS.$GET_SEARCH_USERS(REQUEST));
       },
-      changePage: (page) => {
-        this.PC.props.request.query.page = page;
-        this.PC.actions.get();
+      loadMore: () => {
+        if (this.PC.props.isLoading) return;
+
+        const {page, limit} = this.PC.props.request.query;
+        const nextPage = page + 1;
+
+        if (this.PC.props.count > page * limit) {
+          this.PC.props.isLoading = true;
+          this.PC.props.request.query.page = nextPage;
+          this.PC.actions.get();
+        }
       },
       onSearch: (value) => {
-        this.PC.props.request.query.q = value;
+        // reset pagination
+        this.PC.props.request.query = {
+          q: value,
+          page: 1,
+          limit: this.PC.props.request.query.limit,
+        };
+
+        this.PC.props.list = [];
+        this.PC.props.isLoading = true;
+
         this.PC.actions.get();
       },
     },
@@ -95,12 +118,22 @@ export class HangSearchPageComponent {
 
   constructor() {
     this.searchResult$.pipe(takeUntilDestroyed()).subscribe((result) => {
-      if (result.total) {
-        this.PC.props.count = result.total;
+      if (result.totalCount) {
+        this.PC.props.count = result.totalCount;
       }
 
-      this.PC.props.list = result.users ?? [];
+      if (this.PC.props.request.query.page === 1) {
+        this.PC.props.list = result.users ?? [];
+      } else {
+        this.PC.props.list = [...this.PC.props.list, ...(result.users ?? [])];
+      }
+
+      this.PC.props.isLoading = false;
       this.changeDetectorRef.markForCheck();
+
+      setTimeout(() => {
+        this.usersListComponent.scrollComponent.checkOverflow();
+      });
     });
   }
 }

@@ -17,9 +17,14 @@ import {
   SELECT_PROFILE_TOGGLE_FOLLOW_RECEIVED_TIME,
 } from '@app/pages/profile/_store/profile.selectors';
 import {Store} from '@ngrx/store';
-import { UkButtonComponent, UkShapeIconComponent, UkTextComponent } from '@utils/ui-kit/components';
+import {UkButtonGroupComponent} from '@utils/ui-kit/arrangements';
+import {
+  UkButtonComponent,
+  UkShapeIconComponent,
+  UkTextComponent,
+} from '@utils/ui-kit/components';
 import type {UserProfileData} from '@utils/ui-kit/definitions';
-import {UK_TYPE} from '@utils/ui-kit/definitions';
+import {CONST_CONFIG, UK_TYPE} from '@utils/ui-kit/definitions';
 import {UkAlertService, UkOverlayService} from '@utils/ui-kit/services';
 import {take} from 'rxjs';
 
@@ -46,7 +51,13 @@ interface PageController {
 @Component({
   standalone: true,
   selector: 'hang-profile-info',
-  imports: [CommonModule, UkShapeIconComponent, UkButtonComponent, UkTextComponent],
+  imports: [
+    CommonModule,
+    UkShapeIconComponent,
+    UkButtonComponent,
+    UkTextComponent,
+    UkButtonGroupComponent,
+  ],
   templateUrl: './profile-info.component.html',
   styleUrls: ['./profile-info.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -117,9 +128,9 @@ export class HangProfileInfoComponent {
           HangProfileEditModalComponent,
           {
             hasBackdrop: true,
-            positionInfo: 'CENTER',
-            width: '480px',
+            positionInfo: 'CENTER_BOTTOM',
             inputs: INPUTS,
+            width: CONST_CONFIG.COMMON.MAX_MOBILE_WIDTH,
           },
         );
 
@@ -148,9 +159,9 @@ export class HangProfileInfoComponent {
         ]);
         const OVERLAY = this.overlayService.open(HangFollowersModalComponent, {
           hasBackdrop: true,
-          positionInfo: 'CENTER',
-          width: '480px',
+          positionInfo: 'CENTER_BOTTOM',
           inputs: INPUTS,
+          width: CONST_CONFIG.COMMON.MAX_MOBILE_WIDTH,
         });
 
         OVERLAY.overlayRef
@@ -172,9 +183,9 @@ export class HangProfileInfoComponent {
         ]);
         const OVERLAY = this.overlayService.open(HangFollowingModalComponent, {
           hasBackdrop: true,
-          positionInfo: 'CENTER',
-          width: '480px',
+          positionInfo: 'CENTER_BOTTOM',
           inputs: INPUTS,
+          width: CONST_CONFIG.COMMON.MAX_MOBILE_WIDTH,
         });
 
         OVERLAY.overlayRef

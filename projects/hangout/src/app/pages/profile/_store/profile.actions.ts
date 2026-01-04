@@ -1,6 +1,7 @@
-import {createActionGroup, props} from '@ngrx/store';
+import {createActionGroup, emptyProps, props} from '@ngrx/store';
 import type {
   PaginatedUsersData,
+  PostPaginationData,
   UpdateProfileRequest,
   UserModel,
   UserProfileData,
@@ -29,7 +30,7 @@ export const PROFILE_DETAIL_ACTIONS = createActionGroup({
         page: number;
         limit: number;
       };
-      response: PaginatedUsersData;
+      response: PostPaginationData;
       receivedTime: number;
     }>(),
 
@@ -99,5 +100,13 @@ export const PROFILE_FOLLOW_ACTIONS = createActionGroup({
       response: PaginatedUsersData;
       receivedTime: number;
     }>(),
+  },
+});
+
+export const PROFILE_RESET_ACTIONS = createActionGroup({
+  source: 'PROFILE',
+  events: {
+    $RESET_PROFILE: emptyProps(),
+    $RESET_FOLLOW: emptyProps(),
   },
 });

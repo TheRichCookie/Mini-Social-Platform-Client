@@ -13,8 +13,9 @@
       [routerLink]="APP_ROUTES.NOTIFICATION.ROOT"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
+      (click)="read()"
     >
-      <uk-icon [name]="UK_TYPE.ICON.NAME.BELL" />
+      <uk-icon [name]="UK_TYPE.ICON.NAME.BELL" [ngClass]="{ring: newNotification}" />
     </a>
     <a
       class="nav-item"

@@ -1,16 +1,34 @@
 <div class="profile-info">
-  @for (post of PC.props.list; track post._id) {
-    <div>
-      {{post.content}}
-    </div>
-    <button (click)="PC.actions.deletePost(post._id)">
-      delete
-    </button>
-  }
-  <uk-pagination
-    [pageSize]="PC.props.request.query.limit"
-    [totalItems]="PC.props.count"
-    [currentPage]="PC.props.request.query.page"
-    (CHANGE_PAGE)="PC.actions.changePage($event)"
-  />
+  <uk-scroll
+    (LOAD_MORE)="PC.actions.loadMore()"
+    (NO_OVERFLOW)="PC.actions.loadMore()"
+    [showScrollbar]="UK_TYPE.UK.BOOLEAN.FALSE"
+    [appearance]="'auto'"
+    [isLoading]="PC.props.isLoading"
+    [maxHeight]="500"
+  >
+    @for (post of PC.props.list; track post._id) {
+      <div class="post">
+        <div class="content">
+          <!-- <div class="icon">
+            <uk-icon
+              [name]="UK_TYPE.ICON.NAME.TRASH"
+              [cursor]="UK_TYPE.ICON.CURSOR.POINTER"
+              (click)="PC.actions.deletePost(post._id)"
+              >delete</uk-icon
+            >
+          </div> -->
+          <uk-text
+            [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_LOW_EMPHASIS"
+            [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE"
+          >
+            {{ post.createdAt | date: "yyyy-MM-dd" }}
+          </uk-text>
+          <uk-text [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE_STRONG">
+            {{ post.content }}
+          </uk-text>
+        </div>
+      </div>
+    }
+  </uk-scroll>
 </div>

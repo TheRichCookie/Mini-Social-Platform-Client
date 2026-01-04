@@ -1,6 +1,6 @@
 <uk-modal-frame
   class="profile-edit"
-  [borderRadius]="UK_TYPE.MODAL_FRAME.BORDER_RADIUS.CENTER"
+  [borderRadius]="UK_TYPE.MODAL_FRAME.BORDER_RADIUS.TOP"
   [showHeader]="UK_TYPE.UK.BOOLEAN.TRUE"
   [showTopClose]="true"
   [title]="'ویرایش حساب کاربری'"
@@ -49,20 +49,15 @@
   <div FRAME-ACTIONS>
     <uk-button-group>
       <uk-button
-        [bgColor]="UK_TYPE.BUTTON.BG_COLOR.TRANSPARENT"
-        [borderColor]="UK_TYPE.BUTTON.BORDER_COLOR.COLOR_BUTTON_PRIMARY"
         [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
         [display]="UK_TYPE.BUTTON.DISPLAY.BLOCK"
-        [fgColor]="UK_TYPE.BUTTON.FG_COLOR.CONTENT_PRIMARY"
         (click)="onClose()"
       >
         بستن
       </uk-button>
       <uk-button
-        [bgColor]="UK_TYPE.BUTTON.BG_COLOR.PRIMARY_1"
         [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
         [display]="UK_TYPE.BUTTON.DISPLAY.BLOCK"
-        [fgColor]="UK_TYPE.BUTTON.FG_COLOR.CONTENT_LIGHT"
         (click)="onSubmit()"
       >
         تایید

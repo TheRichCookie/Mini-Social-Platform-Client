@@ -4,6 +4,7 @@ import {
   ChangeDetectorRef,
   Component,
   inject,
+  ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {PROFILE_DETAIL_ACTIONS} from '@app/pages/profile/_store/profile.actions';
@@ -13,7 +14,8 @@ import {
   SELECT_PROFILE_POSTS_RES,
 } from '@app/pages/profile/_store/profile.selectors';
 import {Store} from '@ngrx/store';
-import {UkPaginationComponent} from '@utils/ui-kit/components';
+import {UkScrollComponent} from '@utils/ui-kit/arrangements';
+import {UkTextComponent} from '@utils/ui-kit/components';
 import type {PostModel} from '@utils/ui-kit/definitions';
 import {UK_TYPE} from '@utils/ui-kit/definitions';
 import {UkAlertService} from '@utils/ui-kit/services';
@@ -22,6 +24,7 @@ interface PageController {
   props: {
     list: PostModel[];
     count: number;
+    isLoading: boolean;
     request: {
       userId: string;
       query: {
@@ -33,14 +36,14 @@ interface PageController {
   actions: {
     get: () => void;
     deletePost: (postId: string | undefined) => void;
-    changePage: (page: number) => void;
+    loadMore: () => void;
   };
 }
 
 @Component({
   standalone: true,
   selector: 'hang-profile-posts',
-  imports: [CommonModule, UkPaginationComponent],
+  imports: [CommonModule, UkScrollComponent, UkTextComponent],
   templateUrl: './profile-posts.component.html',
   styleUrls: ['./profile-posts.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -49,6 +52,9 @@ export class HangProfilePostsComponent {
   private readonly store = inject(Store);
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
   private readonly alertService = inject(UkAlertService);
+
+  @ViewChild(UkScrollComponent)
+  public scrollComponent!: UkScrollComponent;
 
   public readonly UK_TYPE = UK_TYPE;
 
@@ -63,11 +69,12 @@ export class HangProfilePostsComponent {
     props: {
       list: [],
       count: 0,
+      isLoading: false,
       request: {
         userId: '',
         query: {
           page: 0,
-          limit: 1,
+          limit: 15,
         },
       },
     },
@@ -92,20 +99,36 @@ export class HangProfilePostsComponent {
           );
         }
       },
-      changePage: (page) => {
-        this.PC.props.request.query.page = page;
-        this.PC.actions.get();
+      loadMore: () => {
+        let newPageIndex = JSON.parse(
+          JSON.stringify(this.PC.props.request.query.page),
+        );
+
+        newPageIndex++;
+
+        if (
+          this.PC.props.count >
+          newPageIndex * this.PC.props.request.query.limit
+        ) {
+          this.PC.props.isLoading = true;
+          this.PC.props.request.query.page = newPageIndex;
+          this.PC.actions.get();
+        }
       },
     },
   };
 
   constructor() {
     this.posts$.pipe(takeUntilDestroyed()).subscribe((posts) => {
-      this.PC.props.list = posts.items ?? [];
-
       if (posts.totalCount) {
         this.PC.props.count = posts.totalCount;
+        setTimeout(() => {
+          this.scrollComponent.checkOverflow();
+        });
       }
+
+      this.PC.props.list.push(...(posts.items ?? []));
+      this.PC.props.isLoading = false;
 
       this.changeDetectorRef.markForCheck();
     });
@@ -120,11 +143,20 @@ export class HangProfilePostsComponent {
         this.PC.props.request.userId = user.user?._id;
 
         if (this.PC.props.request.userId) {
+          this.reset();
           this.PC.actions.get();
         }
 
         this.changeDetectorRef.markForCheck();
       }
     });
+  }
+
+  public reset(): void {
+    this.PC.props.list = [];
+    this.PC.props.request.query = {
+      page: 0,
+      limit: this.PC.props.request.query.limit,
+    };
   }
 }

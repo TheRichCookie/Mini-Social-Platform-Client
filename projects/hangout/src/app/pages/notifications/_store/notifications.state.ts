@@ -1,11 +1,22 @@
-import type {NotificationModel} from '../../../../../../utils/ui-kit/definitions/swagger/swagger';
+import type {NotificationPaginationData} from '../../../../../../utils/ui-kit/definitions/swagger/swagger';
 
 export interface HangNotificationsState {
-  notifications: NotificationModel[];
-  unreadCount: number;
-  receivedTime: number | undefined;
-  error: {
-    receivedTime: number | undefined;
-    message: string | undefined;
+  notification: {
+    get: {
+      request: {
+        query: {
+          page: number;
+          limit: number;
+        };
+      };
+      response: NotificationPaginationData;
+      receivedTime: number;
+    };
+    markAsRead: {
+      request: {
+        id: string;
+      };
+      receivedTime: number;
+    };
   };
 }

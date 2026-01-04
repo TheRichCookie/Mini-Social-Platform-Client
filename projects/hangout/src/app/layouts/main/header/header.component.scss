@@ -10,7 +10,13 @@
   width: 100%;
   height: 100%;
   background-color: $color-background-surface-02;
-  opacity: 0.6;
-  border-bottom: 1px solid $color-border-grade-2;
-  // backdrop-filter: blur(12px);
+  // border-bottom: 1px solid $color-border-grade-2;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 16px;
+  }
 }

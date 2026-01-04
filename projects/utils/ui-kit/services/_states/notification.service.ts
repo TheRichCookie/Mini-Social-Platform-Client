@@ -6,7 +6,7 @@ import type {Observable} from 'rxjs';
 import {UkConfigApiServices, UkConfigApiVersions} from '../../definitions';
 import type {
   CommonResponseViewModel,
-  NotificationModel,
+  NotificationPaginationData,
 } from '../../definitions/swagger/swagger';
 
 @Injectable({
@@ -19,7 +19,7 @@ export class UkNotificationService {
   public getNotifications(query?: {
     page: number;
     limit: number;
-  }): Observable<CommonResponseViewModel<NotificationModel[]>> {
+  }): Observable<CommonResponseViewModel<NotificationPaginationData>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.NOTIFICATIONS,
       apiHeaderVersion: UkConfigApiVersions.NONE,
@@ -34,13 +34,12 @@ export class UkNotificationService {
 
     const URI = '';
 
-    return this.httpClient.get<CommonResponseViewModel<NotificationModel[]>>(
-      URI,
-      {
-        params,
-        headers: HEADERS,
-      },
-    );
+    return this.httpClient.get<
+      CommonResponseViewModel<NotificationPaginationData>
+    >(URI, {
+      params,
+      headers: HEADERS,
+    });
   }
 
   public markAsRead(id: string): Observable<CommonResponseViewModel<void>> {

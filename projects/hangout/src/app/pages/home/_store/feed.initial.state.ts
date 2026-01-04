@@ -1,7 +1,19 @@
 import type {HangFeedState} from './feed.state';
 
 export const FEED_INITIAL_STATE: HangFeedState = {
-  response: [],
-  receivedTime: undefined!,
-  error: {receivedTime: undefined!, message: undefined!},
+  feed: {
+    get: {
+      request: {
+        query: {
+          page: undefined!,
+          limit: undefined!,
+        },
+      },
+      response: {
+        items: [],
+        totalCount: undefined!,
+      },
+      receivedTime: undefined!,
+    },
+  },
 };

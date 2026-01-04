@@ -10,8 +10,7 @@ const SEARCH_INITIAL = {
   },
   response: {
     users: [],
-    total: undefined!,
-    totalPages: undefined!,
+    totalCount: undefined!,
   },
   receivedTime: undefined!,
 };

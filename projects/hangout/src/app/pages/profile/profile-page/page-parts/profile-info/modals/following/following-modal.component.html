@@ -1,6 +1,6 @@
 <uk-modal-frame
   class="following-modal"
-  [borderRadius]="UK_TYPE.MODAL_FRAME.BORDER_RADIUS.CENTER"
+  [borderRadius]="UK_TYPE.MODAL_FRAME.BORDER_RADIUS.TOP"
   [showHeader]="UK_TYPE.UK.BOOLEAN.TRUE"
   [showTopClose]="true"
   [title]="'دنبال‌شده‌ها'"
@@ -10,11 +10,11 @@
     <div>
       <hang-users-list
         [items]="PC.props.list"
-        [limit]="PC.props.request.query.limit"
-        [page]="PC.props.request.query.page"
-        [count]="PC.props.count"
+        [isLoading]="PC.props.isLoading"
         bindLabel="username"
         bindId="_id"
+        (LOAD_MORE)="PC.actions.loadMore()"
+        (NO_OVERFLOW)="PC.actions.loadMore()"
         (ON_CLICK)="onClose()"
       />
     </div>
@@ -22,11 +22,8 @@
   <div FRAME-ACTIONS>
     <uk-button-group>
       <uk-button
-        [bgColor]="UK_TYPE.BUTTON.BG_COLOR.TRANSPARENT"
-        [borderColor]="UK_TYPE.BUTTON.BORDER_COLOR.COLOR_BUTTON_PRIMARY"
         [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
         [display]="UK_TYPE.BUTTON.DISPLAY.BLOCK"
-        [fgColor]="UK_TYPE.BUTTON.FG_COLOR.CONTENT_PRIMARY"
         (click)="onClose()"
       >
         بستن

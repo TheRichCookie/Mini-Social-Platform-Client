@@ -150,10 +150,10 @@ $lightColors: (
 
 $darkColors: (
   background: (
-    surface00: #10162f,
-    surface01: #26292c,
-    surface02: #000000,
-    primary01: #0c3e8a,
+    surface00: #141414,
+    surface01: #353535,
+    surface02: #080808,
+    primary01: #222222,
     primary02: #1967d2,
     secondary: #00564c,
     caution: #1256b6,
@@ -196,29 +196,25 @@ $darkColors: (
     success: #34a853,
   ),
   border: (
-    grade0: #141a2e,
-    grade1: #1e263d,
+    grade0: rgba(255, 255, 255, 0.336),
+    grade1: rgba(255, 255, 255, 0.212),
     grade2: rgba(255, 255, 255, 0.1),
   ),
   button: (
-    // Primary based on #4285F4
     primary: #667eea,
     primaryHover: #8094f9,
     primaryPressed: #4d65d6,
     primaryHoverOutline: #283470,
     primaryHoverPressed: #1a224a,
 
-    // Secondary based on #00A693
-    secondary: #764ba2,
-    secondaryHover: #9063c2,
-    secondaryPressed: #5d3a82,
-    secondaryHoverOutline: #3e2657,
+    secondary: #2c2c2c,
+    secondaryHover: #3a3a3a,
+    secondaryPressed: #1f1f1f,
+    secondaryHoverOutline: #4a4a4a,
 
-    // Neutrals
     outline: #91949a,
     disabled: #4b4b4d,
 
-    // Error based on #EA4335
     errorFill: #ea4335,
     errorFillHover: #eb594d,
     errorOutlineHover: #80211a,

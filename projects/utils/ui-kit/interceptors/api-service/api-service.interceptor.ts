@@ -47,6 +47,10 @@ export const API_SERVICE_INTERCEPTOR_FUNCTIONAL: HttpInterceptorFn = (
       apiService = CONST_CONFIG.SERVICE.FOLLOW;
     }
 
+    if (API_SERVICE_HEADER === UkConfigApiServices.NOTIFICATIONS) {
+      apiService = CONST_CONFIG.SERVICE.NOTIFICATIONS;
+    }
+
     if (API_SERVICE_HEADER === UkConfigApiServices.PROFILE) {
       apiService = CONST_CONFIG.SERVICE.PROFILE;
     }

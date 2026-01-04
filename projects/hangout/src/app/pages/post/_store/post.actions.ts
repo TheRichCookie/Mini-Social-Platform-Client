@@ -1,4 +1,4 @@
-import {createActionGroup, props} from '@ngrx/store';
+import {createActionGroup, emptyProps, props} from '@ngrx/store';
 import type {CreatePostRequest, PostModel} from '@utils/ui-kit/definitions';
 
 export const POST_ACTIONS = createActionGroup({
@@ -10,5 +10,12 @@ export const POST_ACTIONS = createActionGroup({
       response: PostModel;
       receivedTime: number;
     }>(),
+  },
+});
+
+export const POST_RESET_ACTIONS = createActionGroup({
+  source: 'POST',
+  events: {
+    $RESET_POST: emptyProps(),
   },
 });

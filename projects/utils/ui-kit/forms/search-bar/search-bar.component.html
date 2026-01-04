@@ -1,8 +1,11 @@
 <div class="uk search-bar">
-  <input
-    type="text"
-    class="input"
-    placeholder="سرچ کنید"
-    [formControl]="searchControl"
-  />
+  <div class="input-box">
+    <uk-icon [name]="UK_TYPE.ICON.NAME.SEARCH" class="icon" />
+    <input
+      type="text"
+      class="input"
+      placeholder="جستجوی کنید"
+      [formControl]="searchControl"
+    />
+  </div>
 </div>

@@ -4,14 +4,16 @@
       <uk-search-bar (SEARCH)="PC.actions.onSearch($event)" />
     </uk-page-part>
     <uk-page-part>
-      <hang-users-list
-        [items]="PC.props.list"
-        [limit]="PC.props.request.query.limit"
-        [page]="PC.props.request.query.page"
-        [count]="PC.props.count"
-        bindLabel="username"
-        bindId="_id"
-      />
+      <div>
+        <hang-users-list
+          [items]="PC.props.list"
+          [isLoading]="PC.props.isLoading"
+          bindLabel="username"
+          bindId="_id"
+          (LOAD_MORE)="PC.actions.loadMore()"
+          (NO_OVERFLOW)="PC.actions.loadMore()"
+        />
+      </div>
     </uk-page-part>
   </uk-page-body>
 </uk-page>

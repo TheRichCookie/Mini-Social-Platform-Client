@@ -32,6 +32,7 @@ export type IconFgColor = `${UkIconFgColor}`;
 
 export enum UkIconName {
   AT = 'at',
+  ARROW_RIGHT_FROM_BRACKET = 'arrow_right_from_bracket',
   BELL = 'bell',
   CHECK = 'check',
   CHECK_CIRCLE = 'check_circle',

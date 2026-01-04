@@ -1,7 +1,5 @@
-// @use 'core';
+@use "core" as *;
 
-// :host {
-//     display: block;
-//     width: 100%;
-//     max-height: calc(100vh - 150px);
-// }
+:host {
+  width: 100%;
+}

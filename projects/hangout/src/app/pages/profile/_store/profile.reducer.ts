@@ -6,8 +6,13 @@ import {
   PROFILE_DETAIL_ACTIONS,
   PROFILE_EDIT_ACTIONS,
   PROFILE_FOLLOW_ACTIONS,
+  PROFILE_RESET_ACTIONS,
 } from './profile.actions';
-import {PROFILE_INITIAL_STATE} from './profile.initial.state';
+import {
+  FOLLOWERS_INITIAL,
+  FOLLOWING_INITIAL,
+  PROFILE_INITIAL_STATE,
+} from './profile.initial.state';
 import type {HangProfileState} from './profile.state';
 
 const reducer = createReducer(
@@ -60,6 +65,13 @@ const reducer = createReducer(
       state.following.receivedTime = props.receivedTime;
     },
   ),
+
+  // reset
+  immerOn(PROFILE_RESET_ACTIONS.$RESET_PROFILE, () => PROFILE_INITIAL_STATE),
+  immerOn(PROFILE_RESET_ACTIONS.$RESET_FOLLOW, (state) => {
+    state.followers = FOLLOWERS_INITIAL;
+    state.following = FOLLOWING_INITIAL;
+  }),
 );
 
 export const profileReducer: (
