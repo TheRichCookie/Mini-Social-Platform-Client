@@ -14,9 +14,7 @@
     width: 100%;
 
     .post {
-      &:not(:last-child) {
-        margin-bottom: 8px;
-      }
+      margin-bottom: 8px;
 
       .content {
         display: flex;

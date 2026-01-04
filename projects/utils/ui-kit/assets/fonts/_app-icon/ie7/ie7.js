@@ -13,6 +13,8 @@
 		el.innerHTML = '<span style="font-family: \'app-icon\'">' + entity + '</span>' + html;
 	}
 	var icons = {
+		'icon-eye-slash': '&#xe92c;',
+		'icon-eye': '&#xe92d;',
 		'icon-arrow-right-from-bracket': '&#xe92b;',
 		'icon-trash': '&#xe929;',
 		'icon-trash-alt': '&#xe92a;',

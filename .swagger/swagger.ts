@@ -81,15 +81,23 @@ export type OtpVerificationResponse = CommonResponseViewModel & {
   data?: OtpVerificationDataModel;
 };
 
+export interface CommentUserModel {
+  /** @example "60f7b8e6a2b4c12d34e5f679" */
+  _id?: string;
+  /** @example "johndoe" */
+  username?: string;
+  /** @example "https://example.com/avatar.jpg" */
+  avatar?: string;
+}
+
 export interface CommentModel {
   /** @example "60f7b8e6a2b4c12d34e5f678" */
   _id?: string;
-  /** @example "60f7b8e6a2b4c12d34e5f679" */
-  userId?: string;
   /** @example "60f7b8e6a2b4c12d34e5f67a" */
   postId?: string;
   /** @example "نظر عالی بود" */
   text?: string;
+  userId?: CommentUserModel;
   /**
    * @format date-time
    * @example "2024-01-01T10:00:00Z"
@@ -102,12 +110,18 @@ export interface AddCommentRequest {
   text: string;
 }
 
-export type AddCommentResponse = CommonResponseViewModel & {
-  data?: CommentModel;
+export interface CommentPaginationData {
+  items?: CommentModel[];
+  /** @example 18 */
+  totalCount?: number;
+}
+
+export type CommentPaginationResponse = CommonResponseViewModel & {
+  data?: CommentPaginationData;
 };
 
-export type CommentArrayResponse = CommonResponseViewModel & {
-  data?: CommentModel[];
+export type AddCommentResponse = CommonResponseViewModel & {
+  data?: CommentModel;
 };
 
 export interface AuthorModel {
@@ -225,6 +239,15 @@ export interface NotificationPaginationData {
 
 export type NotificationResponse = CommonResponseViewModel & {
   data?: NotificationPaginationData;
+};
+
+export interface HasUnreadNotificationsData {
+  /** @example true */
+  hasUnread?: boolean;
+}
+
+export type HasUnreadNotificationsResponse = CommonResponseViewModel & {
+  data?: HasUnreadNotificationsData;
 };
 
 export interface PostModel {
@@ -673,7 +696,7 @@ export class Api<
      *
      * @tags Comments
      * @name CommentsDetail
-     * @summary Get all comments for a post
+     * @summary Get comments for a post (paginated)
      * @request GET:/comments/{postId}
      */
     commentsDetail: (
@@ -686,7 +709,7 @@ export class Api<
       },
       params: RequestParams = {},
     ) =>
-      this.request<CommentArrayResponse, CommonResponseViewModel>({
+      this.request<CommentPaginationResponse, CommonResponseViewModel>({
         path: `/comments/${postId}`,
         method: "GET",
         query: query,
@@ -704,7 +727,7 @@ export class Api<
      * @secure
      */
     commentsDelete: (commentId: string, params: RequestParams = {}) =>
-      this.request<CommonResponseViewModel, CommonResponseViewModel>({
+      this.request<CommonResponseViewModel, void>({
         path: `/comments/${commentId}`,
         method: "DELETE",
         secure: true,
@@ -887,6 +910,24 @@ export class Api<
       this.request<CommonResponseViewModel, CommonResponseViewModel>({
         path: `/notifications/${id}/read`,
         method: "PUT",
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Returns true if the authenticated user has at least one unread notification.
+     *
+     * @tags Notifications
+     * @name HasUnreadList
+     * @summary Check if user has unread notifications
+     * @request GET:/notifications/hasUnread
+     * @secure
+     */
+    hasUnreadList: (params: RequestParams = {}) =>
+      this.request<HasUnreadNotificationsResponse, CommonResponseViewModel>({
+        path: `/notifications/hasUnread`,
+        method: "GET",
         secure: true,
         format: "json",
         ...params,

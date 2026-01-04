@@ -9,3 +9,11 @@ export const SELECT_FEEDS_RES = createSelector(
   FEED_STATE,
   (s: HangFeedState) => s.feed.get.response,
 );
+export const SELECT_TOGGLE_LIKE_RECEIVED_TIME = createSelector(
+  FEED_STATE,
+  (s: HangFeedState) => s.like.toggle.receivedTime,
+);
+export const SELECT_COMMENTS_RES = createSelector(
+  FEED_STATE,
+  (s: HangFeedState) => s.comment.get.response,
+);

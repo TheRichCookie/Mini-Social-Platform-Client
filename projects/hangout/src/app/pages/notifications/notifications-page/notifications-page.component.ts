@@ -21,6 +21,7 @@ import type {NotificationModel} from '@utils/ui-kit/definitions';
 import {UK_TYPE} from '@utils/ui-kit/definitions';
 import {UkAlertService} from '@utils/ui-kit/services';
 
+import * as APP_ACTIONS from '../../../shared/store/app/app.action';
 import {
   NOTIFICATIONS_ACTIONS,
   NOTIFICATIONS_RESET_ACTIONS,
@@ -44,7 +45,7 @@ interface PageController {
   };
   actions: {
     get: () => void;
-    markAsRead: (notificationId: string) => void;
+    markAsRead: (item: NotificationModel) => void;
     loadMore: () => void;
   };
 }
@@ -98,10 +99,11 @@ export class HangNotificationsPageComponent implements OnDestroy {
 
         this.store.dispatch(NOTIFICATIONS_ACTIONS.$GET_NOTIFICATIONS(REQUEST));
       },
-      markAsRead: (notificationId) => {
-        this.store.dispatch(
-          NOTIFICATIONS_ACTIONS.$MARK_AS_READ({id: notificationId}),
-        );
+      markAsRead: (item) => {
+        if (!item.isRead && item._id)
+          this.store.dispatch(
+            NOTIFICATIONS_ACTIONS.$MARK_AS_READ({id: item._id}),
+          );
       },
       loadMore: () => {
         let newPageIndex = JSON.parse(
@@ -141,6 +143,7 @@ export class HangNotificationsPageComponent implements OnDestroy {
         this.alertService.success('خوانده شد');
         this.reset();
         this.PC.actions.get();
+        this.store.dispatch(APP_ACTIONS.GET_HAS_NOTIFICATION());
       }
     });
     this.PC.actions.get();

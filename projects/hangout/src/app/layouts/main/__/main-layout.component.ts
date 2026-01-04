@@ -1,6 +1,7 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
+import {HangAppService} from '@app/shared/utils/ui-kit/app.service';
 import {CONST_CONFIG} from '@utils/ui-kit/definitions';
 
 import {HangHeaderComponent} from '../header/header.component';
@@ -20,6 +21,11 @@ import {HangNavBarComponent} from '../navbar/navbar.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HangMainLayoutComponent {
+  private readonly appService = inject(HangAppService);
   public CONFIG = CONST_CONFIG;
   public appMobileWidth: number = this.CONFIG.COMMON.MAX_MOBILE_WIDTH;
+
+  constructor() {
+    this.appService.init();
+  }
 }

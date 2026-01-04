@@ -1,5 +1,8 @@
 import {createAction, props} from '@ngrx/store';
-import type {UkWorldUtcTime} from '@utils/ui-kit/definitions';
+import type {
+  HasUnreadNotificationsData,
+  UkWorldUtcTime,
+} from '@utils/ui-kit/definitions';
 
 import type {HangAppLoading} from '../_/models/app-loading.interface';
 import type {HangAppState} from './app.state';
@@ -68,3 +71,12 @@ export const UPDATE_LOADING = createAction(
   }>(),
 );
 //
+
+// notification
+export const GET_HAS_NOTIFICATION = createAction('[APP] GET_HAS_NOTIFICATION');
+export const UPDATE_HAS_NOTIFICATION = createAction(
+  '[APP] UPDATE_HAS_NOTIFICATION',
+  props<{
+    response: HasUnreadNotificationsData;
+  }>(),
+);

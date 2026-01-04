@@ -1,4 +1,8 @@
-import type {UkHttpFail, UkWorldUtcTime} from '@utils/ui-kit/definitions';
+import type {
+  HasUnreadNotificationsData,
+  UkHttpFail,
+  UkWorldUtcTime,
+} from '@utils/ui-kit/definitions';
 
 export interface HangAppState {
   layout: {
@@ -14,6 +18,9 @@ export interface HangAppState {
   staticData: {
     contract: string;
     rules: string;
+  };
+  hasUnreadNotification: {
+    response: HasUnreadNotificationsData;
   };
   currentUtcTime: UkWorldUtcTime;
 }

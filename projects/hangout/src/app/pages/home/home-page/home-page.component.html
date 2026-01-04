@@ -7,15 +7,65 @@
         [showScrollbar]="UK_TYPE.UK.BOOLEAN.FALSE"
         [appearance]="'auto'"
         [isLoading]="this.PC.props.isLoading"
-        [maxHeight]="200"
+        [maxHeight]="840"
       >
-        @for (item of this.PC.props.list; track item._id) {
-          <div>
-            <uk-text>
-              {{ item.author?.username }}
-            </uk-text>
-          </div>
-        }
+        <div>
+          @for (item of this.PC.props.list; track item._id) {
+            <div class="feed">
+              <div class="header">
+                <div class="avatar">
+                  <uk-shape-icon
+                    [shapeIconType]="UK_TYPE.SHAPE_ICON.TYPE.CIRCLE"
+                    [iconName]="UK_TYPE.SHAPE_ICON.ICON_NAME.USER"
+                  />
+                </div>
+                <div class="info">
+                  <uk-text>
+                    {{ item.author?.username }}
+                  </uk-text>
+                  <uk-text
+                    [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE"
+                    [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_LOW_EMPHASIS"
+                  >
+                    {{ item.createdAt | date: "yyyy-MM-dd" }}
+                  </uk-text>
+                </div>
+              </div>
+              <div class="content">
+                <uk-text [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE">
+                  {{ item.content }}
+                </uk-text>
+              </div>
+              <div class="footer">
+                <div class="like">
+                  <uk-text [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_1">
+                    {{ item.likeCount }}
+                  </uk-text>
+                  <uk-icon
+                    (click)="this.PC.actions.toggleLike(item)"
+                    [name]="UK_TYPE.ICON.NAME.HEART"
+                    [fgColor]="
+                      item.isLikedByUser
+                        ? UK_TYPE.ICON.FG_COLOR.CONTENT_ERROR
+                        : UK_TYPE.ICON.FG_COLOR.CONTENT_HIGH_EMPHASIS
+                    "
+                    [cursor]="UK_TYPE.ICON.CURSOR.POINTER"
+                  />
+                </div>
+                <div class="comment">
+                  <uk-text [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_1">
+                    52
+                  </uk-text>
+                  <uk-icon
+                    [name]="UK_TYPE.ICON.NAME.COMMENT"
+                    [fgColor]="UK_TYPE.ICON.FG_COLOR.CONTENT_HIGH_EMPHASIS"
+                    [cursor]="UK_TYPE.ICON.CURSOR.POINTER"
+                  />
+                </div>
+              </div>
+            </div>
+          }
+        </div>
       </uk-scroll>
     </uk-page-part>
   </uk-page-body>

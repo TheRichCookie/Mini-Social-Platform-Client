@@ -1,4 +1,4 @@
-import {createActionGroup, props} from '@ngrx/store';
+import {createActionGroup, emptyProps, props} from '@ngrx/store';
 import type {SearchUsersDataModel} from '@utils/ui-kit/definitions';
 
 export const SEARCH_ACTIONS = createActionGroup({
@@ -20,5 +20,12 @@ export const SEARCH_ACTIONS = createActionGroup({
       response: SearchUsersDataModel;
       receivedTime: number;
     }>(),
+  },
+});
+
+export const SEARCH_RESET_ACTIONS = createActionGroup({
+  source: 'SEARCH',
+  events: {
+    $RESET_SEARCH: emptyProps(),
   },
 });

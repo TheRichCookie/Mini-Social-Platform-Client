@@ -22,6 +22,7 @@ uk-page {
       cursor: pointer;
       background-color: $color-background-surface-02;
       opacity: 1;
+      position: relative;
 
       &:hover {
         background-color: $color-background-surface-01 !important;

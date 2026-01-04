@@ -84,12 +84,11 @@ export type OtpVerificationResponse = CommonResponseViewModel & {
 export interface CommentModel {
   /** @example "60f7b8e6a2b4c12d34e5f678" */
   _id?: string;
-  /** @example "60f7b8e6a2b4c12d34e5f679" */
-  userId?: string;
   /** @example "60f7b8e6a2b4c12d34e5f67a" */
   postId?: string;
   /** @example "نظر عالی بود" */
   text?: string;
+  userId?: CommentUserModel;
   /**
    * @format date-time
    * @example "2024-01-01T10:00:00Z"
@@ -217,6 +216,15 @@ export interface NotificationModel {
   createdAt?: string;
 }
 
+export interface HasUnreadNotificationsData {
+  /** @example true */
+  hasUnread?: boolean;
+}
+
+export type HasUnreadNotificationsResponse = CommonResponseViewModel & {
+  data?: HasUnreadNotificationsData;
+};
+
 export interface NotificationPaginationData {
   items?: NotificationModel[];
   /** @example 42 */
@@ -225,6 +233,20 @@ export interface NotificationPaginationData {
 
 export type NotificationResponse = CommonResponseViewModel & {
   data?: NotificationPaginationData;
+};
+
+export interface CommentPaginationData {
+  items?: CommentModel[];
+  /** @example 18 */
+  totalCount?: number;
+}
+
+export type CommentPaginationResponse = CommonResponseViewModel & {
+  data?: CommentPaginationData;
+};
+
+export type AddCommentResponse = CommonResponseViewModel & {
+  data?: CommentModel;
 };
 
 export interface PostModel {

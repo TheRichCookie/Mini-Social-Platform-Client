@@ -7,6 +7,7 @@ import {UkConfigApiServices, UkConfigApiVersions} from '../../definitions';
 import type {
   AddCommentRequest,
   CommentModel,
+  CommentPaginationData,
   CommonResponseViewModel,
 } from '../../definitions/swagger/swagger';
 
@@ -23,7 +24,7 @@ export class UkCommentService {
       page: number;
       limit: number;
     },
-  ): Observable<CommonResponseViewModel<CommentModel[]>> {
+  ): Observable<CommonResponseViewModel<CommentPaginationData>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.COMMENTS,
       apiHeaderVersion: UkConfigApiVersions.NONE,
@@ -38,10 +39,13 @@ export class UkCommentService {
 
     const URI = `/${postId}`;
 
-    return this.httpClient.get<CommonResponseViewModel<CommentModel[]>>(URI, {
-      params,
-      headers: HEADERS,
-    });
+    return this.httpClient.get<CommonResponseViewModel<CommentPaginationData>>(
+      URI,
+      {
+        params,
+        headers: HEADERS,
+      },
+    );
   }
 
   public addComment(

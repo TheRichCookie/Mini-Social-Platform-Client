@@ -38,3 +38,9 @@ export const SELECT_APP_GENERAL_HTTP_FAILS = createSelector(
   APP_STATE,
   (appState: HangAppState) => appState.general.httpFail,
 );
+
+// notification
+export const SELECT_HAS_NOTIFICATION = createSelector(
+  APP_STATE,
+  (appState: HangAppState) => appState.hasUnreadNotification.response,
+);

@@ -13,7 +13,7 @@
   </div>
   <div class="actions">
     <uk-button-group [alignType]="UK_TYPE.BUTTON_GROUP.ALIGN_TYPE.CENTER">
-      @if ((user$ | async)?.isMe) {
+      @if ((user$ | async)?.isMe === true) {
         <uk-button
           (click)="PC.actions.openProfileEditModal()"
           [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
@@ -22,20 +22,20 @@
           ویرایش
         </uk-button>
       }
-      @if ((user$ | async)?.isFollowing && !(user$ | async)?.isMe) {
+      @if ((user$ | async)?.isFollowing && (user$ | async)?.isMe === false) {
         <uk-button
           (click)="PC.actions.toggleFollow()"
           [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
-          [fgColor]="UK_TYPE.BUTTON.FG_COLOR.CONTENT_HIGH_EMPHASIS"
           [padding]="UK_TYPE.BUTTON.PADDING.SMALL"
         >
           دنبال نکردن
         </uk-button>
-      } @else if (!(user$ | async)?.isFollowing && !(user$ | async)?.isMe) {
+      } @else if (
+        !(user$ | async)?.isFollowing && (user$ | async)?.isMe === false
+      ) {
         <uk-button
           (click)="PC.actions.toggleFollow()"
           [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
-          [fgColor]="UK_TYPE.BUTTON.FG_COLOR.CONTENT_HIGH_EMPHASIS"
           [padding]="UK_TYPE.BUTTON.PADDING.SMALL"
         >
           دنبال کردن

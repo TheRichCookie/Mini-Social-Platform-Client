@@ -1,4 +1,5 @@
 import {CommonModule} from '@angular/common';
+import type {OnDestroy} from '@angular/core';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -18,7 +19,7 @@ import {
 import {UK_TYPE, type UserSearchModel} from '@utils/ui-kit/definitions';
 import {UkSearchBarComponent} from '@utils/ui-kit/forms';
 
-import {SEARCH_ACTIONS} from '../_store/search.actions';
+import {SEARCH_ACTIONS, SEARCH_RESET_ACTIONS} from '../_store/search.actions';
 import {SELECT_SEARCH_USERS_RES} from '../_store/search.selectors';
 
 interface PageController {
@@ -58,7 +59,7 @@ interface PageController {
   styleUrls: ['./search-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HangSearchPageComponent {
+export class HangSearchPageComponent implements OnDestroy {
   private readonly store = inject(Store);
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
 
@@ -135,5 +136,9 @@ export class HangSearchPageComponent {
         this.usersListComponent.scrollComponent.checkOverflow();
       });
     });
+  }
+
+  public ngOnDestroy(): void {
+    this.store.dispatch(SEARCH_RESET_ACTIONS.$RESET_SEARCH());
   }
 }

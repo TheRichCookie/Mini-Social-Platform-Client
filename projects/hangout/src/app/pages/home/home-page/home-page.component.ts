@@ -16,7 +16,11 @@ import {
   UkPagePartComponent,
   UkScrollComponent,
 } from '@utils/ui-kit/arrangements';
-import {UkTextComponent} from '@utils/ui-kit/components';
+import {
+  UkIconComponent,
+  UkShapeIconComponent,
+  UkTextComponent,
+} from '@utils/ui-kit/components';
 import type {FeedPostModel} from '@utils/ui-kit/definitions';
 import {UK_TYPE} from '@utils/ui-kit/definitions';
 import {UkAlertService} from '@utils/ui-kit/services';
@@ -38,6 +42,7 @@ interface PageController {
   };
   actions: {
     get: () => void;
+    toggleLike: (item: FeedPostModel) => void;
     loadMore: () => void;
   };
 }
@@ -53,6 +58,8 @@ interface PageController {
     UkPagePartComponent,
     UkScrollComponent,
     UkTextComponent,
+    UkShapeIconComponent,
+    UkIconComponent,
   ],
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
@@ -87,6 +94,12 @@ export class HangHomePageComponent implements OnDestroy {
         const REQUEST = JSON.parse(JSON.stringify(this.PC.props.request));
 
         this.store.dispatch(FEED_ACTIONS.$GET_FEEDS(REQUEST));
+      },
+      toggleLike: (item) => {
+        if (item.isLikedByUser !== undefined) {
+          item.isLikedByUser = JSON.parse(JSON.stringify(!item.isLikedByUser));
+          this.changeDetectorRef.markForCheck();
+        }
       },
       loadMore: () => {
         let newPageIndex = JSON.parse(
