@@ -15,9 +15,9 @@
         <uk-text
           [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS"
           [horizontalAlignment]="UK_TYPE.TEXT.HORIZONTAL_ALIGNMENT.CENTER"
-          [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE"
+          [typography]="UK_TYPE.TEXT.TYPOGRAPHY.H_5"
         >
-          کد ارسال شده را وارد کنید.
+          کد ارسال شده به ایمیلتان را وارد کنید.
         </uk-text>
       </div>
     </uk-page-part>
@@ -47,7 +47,8 @@
       <div class="wrapper">
         @if (stopWatchStatus !== "REACHED") {
           <uk-text
-            [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS"
+            [display]="UK_TYPE.TEXT.DISPLAY.INLINE"
+            [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_LOW_EMPHASIS"
             [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_2"
           >
             ارسال مجدد کد تا
@@ -58,36 +59,39 @@
             (REACHED)="onStopWatchReached($event)"
           />
           <uk-text
-            [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS"
+            [display]="UK_TYPE.TEXT.DISPLAY.INLINE"
+            [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_LOW_EMPHASIS"
             [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_2"
           >
             ثانیه دیگر
           </uk-text>
-        } @else {
-          <uk-button
-            [bgColor]="UK_TYPE.BUTTON.BG_COLOR.TRANSPARENT"
-            [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
-            [display]="UK_TYPE.BUTTON.DISPLAY.BLOCK"
-            [fgColor]="UK_TYPE.BUTTON.FG_COLOR.CONTENT_HIGH_EMPHASIS"
-            [typography]="UK_TYPE.BUTTON.TYPOGRAPHY.BUTTON_1"
-            (click)="retrySendOtp()"
-          >
-            ارسال مجدد کد
-          </uk-button>
-        }
+        } @else {}
       </div>
     </uk-page-part>
   </uk-page-body>
   <uk-page-footer>
-    <uk-button
-      [bgColor]="UK_TYPE.BUTTON.BG_COLOR.BUTTON_PRIMARY"
-      [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
-      [display]="UK_TYPE.BUTTON.DISPLAY.BLOCK"
-      [fgColor]="UK_TYPE.BUTTON.FG_COLOR.CONTENT_LIGHT"
-      [typography]="UK_TYPE.BUTTON.TYPOGRAPHY.BUTTON_1"
-      (click)="onSubmit()"
-    >
-      ورود
-    </uk-button>
+    @if (stopWatchStatus === "REACHED") {
+      <uk-button
+        [bgColor]="UK_TYPE.BUTTON.BG_COLOR.BUTTON_PRIMARY"
+        [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
+        [display]="UK_TYPE.BUTTON.DISPLAY.BLOCK"
+        [fgColor]="UK_TYPE.BUTTON.FG_COLOR.CONTENT_LIGHT"
+        [typography]="UK_TYPE.BUTTON.TYPOGRAPHY.BUTTON_1"
+        (click)="retrySendOtp()"
+      >
+        ارسال مجدد کد
+      </uk-button>
+    } @else {
+      <uk-button
+        [bgColor]="UK_TYPE.BUTTON.BG_COLOR.BUTTON_PRIMARY"
+        [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
+        [display]="UK_TYPE.BUTTON.DISPLAY.BLOCK"
+        [fgColor]="UK_TYPE.BUTTON.FG_COLOR.CONTENT_LIGHT"
+        [typography]="UK_TYPE.BUTTON.TYPOGRAPHY.BUTTON_1"
+        (click)="onSubmit()"
+      >
+        ورود
+      </uk-button>
+    }
   </uk-page-footer>
 </uk-page>

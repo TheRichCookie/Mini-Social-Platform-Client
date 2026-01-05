@@ -5,7 +5,7 @@ import {
   inject,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {HangLogoutModalComponent} from '@app/pages/auth/logout-modal/logout-modal.component';
+import {HangLogoutModalComponent} from '@app/pages/auth/_modals/logout-modal/logout-modal.component';
 import {UkIconComponent, UkTextComponent} from '@utils/ui-kit/components';
 import {CONST_CONFIG, UK_TYPE} from '@utils/ui-kit/definitions';
 import {UkOverlayService} from '@utils/ui-kit/services';

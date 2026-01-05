@@ -5,40 +5,85 @@
       [routerLink]="APP_ROUTES.PROFILE.ROOT"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
+      #profileRla="routerLinkActive"
     >
-      <uk-icon [name]="UK_TYPE.ICON.NAME.USER_CIRCLE" />
+      <uk-icon
+        [name]="UK_TYPE.ICON.NAME.USER_CIRCLE"
+        [fgColor]="
+          profileRla.isActive
+            ? UK_TYPE.ICON.FG_COLOR.CONTENT_LIGHT
+            : UK_TYPE.ICON.FG_COLOR.CONTENT_LOW_EMPHASIS
+        "
+      />
     </a>
+
     <a
       class="nav-item"
       [routerLink]="APP_ROUTES.NOTIFICATION.ROOT"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
+      #notifRla="routerLinkActive"
     >
-      <uk-icon [name]="UK_TYPE.ICON.NAME.BELL" [ngClass]="{ring: newNotification}" />
+      <uk-icon
+        [name]="UK_TYPE.ICON.NAME.BELL"
+        [ngClass]="{ ring: newNotification }"
+        [fgColor]="
+          notifRla.isActive
+            ? UK_TYPE.ICON.FG_COLOR.CONTENT_LIGHT
+            : UK_TYPE.ICON.FG_COLOR.CONTENT_LOW_EMPHASIS
+        "
+      />
     </a>
+
     <a
       class="nav-item"
       [routerLink]="APP_ROUTES.POST.ROOT"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
+      #postRla="routerLinkActive"
     >
-      <uk-icon [name]="UK_TYPE.ICON.NAME.PLUS" />
+      <uk-icon
+        [name]="UK_TYPE.ICON.NAME.PLUS"
+        [fgColor]="
+          postRla.isActive
+            ? UK_TYPE.ICON.FG_COLOR.CONTENT_LIGHT
+            : UK_TYPE.ICON.FG_COLOR.CONTENT_LOW_EMPHASIS
+        "
+      />
     </a>
+
     <a
       class="nav-item"
       [routerLink]="APP_ROUTES.SEARCH.ROOT"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
+      #searchRla="routerLinkActive"
     >
-      <uk-icon [name]="UK_TYPE.ICON.NAME.SEARCH" />
+      <uk-icon
+        [name]="UK_TYPE.ICON.NAME.SEARCH"
+        [fgColor]="
+          searchRla.isActive
+            ? UK_TYPE.ICON.FG_COLOR.CONTENT_LIGHT
+            : UK_TYPE.ICON.FG_COLOR.CONTENT_LOW_EMPHASIS
+        "
+      />
     </a>
+
     <a
       class="nav-item"
       [routerLink]="APP_ROUTES.HOME.ROOT"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
+      #homeRla="routerLinkActive"
     >
-      <uk-icon [name]="UK_TYPE.ICON.NAME.HOME" />
+      <uk-icon
+        [name]="UK_TYPE.ICON.NAME.HOME"
+        [fgColor]="
+          homeRla.isActive
+            ? UK_TYPE.ICON.FG_COLOR.CONTENT_LIGHT
+            : UK_TYPE.ICON.FG_COLOR.CONTENT_LOW_EMPHASIS
+        "
+      />
     </a>
   </nav>
 </div>
