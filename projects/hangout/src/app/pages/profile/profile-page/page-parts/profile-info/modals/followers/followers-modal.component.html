@@ -1,0 +1,33 @@
+<uk-modal-frame
+  class="followers-modal"
+  [borderRadius]="UK_TYPE.MODAL_FRAME.BORDER_RADIUS.TOP"
+  [showHeader]="UK_TYPE.UK.BOOLEAN.TRUE"
+  [showTopClose]="true"
+  [title]="'دنبال‌کنندگان'"
+  (ON_CLOSE)="onClose()"
+>
+  <div FRAME-BODY>
+    <div>
+      <hang-users-list
+        [items]="PC.props.list"
+        [isLoading]="PC.props.isLoading"
+        bindLabel="username"
+        bindId="_id"
+        (LOAD_MORE)="PC.actions.loadMore()"
+        (NO_OVERFLOW)="PC.actions.loadMore()"
+        (ON_CLICK)="onClose()"
+      />
+    </div>
+  </div>
+  <div FRAME-ACTIONS>
+    <uk-button-group>
+      <uk-button
+        [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
+        [display]="UK_TYPE.BUTTON.DISPLAY.BLOCK"
+        (click)="onClose()"
+      >
+        بستن
+      </uk-button>
+    </uk-button-group>
+  </div>
+</uk-modal-frame>

@@ -302,7 +302,7 @@ const SIMPLE = {
     verticalAlignment: UkTextVerticalAlignment.CENTER,
     bgColor: UkTextBgColor.TRANSPARENT,
     fgColor: UkTextFgColor.CONTENT_DARK,
-    typography: UkTextTypography.BUTTON_1,
+    typography: UkTextTypography.H_5,
     type: UkTextType.NONE,
     display: UkTextDisplay.INLINE_FLEX,
     padding: UkTextPadding.NONE,

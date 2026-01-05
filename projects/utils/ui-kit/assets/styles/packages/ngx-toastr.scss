@@ -10,7 +10,6 @@ $toast-title-gap: 12px;
     border-radius: 16px !important;
     padding: 16px 20px;
     width: 350px;
-    min-height: 64px !important;
     line-height: initial !important;
 
     .toast-title {
@@ -62,10 +61,11 @@ $toast-title-gap: 12px;
 
     .toast-title {
       &::before {
-        content: "\e941";
+        content: "\e924";
         color: $color-content-high-emphasis !important;
         font-size: $toast-icon-size;
         font-family: "app-icon";
+        font-weight: normal !important;
       }
     }
   }
@@ -74,10 +74,11 @@ $toast-title-gap: 12px;
 
     .toast-title {
       &::before {
-        content: "\e944";
+        content: "\e920";
         color: $color-content-high-emphasis !important;
         font-size: $toast-icon-size;
         font-family: "app-icon";
+        font-weight: normal !important;
       }
     }
   }
@@ -86,10 +87,11 @@ $toast-title-gap: 12px;
 
     .toast-title {
       &::before {
-        content: "\e935";
+        content: "\e925";
         color: $color-content-high-emphasis !important;
         font-size: $toast-icon-size;
         font-family: "app-icon";
+        font-weight: normal !important;
       }
     }
   }

@@ -17,14 +17,14 @@ export const MAIN_LAYOUT_ROUTES: HangRoutes = [
           ),
         canActivate: [UkUsersGuard],
       },
-      // {
-      //   path: APP_ROUTES.POST.ROOT,
-      //   loadChildren: async () =>
-      //     import('../../../pages/post/_/post.routes').then(
-      //       (r) => r.POST_ROUTES,
-      //     ),
-      //   canActivate: [UkUsersGuard],
-      // },
+      {
+        path: APP_ROUTES.POST.ROOT,
+        loadChildren: async () =>
+          import('../../../pages/post/_/post.routes').then(
+            (r) => r.POST_ROUTES,
+          ),
+        canActivate: [UkUsersGuard],
+      },
       {
         path: APP_ROUTES.SEARCH.ROOT,
         loadChildren: async () =>

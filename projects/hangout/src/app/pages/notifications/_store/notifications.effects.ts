@@ -1,52 +1,30 @@
 import {inject, Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import * as APP_ACTIONS from '@store/app/app.action';
-import {UkNotificationService, UkSocketService} from '@utils/ui-kit/services';
-import {catchError, exhaustMap, filter, map, of, switchMap} from 'rxjs';
+import {UkNotificationService} from '@utils/ui-kit/services';
+import {catchError, exhaustMap, map, of} from 'rxjs';
 
-import type {NotificationModel} from '../../../../../../utils/ui-kit/definitions/swagger/swagger';
+import type {
+  CommonResponseViewModel,
+  NotificationPaginationData,
+} from '../../../../../../utils/ui-kit/definitions/swagger/swagger';
 import {NOTIFICATIONS_ACTIONS} from './notifications.actions';
 
 @Injectable({providedIn: 'root'})
 export class HangNotificationsEffects {
   private readonly actions = inject(Actions);
   private readonly notificationService = inject(UkNotificationService);
-  private readonly socketService = inject(UkSocketService);
-
-  public socketNotifications$ = createEffect(() => {
-    return this.socketService.notification$.pipe(
-      filter((p) => !!p),
-      map((payload: unknown) => {
-        const p = payload as Record<string, unknown>;
-
-        const notification: NotificationModel = {
-          _id: (p['_id'] as string | undefined) ?? undefined,
-          userId: (p['userId'] as string | undefined) ?? undefined,
-          senderId: (p['senderId'] as string | undefined) ?? undefined,
-          type: (p['type'] as NotificationModel['type']) ?? undefined,
-          postId: (p['postId'] as string | undefined) ?? undefined,
-          isRead: (p['isRead'] as boolean | undefined) ?? false,
-          createdAt:
-            (p['createdAt'] as string | undefined) ?? new Date().toISOString(),
-        };
-
-        return NOTIFICATIONS_ACTIONS.$RECEIVED_NOTIFICATION_UPDATE({
-          notification,
-          receivedTime: Date.now(),
-        });
-      }),
-    );
-  });
 
   public getNotifications$ = createEffect(() => {
     return this.actions.pipe(
       ofType(NOTIFICATIONS_ACTIONS.$GET_NOTIFICATIONS),
-      exhaustMap(() =>
-        this.notificationService.getNotifications().pipe(
-          map((res) => {
-            if (res.code === 200) {
+      exhaustMap((props) =>
+        this.notificationService.getNotifications(props.query).pipe(
+          map((res: CommonResponseViewModel<NotificationPaginationData>) => {
+            if (res.code === 200 && res.data) {
               return NOTIFICATIONS_ACTIONS.$GET_NOTIFICATIONS_UPDATE({
-                notifications: res.data ?? [],
+                query: props.query,
+                response: res.data,
                 receivedTime: Date.now(),
               });
             }
@@ -62,7 +40,7 @@ export class HangNotificationsEffects {
               APP_ACTIONS.UPDATE_HTTP_FAIL({
                 timestamp: Date.now(),
                 methodName: 'getNotifications$',
-                error,
+                error: error,
               }),
             ),
           ),
@@ -71,16 +49,31 @@ export class HangNotificationsEffects {
     );
   });
 
-  public markAsRead$ = createEffect(() => {
+  public putMarkAsRead$ = createEffect(() => {
     return this.actions.pipe(
       ofType(NOTIFICATIONS_ACTIONS.$MARK_AS_READ),
-      switchMap(({id}) =>
-        this.notificationService.markAsRead(id).pipe(
-          map(() => NOTIFICATIONS_ACTIONS.$MARK_AS_READ_UPDATE({id})),
+      exhaustMap((props) =>
+        this.notificationService.markAsRead(props.id).pipe(
+          map((res: CommonResponseViewModel<void>) => {
+            if (res.code === 200 && res.data) {
+              return NOTIFICATIONS_ACTIONS.$MARK_AS_READ_UPDATE({
+                id: props.id,
+                receivedTime: Date.now(),
+              });
+            }
+
+            return APP_ACTIONS.UPDATE_HTTP_FAIL({
+              timestamp: Date.now(),
+              methodName: 'putMarkAsRead$',
+              error: String(res.code),
+            });
+          }),
           catchError((error) =>
             of(
-              NOTIFICATIONS_ACTIONS.$GET_NOTIFICATIONS_ERROR({
-                error: {message: String(error), receivedTime: Date.now()},
+              APP_ACTIONS.UPDATE_HTTP_FAIL({
+                timestamp: Date.now(),
+                methodName: 'putMarkAsRead$',
+                error: error,
               }),
             ),
           ),

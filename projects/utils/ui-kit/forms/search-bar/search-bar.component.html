@@ -1,60 +1,11 @@
-<div class="uk search-bar" [ngClass]="['uk-search-bar-status-' + status]">
-  <div
-    class="search-container"
-    [ngClass]="{ 'select-able': selectItems.length }"
-  >
-    @if (selectItems.length > 0) {
-      <uk-select
-        [bindLabel]="selectBindLabel"
-        [bindValue]="selectBindValue"
-        [items]="selectItems"
-        [placeholder]="selectPlaceholder"
-        [(ngModel)]="selectValue"
-      />
-    }
-    <uk-input [placeholder]="dynamicPlaceholder" [(ngModel)]="searchValue">
-      <uk-icon
-        START
-        [fgColor]="UK_TYPE.ICON.FG_COLOR.CONTENT_HIGH_EMPHASIS"
-        [name]="UK_TYPE.ICON.NAME.SEARCH"
-        [size]="UK_TYPE.ICON.SIZE.LARGEST"
-      />
-
-      <uk-icon
-        *ngIf="searchValue && endIconInput"
-        END
-        [fgColor]="UK_TYPE.ICON.FG_COLOR.CONTENT_HIGH_EMPHASIS"
-        [name]="UK_TYPE.ICON.NAME.CLOSE"
-        [size]="UK_TYPE.ICON.SIZE.LARGEST"
-        (click)="onClearSearch()"
-      />
-    </uk-input>
+<div class="uk search-bar">
+  <div class="input-box">
+    <uk-icon [name]="UK_TYPE.ICON.NAME.SEARCH" class="icon" />
+    <input
+      type="text"
+      class="input"
+      placeholder="جستجوی کنید"
+      [formControl]="searchControl"
+    />
   </div>
-
-  <ng-container>
-    <uk-button
-      [bgColor]="UK_TYPE.BUTTON.BG_COLOR.TRANSPARENT"
-      [borderColor]="UK_TYPE.BUTTON.BORDER_COLOR.COLOR_BUTTON_PRIMARY"
-      [borderRadius]="UK_TYPE.BUTTON.BORDER_RADIUS.R_08"
-      [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
-      [fgColor]="UK_TYPE.BUTTON.FG_COLOR.CONTENT_PRIMARY"
-      [disabled]="isSubmitDisabled"
-      [padding]="UK_TYPE.BUTTON.PADDING.SMALL"
-      (click)="onSubmitSearch({ showRemoveButton: true, resetData: false })"
-    >
-      تایید
-    </uk-button>
-    <uk-button
-      *ngIf="shouldShowRemoveButton"
-      [bgColor]="UK_TYPE.BUTTON.BG_COLOR.TRANSPARENT"
-      [borderColor]="UK_TYPE.BUTTON.BORDER_COLOR.COLOR_BUTTON_ERROR_FILL"
-      [borderRadius]="UK_TYPE.BUTTON.BORDER_RADIUS.R_08"
-      [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
-      [fgColor]="UK_TYPE.BUTTON.FG_COLOR.CONTENT_ERROR"
-      [padding]="UK_TYPE.BUTTON.PADDING.SMALL"
-      (click)="onClearAndSubmit()"
-    >
-      حذف نتایج جستجو
-    </uk-button>
-  </ng-container>
 </div>

@@ -1,10 +1,10 @@
 @font-face {
-  font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?g11z4f');
-  src:  url('fonts/icomoon.eot?g11z4f#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?g11z4f') format('truetype'),
-    url('fonts/icomoon.woff?g11z4f') format('woff'),
-    url('fonts/icomoon.svg?g11z4f#icomoon') format('svg');
+  font-family: 'app-icon';
+  src:  url('fonts/app-icon.eot?kr6v64');
+  src:  url('fonts/app-icon.eot?kr6v64#iefix') format('embedded-opentype'),
+    url('fonts/app-icon.ttf?kr6v64') format('truetype'),
+    url('fonts/app-icon.woff?kr6v64') format('woff'),
+    url('fonts/app-icon.svg?kr6v64#app-icon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -12,7 +12,7 @@
 
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
+  font-family: 'app-icon' !important;
   speak: never;
   font-style: normal;
   font-weight: normal;
@@ -35,11 +35,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-eye:before {
-  content: "\e92b";
-}
 .icon-eye-slash:before {
   content: "\e92c";
+}
+.icon-eye:before {
+  content: "\e92d";
+}
+.icon-arrow-right-from-bracket:before {
+  content: "\e92b";
 }
 .icon-trash:before {
   content: "\e929";

@@ -6,9 +6,9 @@ $bottomMargin: pxToRem(8);
   display: block;
   margin-bottom: $bottomMargin;
 
-  &:last-child {
-    margin-bottom: 0;
-  }
+  // &:last-child {
+  //   margin-bottom: 0;
+  // }
 
   .uk.form-row {
     &::ng-deep {

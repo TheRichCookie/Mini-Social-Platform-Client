@@ -1,0 +1,83 @@
+<div class="profile-info">
+  <div class="avatar">
+    <uk-shape-icon
+      [shapeIconType]="UK_TYPE.SHAPE_ICON.TYPE.CIRCLE"
+      [iconName]="UK_TYPE.SHAPE_ICON.ICON_NAME.USER"
+      [size]="UK_TYPE.SHAPE_ICON.SIZE.LARGE"
+    />
+  </div>
+  <div class="username">
+    <uk-text [typography]="UK_TYPE.TEXT.TYPOGRAPHY.H_2">
+      {{ (user$ | async)?.user?.username }}
+    </uk-text>
+  </div>
+  <div class="actions">
+    <uk-button-group [alignType]="UK_TYPE.BUTTON_GROUP.ALIGN_TYPE.CENTER">
+      @if ((user$ | async)?.isMe === true) {
+        <uk-button
+          (click)="PC.actions.openProfileEditModal()"
+          [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
+          [padding]="UK_TYPE.BUTTON.PADDING.SMALL"
+        >
+          ویرایش
+        </uk-button>
+      }
+      @if ((user$ | async)?.isFollowing && (user$ | async)?.isMe === false) {
+        <uk-button
+          (click)="PC.actions.toggleFollow()"
+          [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
+          [padding]="UK_TYPE.BUTTON.PADDING.SMALL"
+        >
+          دنبال نکردن
+        </uk-button>
+      } @else if (
+        !(user$ | async)?.isFollowing && (user$ | async)?.isMe === false
+      ) {
+        <uk-button
+          (click)="PC.actions.toggleFollow()"
+          [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
+          [padding]="UK_TYPE.BUTTON.PADDING.SMALL"
+        >
+          دنبال کردن
+        </uk-button>
+      }
+    </uk-button-group>
+  </div>
+  <div class="follow">
+    <uk-button-group [alignType]="UK_TYPE.BUTTON_GROUP.ALIGN_TYPE.CENTER">
+      <uk-button
+        (click)="PC.actions.openFollowersModal()"
+        [bgColor]="UK_TYPE.BUTTON.BG_COLOR.TRANSPARENT"
+        [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_LOW_EMPHASIS"
+        [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
+      >
+        دنبال‌کنندگان
+
+        <uk-text END>
+          {{ (user$ | async)?.followers }}
+        </uk-text>
+      </uk-button>
+      <uk-button
+        (click)="PC.actions.openFollowingModal()"
+        [bgColor]="UK_TYPE.BUTTON.BG_COLOR.TRANSPARENT"
+        [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_LOW_EMPHASIS"
+        [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
+      >
+        دنبال‌شده‌ها
+        <uk-text END>
+          {{ (user$ | async)?.following }}
+        </uk-text>
+      </uk-button>
+    </uk-button-group>
+  </div>
+  <div class="major">
+    <uk-text [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_LOW_EMPHASIS">
+      {{ (user$ | async)?.user?.major }}
+    </uk-text>
+  </div>
+  <div class="bio">
+    <uk-text [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE">
+      {{ (user$ | async)?.user?.bio }}
+    </uk-text>
+  </div>
+</div>

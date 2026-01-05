@@ -9,8 +9,8 @@
 .comp.navbar {
   width: 100%;
   height: 100%;
-  border-radius: 16px 16px 0 0;
-  background-color: $color-background-surface-00;
+  background-color: $color-background-surface-02;
+  // border-top: 1px solid $color-border-grade-2;
 
   > nav {
     display: flex;
@@ -27,6 +27,23 @@
         display: flex;
         flex-direction: column;
         gap: 4px;
+
+        .ring {
+          position: relative;
+
+          &::after {
+            content: "";
+            position: absolute;
+            top: -2px;
+            right: 0;
+            width: 10px;
+            height: 10px;
+            background-color: $color-background-error;
+            border-radius: 50%;
+            border: 2px solid black;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+          }
+        }
       }
     }
   }

@@ -1,0 +1,67 @@
+<uk-modal-frame
+  class="profile-edit"
+  [borderRadius]="UK_TYPE.MODAL_FRAME.BORDER_RADIUS.TOP"
+  [showHeader]="UK_TYPE.UK.BOOLEAN.TRUE"
+  [showTopClose]="true"
+  [title]="'ویرایش حساب کاربری'"
+  (ON_CLOSE)="onClose()"
+>
+  <div FRAME-BODY>
+    <div>
+      <form [formGroup]="profileEditForm">
+        <uk-form>
+          <uk-form-body>
+            <uk-form-part>
+              <uk-form-row>
+                <uk-form-controller>
+                  <uk-text
+                    [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS"
+                    [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_1"
+                  >
+                    بیوگرافی
+                  </uk-text>
+                  <uk-input
+                    [formControl]="profileEditForm.controls.bio"
+                    [placeholder]="'بیوگرافی'"
+                  />
+                </uk-form-controller>
+              </uk-form-row>
+              <uk-form-row>
+                <uk-form-controller>
+                  <uk-text
+                    [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS"
+                    [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_1"
+                  >
+                    رشته تحصیلی
+                  </uk-text>
+                  <uk-input
+                    [formControl]="profileEditForm.controls.major"
+                    [placeholder]="'رشته تحصیلی'"
+                  />
+                </uk-form-controller>
+              </uk-form-row>
+            </uk-form-part>
+          </uk-form-body>
+        </uk-form>
+      </form>
+    </div>
+  </div>
+  <div FRAME-ACTIONS>
+    <uk-button-group>
+      <uk-button
+        [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
+        [display]="UK_TYPE.BUTTON.DISPLAY.BLOCK"
+        (click)="onClose()"
+      >
+        بستن
+      </uk-button>
+      <uk-button
+        [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
+        [display]="UK_TYPE.BUTTON.DISPLAY.BLOCK"
+        (click)="onSubmit()"
+      >
+        تایید
+      </uk-button>
+    </uk-button-group>
+  </div>
+</uk-modal-frame>

@@ -41,7 +41,7 @@ import {UK_TYPE} from '@utils/ui-kit/definitions';
 import {UkInputComponent} from '@utils/ui-kit/forms';
 import {UkAlertService} from '@utils/ui-kit/services';
 
-import type {HangAuthStatus, HangSignUpForm} from '../_models/bmn-auth.model';
+import type {HangAuthStatus, HangSignUpForm} from '../_models/auth.model';
 import {SELECT_AUTH_SIGN_UP_RECEIVED_TIME_RESPONSE} from '../_store/auth.selectors';
 
 @Component({

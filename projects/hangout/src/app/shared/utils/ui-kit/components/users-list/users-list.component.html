@@ -1,0 +1,16 @@
+<div class="users-list">
+  <uk-scroll
+    (LOAD_MORE)="loadMore()"
+    (NO_OVERFLOW)="noOverflow()"
+    [showScrollbar]="UK_TYPE.UK.BOOLEAN.FALSE"
+    [appearance]="'auto'"
+    [isLoading]="isLoading"
+    [maxHeight]="840"
+  >
+    @for (item of items; track item[bindId]) {
+      <uk-card (click)="goToProfile(item[bindId])">
+        {{ item[bindLabel] }}
+      </uk-card>
+    }
+  </uk-scroll>
+</div>

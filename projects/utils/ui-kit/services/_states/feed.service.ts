@@ -6,7 +6,7 @@ import type {Observable} from 'rxjs';
 import {UkConfigApiServices, UkConfigApiVersions} from '../../definitions';
 import type {
   CommonResponseViewModel,
-  FeedPostModel,
+  FeedPaginationData,
 } from '../../definitions/swagger/swagger';
 
 @Injectable({
@@ -19,7 +19,7 @@ export class UkFeedService {
   public getFeed(query?: {
     page: number;
     limit: number;
-  }): Observable<CommonResponseViewModel<FeedPostModel[]>> {
+  }): Observable<CommonResponseViewModel<FeedPaginationData>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.FEED,
       apiHeaderVersion: UkConfigApiVersions.NONE,
@@ -34,9 +34,12 @@ export class UkFeedService {
 
     const URI = '';
 
-    return this.httpClient.get<CommonResponseViewModel<FeedPostModel[]>>(URI, {
-      headers: HEADERS,
-      params: params,
-    });
+    return this.httpClient.get<CommonResponseViewModel<FeedPaginationData>>(
+      URI,
+      {
+        headers: HEADERS,
+        params: params,
+      },
+    );
   }
 }

@@ -37,21 +37,33 @@ export const PROFILE_INITIAL: HangProfileState['profile'] = {
     },
     receivedTime: undefined!,
   },
+  follow: {
+    request: {
+      userId: undefined!,
+    },
+    receivedTime: undefined!,
+  },
 };
 
 export const POSTS_INITIAL: HangProfileState['posts'] = {
-  request: {
-    userId: undefined!,
-    query: {
-      page: undefined!,
-      limit: undefined!,
+  get: {
+    request: {
+      userId: undefined!,
+      query: {
+        page: undefined!,
+        limit: undefined!,
+      },
     },
+    response: {
+      totalCount: undefined!,
+      items: [],
+    },
+    receivedTime: undefined!,
   },
-  response: {
-    totalCount: undefined!,
-    items: [],
+  delete: {
+    request: {postId: undefined!},
+    receivedTime: undefined!,
   },
-  receivedTime: undefined!,
 };
 
 export const FOLLOWERS_INITIAL: HangProfileState['followers'] = {

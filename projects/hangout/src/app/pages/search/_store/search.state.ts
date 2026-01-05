@@ -1,11 +1,15 @@
-import type {UserSearchModel} from '../../../../../../utils/ui-kit/definitions/swagger/swagger';
+import type {SearchUsersDataModel} from '@utils/ui-kit/definitions';
 
 export interface HangSearchState {
-  query: string | undefined;
-  response: UserSearchModel[];
-  receivedTime: number | undefined;
-  error: {
-    receivedTime: number | undefined;
-    message: string | undefined;
+  search: {
+    request: {
+      query: {
+        q?: string;
+        page: number;
+        limit: number;
+      };
+    };
+    response: SearchUsersDataModel;
+    receivedTime: number;
   };
 }

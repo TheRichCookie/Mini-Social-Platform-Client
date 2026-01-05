@@ -10,11 +10,19 @@
     </a>
     <a
       class="nav-item"
+      [routerLink]="APP_ROUTES.NOTIFICATION.ROOT"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <uk-icon [name]="UK_TYPE.ICON.NAME.BELL" [ngClass]="{ring: newNotification}" />
+    </a>
+    <a
+      class="nav-item"
       [routerLink]="APP_ROUTES.POST.ROOT"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
     >
-      <uk-icon [name]="UK_TYPE.ICON.NAME.PLUS" [fgColor]="UK_TYPE.ICON.FG_COLOR.CONTENT_LIGHT" />
+      <uk-icon [name]="UK_TYPE.ICON.NAME.PLUS" />
     </a>
     <a
       class="nav-item"
@@ -32,15 +40,5 @@
     >
       <uk-icon [name]="UK_TYPE.ICON.NAME.HOME" />
     </a>
-    <!-- <a
-      class="nav-item"
-      [routerLink]="APP_ROUTES.NOTIFICATION.ROOT"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-    >
-      <uk-icon [name]="UK_TYPE.ICON.NAME.BELL" />
-      <uk-badge *ngIf="(unreadCount$ | async) as c; else noBadge" [size]="UK_TYPE.BADGE.SIZE.SMALL" [badgeType]="UK_TYPE.BADGE.TYPE.ERROR">{{ c }}</uk-badge>
-      <ng-template #noBadge />
-    </a> -->
   </nav>
 </div>

@@ -2,18 +2,21 @@ import {BidiModule} from '@angular/cdk/bidi';
 import {OverlayModule} from '@angular/cdk/overlay'; // for cdkOverlay scroll handling
 import {ScrollingModule} from '@angular/cdk/scrolling'; // for cdkOverlay scroll handling
 import {CommonModule} from '@angular/common';
-import type {ElementRef} from '@angular/core';
+import type {ElementRef, OnInit} from '@angular/core';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  DestroyRef,
   EventEmitter,
   inject,
   Input,
   Output,
   ViewChild,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NgScrollbarModule} from 'ngx-scrollbar';
+import {debounceTime, Subject} from 'rxjs';
 
 import {UkAnimationComponent} from '../../animations/animation/animation.component';
 import type {BooleanType} from '../../definitions';
@@ -34,8 +37,11 @@ import {DEFAULT, UK_TYPE} from '../../definitions';
   styleUrl: './scroll.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UkScrollComponent {
+export class UkScrollComponent implements OnInit {
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly bottomReached$ = new Subject<void>();
+  private readonly noOverflow$ = new Subject<void>();
 
   @ViewChild('wrapperElement')
   public wrapperElement!: ElementRef;
@@ -78,25 +84,24 @@ export class UkScrollComponent {
   @Output()
   public readonly LOAD_MORE = new EventEmitter();
 
+  @Output()
+  public readonly NO_OVERFLOW = new EventEmitter();
+
   public readonly UK_TYPE = UK_TYPE;
   public autoAppearance: 'compact' | 'native' = 'compact';
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  public onScroll(event: any): void {
-    const SCROLL_Y = event.target.scrollTop;
-    const {scrollHeight} = event.target;
-    const OFFSET_HEIGHT = event.target.offsetHeight;
+  public onScroll(event: Event): void {
+    const el = event.target as HTMLElement;
 
-    if (SCROLL_Y <= 10) {
+    const atTop = el.scrollTop <= 10;
+    const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 10;
+
+    if (atTop) {
       this.REACHED_TOP.emit();
     }
 
-    if (SCROLL_Y + OFFSET_HEIGHT >= scrollHeight - 10) {
-      this.REACHED_BOTTOM.emit();
-    }
-
-    if (SCROLL_Y + OFFSET_HEIGHT >= scrollHeight - 10 && !this.isLoading) {
-      this.LOAD_MORE.emit();
+    if (atBottom) {
+      this.bottomReached$.next();
     }
   }
 
@@ -116,5 +121,28 @@ export class UkScrollComponent {
         WRAPPER.clientHeight > CONTENT.clientHeight ? 'compact' : 'native';
       this.changeDetectorRef.markForCheck();
     }
+  }
+
+  public checkOverflow(): void {
+    const WRAPPER = this.wrapperElement.nativeElement;
+    const CONTENT = this.contentElement.nativeElement;
+
+    if (CONTENT.scrollHeight <= WRAPPER.clientHeight) {
+      this.noOverflow$.next();
+    }
+  }
+
+  public ngOnInit(): void {
+    this.bottomReached$
+      .pipe(debounceTime(150), takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => {
+        this.LOAD_MORE.emit();
+      });
+
+    this.noOverflow$
+      .pipe(debounceTime(0), takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => {
+        this.NO_OVERFLOW.emit();
+      });
   }
 }

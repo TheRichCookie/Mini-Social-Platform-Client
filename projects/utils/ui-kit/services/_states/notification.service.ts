@@ -6,7 +6,8 @@ import type {Observable} from 'rxjs';
 import {UkConfigApiServices, UkConfigApiVersions} from '../../definitions';
 import type {
   CommonResponseViewModel,
-  NotificationModel,
+  HasUnreadNotificationsData,
+  NotificationPaginationData,
 } from '../../definitions/swagger/swagger';
 
 @Injectable({
@@ -19,7 +20,7 @@ export class UkNotificationService {
   public getNotifications(query?: {
     page: number;
     limit: number;
-  }): Observable<CommonResponseViewModel<NotificationModel[]>> {
+  }): Observable<CommonResponseViewModel<NotificationPaginationData>> {
     const HEADERS = this.apiHeaderService.init({
       apiService: UkConfigApiServices.NOTIFICATIONS,
       apiHeaderVersion: UkConfigApiVersions.NONE,
@@ -34,13 +35,12 @@ export class UkNotificationService {
 
     const URI = '';
 
-    return this.httpClient.get<CommonResponseViewModel<NotificationModel[]>>(
-      URI,
-      {
-        params,
-        headers: HEADERS,
-      },
-    );
+    return this.httpClient.get<
+      CommonResponseViewModel<NotificationPaginationData>
+    >(URI, {
+      params,
+      headers: HEADERS,
+    });
   }
 
   public markAsRead(id: string): Observable<CommonResponseViewModel<void>> {
@@ -53,6 +53,22 @@ export class UkNotificationService {
     const URI = `/${id}/read`;
 
     return this.httpClient.put<CommonResponseViewModel<void>>(URI, BODY, {
+      headers: HEADERS,
+    });
+  }
+
+  public getHasUnread(): Observable<
+    CommonResponseViewModel<HasUnreadNotificationsData>
+  > {
+    const HEADERS = this.apiHeaderService.init({
+      apiService: UkConfigApiServices.NOTIFICATIONS,
+      apiHeaderVersion: UkConfigApiVersions.NONE,
+    });
+    const URI = 'hasUnread';
+
+    return this.httpClient.get<
+      CommonResponseViewModel<HasUnreadNotificationsData>
+    >(URI, {
       headers: HEADERS,
     });
   }

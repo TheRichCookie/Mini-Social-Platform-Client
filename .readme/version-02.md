@@ -16,7 +16,7 @@ add this to package.json scripts: "prepare": "node .husky/install.js"
 npm install swagger-ui-express swagger-jsdoc
 
 # Swagger Convert
-npx swagger-typescript-api generate -p http://localhost:5000/swagger-json -o src/app/api -n api.ts 
+npx swagger-typescript-api generate -p http://localhost:5000/swagger-json -o . -n swagger.ts 
 
 ## Node Types
 npm install -D @types/node

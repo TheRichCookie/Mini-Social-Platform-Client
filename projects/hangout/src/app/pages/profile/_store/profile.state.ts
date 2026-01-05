@@ -1,5 +1,6 @@
 import type {
   PaginatedUsersData,
+  PostPaginationData,
   UpdateProfileRequest,
   UserModel,
   UserProfileData,
@@ -9,7 +10,7 @@ export interface HangProfileState {
   profile: {
     get: {
       request: {
-        userId: string;
+        userId?: string;
       };
       response: UserProfileData;
       receivedTime: number;
@@ -21,17 +22,29 @@ export interface HangProfileState {
       response: UserModel;
       receivedTime: number;
     };
+    follow: {
+      request: {
+        userId: string;
+      };
+      receivedTime: number;
+    };
   };
   posts: {
-    request: {
-      userId: string;
-      query?: {
-        page: number;
-        limit: number;
+    get: {
+      request: {
+        userId: string;
+        query?: {
+          page: number;
+          limit: number;
+        };
       };
+      response: PostPaginationData;
+      receivedTime: number;
     };
-    response: PaginatedUsersData;
-    receivedTime: number;
+    delete: {
+      request: {postId: string};
+      receivedTime: number;
+    };
   };
   followers: {
     request: {

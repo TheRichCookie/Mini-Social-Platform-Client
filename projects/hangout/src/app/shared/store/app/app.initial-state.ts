@@ -19,5 +19,10 @@ export const APP_INITIAL_STATE: HangAppState = {
     contract: undefined!,
     rules: undefined!,
   },
+  hasUnreadNotification: {
+    response: {
+      hasUnread: undefined!,
+    },
+  },
   currentUtcTime: undefined!,
 };
