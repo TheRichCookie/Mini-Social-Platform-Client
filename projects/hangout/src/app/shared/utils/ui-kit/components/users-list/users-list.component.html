@@ -5,7 +5,7 @@
     [showScrollbar]="UK_TYPE.UK.BOOLEAN.FALSE"
     [appearance]="'auto'"
     [isLoading]="isLoading"
-    [maxHeight]="840"
+    [maxHeight]="500"
   >
     @for (item of items; track item[bindId]) {
       <uk-card (click)="goToProfile(item[bindId])">

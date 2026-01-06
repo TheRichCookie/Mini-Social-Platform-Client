@@ -84,7 +84,7 @@ export class HangHomePageComponent implements OnDestroy {
       isLoading: false,
       request: {
         query: {
-          page: 1,
+          page: 0,
           limit: 20,
         },
       },
@@ -92,6 +92,8 @@ export class HangHomePageComponent implements OnDestroy {
     actions: {
       get: () => {
         const REQUEST = JSON.parse(JSON.stringify(this.PC.props.request));
+
+        REQUEST.query.page += 1;
 
         this.store.dispatch(FEED_ACTIONS.$GET_FEEDS(REQUEST));
       },
@@ -109,11 +111,12 @@ export class HangHomePageComponent implements OnDestroy {
         newPageIndex++;
 
         if (
-          this.PC.props.count >=
+          this.PC.props.count >
           newPageIndex * this.PC.props.request.query.limit
         ) {
           this.PC.props.isLoading = true;
           this.PC.props.request.query.page = newPageIndex;
+          this.changeDetectorRef.markForCheck();
           this.PC.actions.get();
         }
       },

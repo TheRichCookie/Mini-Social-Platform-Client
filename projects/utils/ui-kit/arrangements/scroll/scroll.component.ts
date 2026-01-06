@@ -2,7 +2,7 @@ import {BidiModule} from '@angular/cdk/bidi';
 import {OverlayModule} from '@angular/cdk/overlay'; // for cdkOverlay scroll handling
 import {ScrollingModule} from '@angular/cdk/scrolling'; // for cdkOverlay scroll handling
 import {CommonModule} from '@angular/common';
-import type {ElementRef, OnInit} from '@angular/core';
+import type {AfterViewInit, ElementRef} from '@angular/core';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -37,7 +37,7 @@ import {DEFAULT, UK_TYPE} from '../../definitions';
   styleUrl: './scroll.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UkScrollComponent implements OnInit {
+export class UkScrollComponent implements AfterViewInit {
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
   private readonly destroyRef = inject(DestroyRef);
   private readonly bottomReached$ = new Subject<void>();
@@ -84,17 +84,22 @@ export class UkScrollComponent implements OnInit {
   @Output()
   public readonly LOAD_MORE = new EventEmitter();
 
-  @Output()
-  public readonly NO_OVERFLOW = new EventEmitter();
-
   public readonly UK_TYPE = UK_TYPE;
   public autoAppearance: 'compact' | 'native' = 'compact';
+
+  constructor() {
+    this.bottomReached$
+      .pipe(debounceTime(150), takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => {
+        this.LOAD_MORE.emit();
+      });
+  }
 
   public onScroll(event: Event): void {
     const el = event.target as HTMLElement;
 
-    const atTop = el.scrollTop <= 10;
-    const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 10;
+    const atTop = el.scrollTop <= 5;
+    const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 5;
 
     if (atTop) {
       this.REACHED_TOP.emit();
@@ -104,9 +109,6 @@ export class UkScrollComponent implements OnInit {
       this.bottomReached$.next();
     }
   }
-
-  public onScrollUp(): void {}
-  public onScrollDown(): void {}
 
   public afterUpdate(): void {
     this.checkScroll();
@@ -127,22 +129,18 @@ export class UkScrollComponent implements OnInit {
     const WRAPPER = this.wrapperElement.nativeElement;
     const CONTENT = this.contentElement.nativeElement;
 
+    console.log()
+
     if (CONTENT.scrollHeight <= WRAPPER.clientHeight) {
-      this.noOverflow$.next();
+      this.bottomReached$.next();
     }
+
+    this.changeDetectorRef.markForCheck();
   }
 
-  public ngOnInit(): void {
-    this.bottomReached$
-      .pipe(debounceTime(150), takeUntilDestroyed(this.destroyRef))
-      .subscribe(() => {
-        this.LOAD_MORE.emit();
-      });
-
-    this.noOverflow$
-      .pipe(debounceTime(0), takeUntilDestroyed(this.destroyRef))
-      .subscribe(() => {
-        this.NO_OVERFLOW.emit();
-      });
+  public ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.checkOverflow();
+    });
   }
 }

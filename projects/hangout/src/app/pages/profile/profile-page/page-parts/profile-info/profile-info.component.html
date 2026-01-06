@@ -7,7 +7,10 @@
     />
   </div>
   <div class="username">
-    <uk-text [typography]="UK_TYPE.TEXT.TYPOGRAPHY.H_2">
+    <uk-text
+      [typography]="UK_TYPE.TEXT.TYPOGRAPHY.H_2"
+      [horizontalAlignment]="UK_TYPE.TEXT.HORIZONTAL_ALIGNMENT.CENTER"
+    >
       {{ (user$ | async)?.user?.username }}
     </uk-text>
   </div>
@@ -71,12 +74,18 @@
     </uk-button-group>
   </div>
   <div class="major">
-    <uk-text [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_LOW_EMPHASIS">
+    <uk-text
+      [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_LOW_EMPHASIS"
+      [horizontalAlignment]="UK_TYPE.TEXT.HORIZONTAL_ALIGNMENT.CENTER"
+    >
       {{ (user$ | async)?.user?.major }}
     </uk-text>
   </div>
   <div class="bio">
-    <uk-text [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE">
+    <uk-text
+      [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE"
+      [horizontalAlignment]="UK_TYPE.TEXT.HORIZONTAL_ALIGNMENT.CENTER"
+    >
       {{ (user$ | async)?.user?.bio }}
     </uk-text>
   </div>

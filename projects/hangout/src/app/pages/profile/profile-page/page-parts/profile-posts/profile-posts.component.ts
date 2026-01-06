@@ -43,7 +43,7 @@ interface PageController {
 @Component({
   standalone: true,
   selector: 'hang-profile-posts',
-  imports: [CommonModule, UkScrollComponent, UkTextComponent],
+  imports: [CommonModule, UkTextComponent, UkScrollComponent],
   templateUrl: './profile-posts.component.html',
   styleUrls: ['./profile-posts.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -74,7 +74,7 @@ export class HangProfilePostsComponent {
         userId: '',
         query: {
           page: 0,
-          limit: 15,
+          limit: 1,
         },
       },
     },
@@ -100,6 +100,8 @@ export class HangProfilePostsComponent {
         }
       },
       loadMore: () => {
+        if (this.PC.props.isLoading) return;
+
         let newPageIndex = JSON.parse(
           JSON.stringify(this.PC.props.request.query.page),
         );
@@ -112,6 +114,7 @@ export class HangProfilePostsComponent {
         ) {
           this.PC.props.isLoading = true;
           this.PC.props.request.query.page = newPageIndex;
+          this.changeDetectorRef.markForCheck();
           this.PC.actions.get();
         }
       },

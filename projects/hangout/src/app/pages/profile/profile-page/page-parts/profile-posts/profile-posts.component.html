@@ -1,11 +1,9 @@
 <div class="profile-info">
   <uk-scroll
-    (LOAD_MORE)="PC.actions.loadMore()"
-    (NO_OVERFLOW)="PC.actions.loadMore()"
-    [showScrollbar]="UK_TYPE.UK.BOOLEAN.TRUE"
-    [appearance]="'auto'"
     [isLoading]="PC.props.isLoading"
-    [maxHeight]="500"
+    (LOAD_MORE)="this.PC.actions.loadMore()"
+    [showScrollbar]="UK_TYPE.UK.BOOLEAN.FALSE"
+    [appearance]="'auto'"
   >
     @for (post of PC.props.list; track post._id) {
       <div class="post">
