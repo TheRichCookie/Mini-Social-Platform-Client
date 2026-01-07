@@ -9,12 +9,12 @@
   <div FRAME-BODY>
     <div>
       <hang-users-list
-        [items]="PC.props.list"
-        [isLoading]="PC.props.isLoading"
         bindLabel="username"
         bindId="_id"
+        [items]="PC.props.list"
+        [isLoading]="PC.props.isLoading"
+        [maxHeight]="500"
         (LOAD_MORE)="PC.actions.loadMore()"
-        (NO_OVERFLOW)="PC.actions.loadMore()"
         (ON_CLICK)="onClose()"
       />
     </div>

@@ -1,8 +1,8 @@
-import {BidiModule} from '@angular/cdk/bidi';
-import {OverlayModule} from '@angular/cdk/overlay'; // for cdkOverlay scroll handling
-import {ScrollingModule} from '@angular/cdk/scrolling'; // for cdkOverlay scroll handling
-import {CommonModule} from '@angular/common';
-import type {AfterViewInit, ElementRef} from '@angular/core';
+import { BidiModule } from '@angular/cdk/bidi';
+import { OverlayModule } from '@angular/cdk/overlay'; // for cdkOverlay scroll handling
+import { ScrollingModule } from '@angular/cdk/scrolling'; // for cdkOverlay scroll handling
+import { CommonModule } from '@angular/common';
+import type { AfterViewInit, ElementRef } from '@angular/core';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -14,13 +14,14 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {NgScrollbarModule} from 'ngx-scrollbar';
-import {debounceTime, Subject} from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { UkScrollService } from '@utils/ui-kit/services';
+import { NgScrollbarModule } from 'ngx-scrollbar';
+import { debounceTime, Subject } from 'rxjs';
 
-import {UkAnimationComponent} from '../../animations/animation/animation.component';
-import type {BooleanType} from '../../definitions';
-import {DEFAULT, UK_TYPE} from '../../definitions';
+import { UkAnimationComponent } from '../../animations/animation/animation.component';
+import type { BooleanType } from '../../definitions';
+import { DEFAULT, UK_TYPE } from '../../definitions';
 
 @Component({
   standalone: true,
@@ -39,9 +40,9 @@ import {DEFAULT, UK_TYPE} from '../../definitions';
 })
 export class UkScrollComponent implements AfterViewInit {
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
+  private readonly scrollService = inject(UkScrollService);
   private readonly destroyRef = inject(DestroyRef);
   private readonly bottomReached$ = new Subject<void>();
-  private readonly noOverflow$ = new Subject<void>();
 
   @ViewChild('wrapperElement')
   public wrapperElement!: ElementRef;
@@ -93,6 +94,11 @@ export class UkScrollComponent implements AfterViewInit {
       .subscribe(() => {
         this.LOAD_MORE.emit();
       });
+    this.scrollService.checkOverFlow$
+      .pipe(takeUntilDestroyed())
+      .subscribe(() => {
+        this.checkOverflow();
+      });
   }
 
   public onScroll(event: Event): void {
@@ -126,16 +132,16 @@ export class UkScrollComponent implements AfterViewInit {
   }
 
   public checkOverflow(): void {
-    const WRAPPER = this.wrapperElement.nativeElement;
-    const CONTENT = this.contentElement.nativeElement;
+    if (!this.isLoading) {
+      const WRAPPER = this.wrapperElement.nativeElement;
+      const CONTENT = this.contentElement.nativeElement;
 
-    console.log()
+      if (CONTENT.scrollHeight <= WRAPPER.clientHeight) {
+        this.bottomReached$.next();
+      }
 
-    if (CONTENT.scrollHeight <= WRAPPER.clientHeight) {
-      this.bottomReached$.next();
+      this.changeDetectorRef.markForCheck();
     }
-
-    this.changeDetectorRef.markForCheck();
   }
 
   public ngAfterViewInit(): void {

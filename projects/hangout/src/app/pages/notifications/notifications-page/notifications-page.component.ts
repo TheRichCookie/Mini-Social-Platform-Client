@@ -19,7 +19,7 @@ import {
 import {UkTextComponent} from '@utils/ui-kit/components';
 import type {NotificationModel} from '@utils/ui-kit/definitions';
 import {UK_TYPE} from '@utils/ui-kit/definitions';
-import {UkAlertService} from '@utils/ui-kit/services';
+import {UkAlertService, UkScrollService} from '@utils/ui-kit/services';
 
 import * as APP_ACTIONS from '../../../shared/store/app/app.action';
 import {
@@ -69,6 +69,7 @@ interface PageController {
 export class HangNotificationsPageComponent implements OnDestroy {
   private readonly store = inject(Store);
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
+  private readonly scrollService = inject(UkScrollService);
   private readonly alertService = inject(UkAlertService);
 
   @ViewChild(UkScrollComponent)
@@ -88,7 +89,7 @@ export class HangNotificationsPageComponent implements OnDestroy {
       isLoading: false,
       request: {
         query: {
-          page: 1,
+          page: 0,
           limit: 20,
         },
       },
@@ -96,6 +97,8 @@ export class HangNotificationsPageComponent implements OnDestroy {
     actions: {
       get: () => {
         const REQUEST = JSON.parse(JSON.stringify(this.PC.props.request));
+
+        REQUEST.query.page += 1;
 
         this.store.dispatch(NOTIFICATIONS_ACTIONS.$GET_NOTIFICATIONS(REQUEST));
       },
@@ -113,7 +116,7 @@ export class HangNotificationsPageComponent implements OnDestroy {
         newPageIndex++;
 
         if (
-          this.PC.props.count >=
+          this.PC.props.count >
           newPageIndex * this.PC.props.request.query.limit
         ) {
           this.PC.props.isLoading = true;
@@ -128,9 +131,7 @@ export class HangNotificationsPageComponent implements OnDestroy {
     this.notifications$.pipe(takeUntilDestroyed()).subscribe((notification) => {
       if (notification.totalCount) {
         this.PC.props.count = notification.totalCount;
-        setTimeout(() => {
-          this.scrollComponent.checkOverflow();
-        });
+        this.scrollService.checkOverFlow();
       }
 
       this.PC.props.list.push(...(notification.items ?? []));

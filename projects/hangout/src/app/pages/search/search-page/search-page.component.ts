@@ -18,6 +18,7 @@ import {
 } from '@utils/ui-kit/arrangements';
 import {UK_TYPE, type UserSearchModel} from '@utils/ui-kit/definitions';
 import {UkSearchBarComponent} from '@utils/ui-kit/forms';
+import {UkScrollService} from '@utils/ui-kit/services';
 
 import {SEARCH_ACTIONS, SEARCH_RESET_ACTIONS} from '../_store/search.actions';
 import {SELECT_SEARCH_USERS_RES} from '../_store/search.selectors';
@@ -61,6 +62,7 @@ interface PageController {
 })
 export class HangSearchPageComponent implements OnDestroy {
   private readonly store = inject(Store);
+  private readonly scrollService = inject(UkScrollService);
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
 
   @ViewChild(HangUsersListComponent)
@@ -78,7 +80,7 @@ export class HangSearchPageComponent implements OnDestroy {
       request: {
         query: {
           q: '',
-          page: 1,
+          page: 0,
           limit: 20,
         },
       },
@@ -87,25 +89,30 @@ export class HangSearchPageComponent implements OnDestroy {
       get: () => {
         const REQUEST = JSON.parse(JSON.stringify(this.PC.props.request));
 
+        REQUEST.query.page += 1;
+
         this.store.dispatch(SEARCH_ACTIONS.$GET_SEARCH_USERS(REQUEST));
       },
       loadMore: () => {
-        if (this.PC.props.isLoading) return;
+        let newPageIndex = JSON.parse(
+          JSON.stringify(this.PC.props.request.query.page),
+        );
 
-        const {page, limit} = this.PC.props.request.query;
-        const nextPage = page + 1;
+        newPageIndex++;
 
-        if (this.PC.props.count > page * limit) {
+        if (
+          this.PC.props.count >
+          newPageIndex * this.PC.props.request.query.limit
+        ) {
           this.PC.props.isLoading = true;
-          this.PC.props.request.query.page = nextPage;
+          this.PC.props.request.query.page = newPageIndex;
           this.PC.actions.get();
         }
       },
       onSearch: (value) => {
-        // reset pagination
         this.PC.props.request.query = {
           q: value,
-          page: 1,
+          page: 0,
           limit: this.PC.props.request.query.limit,
         };
 
@@ -121,6 +128,7 @@ export class HangSearchPageComponent implements OnDestroy {
     this.searchResult$.pipe(takeUntilDestroyed()).subscribe((result) => {
       if (result.totalCount) {
         this.PC.props.count = result.totalCount;
+        this.scrollService.checkOverFlow();
       }
 
       if (this.PC.props.request.query.page === 1) {
@@ -131,10 +139,6 @@ export class HangSearchPageComponent implements OnDestroy {
 
       this.PC.props.isLoading = false;
       this.changeDetectorRef.markForCheck();
-
-      setTimeout(() => {
-        this.usersListComponent.scrollComponent.checkOverflow();
-      });
     });
   }
 

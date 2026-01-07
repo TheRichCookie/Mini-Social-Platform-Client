@@ -1,7 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   DestroyRef,
   inject,
@@ -64,7 +63,6 @@ interface PageController {
   providers: [UkOverlayService],
 })
 export class HangProfileInfoComponent {
-  private readonly changeDetectorRef = inject(ChangeDetectorRef);
   private readonly overlayService = inject(UkOverlayService);
   private readonly activatedRoute = inject(ActivatedRoute);
   private readonly alertService = inject(UkAlertService);

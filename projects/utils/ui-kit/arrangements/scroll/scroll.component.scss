@@ -6,9 +6,12 @@
 
 .uk.scroll {
   height: 100%;
+  width: 100%;
+  position: relative;
 
   ng-scrollbar {
     height: 100%;
+    width: 100%;
 
     //Adjust the border radius of the scrollbar track
     --scrollbar-border-radius: 4px;
@@ -103,6 +106,17 @@
           .zoon {
             margin-bottom: 10px;
           }
+        }
+      }
+    }
+
+    &-max-height {
+      &-TURE {
+      }
+
+      &-FALSE {
+        ng-scrollbar {
+          position: absolute;
         }
       }
     }

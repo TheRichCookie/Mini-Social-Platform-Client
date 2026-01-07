@@ -7,7 +7,6 @@ import {
   inject,
   Input,
   Output,
-  ViewChild,
 } from '@angular/core';
 import {Router} from '@angular/router';
 import {UkScrollComponent} from '@utils/ui-kit/arrangements';
@@ -24,14 +23,8 @@ import {UK_TYPE} from '@utils/ui-kit/definitions';
 export class HangUsersListComponent {
   private readonly router = inject(Router);
 
-  @ViewChild(UkScrollComponent)
-  public scrollComponent!: UkScrollComponent;
-
   @Output()
   public readonly LOAD_MORE = new EventEmitter<number>();
-
-  @Output()
-  public readonly NO_OVERFLOW = new EventEmitter();
 
   @Input()
   public items: any[] = [];
@@ -45,6 +38,9 @@ export class HangUsersListComponent {
   @Input()
   public isLoading = false;
 
+  @Input()
+  public maxHeight: number = null!;
+
   @Output()
   public readonly ON_CLICK = new EventEmitter();
 
@@ -52,10 +48,6 @@ export class HangUsersListComponent {
 
   public loadMore(): void {
     this.LOAD_MORE.emit();
-  }
-
-  public noOverflow(): void {
-    this.NO_OVERFLOW.emit();
   }
 
   public goToProfile(userId: string): void {

@@ -46,6 +46,9 @@ export class UkPagePartComponent {
   @Input()
   public isFirstChildStick: BooleanType = DEFAULT.pagePart.isFirstChildStick;
 
+  @Input()
+  public fullHeight = false;
+
   @HostBinding('class.is-first-child-stick')
   private get noTopMargin(): boolean {
     return this.isFirstChildStick === UkBooleanType.TRUE;
@@ -64,5 +67,10 @@ export class UkPagePartComponent {
   @HostBinding('class.bottom-margin-yes')
   private get yesBottomMargin(): boolean {
     return this.bottomMargin === UkPagePartBottomMargin.YES;
+  }
+
+  @HostBinding('class.full-height-true')
+  private get bindFullHeight(): boolean {
+    return this.fullHeight;
   }
 }

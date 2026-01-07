@@ -6,20 +6,19 @@
     'uk-scroll-show-scrollbar-' + showScrollbar,
     'uk-scroll-content-has-sides-margin-' + contentHasSideMargin,
     'uk-scroll-content-has-bottom-margin-' + contentHasBottomMargin,
+    'uk-scroll-max-height-' + (maxHeight ? 'TRUE' : 'FALSE'),
   ]"
 >
   <ng-scrollbar
     [appearance]="appearance === 'auto' ? autoAppearance : appearance"
-    [ngStyle]="{ 'max-height.px': maxHeight }"
+    [ngStyle]="{ 'max-height.px': maxHeight}"
     [orientation]="orientation"
     [visibility]="visibility"
     (afterUpdate)="afterUpdate()"
     (scroll)="onScroll($event)"
   >
     <div #contentElement class="content">
-      <div class="zoon">
-        <ng-content />
-      </div>
+      <ng-content />
       @if (isLoading) {
         <div class="loading-indicator">
           <div class="animation-wrapper">

@@ -25,6 +25,7 @@ import {
 import {UkButtonComponent} from '@utils/ui-kit/components';
 import type {UserModel} from '@utils/ui-kit/definitions';
 import {UK_TYPE} from '@utils/ui-kit/definitions';
+import {UkScrollService} from '@utils/ui-kit/services';
 
 interface PageController {
   props: {
@@ -61,6 +62,7 @@ interface PageController {
 })
 export class HangFollowersModalComponent implements OnInit, OnDestroy {
   private readonly store = inject(Store);
+  private readonly scrollService = inject(UkScrollService);
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
 
   @ViewChild(HangUsersListComponent)
@@ -83,7 +85,7 @@ export class HangFollowersModalComponent implements OnInit, OnDestroy {
       request: {
         userId: '',
         query: {
-          page: 1,
+          page: 0,
           limit: 20,
         },
       },
@@ -91,6 +93,8 @@ export class HangFollowersModalComponent implements OnInit, OnDestroy {
     actions: {
       get: () => {
         const REQUEST = JSON.parse(JSON.stringify(this.PC.props.request));
+
+        REQUEST.query.page += 1;
 
         this.store.dispatch(
           PROFILE_FOLLOW_ACTIONS.$GET_PROFILE_FOLLOWERS(REQUEST),
@@ -119,9 +123,7 @@ export class HangFollowersModalComponent implements OnInit, OnDestroy {
     this.followers$.pipe(takeUntilDestroyed()).subscribe((followers) => {
       if (followers.totalCount) {
         this.PC.props.count = followers.totalCount;
-        setTimeout(() => {
-          this.usersListComponent.scrollComponent.checkOverflow();
-        });
+        this.scrollService.checkOverFlow();
       }
 
       this.PC.props.list.push(...(followers.items ?? []));
