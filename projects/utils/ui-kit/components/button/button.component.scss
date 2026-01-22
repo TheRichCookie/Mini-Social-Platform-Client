@@ -10,19 +10,15 @@ $border-radius-small: pxToRem(4);
 $inner-margin: pxToRem(5);
 
 $height-normal: pxToRem(38);
-$height-small: pxToRem(24);
+$height-small: pxToRem(8);
 
 :host {
   text-align: center;
+
   &.is-blocked {
     display: block;
     width: 100%;
   }
-}
-
-.is-blocked {
-  display: block;
-  width: 100%;
 }
 
 .uk.button {
@@ -56,20 +52,40 @@ $height-small: pxToRem(24);
         background-color: transparent;
       }
       &-BUTTON-PRIMARY {
-        background: linear-gradient(
-          135deg,
-          $color-button-primary 0%,
-          $color-button-secondary
-        );
+        background-color: $color-button-primary;
+
+        &:hover {
+          background-color: $color-button-primary-hover;
+        }
+
+        &:active {
+          background-color: $color-button-primary-pressed;
+        }
       }
       &-BUTTON-SECONDARY {
         background-color: $color-button-secondary;
-      }
-      &-ERROR-FILL {
-        background-color: $color-button-error-fill;
+
+        &:hover {
+          background-color: $color-button-secondary-hover;
+        }
+
+        &:active {
+          background-color: $color-button-secondary-pressed;
+        }
       }
       &-BUTTON-DISABLED {
         background-color: $color-button-disabled;
+      }
+      &-ERROR {
+        background-color: $color-button-error;
+
+        &:hover {
+          background-color: $color-button-error-hover;
+        }
+
+        &:active {
+          background-color: $color-button-error-pressed;
+        }
       }
     }
 
@@ -77,65 +93,51 @@ $height-small: pxToRem(24);
       &-TRANSPARENT {
         border: none;
       }
-      &-COLOR-BUTTON-OUTLINE {
-        border: 1px solid $color-button-outline;
-      }
-      &-COLOR-BUTTON-ERROR-FILL {
-        border: 1px solid $color-button-error-fill;
-      }
-      &-COLOR-BUTTON-PRIMARY {
+      &-BUTTON-PRIMARY {
         border: 1px solid $color-button-primary;
       }
-      &-COLOR-BUTTON-SECONDARY {
+      &-BUTTON-SECONDARY {
         border: 1px solid $color-button-secondary;
       }
-      &-CONTENT-DISABLED {
-        border: 1px solid $color-content-disabled;
+      &-BUTTON-DISABLED {
+        border: 1px solid $color-button-disabled;
       }
-      &-COLOR-BORDER-GRADE-0 {
-        border: 1px solid $color-border-grade-0;
-      }
-      &-COLOR-BORDER-GRADE-1 {
-        border: 1px solid $color-border-grade-1;
-      }
-      &-COLOR-BORDER-GRADE-2 {
-        border: 1px solid $color-border-grade-2;
+      &-BUTTON-ERROR {
+        border: 1px solid $color-button-error;
       }
     }
 
     &-padding {
       &-NORMAL {
         padding: $tb-padding-normal $lr-padding-normal;
-        height: $height-normal;
-        //border-radius: $border-radius-normal;
       }
 
       &-SMALL {
         padding: $tb-padding-small $lr-padding-small;
-        height: $height-small;
-        // border-radius: $border-radius-small;
       }
       &-NONE {
         padding: 0;
-        height: $height-normal;
       }
     }
 
     &-height {
       &-H-48 {
-        height: pxToRem(48);
-      }
-      &-H-32 {
-        height: pxToRem(32);
-      }
-      &-H-36 {
-        height: pxToRem(36);
+        height: 48px;
       }
       &-H-40 {
         height: 40px;
       }
       &-H-36 {
         height: 36px;
+      }
+      &-H-32 {
+        height: 32px;
+      }
+      &-H-24 {
+        height: 24px;
+      }
+      &-H-16 {
+        height: 16px;
       }
     }
 
@@ -165,7 +167,7 @@ $height-small: pxToRem(24);
     }
   }
 
-  .start-wrapper {
+  .start {
     display: none;
 
     &:not(:empty) {
@@ -173,7 +175,7 @@ $height-small: pxToRem(24);
     }
   }
 
-  .end-wrapper {
+  .end {
     display: none;
 
     &:not(:empty) {
@@ -184,15 +186,13 @@ $height-small: pxToRem(24);
   &:not(.disabled) {
     &.uk-button {
       &-cursor {
-        &-NORMAL {
-        }
-
         &-POINTER {
           @include cursorPointerOverlay();
         }
       }
     }
   }
+
   &.disabled {
     @include cursorNotAllowedOverlay();
     border-color: transparent;

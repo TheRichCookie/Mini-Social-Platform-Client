@@ -52,10 +52,10 @@ export class UkShapeIconComponent {
 
     switch (shapeIconSize) {
       case UkShapeIconSize.LARGE:
-        this.currentIconSize = UkIconSize.LARGEST_X;
+        this.currentIconSize = UkIconSize.LARGEST;
         break;
       case UkShapeIconSize.MEDIUM:
-        this.currentIconSize = UkIconSize.LARGEST;
+        this.currentIconSize = UkIconSize.MEDIUM;
         break;
       case UkShapeIconSize.SMALL:
         this.currentIconSize = UkIconSize.SMALL;

@@ -75,6 +75,7 @@ export class HangFollowingModalComponent implements OnInit, OnDestroy {
   public readonly ON_CLOSE = new EventEmitter();
 
   public readonly following$ = this.store.select(SELECT_PROFILE_FOLLOWING_RES);
+  public readonly maxHeight = 450;
   public readonly UK_TYPE = UK_TYPE;
 
   public PC: PageController = {
@@ -126,8 +127,7 @@ export class HangFollowingModalComponent implements OnInit, OnDestroy {
         this.scrollService.checkOverFlow();
       }
 
-      this.PC.props.list.push(...(following.items ?? []));
-
+      this.PC.props.list = [...this.PC.props.list, ...(following.items ?? [])];
       this.PC.props.isLoading = false;
       this.changeDetectorRef.markForCheck();
     });

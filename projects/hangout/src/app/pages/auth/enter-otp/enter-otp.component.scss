@@ -24,14 +24,13 @@ uk-page.enter-otp {
       &.top {
         margin-top: pxToRem(24);
 
-        .wrapper {
+        .image-box {
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          gap: pxToRem(12);
 
-          .image-box {
+          .image {
             width: 130px;
           }
         }

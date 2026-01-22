@@ -31,7 +31,7 @@ $toast-title-gap: 12px;
     &.uk-success-toast {
       color: $color-content-success !important;
       background: linear-gradient(
-        335deg,
+        125deg,
         $color-background-success,
         $color-background-surface-01
       ) !important;
@@ -39,7 +39,7 @@ $toast-title-gap: 12px;
 
     &.uk-error-toast {
       background: linear-gradient(
-        335deg,
+        125deg,
         $color-background-error,
         $color-background-surface-01
       ) !important;
@@ -49,7 +49,7 @@ $toast-title-gap: 12px;
     &.uk-info-toast {
       color: $color-content-caution !important;
       background: linear-gradient(
-        335deg,
+        125deg,
         $color-background-caution,
         $color-background-surface-01
       ) !important;

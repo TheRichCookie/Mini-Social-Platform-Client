@@ -69,7 +69,6 @@ export class HangSearchPageComponent implements OnDestroy {
   public usersListComponent!: HangUsersListComponent;
 
   public readonly searchResult$ = this.store.select(SELECT_SEARCH_USERS_RES);
-
   public readonly UK_TYPE = UK_TYPE;
 
   public PC: PageController = {

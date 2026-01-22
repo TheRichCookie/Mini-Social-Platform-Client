@@ -13,7 +13,7 @@
         bindId="_id"
         [items]="PC.props.list"
         [isLoading]="PC.props.isLoading"
-        [maxHeight]="500"
+        [maxHeight]="maxHeight"
         (LOAD_MORE)="PC.actions.loadMore()"
         (ON_CLICK)="onClose()"
       />

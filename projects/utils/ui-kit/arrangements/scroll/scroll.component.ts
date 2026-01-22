@@ -71,7 +71,7 @@ export class UkScrollComponent implements AfterViewInit {
     DEFAULT.scroll.contentHasBottomMargin;
 
   @Input()
-  public maxHeight: number = null!;
+  public maxHeight?: number;
 
   @Input()
   public isLoading = false;

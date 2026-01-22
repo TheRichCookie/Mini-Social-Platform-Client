@@ -49,16 +49,23 @@ $color-border-grade-2: var(--border-grade-2);
 $color-button-primary: var(--button-primary);
 $color-button-primary-hover: var(--button-primary-hover);
 $color-button-primary-pressed: var(--button-primary-pressed);
-$color-button-primary-hoverOutline: var(--button-primary-hoverOutline);
-$color-button-primary-hoverPressed: var(--button-primary-hoverPressed);
+$color-button-primary-hover-outline: var(--button-primary-hover-outline);
+$color-button-primary-hover-pressed: var(--button-primary-hover-pressed);
+
 $color-button-secondary: var(--button-secondary);
 $color-button-secondary-hover: var(--button-secondary-hover);
-$color-button-outline: var(--button-outline);
-$color-button-disabled: var(--button-disabled);
-$color-button-error-fill: var(--button-error-fill);
-$color-button-error-fill-hover: var(--button-error-fill-hover);
+$color-button-secondary-pressed: var(--button-secondary-pressed);
+$color-button-secondary-hover-outline: var(--button-secondary-hover-outline);
+$color-button-secondary-pressed-outline: var(--button-secondary-pressed-outline);
+
+$color-button-error: var(--button-error);
+$color-button-error-hover: var(--button-error-hover);
+$color-button-error-pressed: var(--button-error-pressed);
 $color-button-error-outline-hover: var(--button-error-outline-hover);
 $color-button-error-outline-pressed: var(--button-error-outline-pressed);
+
+$color-button-outline: var(--button-outline);
+$color-button-disabled: var(--button-disabled);
 // tag
 $color-tag-tag-100: var(--tag-tag-100);
 $color-tag-tag-200: var(--tag-tag-200);

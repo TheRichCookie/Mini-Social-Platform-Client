@@ -1,35 +1,44 @@
 <div class="profile-info">
-  <div class="avatar">
+  <section class="avatar">
     <uk-shape-icon
       [shapeIconType]="UK_TYPE.SHAPE_ICON.TYPE.CIRCLE"
       [iconName]="UK_TYPE.SHAPE_ICON.ICON_NAME.USER"
       [size]="UK_TYPE.SHAPE_ICON.SIZE.LARGE"
     />
-  </div>
-  <div class="username">
-    <uk-text
-      [typography]="UK_TYPE.TEXT.TYPOGRAPHY.H_2"
-      [horizontalAlignment]="UK_TYPE.TEXT.HORIZONTAL_ALIGNMENT.CENTER"
-    >
+  </section>
+  <section class="username">
+    <uk-text [typography]="UK_TYPE.TEXT.TYPOGRAPHY.H_4">
       {{ (user$ | async)?.user?.username }}
     </uk-text>
-  </div>
-  <div class="actions">
+  </section>
+  <section class="actions">
     <uk-button-group [alignType]="UK_TYPE.BUTTON_GROUP.ALIGN_TYPE.CENTER">
       @if ((user$ | async)?.isMe === true) {
         <uk-button
           (click)="PC.actions.openProfileEditModal()"
-          [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
+          [height]="UK_TYPE.BUTTON.HEIGHT.H_24"
           [padding]="UK_TYPE.BUTTON.PADDING.SMALL"
+          [typography]="UK_TYPE.BUTTON.TYPOGRAPHY.BUTTON_2"
         >
           ویرایش
+        </uk-button>
+        <uk-button
+          (click)="PC.actions.openLogoutModal()"
+          [height]="UK_TYPE.BUTTON.HEIGHT.H_24"
+          [padding]="UK_TYPE.BUTTON.PADDING.SMALL"
+          [typography]="UK_TYPE.BUTTON.TYPOGRAPHY.BUTTON_2"
+          [bgColor]="UK_TYPE.BUTTON.BG_COLOR.ERROR"
+        >
+          <uk-icon [name]="UK_TYPE.ICON.NAME.ARROW_RIGHT_FROM_BRACKET" [fgColor]="UK_TYPE.ICON.FG_COLOR.REFERENCE_PRIMARY_LIGHT" />
         </uk-button>
       }
       @if ((user$ | async)?.isFollowing && (user$ | async)?.isMe === false) {
         <uk-button
           (click)="PC.actions.toggleFollow()"
-          [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
+          [height]="UK_TYPE.BUTTON.HEIGHT.H_24"
           [padding]="UK_TYPE.BUTTON.PADDING.SMALL"
+          [typography]="UK_TYPE.BUTTON.TYPOGRAPHY.BUTTON_2"
+          [bgColor]="UK_TYPE.BUTTON.BG_COLOR.BUTTON_SECONDARY"
         >
           دنبال نکردن
         </uk-button>
@@ -38,15 +47,16 @@
       ) {
         <uk-button
           (click)="PC.actions.toggleFollow()"
-          [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
+          [height]="UK_TYPE.BUTTON.HEIGHT.H_24"
           [padding]="UK_TYPE.BUTTON.PADDING.SMALL"
+          [typography]="UK_TYPE.BUTTON.TYPOGRAPHY.BUTTON_2"
         >
           دنبال کردن
         </uk-button>
       }
     </uk-button-group>
-  </div>
-  <div class="follow">
+  </section>
+  <section class="follow">
     <uk-button-group [alignType]="UK_TYPE.BUTTON_GROUP.ALIGN_TYPE.CENTER">
       <uk-button
         (click)="PC.actions.openFollowersModal()"
@@ -55,7 +65,6 @@
         [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
       >
         دنبال‌کنندگان
-
         <uk-text END>
           {{ (user$ | async)?.followers }}
         </uk-text>
@@ -72,21 +81,15 @@
         </uk-text>
       </uk-button>
     </uk-button-group>
-  </div>
-  <div class="major">
-    <uk-text
-      [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_LOW_EMPHASIS"
-      [horizontalAlignment]="UK_TYPE.TEXT.HORIZONTAL_ALIGNMENT.CENTER"
-    >
+  </section>
+  <section class="major">
+    <uk-text [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_LOW_EMPHASIS">
       {{ (user$ | async)?.user?.major }}
     </uk-text>
-  </div>
-  <div class="bio">
-    <uk-text
-      [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE"
-      [horizontalAlignment]="UK_TYPE.TEXT.HORIZONTAL_ALIGNMENT.CENTER"
-    >
+  </section>
+  <section class="bio">
+    <uk-text [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE">
       {{ (user$ | async)?.user?.bio }}
     </uk-text>
-  </div>
+  </section>
 </div>

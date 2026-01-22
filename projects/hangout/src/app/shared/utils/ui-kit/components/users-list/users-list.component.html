@@ -3,10 +3,11 @@
     (LOAD_MORE)="loadMore()"
     [isLoading]="isLoading"
     [maxHeight]="maxHeight"
+    [maxHeight]="maxHeight"
   >
-    @for (item of items; track item[bindId]) {
-      <uk-card (click)="goToProfile(item[bindId])">
-        {{ item[bindLabel] }}
+    @for (item of items; track item.id) {
+      <uk-card (click)="goToProfile(item.id)">
+        {{ item.label }}
       </uk-card>
     }
   </uk-scroll>

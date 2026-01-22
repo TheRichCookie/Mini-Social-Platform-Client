@@ -52,13 +52,16 @@ body {
     --button-primary-hover: var(--button-primary-hover-LIGHT);
     --button-primary-pressed: var(--button-primary-pressed-LIGHT);
     --button-primary-hover-outline: var(--button-primary-hover-outline-LIGHT);
-    --button-primary-hover-pressed: var(--button-primary-hover-pressed-LIGHT);
+    --button-primary-pressed-outline: var(--button-primary-pressed-outline-LIGHT);
+
     --button-secondary: var(--button-secondary-LIGHT);
-    --button-secondaryHover: var(--button-secondaryHover-LIGHT);
-    --button-outline: var(--button-outline-LIGHT);
-    --button-disabled: var(--button-disabled-LIGHT);
-    --button-error-fill: var(--button-error-fill-LIGHT);
-    --button-error-fill-hover: var(--button-error-fill-hover-LIGHT);
+    --button-secondary-hover: var(--button-secondary-hover-LIGHT);
+    --button-secondary-pressed: var(--button-secondary-pressed-LIGHT);
+    --button-secondary-hover-outline: var(--button-secondary-hover-outline-LIGHT);
+    --button-secondary-pressed-outline: var(--button-secondary-pressed-outline-LIGHT);
+
+    --button-error: var(--button-error-LIGHT);
+    --button-error-hover: var(--button-error-hover-LIGHT);
     --button-error-outline-hover: var(--button-error-outline-hover-LIGHT);
     --button-error-outline-pressed: var(--button-error-outline-pressed-LIGHT);
     // tag

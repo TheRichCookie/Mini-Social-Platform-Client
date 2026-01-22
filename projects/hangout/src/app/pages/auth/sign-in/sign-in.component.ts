@@ -38,7 +38,6 @@ import {
 } from '@utils/ui-kit/components';
 import {UK_TYPE} from '@utils/ui-kit/definitions';
 import {UkInputComponent} from '@utils/ui-kit/forms';
-import {UkAlertService} from '@utils/ui-kit/services';
 
 import type {HangAuthStatus, HangSignInForm} from '../_models/auth.model';
 import {SELECT_AUTH_SIGN_IN_RECEIVED_TIME_RESPONSE} from '../_store/auth.selectors';
@@ -74,12 +73,12 @@ import {SELECT_AUTH_SIGN_IN_RECEIVED_TIME_RESPONSE} from '../_store/auth.selecto
 })
 export class HangSignInComponent {
   private readonly store = inject(Store);
-  private readonly alertService = inject(UkAlertService);
   private readonly router = inject(Router);
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
 
   public readonly UK_TYPE = UK_TYPE;
   public readonly APP_ROUTES = APP_ROUTES;
+
   public mobileInputErrorMessage = '';
   public signInFormSubmitted = false;
   public showPassword = false;

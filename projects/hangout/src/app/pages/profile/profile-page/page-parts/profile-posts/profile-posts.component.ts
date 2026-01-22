@@ -54,13 +54,12 @@ export class HangProfilePostsComponent {
   private readonly store = inject(Store);
 
   public readonly UK_TYPE = UK_TYPE;
-
+  public readonly appearance: 'auto' | 'compact' | 'native' = 'auto';
   public readonly posts$ = this.store.select(SELECT_PROFILE_POSTS_RES);
+  public readonly user$ = this.store.select(SELECT_PROFILE_DETAIL_RES);
   public readonly deletePost$ = this.store.select(
     SELECT_PROFILE_DELETE_POST_RECEIVED_TIME,
   );
-
-  public readonly user$ = this.store.select(SELECT_PROFILE_DETAIL_RES);
 
   public PC: PageController = {
     props: {
@@ -125,7 +124,7 @@ export class HangProfilePostsComponent {
         this.scrollService.checkOverFlow();
       }
 
-      this.PC.props.list.push(...(posts.items ?? []));
+      this.PC.props.list = [...this.PC.props.list, ...(posts.items ?? [])];
       this.PC.props.isLoading = false;
 
       this.changeDetectorRef.markForCheck();

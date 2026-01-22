@@ -9,37 +9,41 @@
   height: 100%;
 }
 
-uk-page.sign-in {
-  display: block;
-  border-left: solid 1px $color-border-grade-2;
-  border-right: solid 1px $color-border-grade-2;
-  background-color: $color-background-surface-00;
-  // border-radius: 16px;
+form {
+  height: 100%;
   width: 100%;
-  max-width: 370px;
-  overflow: hidden;
 
-  uk-page-body {
-    uk-page-part {
-      &.top {
-        margin-top: pxToRem(24);
+  uk-page.sign-in {
+    display: block;
+    border-left: solid 1px $color-border-grade-2;
+    border-right: solid 1px $color-border-grade-2;
+    background-color: $color-background-surface-00;
+    // border-radius: 16px;
+    width: 100%;
+    max-width: 370px;
+    overflow: hidden;
 
-        .wrapper {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          gap: pxToRem(12);
+    uk-page-body {
+      uk-page-part {
+        &.top {
+          margin-top: pxToRem(24);
 
           .image-box {
-            width: 130px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .image {
+              width: 130px;
+            }
           }
         }
-      }
 
-      .info {
-        display: flex;
-        gap: 4px;
+        .info {
+          display: flex;
+          gap: 4px;
+        }
       }
     }
   }

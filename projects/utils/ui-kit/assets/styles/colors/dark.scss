@@ -52,15 +52,22 @@ body {
     --button-primary-hover: var(--button-primary-hover-DARK);
     --button-primary-pressed: var(--button-primary-pressed-DARK);
     --button-primary-hover-outline: var(--button-primary-hover-outline-DARK);
-    --button-primary-hover-pressed: var(--button-primary-hover-pressed-DARK);
+    --button-primary-pressed-outline: var(--button-primary-pressed-outline-DARK);
+
     --button-secondary: var(--button-secondary-DARK);
-    --button-secondaryHover: var(--button-secondaryHover-DARK);
-    --button-outline: var(--button-outline-DARK);
-    --button-disabled: var(--button-disabled-DARK);
-    --button-error-fill: var(--button-error-fill-DARK);
-    --button-error-fill-hover: var(--button-error-fill-hover-DARK);
+    --button-secondary-hover: var(--button-secondary-hover-DARK);
+    --button-secondary-pressed: var(--button-secondary-pressed-DARK);
+    --button-secondary-hover-outline: var(--button-secondary-hover-outline-DARK);
+    --button-secondary-pressed-outline: var(--button-secondary-pressed-outline-DARK);
+
+    --button-error: var(--button-error-DARK);
+    --button-error-hover: var(--button-error-hover-DARK);
+    --button-error-pressed: var(--button-error-pressed-DARK);
     --button-error-outline-hover: var(--button-error-outline-hover-DARK);
     --button-error-outline-pressed: var(--button-error-outline-pressed-DARK);
+
+    --button-outline: var(--button-outline-DARK);
+    --button-disabled: var(--button-disabled-DARK);
     // tag
     --tag-tag-100: var(--tag-tag-100-DARK);
     --tag-tag-200: var(--tag-tag-200-DARK);
