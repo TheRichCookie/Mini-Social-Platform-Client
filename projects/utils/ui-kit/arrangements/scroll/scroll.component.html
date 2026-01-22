@@ -6,39 +6,32 @@
     'uk-scroll-show-scrollbar-' + showScrollbar,
     'uk-scroll-content-has-sides-margin-' + contentHasSideMargin,
     'uk-scroll-content-has-bottom-margin-' + contentHasBottomMargin,
+    'uk-scroll-max-height-' + (maxHeight ? 'TRUE' : 'FALSE'),
   ]"
 >
   <ng-scrollbar
-    barClass="scroll-bar"
-    cdkScrollable
-    infiniteScroll
-    thumbClass="scroll-thumbs"
-    class="search-results my-scrollbar"
     [appearance]="appearance === 'auto' ? autoAppearance : appearance"
-    [ngStyle]="{ 'max-height.px': maxHeight }"
+    [ngStyle]="{ 'max-height.px': maxHeight}"
     [orientation]="orientation"
     [visibility]="visibility"
     (afterUpdate)="afterUpdate()"
     (scroll)="onScroll($event)"
-    (scrolled)="onScrollDown()"
-    (scrolledUp)="onScrollUp()"
   >
     <div #contentElement class="content">
-      <div class="zoon">
-        <ng-content />
-      </div>
-      <div *ngIf="isLoading" class="loading-indicator">
-        <div class="animation-wrapper">
-          <uk-animation
-            #searchCloseAnimation
-            [animationScale]="2.5"
-            [autoplay]="UK_TYPE.UK.BOOLEAN.TRUE"
-            [autoReset]="UK_TYPE.UK.BOOLEAN.TRUE"
-            [loop]="UK_TYPE.UK.BOOLEAN.TRUE"
-            [path]="'uk-animations/circle-loading.json'"
-          />
+      <ng-content />
+      @if (isLoading) {
+        <div class="loading-indicator">
+          <div class="animation-wrapper">
+            <uk-animation
+              [animationScale]="5"
+              [autoplay]="UK_TYPE.UK.BOOLEAN.TRUE"
+              [autoReset]="UK_TYPE.UK.BOOLEAN.TRUE"
+              [loop]="UK_TYPE.UK.BOOLEAN.TRUE"
+              [path]="'uk-animations/loading-dots.json'"
+            />
+          </div>
         </div>
-      </div>
+      }
     </div>
   </ng-scrollbar>
 </div>

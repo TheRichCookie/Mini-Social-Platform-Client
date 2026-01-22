@@ -1,13 +1,9 @@
-<uk-page [bodyOverFlow]="UK_TYPE.PAGE.BODY_OVER_FLOW.SCROLL">
+<uk-page>
   <uk-page-body [fullHeight]="true">
-    <uk-page-part>
+    <uk-page-part [fullHeight]="true">
       <uk-scroll
-        (LOAD_MORE)="PC.actions.loadMore()"
-        (NO_OVERFLOW)="PC.actions.loadMore()"
-        [showScrollbar]="UK_TYPE.UK.BOOLEAN.FALSE"
-        [appearance]="'auto'"
-        [isLoading]="PC.props.isLoading"
-        [maxHeight]="840"
+        (LOAD_MORE)="this.PC.actions.loadMore()"
+        [isLoading]="this.PC.props.isLoading"
       >
         @for (item of this.PC.props.list; track item._id) {
           <div

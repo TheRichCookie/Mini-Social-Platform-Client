@@ -4,7 +4,6 @@ import {
   ChangeDetectorRef,
   Component,
   inject,
-  ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {PROFILE_DETAIL_ACTIONS} from '@app/pages/profile/_store/profile.actions';
@@ -18,7 +17,7 @@ import {UkScrollComponent} from '@utils/ui-kit/arrangements';
 import {UkTextComponent} from '@utils/ui-kit/components';
 import type {PostModel} from '@utils/ui-kit/definitions';
 import {UK_TYPE} from '@utils/ui-kit/definitions';
-import {UkAlertService} from '@utils/ui-kit/services';
+import {UkAlertService, UkScrollService} from '@utils/ui-kit/services';
 
 interface PageController {
   props: {
@@ -43,18 +42,16 @@ interface PageController {
 @Component({
   standalone: true,
   selector: 'hang-profile-posts',
-  imports: [CommonModule, UkScrollComponent, UkTextComponent],
+  imports: [CommonModule, UkTextComponent, UkScrollComponent],
   templateUrl: './profile-posts.component.html',
   styleUrls: ['./profile-posts.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HangProfilePostsComponent {
-  private readonly store = inject(Store);
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
+  private readonly scrollService = inject(UkScrollService);
   private readonly alertService = inject(UkAlertService);
-
-  @ViewChild(UkScrollComponent)
-  public scrollComponent!: UkScrollComponent;
+  private readonly store = inject(Store);
 
   public readonly UK_TYPE = UK_TYPE;
   public readonly appearance: 'auto' | 'compact' | 'native' = 'auto';
@@ -73,7 +70,7 @@ export class HangProfilePostsComponent {
         userId: '',
         query: {
           page: 0,
-          limit: 1,
+          limit: 20,
         },
       },
     },
@@ -99,6 +96,8 @@ export class HangProfilePostsComponent {
         }
       },
       loadMore: () => {
+        if (this.PC.props.isLoading) return;
+
         let newPageIndex = JSON.parse(
           JSON.stringify(this.PC.props.request.query.page),
         );
@@ -111,6 +110,7 @@ export class HangProfilePostsComponent {
         ) {
           this.PC.props.isLoading = true;
           this.PC.props.request.query.page = newPageIndex;
+          this.changeDetectorRef.markForCheck();
           this.PC.actions.get();
         }
       },
@@ -121,9 +121,7 @@ export class HangProfilePostsComponent {
     this.posts$.pipe(takeUntilDestroyed()).subscribe((posts) => {
       if (posts.totalCount) {
         this.PC.props.count = posts.totalCount;
-        // setTimeout(() => {
-        //   this.scrollComponent.checkOverflow();
-        // });
+        this.scrollService.checkOverFlow();
       }
 
       this.PC.props.list = [...this.PC.props.list, ...(posts.items ?? [])];

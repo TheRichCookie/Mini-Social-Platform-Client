@@ -2,12 +2,10 @@
   <uk-page-body [fullHeight]="true">
     <uk-page-part>
       <uk-scroll
-        (LOAD_MORE)="PC.actions.loadMore()"
-        (NO_OVERFLOW)="PC.actions.loadMore()"
-        [showScrollbar]="UK_TYPE.UK.BOOLEAN.FALSE"
-        [appearance]="'auto'"
-        [isLoading]="this.PC.props.isLoading"
-        [maxHeight]="840"
+      [showScrollbar]="UK_TYPE.UK.BOOLEAN.FALSE"
+      [appearance]="'auto'"
+      [isLoading]="this.PC.props.isLoading"
+      (PAGE_REACHED_BOTTOM)="PC.actions.loadMore()"
       >
         <div>
           @for (item of this.PC.props.list; track item._id) {

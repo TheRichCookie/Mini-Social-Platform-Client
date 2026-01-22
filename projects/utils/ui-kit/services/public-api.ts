@@ -23,6 +23,7 @@ export * from './object-array/object-array.service';
 export * from './overlay/overlay.service';
 export * from './platforms-common/platforms-common.service';
 export * from './qr-code-reader/qr-code-reader.service';
+export * from './scroll/scroll.service';
 export * from './seo/seo.service';
 export * from './socket/socket.service';
 export * from './string/string.service';

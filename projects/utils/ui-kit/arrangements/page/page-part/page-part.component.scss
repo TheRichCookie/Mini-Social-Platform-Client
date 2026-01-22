@@ -30,6 +30,10 @@ $titleBottomMargin: 12px;
   &.bottom-margin-yes {
     margin-bottom: $bottomMargin;
   }
+
+  &.full-height-true {
+    height: 100%;
+  }
 }
 
 .uk.page-part {

@@ -1,9 +1,8 @@
 <div class="users-list">
   <uk-scroll
-    (LOAD_MORE)="onLoadMore()"
-    (NO_OVERFLOW)="onNoOverflow()"
-    [appearance]="appearance"
+    (LOAD_MORE)="loadMore()"
     [isLoading]="isLoading"
+    [maxHeight]="maxHeight"
     [maxHeight]="maxHeight"
   >
     @for (item of items; track item.id) {

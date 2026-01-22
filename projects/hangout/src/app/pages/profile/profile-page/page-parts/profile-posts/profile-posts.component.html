@@ -1,9 +1,7 @@
 <div class="profile-info">
   <uk-scroll
-    (LOAD_MORE)="PC.actions.loadMore()"
-    (NO_OVERFLOW)="PC.actions.loadMore()"
-    [appearance]="appearance"
     [isLoading]="PC.props.isLoading"
+    (LOAD_MORE)="this.PC.actions.loadMore()"
   >
     @for (post of PC.props.list; track post._id) {
       <div class="post">

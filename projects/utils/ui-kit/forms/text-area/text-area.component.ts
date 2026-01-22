@@ -54,7 +54,11 @@ export class UkTextAreaComponent implements ControlValueAccessor {
     this.touched();
   }
 
-  public onChange(): void {
+  public onChange(event: Event): void {
+    const textarea = event.target as HTMLTextAreaElement;
+
+    textarea.style.height = 'auto'; // reset
+    textarea.style.height = `${textarea.scrollHeight}px`;
     this.changed(this.val);
   }
 

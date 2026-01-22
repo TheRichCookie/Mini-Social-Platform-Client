@@ -12,6 +12,6 @@
     [value]="value"
     [(ngModel)]="val"
     (blur)="onBlur()"
-    (input)="onChange()"
+    (input)="onChange($event)"
   ></textarea>
 </div>
