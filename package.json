@@ -10,6 +10,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "start:LAN": "ng s hangout --host 0.0.0.0 --port 4200",
     "############################################################################################ GIT&COMMIT ###": "",
     "commit": "git-cz",
     "git:commit": "cz",

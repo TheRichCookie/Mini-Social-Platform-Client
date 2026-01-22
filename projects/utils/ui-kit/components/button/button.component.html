@@ -15,18 +15,18 @@
   ]"
   [type]="buttonType"
 >
-  <div class="start-wrapper">
+  <div class="start">
     <ng-content select="[START]" />
   </div>
   <uk-text
-    [fgColor]="disabled ? UK_TYPE.TEXT.FG_COLOR.CONTENT_DISABLED : fgColor"
+    [fgColor]="fgColor"
     [horizontalAlignment]="horizontalAlignment"
     [typography]="typography"
-    [verticalAlignment]="'CENTER'"
+    [verticalAlignment]="verticalAlignment"
   >
     <ng-content />
   </uk-text>
-  <div class="end-wrapper">
+  <div class="end">
     <ng-content select="[END]" />
   </div>
 </button>

@@ -1,23 +1,24 @@
-<uk-page
-  class="sign-in"
-  [bodyOverFlow]="UK_TYPE.PAGE.BODY_OVER_FLOW.SCROLL"
-  [showFooterBorder]="false"
->
-  <uk-page-body>
-    <uk-page-part
-      class="top"
-      [isFirstChildStick]="UK_TYPE.PAGE_PART.IS_FIRST_CHILD_STICK.FALSE"
-    >
-      <div class="wrapper">
-        <div class="image-box">
-          <uk-image [source]="'uk-images/logo/hangout-logo.png'" />
-        </div>
-      </div>
-    </uk-page-part>
+<form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+  <uk-page
+    class="sign-in"
+    [bodyOverFlow]="UK_TYPE.PAGE.BODY_OVER_FLOW.SCROLL"
+    [showFooterBorder]="false"
+  >
+    <uk-page-body>
+      <uk-page-part
+        class="top"
+        [isFirstChildStick]="UK_TYPE.PAGE_PART.IS_FIRST_CHILD_STICK.FALSE"
+      >
+        <!-- <div class="image-box">
+          <uk-image
+            class="image"
+            [source]="'uk-images/logo/hangout-logo.png'"
+          />
+        </div> -->
+      </uk-page-part>
 
-    <uk-page-part class="form">
-      <form (ngSubmit)="onSubmit()">
-        <uk-form [formGroup]="signInForm">
+      <uk-page-part class="form">
+        <uk-form>
           <uk-form-body>
             <uk-form-part>
               <uk-form-row class="form-row email">
@@ -86,35 +87,34 @@
             </uk-form-part>
           </uk-form-body>
         </uk-form>
-      </form>
-    </uk-page-part>
+      </uk-page-part>
 
-    <uk-page-part>
-      <div class="info">
-        <uk-text
-          [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS"
-          [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_1"
-        >
-          حساب کاربری ندارید؟
-        </uk-text>
-        <uk-link [routerLink]="[`../${APP_ROUTES.AUTH.CHILDREN.SIGN_UP}`]"
-          >ثبت‌ نام کنید
-        </uk-link>
-      </div>
-    </uk-page-part>
-  </uk-page-body>
-
-  <uk-page-footer>
-    <uk-button
-      [buttonType]="UK_TYPE.BUTTON.TYPE.SUBMIT"
-      [bgColor]="UK_TYPE.BUTTON.BG_COLOR.BUTTON_PRIMARY"
-      [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
-      [display]="UK_TYPE.BUTTON.DISPLAY.BLOCK"
-      [fgColor]="UK_TYPE.BUTTON.FG_COLOR.CONTENT_LIGHT"
-      [typography]="UK_TYPE.BUTTON.TYPOGRAPHY.BUTTON_1"
-      (click)="onSubmit()"
-    >
-      دریافت کد
-    </uk-button>
-  </uk-page-footer>
-</uk-page>
+      <uk-page-part>
+        <div class="info">
+          <uk-text
+            [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS"
+            [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_1"
+          >
+            حساب کاربری ندارید؟
+          </uk-text>
+          <uk-link [routerLink]="[`../${APP_ROUTES.AUTH.CHILDREN.SIGN_UP}`]"
+            >ثبت‌ نام کنید
+          </uk-link>
+        </div>
+      </uk-page-part>
+    </uk-page-body>
+    <uk-page-footer>
+      <uk-button
+        [buttonType]="UK_TYPE.BUTTON.TYPE.SUBMIT"
+        [bgColor]="UK_TYPE.BUTTON.BG_COLOR.BUTTON_PRIMARY"
+        [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
+        [display]="UK_TYPE.BUTTON.DISPLAY.BLOCK"
+        [fgColor]="UK_TYPE.BUTTON.FG_COLOR.CONTENT_LIGHT"
+        [typography]="UK_TYPE.BUTTON.TYPOGRAPHY.BUTTON_1"
+        (click)="onSubmit()"
+      >
+        دریافت کد
+      </uk-button>
+    </uk-page-footer>
+  </uk-page>
+</form>

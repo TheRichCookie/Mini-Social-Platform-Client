@@ -117,8 +117,20 @@ input[type="number"] {
     &:disabled {
       background-color: #f9f9f9;
     }
+
     &::placeholder {
       color: $color-content-low-emphasis;
+    }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill,
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 1000px $color-background-surface-02 inset !important;
+      -webkit-text-fill-color: $color-content-high-emphasis !important;
+      color: $color-content-high-emphasis !important;
+      transition: background-color 9999s ease-in-out 0s;
     }
   }
 }

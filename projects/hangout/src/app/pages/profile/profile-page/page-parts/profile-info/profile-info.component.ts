@@ -1,13 +1,13 @@
 import {CommonModule} from '@angular/common';
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   DestroyRef,
   inject,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ActivatedRoute} from '@angular/router';
+import {HangLogoutModalComponent} from '@app/pages/auth/logout-modal/logout-modal.component';
 import {PROFILE_DETAIL_ACTIONS} from '@app/pages/profile/_store/profile.actions';
 import {
   SELECT_PROFILE_DETAIL_RES,
@@ -20,6 +20,7 @@ import {Store} from '@ngrx/store';
 import {UkButtonGroupComponent} from '@utils/ui-kit/arrangements';
 import {
   UkButtonComponent,
+  UkIconComponent,
   UkShapeIconComponent,
   UkTextComponent,
 } from '@utils/ui-kit/components';
@@ -45,6 +46,7 @@ interface PageController {
     openFollowersModal: () => void;
     openFollowingModal: () => void;
     openProfileEditModal: () => void;
+    openLogoutModal: () => void;
   };
 }
 
@@ -57,6 +59,7 @@ interface PageController {
     UkButtonComponent,
     UkTextComponent,
     UkButtonGroupComponent,
+    UkIconComponent,
   ],
   templateUrl: './profile-info.component.html',
   styleUrls: ['./profile-info.component.scss'],
@@ -64,7 +67,6 @@ interface PageController {
   providers: [UkOverlayService],
 })
 export class HangProfileInfoComponent {
-  private readonly changeDetectorRef = inject(ChangeDetectorRef);
   private readonly overlayService = inject(UkOverlayService);
   private readonly activatedRoute = inject(ActivatedRoute);
   private readonly alertService = inject(UkAlertService);
@@ -74,13 +76,12 @@ export class HangProfileInfoComponent {
   public readonly UK_TYPE = UK_TYPE;
 
   public readonly user$ = this.store.select(SELECT_PROFILE_DETAIL_RES);
+  public readonly profileEdit$ = this.store.select(SELECT_PROFILE_PATCH_RES);
   public readonly followers$ = this.store.select(SELECT_PROFILE_FOLLOWERS_RES);
   public readonly following$ = this.store.select(SELECT_PROFILE_FOLLOWING_RES);
   public readonly follow$ = this.store.select(
     SELECT_PROFILE_TOGGLE_FOLLOW_RECEIVED_TIME,
   );
-
-  public readonly profileEdit$ = this.store.select(SELECT_PROFILE_PATCH_RES);
 
   public PC: PageController = {
     props: {
@@ -196,6 +197,32 @@ export class HangProfileInfoComponent {
           });
 
         OVERLAY.componentRef.instance.ON_CLOSE.pipe(
+          takeUntilDestroyed(this.destroyRef),
+        ).subscribe(() => {
+          OVERLAY.overlayRef.dispose();
+        });
+      },
+      openLogoutModal: () => {
+        const OVERLAY = this.overlayService.open(HangLogoutModalComponent, {
+          hasBackdrop: true,
+          positionInfo: 'CENTER_BOTTOM',
+          width: CONST_CONFIG.COMMON.MAX_MOBILE_WIDTH,
+        });
+
+        OVERLAY.overlayRef
+          .backdropClick()
+          .pipe(take(1))
+          .subscribe(() => {
+            OVERLAY.overlayRef.dispose();
+          });
+
+        OVERLAY.componentRef.instance.ON_CLOSE.pipe(
+          takeUntilDestroyed(this.destroyRef),
+        ).subscribe(() => {
+          OVERLAY.overlayRef.dispose();
+        });
+
+        OVERLAY.componentRef.instance.ON_LOGOUT.pipe(
           takeUntilDestroyed(this.destroyRef),
         ).subscribe(() => {
           OVERLAY.overlayRef.dispose();

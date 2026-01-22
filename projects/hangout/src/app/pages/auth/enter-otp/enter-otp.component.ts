@@ -37,12 +37,12 @@ import {
   UkStopWatchComponent,
   UkTextComponent,
 } from '@utils/ui-kit/components';
+import type {AuthSignInRequest} from '@utils/ui-kit/definitions';
 import {UK_TYPE} from '@utils/ui-kit/definitions';
 import {UkOtpInputComponent} from '@utils/ui-kit/forms';
 import {UkAlertService} from '@utils/ui-kit/services';
 import {NgxOtpStatus} from 'ngx-otp-input';
 
-import type {AuthSignInRequest} from '../../../../../../utils/ui-kit/definitions/swagger/swagger';
 import {
   SELECT_AUTH_OTP_RESPONSE,
   SELECT_AUTH_SIGN_IN_RECEIVED_TIME_RESPONSE,
@@ -92,13 +92,15 @@ export class HangEnterOtpComponent {
     }),
   });
 
-  public readonly UK_TYPE = UK_TYPE;
-  public readonly ngxOtpStatus = NgxOtpStatus;
   public readonly store = inject(Store);
   public readonly router = inject(Router);
   public readonly location = inject(Location);
   public readonly alertService = inject(UkAlertService);
   public readonly changeDetectorRef = inject(ChangeDetectorRef);
+
+  public readonly UK_TYPE = UK_TYPE;
+  public readonly ngxOtpStatus = NgxOtpStatus;
+
   public otpInputStatus: NgxOtpStatus | null = null;
   public singInRequest: AuthSignInRequest | null = null;
 

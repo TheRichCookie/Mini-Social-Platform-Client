@@ -157,7 +157,7 @@ const SIMPLE = {
     borderColor: UkButtonBorderColor.TRANSPARENT,
     padding: UkButtonPadding.NORMAL,
     type: UkButtonType.BUTTON,
-    cursor: UkCursor.DEFAULT,
+    cursor: UkCursor.POINTER,
     ukType: UkButtonUkType.NONE,
     height: UkButtonHeight.H_48,
     // label

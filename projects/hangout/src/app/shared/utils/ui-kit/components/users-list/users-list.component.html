@@ -1,15 +1,14 @@
 <div class="users-list">
   <uk-scroll
-    (LOAD_MORE)="loadMore()"
-    (NO_OVERFLOW)="noOverflow()"
-    [showScrollbar]="UK_TYPE.UK.BOOLEAN.FALSE"
-    [appearance]="'auto'"
+    (LOAD_MORE)="onLoadMore()"
+    (NO_OVERFLOW)="onNoOverflow()"
+    [appearance]="appearance"
     [isLoading]="isLoading"
-    [maxHeight]="840"
+    [maxHeight]="maxHeight"
   >
-    @for (item of items; track item[bindId]) {
-      <uk-card (click)="goToProfile(item[bindId])">
-        {{ item[bindLabel] }}
+    @for (item of items; track item.id) {
+      <uk-card (click)="goToProfile(item.id)">
+        {{ item.label }}
       </uk-card>
     }
   </uk-scroll>

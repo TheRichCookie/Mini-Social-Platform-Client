@@ -1,15 +1,7 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  DestroyRef,
-  inject,
-} from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {HangLogoutModalComponent} from '@app/pages/auth/logout-modal/logout-modal.component';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {UkIconComponent, UkTextComponent} from '@utils/ui-kit/components';
-import {CONST_CONFIG, UK_TYPE} from '@utils/ui-kit/definitions';
+import {UK_TYPE} from '@utils/ui-kit/definitions';
 import {UkOverlayService} from '@utils/ui-kit/services';
-import {take} from 'rxjs';
 
 @Component({
   standalone: true,
@@ -21,34 +13,5 @@ import {take} from 'rxjs';
   providers: [UkOverlayService],
 })
 export class HangHeaderComponent {
-  private readonly overlayService = inject(UkOverlayService);
-  private readonly destroyRef = inject(DestroyRef);
   public readonly UK_TYPE = UK_TYPE;
-
-  public openLogoutModal(): void {
-    const OVERLAY = this.overlayService.open(HangLogoutModalComponent, {
-      hasBackdrop: true,
-      positionInfo: 'CENTER_BOTTOM',
-      width: CONST_CONFIG.COMMON.MAX_MOBILE_WIDTH,
-    });
-
-    OVERLAY.overlayRef
-      .backdropClick()
-      .pipe(take(1))
-      .subscribe(() => {
-        OVERLAY.overlayRef.dispose();
-      });
-
-    OVERLAY.componentRef.instance.ON_CLOSE.pipe(
-      takeUntilDestroyed(this.destroyRef),
-    ).subscribe(() => {
-      OVERLAY.overlayRef.dispose();
-    });
-
-    OVERLAY.componentRef.instance.ON_LOGOUT.pipe(
-      takeUntilDestroyed(this.destroyRef),
-    ).subscribe(() => {
-      OVERLAY.overlayRef.dispose();
-    });
-  }
 }

@@ -18,6 +18,7 @@ import type {
   TextFgColor,
   TextHorizontalAlignment,
   TextTypography,
+  TextVerticalAlignment,
 } from '@utils/ui-kit/definitions';
 import {DEFAULT, UK_TYPE, UkButtonDisplay} from '@utils/ui-kit/definitions';
 
@@ -32,6 +33,8 @@ import {UkTextComponent} from '../public-api';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UkButtonComponent {
+  private _fgColor: TextFgColor = DEFAULT.button.fgColor;
+
   @Input()
   public bgColor: ButtonBgColor = DEFAULT.button.bgColor;
 
@@ -56,10 +59,6 @@ export class UkButtonComponent {
   @Input()
   public disabled = false;
 
-  // label
-  @Input()
-  public fgColor: TextFgColor = DEFAULT.button.fgColor;
-
   @Input()
   public typography: TextTypography = DEFAULT.button.typography;
 
@@ -67,7 +66,6 @@ export class UkButtonComponent {
   public horizontalAlignment: TextHorizontalAlignment =
     DEFAULT.button.horizontalAlignment;
 
-  // type
   @Input()
   public ukType: ButtonUkType = DEFAULT.button.ukType;
 
@@ -75,6 +73,18 @@ export class UkButtonComponent {
   public borderRadius: ButtonBorderRadius = DEFAULT.button.borderRadius;
 
   public readonly UK_TYPE = UK_TYPE;
+  public readonly verticalAlignment: TextVerticalAlignment = 'CENTER';
+
+  @Input()
+  public set fgColor(fgColor: TextFgColor) {
+    this._fgColor = fgColor;
+  }
+
+  public get fgColor(): TextFgColor {
+    return this.disabled
+      ? UK_TYPE.TEXT.FG_COLOR.CONTENT_DISABLED
+      : this._fgColor;
+  }
 
   @HostBinding('class.is-blocked')
   private get isBlocked(): boolean {

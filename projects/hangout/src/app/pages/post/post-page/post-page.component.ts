@@ -9,6 +9,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import {Router} from '@angular/router';
+import {APP_ROUTES} from '@app/app.routes';
 import {Store} from '@ngrx/store';
 import {
   UkFormBodyComponent,
@@ -63,6 +65,7 @@ interface PageController {
 })
 export class HangPostPageComponent implements OnDestroy {
   private readonly store = inject(Store);
+  private readonly router = inject(Router);
   private readonly alertService = inject(UkAlertService);
 
   private readonly addPost$ = this.store.select(SELECT_ADD_POST_RES);
@@ -97,6 +100,7 @@ export class HangPostPageComponent implements OnDestroy {
     this.addPost$.pipe(takeUntilDestroyed()).subscribe((res) => {
       if (res._id) {
         this.alertService.success('پست ایجاد شد');
+        void this.router.navigate([APP_ROUTES.HOME.ROOT]);
       }
     });
   }

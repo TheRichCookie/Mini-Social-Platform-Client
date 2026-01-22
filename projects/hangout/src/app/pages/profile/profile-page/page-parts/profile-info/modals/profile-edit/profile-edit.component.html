@@ -1,14 +1,14 @@
-<uk-modal-frame
-  class="profile-edit"
-  [borderRadius]="UK_TYPE.MODAL_FRAME.BORDER_RADIUS.TOP"
-  [showHeader]="UK_TYPE.UK.BOOLEAN.TRUE"
-  [showTopClose]="true"
-  [title]="'ویرایش حساب کاربری'"
-  (ON_CLOSE)="onClose()"
->
-  <div FRAME-BODY>
-    <div>
-      <form [formGroup]="profileEditForm">
+<form [formGroup]="profileEditForm" (ngSubmit)="onSubmit()">
+  <uk-modal-frame
+    class="profile-edit"
+    [borderRadius]="UK_TYPE.MODAL_FRAME.BORDER_RADIUS.TOP"
+    [showHeader]="UK_TYPE.UK.BOOLEAN.TRUE"
+    [showTopClose]="true"
+    [title]="'ویرایش حساب کاربری'"
+    (ON_CLOSE)="onClose()"
+  >
+    <div FRAME-BODY>
+      <div>
         <uk-form>
           <uk-form-body>
             <uk-form-part>
@@ -43,25 +43,29 @@
             </uk-form-part>
           </uk-form-body>
         </uk-form>
-      </form>
+      </div>
     </div>
-  </div>
-  <div FRAME-ACTIONS>
-    <uk-button-group>
-      <uk-button
-        [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
-        [display]="UK_TYPE.BUTTON.DISPLAY.BLOCK"
-        (click)="onClose()"
-      >
-        بستن
-      </uk-button>
-      <uk-button
-        [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
-        [display]="UK_TYPE.BUTTON.DISPLAY.BLOCK"
-        (click)="onSubmit()"
-      >
-        تایید
-      </uk-button>
-    </uk-button-group>
-  </div>
-</uk-modal-frame>
+    <div FRAME-ACTIONS>
+      <uk-button-group>
+        <uk-button
+          [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
+          [display]="UK_TYPE.BUTTON.DISPLAY.BLOCK"
+          [bgColor]="UK_TYPE.BUTTON.BG_COLOR.TRANSPARENT"
+          [borderColor]="UK_TYPE.BUTTON.BORDER_COLOR.BUTTON_PRIMARY"
+          [fgColor]="UK_TYPE.BUTTON.FG_COLOR.CONTENT_PRIMARY"
+          (click)="onClose()"
+        >
+          بستن
+        </uk-button>
+        <uk-button
+          [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
+          [display]="UK_TYPE.BUTTON.DISPLAY.BLOCK"
+          [buttonType]="UK_TYPE.BUTTON.TYPE.SUBMIT"
+          (click)="onSubmit()"
+        >
+          تایید
+        </uk-button>
+      </uk-button-group>
+    </div>
+  </uk-modal-frame>
+</form>

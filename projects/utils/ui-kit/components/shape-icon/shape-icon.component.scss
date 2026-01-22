@@ -5,154 +5,152 @@
   justify-content: center;
   align-items: center;
 
-  > .icon-wrapper {
+  > .icon {
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 4px;
   }
 
-  &.shape-icon-bg-color {
-    &-TRANSPARENT {
-      > .icon-wrapper {
-        background-color: transparent;
+  &.shape-icon {
+    &-fg-color {
+      &-TRANSPARENT {
+        > .icon {
+          color: transparent;
+        }
+      }
+      &-OPACITY-PRIMARY-00 {
+        > .icon {
+          color: $color-opacity-primary-00;
+        }
+      }
+      &-REFERENCE-NEUTRAL-80 {
+        > .icon {
+          color: $color-reference-neutral-neutral-80;
+        }
+      }
+      &-REFERENCE-PRIMARY-MAIN {
+        > .icon {
+          color: $color-reference-primary-main;
+        }
+      }
+      &-BUTTON-ERROR-FILL {
+        > .icon {
+          color: $color-background-error;
+        }
+      }
+      &-CONTENT-HIGH-EMPHASIS {
+        > .icon {
+          color: $color-content-high-emphasis;
+        }
+      }
+      &-CONTENT-SUCCESS {
+        > .icon {
+          color: $color-content-success;
+        }
       }
     }
-    &-OPACITY-PRIMARY-00 {
-      > .icon-wrapper {
-        background-color: $color-opacity-primary-00;
+    &-bg-color {
+      &-TRANSPARENT {
+        > .icon {
+          background-color: transparent;
+        }
+      }
+      &-OPACITY-PRIMARY-00 {
+        > .icon {
+          background-color: $color-opacity-primary-00;
+        }
+      }
+      &-BACKGROUND-ERROR {
+        > .icon {
+          background-color: $color-background-error;
+        }
+      }
+      &-REFERENCE-PRIMARY-MAIN {
+        > .icon {
+          background-color: $color-reference-primary-main;
+        }
+      }
+      &-BACKGROUND-PRIMARY-01 {
+        > .icon {
+          background-color: $color-background-primary-01;
+        }
+      }
+      &-BACKGROUND-SURFACE-01 {
+        > .icon {
+          background-color: $color-background-surface-01;
+        }
+      }
+      &-BACKGROUND-SURFACE-02 {
+        > .icon {
+          background-color: $color-background-surface-02;
+        }
+      }
+      &-BACKGROUND-SUCCESS {
+        > .icon {
+          background-color: $color-background-success;
+        }
+      }
+      &-REFERENCE-NEUTRAL-80 {
+        background-color: $color-reference-neutral-neutral-80;
       }
     }
-    &-BACKGROUND-ERROR {
-      > .icon-wrapper {
-        background-color: $color-background-error;
+    &-border-color {
+      &-TRANSPARENT {
+        > .icon {
+          border: none;
+        }
+      }
+      &-ERROR {
+        > .icon {
+          border: 1px solid $color-button-error;
+        }
       }
     }
-    &-REFERENCE-PRIMARY-MAIN {
-      > .icon-wrapper {
-        background-color: $color-reference-primary-main;
+    &-type {
+      &-CIRCLE {
+        > .icon {
+          border-radius: 50%;
+        }
       }
-    }
-    &-BACKGROUND-PRIMARY-01 {
-      > .icon-wrapper {
-        background-color: $color-background-primary-01;
-      }
-    }
-    &-BACKGROUND-SURFACE-01 {
-      > .icon-wrapper {
-        background-color: $color-background-surface-01;
-      }
-    }
-    &-BACKGROUND-SURFACE-02 {
-      > .icon-wrapper {
-        background-color: $color-background-surface-02;
-      }
-    }
-    &-BACKGROUND-SUCCESS {
-      > .icon-wrapper {
-        background-color: $color-background-success;
-      }
-    }
-    &-REFERENCE-NEUTRAL-80 {
-      background-color: $color-reference-neutral-neutral-80;
-    }
-  }
 
-  &.shape-icon-fg-color {
-    &-TRANSPARENT {
-      > .icon-wrapper {
-        color: transparent;
-      }
-    }
-    &-OPACITY-PRIMARY-00 {
-      > .icon-wrapper {
-        color: $color-opacity-primary-00;
-      }
-    }
-    &-REFERENCE-NEUTRAL-80 {
-      > .icon-wrapper {
-        color: $color-reference-neutral-neutral-80;
-      }
-    }
-    &-REFERENCE-PRIMARY-MAIN {
-      > .icon-wrapper {
-        color: $color-reference-primary-main;
-      }
-    }
-    &-BUTTON-ERROR-FILL {
-      > .icon-wrapper {
-        color: $color-background-error;
-      }
-    }
-    &-CONTENT-HIGH-EMPHASIS {
-      > .icon-wrapper {
-        color: $color-content-high-emphasis;
-      }
-    }
-    &-CONTENT-SUCCESS {
-      > .icon-wrapper {
-        color: $color-content-success;
-      }
-    }
-  }
-
-  &.shape-icon-border-color {
-    &-TRANSPARENT {
-      > .icon-wrapper {
-        border: none;
-      }
-    }
-    &-BUTTON-ERROR-FILL {
-      > .icon-wrapper {
-        border: 1px solid $color-button-error-fill;
-      }
-    }
-  }
-
-  &.shape-icon-size {
-    &-SMALL {
-      > .icon-wrapper {
-        width: 20px;
-        height: 20px;
-      }
-    }
-    &-MEDIUM {
-      > .icon-wrapper {
-        width: 40px;
-        height: 40px;
-      }
-    }
-    &-LARGE {
-      > .icon-wrapper {
-        width: 60px;
-        height: 60px;
-      }
-    }
-  }
-
-  &.shape-icon-type {
-    &-CIRCLE {
-      > .icon-wrapper {
-        border-radius: 50%;
-      }
-    }
-
-    &-SQUARE {
-      &.shape-icon-size {
-        &-SMALL {
-          > .icon-wrapper {
-            border-radius: 4px;
+      &-SQUARE {
+        &.shape-icon-size {
+          &-SMALL {
+            > .icon {
+              border-radius: 4px;
+            }
+          }
+          &-MEDIUM {
+            > .icon {
+              border-radius: 6px;
+            }
+          }
+          &-LARGE {
+            > .icon {
+              border-radius: 8px;
+            }
           }
         }
-        &-MEDIUM {
-          > .icon-wrapper {
-            border-radius: 6px;
-          }
+      }
+    }
+    &-size {
+      &-SMALL {
+        > .icon {
+          width: 20px;
+          height: 20px;
         }
-        &-LARGE {
-          > .icon-wrapper {
-            border-radius: 8px;
-          }
+      }
+      &-MEDIUM {
+        > .icon {
+          width: 40px;
+          height: 40px;
+        }
+      }
+      &-LARGE {
+        > .icon {
+          width: 60px;
+          height: 60px;
         }
       }
     }

@@ -8,7 +8,7 @@ export type IconBgColor = `${UkIconBgColor}`;
 
 export enum UkIconBorderColor {
   TRANSPARENT = 'TRANSPARENT',
-  BUTTON_ERROR_FILL = 'BUTTON-ERROR-FILL',
+  ERROR = 'ERROR',
 }
 export type IconBorderColor = `${UkIconBorderColor}`;
 
@@ -24,8 +24,8 @@ export enum UkIconFgColor {
   CONTENT_ERROR = 'CONTENT-ERROR',
   CONTENT_PROGRESS = 'CONTENT-PROGRESS',
   CONTENT_SUCCESS = 'CONTENT-SUCCESS',
-  REFERENCE_NEUTRAL = 'REFERENCE-NEUTRAL',
   CONTENT_DISABLED = 'CONTENT-DISABLED',
+  REFERENCE_NEUTRAL = 'REFERENCE-NEUTRAL',
   REFERENCE_PRIMARY_LIGHT = 'REFERENCE-PRIMARY-LIGHT',
 }
 export type IconFgColor = `${UkIconFgColor}`;

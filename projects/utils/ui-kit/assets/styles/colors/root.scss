@@ -188,7 +188,7 @@ $darkColors: (
     highEmphasis: #e0e0e2,
     dark: #e0e0e2,
     neutral: #b0b3b8,
-    primary: #4285f4,
+    primary: #586ab9,
     secondary: #00a693,
     caution: #f4b400,
     error: #ff1500,
@@ -201,24 +201,26 @@ $darkColors: (
     grade2: rgba(255, 255, 255, 0.1),
   ),
   button: (
-    primary: #667eea,
-    primaryHover: #8094f9,
-    primaryPressed: #4d65d6,
+    primary: #586ab9,
+    primaryHover: #7789da,
+    primaryPressed: #8ea0fa,
     primaryHoverOutline: #283470,
-    primaryHoverPressed: #1a224a,
+    primaryPressedOutline: #1a224a,
 
-    secondary: #2c2c2c,
-    secondaryHover: #3a3a3a,
-    secondaryPressed: #1f1f1f,
-    secondaryHoverOutline: #4a4a4a,
+    secondary: #4e4e4e,
+    secondaryHover: #5f5f5f,
+    secondaryPressed: #727272,
+    secondaryHoverOutline: #5f5f5f,
+    secondaryPressedOutline: #727272,
+
+    error: #9e2a20,
+    errorHover: #b83f34,
+    errorPressed: #d85144, 
+    errorHoverOutline: #b83f34,
+    errorPressedOutline: #d85144,
 
     outline: #91949a,
     disabled: #4b4b4d,
-
-    errorFill: #ea4335,
-    errorFillHover: #eb594d,
-    errorOutlineHover: #80211a,
-    errorOutlinePressed: #5c1813,
   ),
   tag: (
     tag100: #f2f2f2,
@@ -518,28 +520,41 @@ $darkColors: (
   --button-primary-DARK: #{getRootDarkColor(button, primary)};
   --button-primary-hover-DARK: #{getRootDarkColor(button, primaryHover)};
   --button-primary-pressed-DARK: #{getRootDarkColor(button, primaryPressed)};
-  --button-primary-hoverOutline-DARK: #{getRootDarkColor(
+  --button-primary-hover-outline-DARK: #{getRootDarkColor(
       button,
       primaryHoverOutline
     )};
-  --button-primary-hoverPressed-DARK: #{getRootDarkColor(
+  --button-primary-hover-pressed-DARK: #{getRootDarkColor(
       button,
-      primaryHoverPressed
+      primaryPressedOutline
     )};
+
   --button-secondary-DARK: #{getRootDarkColor(button, secondary)};
   --button-secondary-hover-DARK: #{getRootDarkColor(button, secondaryHover)};
-  --button-outline-DARK: #{getRootDarkColor(button, outline)};
-  --button-disabled-DARK: #{getRootDarkColor(button, disabled)};
-  --button-error-fill-DARK: #{getRootDarkColor(button, errorFill)};
-  --button-error-fill-hover-DARK: #{getRootDarkColor(button, errorFillHover)};
+  --button-secondary-pressed-DARK: #{getRootDarkColor(button, secondaryPressed)};
+  --button-secondary-hover-outline-DARK: #{getRootDarkColor(
+      button,
+      secondaryHoverOutline
+    )};
+  --button-secondary-pressed-outline-DARK: #{getRootDarkColor(
+      button,
+      secondaryPressedOutline
+    )};
+
+  --button-error-DARK: #{getRootDarkColor(button, error)};
+  --button-error-hover-DARK: #{getRootDarkColor(button, errorHover)};
+  --button-error-pressed-DARK: #{getRootDarkColor(button, errorPressed)};
   --button-error-outline-hover-DARK: #{getRootDarkColor(
       button,
-      errorOutlineHover
+      errorHoverOutline
     )};
   --button-error-outline-pressed-DARK: #{getRootDarkColor(
       button,
-      errorOutlinePressed
+      errorPressedOutline
     )};
+
+  --button-outline-DARK: #{getRootDarkColor(button, outline)};
+  --button-disabled-DARK: #{getRootDarkColor(button, disabled)};
   // tag
   --tag-tag-100-DARK: #{getRootDarkColor(tag, tag100)};
   --tag-tag-200-DARK: #{getRootDarkColor(tag, tag200)};
