@@ -8,7 +8,6 @@ import {
   inject,
   Input,
   Output,
-  ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
@@ -65,11 +64,8 @@ export class HangFollowersModalComponent implements OnInit, OnDestroy {
   private readonly scrollService = inject(UkScrollService);
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
 
-  @ViewChild(HangUsersListComponent)
-  public usersListComponent!: HangUsersListComponent;
-
-  @Input()
-  public userId = '';
+  @Input({required: true})
+  public userId!: string;
 
   @Output()
   public readonly ON_CLOSE = new EventEmitter();
@@ -87,7 +83,7 @@ export class HangFollowersModalComponent implements OnInit, OnDestroy {
         userId: '',
         query: {
           page: 0,
-          limit: 20,
+          limit: 15,
         },
       },
     },
@@ -124,7 +120,9 @@ export class HangFollowersModalComponent implements OnInit, OnDestroy {
     this.followers$.pipe(takeUntilDestroyed()).subscribe((followers) => {
       if (followers.totalCount) {
         this.PC.props.count = followers.totalCount;
-        this.scrollService.checkOverFlow();
+        setTimeout(() => {
+          this.scrollService.ensureScrollableContent();
+        });
       }
 
       this.PC.props.list = [...this.PC.props.list, ...(followers.items ?? [])];

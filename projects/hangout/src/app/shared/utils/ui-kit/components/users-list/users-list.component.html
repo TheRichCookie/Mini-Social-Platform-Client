@@ -1,14 +1,18 @@
 <div class="users-list">
   <uk-scroll
-    (LOAD_MORE)="loadMore()"
     [isLoading]="isLoading"
     [maxHeight]="maxHeight"
-    [maxHeight]="maxHeight"
+    (PAGE_COMPONENT_LOAD_MORE)="onPageComponentLoadMore()"
+    (SCROLL_COMPONENT_LOAD_MORE)="onScrollComponentLoadMore()"
   >
-    @for (item of items; track item.id) {
-      <uk-card (click)="goToProfile(item.id)">
-        {{ item.label }}
-      </uk-card>
+    @if (items?.length) {
+      @for (item of items; track item.id) {
+        <uk-card (click)="goToProfile(item.id)">
+          {{ item.label }}
+        </uk-card>
+      }
+    } @else {
+      <uk-empty-state> هیچ داده ای یافت نشد. </uk-empty-state>
     }
   </uk-scroll>
 </div>

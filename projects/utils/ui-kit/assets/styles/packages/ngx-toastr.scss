@@ -5,12 +5,15 @@ $toast-icon-size: 20px;
 $toast-title-gap: 12px;
 
 .toast-container {
-  > .ngx-toastr {
+  width: 100%;
+
+  .ngx-toastr {
     box-shadow: none !important;
     border-radius: 16px !important;
     padding: 16px 20px;
-    width: 350px;
     line-height: initial !important;
+    max-width: 350px;
+    width: 100% !important;
 
     .toast-title {
       @include typography-subtitle-strong();

@@ -18,6 +18,7 @@ import type {
   TextTypography,
   TextVerticalAlignment,
   TextWhiteSpace,
+  TextWordBreak,
   UkTextDirection,
 } from '@utils/ui-kit/definitions';
 import {DEFAULT, UkTextDisplay} from '@utils/ui-kit/definitions';
@@ -65,6 +66,9 @@ export class UkTextComponent {
 
   @Input()
   public whiteSpace: TextWhiteSpace = DEFAULT.text.whiteSpace;
+
+  @Input()
+  public wordBreak: TextWordBreak = DEFAULT.text.wordBreak;
 
   @Input()
   public numeric: TextNumeric = DEFAULT.text.numeric;

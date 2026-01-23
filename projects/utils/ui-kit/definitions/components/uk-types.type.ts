@@ -27,7 +27,10 @@ import {
   UkTableCardSize,
   UkTableLayoutTypes,
 } from '@utils/ui-kit/definitions';
-import {UkEmptyStateStyle} from '@utils/ui-kit/definitions/components/empty-state/empty-state.type';
+import {
+  UkEmptyStateStyle,
+  UkEmptyStateType,
+} from '@utils/ui-kit/definitions/components/empty-state/empty-state.type';
 
 import {
   UkBannerContentStartStatus,
@@ -116,6 +119,7 @@ import {
   UkTextTypography,
   UkTextVerticalAlignment,
   UkTextWhiteSpace,
+  UkTextWordBreak,
 } from './text/text.type';
 import {
   UkAutoBooleanType,
@@ -233,6 +237,7 @@ export const UK_TYPE = {
   },
   EMPTY_STATE: {
     STYLE: UkEmptyStateStyle,
+    TYPE: UkEmptyStateType,
   },
   FILE_UPLOADER: {
     TYPE: UkFileUploaderType,
@@ -384,6 +389,7 @@ export const UK_TYPE = {
     VERTICAL_ALIGNMENT: UkTextVerticalAlignment,
     TEXT_WRAP: UkTextTextWrap,
     WHITE_SPACE: UkTextWhiteSpace,
+    BREAK_WORD: UkTextWordBreak,
     DIRECTION: UkTextDirection,
   },
   TILE: {

@@ -1,5 +1,5 @@
 <div
-  #wrapperElement
+  #mainElement
   dir="rtl"
   class="uk scroll"
   [ngClass]="[
@@ -11,7 +11,7 @@
 >
   <ng-scrollbar
     [appearance]="appearance === 'auto' ? autoAppearance : appearance"
-    [ngStyle]="{ 'max-height.px': maxHeight}"
+    [ngStyle]="{ 'max-height.px': maxHeight }"
     [orientation]="orientation"
     [visibility]="visibility"
     (afterUpdate)="afterUpdate()"

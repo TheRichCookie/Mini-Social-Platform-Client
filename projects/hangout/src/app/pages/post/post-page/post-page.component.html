@@ -1,7 +1,7 @@
-<uk-page [bodyOverFlow]="UK_TYPE.PAGE.BODY_OVER_FLOW.SCROLL">
-  <uk-page-body [fullHeight]="true">
-    <uk-page-part>
-      <form [formGroup]="postForm">
+<form [formGroup]="postForm" (ngSubmit)="PC.actions.addPost()">
+  <uk-page [bodyOverFlow]="UK_TYPE.PAGE.BODY_OVER_FLOW.SCROLL">
+    <uk-page-body [fullHeight]="true">
+      <uk-page-part>
         <uk-form>
           <uk-form-body>
             <uk-form-part>
@@ -22,17 +22,18 @@
               <uk-form-row>
                 <uk-form-controller>
                   <uk-button
-                    [display]="UK_TYPE.BUTTON.DISPLAY.BLOCK"
                     [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
+                    [display]="UK_TYPE.BUTTON.DISPLAY.BLOCK"
+                    [buttonType]="UK_TYPE.BUTTON.TYPE.SUBMIT"
                     (click)="PC.actions.addPost()"
-                    >ایجاد پست</uk-button
-                  >
+                    >ایجاد پست
+                  </uk-button>
                 </uk-form-controller>
               </uk-form-row>
             </uk-form-part>
           </uk-form-body>
         </uk-form>
-      </form>
-    </uk-page-part>
-  </uk-page-body>
-</uk-page>
+      </uk-page-part>
+    </uk-page-body>
+  </uk-page>
+</form>

@@ -2,13 +2,15 @@
   <div class="wrapper">
     @if (type === "ICON") {
       <uk-icon
+      class="icon"
         [fgColor]="iconFgColor"
-        [name]="UK_TYPE.ICON.NAME.AT"
-        [size]="UK_TYPE.ICON.SIZE.LARGEST_XXXX"
+        [name]="iconName"
+        [size]="UK_TYPE.ICON.SIZE.LARGEST_XX"
       />
     }
     @if (type === "ANIMATION") {
       <uk-animation
+      class="icon"
         #searchCloseAnimation
         [autoplay]="UK_TYPE.UK.BOOLEAN.TRUE"
         [autoReset]="UK_TYPE.UK.BOOLEAN.TRUE"
@@ -17,13 +19,12 @@
       />
     }
     @if (type === "SVG") {
-      <uk-image-box [picture]="UK_TYPE.IMAGE_BOX.PICTURE.EMPTY_BOX" />
+      <uk-image-box class="icon" [picture]="UK_TYPE.IMAGE_BOX.PICTURE.EMPTY_BOX" />
     }
-
+    
     <uk-text
-      [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_LOW_EMPHASIS"
-      [padding]="UK_TYPE.TEXT.PADDING.P4"
-      [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_1"
+      [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS"
+      [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE_STRONG"
     >
       <ng-content />
     </uk-text>

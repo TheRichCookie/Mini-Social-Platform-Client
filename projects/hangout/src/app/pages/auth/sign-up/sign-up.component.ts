@@ -33,7 +33,6 @@ import {
 import {
   UkButtonComponent,
   UkIconComponent,
-  UkImageComponent,
   UkLinkComponent,
   UkTextComponent,
 } from '@utils/ui-kit/components';
@@ -61,7 +60,6 @@ import {SELECT_AUTH_SIGN_UP_RECEIVED_TIME_RESPONSE} from '../_store/auth.selecto
     UkFormErrorsComponent,
     UkFormPartComponent,
     UkFormRowComponent,
-    UkImageComponent,
     UkInputComponent,
     UkPageFooterComponent,
     UkTextComponent,

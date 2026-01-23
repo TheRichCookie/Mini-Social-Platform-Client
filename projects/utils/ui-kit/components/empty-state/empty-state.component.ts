@@ -1,9 +1,12 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import type {EmptyStateStyle} from '@utils/ui-kit/definitions/components/empty-state/empty-state.type';
+import type {
+  EmptyStateStyle,
+  EmptyStateType,
+} from '@utils/ui-kit/definitions/components/empty-state/empty-state.type';
 
 import {UkAnimationComponent} from '../../animations';
-import type {IconFgColor} from '../../definitions';
+import type {IconFgColor, IconName} from '../../definitions';
 import {DEFAULT, UK_TYPE} from '../../definitions';
 import {UkIconComponent} from '../icon/icon.component';
 import {UkImageBoxComponent} from '../image-box/image-box.component';
@@ -31,7 +34,10 @@ export class UkEmptyStateComponent {
   public style: EmptyStateStyle = DEFAULT.emptyState.style;
 
   @Input()
-  public type: 'ANIMATION' | 'ICON' | 'SVG' = 'SVG';
+  public type: EmptyStateType = DEFAULT.emptyState.type;
+
+  @Input()
+  public iconName: IconName = DEFAULT.emptyState.iconName;
 
   public readonly UK_TYPE = UK_TYPE;
 }

@@ -14,7 +14,7 @@ import {
 } from '@app/pages/profile/_store/profile.selectors';
 import {Store} from '@ngrx/store';
 import {UkScrollComponent} from '@utils/ui-kit/arrangements';
-import {UkTextComponent} from '@utils/ui-kit/components';
+import {UkEmptyStateComponent, UkTextComponent} from '@utils/ui-kit/components';
 import type {PostModel} from '@utils/ui-kit/definitions';
 import {UK_TYPE} from '@utils/ui-kit/definitions';
 import {UkAlertService, UkScrollService} from '@utils/ui-kit/services';
@@ -42,7 +42,12 @@ interface PageController {
 @Component({
   standalone: true,
   selector: 'hang-profile-posts',
-  imports: [CommonModule, UkTextComponent, UkScrollComponent],
+  imports: [
+    CommonModule,
+    UkTextComponent,
+    UkScrollComponent,
+    UkEmptyStateComponent,
+  ],
   templateUrl: './profile-posts.component.html',
   styleUrls: ['./profile-posts.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -54,7 +59,6 @@ export class HangProfilePostsComponent {
   private readonly store = inject(Store);
 
   public readonly UK_TYPE = UK_TYPE;
-  public readonly appearance: 'auto' | 'compact' | 'native' = 'auto';
   public readonly posts$ = this.store.select(SELECT_PROFILE_POSTS_RES);
   public readonly user$ = this.store.select(SELECT_PROFILE_DETAIL_RES);
   public readonly deletePost$ = this.store.select(
@@ -70,7 +74,7 @@ export class HangProfilePostsComponent {
         userId: '',
         query: {
           page: 0,
-          limit: 20,
+          limit: 1,
         },
       },
     },
@@ -121,7 +125,7 @@ export class HangProfilePostsComponent {
     this.posts$.pipe(takeUntilDestroyed()).subscribe((posts) => {
       if (posts.totalCount) {
         this.PC.props.count = posts.totalCount;
-        this.scrollService.checkOverFlow();
+        this.scrollService.ensureScrollableContent();
       }
 
       this.PC.props.list = [...this.PC.props.list, ...(posts.items ?? [])];

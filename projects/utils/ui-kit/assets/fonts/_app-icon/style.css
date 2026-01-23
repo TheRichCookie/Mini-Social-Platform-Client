@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'app-icon';
-  src:  url('fonts/app-icon.eot?kr6v64');
-  src:  url('fonts/app-icon.eot?kr6v64#iefix') format('embedded-opentype'),
-    url('fonts/app-icon.ttf?kr6v64') format('truetype'),
-    url('fonts/app-icon.woff?kr6v64') format('woff'),
-    url('fonts/app-icon.svg?kr6v64#app-icon') format('svg');
+  src:  url('fonts/app-icon.eot?7qyiyv');
+  src:  url('fonts/app-icon.eot?7qyiyv#iefix') format('embedded-opentype'),
+    url('fonts/app-icon.ttf?7qyiyv') format('truetype'),
+    url('fonts/app-icon.woff?7qyiyv') format('woff'),
+    url('fonts/app-icon.svg?7qyiyv#app-icon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -35,6 +35,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-question-circle:before {
+  content: "\e92e";
+}
+.icon-dizzy:before {
+  content: "\e92f";
+}
 .icon-eye-slash:before {
   content: "\e92c";
 }

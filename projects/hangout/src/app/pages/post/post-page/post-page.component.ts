@@ -69,7 +69,6 @@ export class HangPostPageComponent implements OnDestroy {
   private readonly alertService = inject(UkAlertService);
 
   private readonly addPost$ = this.store.select(SELECT_ADD_POST_RES);
-
   public readonly UK_TYPE = UK_TYPE;
 
   public postFormSubmitted = false;
@@ -87,6 +86,7 @@ export class HangPostPageComponent implements OnDestroy {
     actions: {
       addPost: () => {
         this.postFormSubmitted = true;
+
         if (this.postForm.invalid) return;
 
         const REQUEST: CreatePostRequest = this.postForm.getRawValue();

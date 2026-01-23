@@ -2,7 +2,6 @@
 import {CommonModule} from '@angular/common';
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   EventEmitter,
   inject,
@@ -11,7 +10,7 @@ import {
 } from '@angular/core';
 import {Router} from '@angular/router';
 import {UkScrollComponent} from '@utils/ui-kit/arrangements';
-import {UkCardComponent} from '@utils/ui-kit/components';
+import {UkCardComponent, UkEmptyStateComponent} from '@utils/ui-kit/components';
 import {UK_TYPE} from '@utils/ui-kit/definitions';
 
 interface Items {
@@ -21,19 +20,19 @@ interface Items {
 }
 @Component({
   selector: 'hang-users-list',
-  imports: [UkCardComponent, CommonModule, UkScrollComponent],
+  imports: [
+    UkCardComponent,
+    CommonModule,
+    UkScrollComponent,
+    UkEmptyStateComponent,
+  ],
   templateUrl: './users-list.component.html',
   styleUrl: './users-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HangUsersListComponent {
   private readonly router = inject(Router);
-
-  @Output()
-  public readonly LOAD_MORE = new EventEmitter<number>();
-
-  @Input()
-  public items: any[] = [];
+  private _items: Items[] | undefined = undefined;
 
   @Input()
   public bindId = 'id';
@@ -47,8 +46,11 @@ export class HangUsersListComponent {
   @Input()
   public isLoading = false;
 
-  @Input()
-  public maxHeight: number = null!;
+  @Output()
+  public readonly SCROLL_COMPONENT_LOAD_MORE = new EventEmitter();
+
+  @Output()
+  public readonly PAGE_COMPONENT_LOAD_MORE = new EventEmitter();
 
   @Output()
   public readonly ON_CLICK = new EventEmitter();
@@ -71,8 +73,12 @@ export class HangUsersListComponent {
     return this._items;
   }
 
-  public onLoadMore(): void {
-    this.ON_LOAD_MORE.emit();
+  public onPageComponentLoadMore(): void {
+    this.PAGE_COMPONENT_LOAD_MORE.emit();
+  }
+
+  public onScrollComponentLoadMore(): void {
+    this.SCROLL_COMPONENT_LOAD_MORE.emit();
   }
 
   public goToProfile(userId: string): void {

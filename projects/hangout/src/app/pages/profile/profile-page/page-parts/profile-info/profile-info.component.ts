@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ActivatedRoute} from '@angular/router';
-import {HangLogoutModalComponent} from '@app/pages/auth/logout-modal/logout-modal.component';
+import {HangLogoutModalComponent} from '@app/pages/auth/_modals/logout-modal/logout-modal.component';
 import {PROFILE_DETAIL_ACTIONS} from '@app/pages/profile/_store/profile.actions';
 import {
   SELECT_PROFILE_DETAIL_RES,

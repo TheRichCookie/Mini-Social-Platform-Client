@@ -246,6 +246,9 @@
       &-AUTO {
         text-wrap: auto;
       }
+      &-WRAP {
+        text-wrap: wrap;
+      }
     }
 
     &-white-space {
@@ -254,6 +257,24 @@
       }
       &-NO_WRAP {
         white-space: nowrap;
+      }
+      &-WRAP {
+        white-space: wrap;
+      }
+    }
+
+    &-word-break {
+      &-UN-SET {
+        word-break: unset;
+      }
+      &-BREAK-ALL {
+        word-break: break-all;
+      }
+      &-BREAK-WORD {
+        word-break: break-word;
+      }
+      &-KEEP-ALL {
+        word-break: keep-all;
       }
     }
   }

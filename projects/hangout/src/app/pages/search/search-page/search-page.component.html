@@ -1,4 +1,4 @@
-<uk-page>
+<uk-page [bodyOverFlow]="UK_TYPE.PAGE.BODY_OVER_FLOW.HIDDEN">
   <uk-page-body [fullHeight]="true">
     <uk-page-part>
       <uk-search-bar (SEARCH)="PC.actions.onSearch($event)" />
@@ -9,7 +9,7 @@
         bindId="_id"
         [items]="PC.props.list"
         [isLoading]="PC.props.isLoading"
-        (LOAD_MORE)="PC.actions.loadMore()"
+        (PAGE_COMPONENT_LOAD_MORE)="PC.actions.loadMore()"
       />
     </uk-page-part>
   </uk-page-body>

@@ -8,7 +8,6 @@ import {
   inject,
   Input,
   Output,
-  ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
@@ -65,17 +64,14 @@ export class HangFollowingModalComponent implements OnInit, OnDestroy {
   private readonly scrollService = inject(UkScrollService);
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
 
-  @ViewChild(HangUsersListComponent)
-  public usersListComponent!: HangUsersListComponent;
-
-  @Input()
-  public userId = '';
+  @Input({required: true})
+  public userId!: string;
 
   @Output()
   public readonly ON_CLOSE = new EventEmitter();
 
   public readonly following$ = this.store.select(SELECT_PROFILE_FOLLOWING_RES);
-  public readonly maxHeight = 450;
+  public readonly maxHeight = 80;
   public readonly UK_TYPE = UK_TYPE;
 
   public PC: PageController = {
@@ -87,7 +83,7 @@ export class HangFollowingModalComponent implements OnInit, OnDestroy {
         userId: '',
         query: {
           page: 0,
-          limit: 20,
+          limit: 1,
         },
       },
     },
@@ -124,7 +120,7 @@ export class HangFollowingModalComponent implements OnInit, OnDestroy {
     this.following$.pipe(takeUntilDestroyed()).subscribe((following) => {
       if (following.totalCount) {
         this.PC.props.count = following.totalCount;
-        this.scrollService.checkOverFlow();
+        this.scrollService.ensureScrollableContent();
       }
 
       this.PC.props.list = [...this.PC.props.list, ...(following.items ?? [])];

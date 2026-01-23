@@ -5,7 +5,6 @@ import {
   ChangeDetectorRef,
   Component,
   inject,
-  ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {RouterModule} from '@angular/router';
@@ -23,7 +22,7 @@ import {
 } from '@utils/ui-kit/components';
 import type {FeedPostModel} from '@utils/ui-kit/definitions';
 import {UK_TYPE} from '@utils/ui-kit/definitions';
-import {UkAlertService} from '@utils/ui-kit/services';
+import {UkAlertService, UkScrollService} from '@utils/ui-kit/services';
 
 import {FEED_ACTIONS, FEED_REST_ACTIONS} from '../_store/feed.actions';
 import {SELECT_FEEDS_RES} from '../_store/feed.selectors';
@@ -67,14 +66,11 @@ interface PageController {
 })
 export class HangHomePageComponent implements OnDestroy {
   private readonly store = inject(Store);
+  private readonly scrollService = inject(UkScrollService);
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
   private readonly alertService = inject(UkAlertService);
 
   private readonly feeds$ = this.store.select(SELECT_FEEDS_RES);
-
-  @ViewChild(UkScrollComponent)
-  public scrollComponent!: UkScrollComponent;
-
   public readonly UK_TYPE = UK_TYPE;
 
   public PC: PageController = {
@@ -85,7 +81,7 @@ export class HangHomePageComponent implements OnDestroy {
       request: {
         query: {
           page: 0,
-          limit: 20,
+          limit: 15,
         },
       },
     },
@@ -127,12 +123,10 @@ export class HangHomePageComponent implements OnDestroy {
     this.feeds$.pipe(takeUntilDestroyed()).subscribe((feed) => {
       if (feed.totalCount) {
         this.PC.props.count = feed.totalCount;
-        setTimeout(() => {
-          this.scrollComponent.checkOverflow();
-        });
+        this.scrollService.ensureScrollableContent();
       }
 
-      this.PC.props.list.push(...(feed.items ?? []));
+      this.PC.props.list = [...this.PC.props.list, ...(feed.items ?? [])];
       this.PC.props.isLoading = false;
 
       this.changeDetectorRef.markForCheck();

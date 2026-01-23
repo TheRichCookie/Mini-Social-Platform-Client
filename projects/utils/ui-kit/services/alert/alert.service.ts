@@ -9,25 +9,25 @@ export class UkAlertService {
 
   public success(title: string, message?: string): void {
     this.toastrService.success(message, title, {
-      positionClass: 'toast-top-left',
       toastClass: 'ngx-toastr uk-success-toast',
-      timeOut: 5000,
+      extendedTimeOut: 3000,
+      disableTimeOut: true,
     });
   }
 
   public error(title: string, message?: string): void {
     this.toastrService.error(message, title, {
-      positionClass: 'toast-top-left',
       toastClass: 'ngx-toastr uk-error-toast',
-      timeOut: 5000,
+      extendedTimeOut: 3000,
+      disableTimeOut: true,
     });
   }
 
   public info(title: string, message?: string): void {
     this.toastrService.info(message, title, {
-      positionClass: 'toast-top-left',
       toastClass: 'ngx-toastr uk-info-toast',
-      timeOut: 5000,
+      extendedTimeOut: 3000,
+      disableTimeOut: true,
     });
   }
 }

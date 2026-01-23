@@ -57,14 +57,24 @@ export type TextPadding = `${UkTextPadding}`;
 export enum UkTextTextWrap {
   UN_SET = 'UN-SET',
   AUTO = 'AUTO',
+  WRAP = 'WRAP',
 }
 export type TextTextWrap = `${UkTextTextWrap}`;
 
 export enum UkTextWhiteSpace {
   UN_SET = 'UN-SET',
   NO_WRAP = 'NO_WRAP',
+  WRAP = 'WRAP',
 }
 export type TextWhiteSpace = `${UkTextWhiteSpace}`;
+
+export enum UkTextWordBreak {
+  UN_SET = 'UN-SET',
+  BREAK_ALL = 'BREAK-ALL',
+  BREAK_WORD = 'BREAK-WORD',
+  KEEP_ALL = 'KEEP-ALL',
+}
+export type TextWordBreak = `${UkTextWordBreak}`;
 
 export enum UkTextType {
   NONE = 'NONE',

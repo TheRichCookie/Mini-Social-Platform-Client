@@ -5,7 +5,6 @@ import {
   ChangeDetectorRef,
   Component,
   inject,
-  ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -65,9 +64,6 @@ export class HangSearchPageComponent implements OnDestroy {
   private readonly scrollService = inject(UkScrollService);
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
 
-  @ViewChild(HangUsersListComponent)
-  public usersListComponent!: HangUsersListComponent;
-
   public readonly searchResult$ = this.store.select(SELECT_SEARCH_USERS_RES);
   public readonly UK_TYPE = UK_TYPE;
 
@@ -80,7 +76,7 @@ export class HangSearchPageComponent implements OnDestroy {
         query: {
           q: '',
           page: 0,
-          limit: 20,
+          limit: 15,
         },
       },
     },
@@ -93,6 +89,8 @@ export class HangSearchPageComponent implements OnDestroy {
         this.store.dispatch(SEARCH_ACTIONS.$GET_SEARCH_USERS(REQUEST));
       },
       loadMore: () => {
+        if (this.PC.props.isLoading) return;
+
         let newPageIndex = JSON.parse(
           JSON.stringify(this.PC.props.request.query.page),
         );
@@ -105,6 +103,7 @@ export class HangSearchPageComponent implements OnDestroy {
         ) {
           this.PC.props.isLoading = true;
           this.PC.props.request.query.page = newPageIndex;
+          this.changeDetectorRef.markForCheck();
           this.PC.actions.get();
         }
       },
@@ -127,15 +126,10 @@ export class HangSearchPageComponent implements OnDestroy {
     this.searchResult$.pipe(takeUntilDestroyed()).subscribe((result) => {
       if (result.totalCount) {
         this.PC.props.count = result.totalCount;
-        this.scrollService.checkOverFlow();
+        this.scrollService.ensureScrollableContent();
       }
 
-      if (this.PC.props.request.query.page === 1) {
-        this.PC.props.list = result.users ?? [];
-      } else {
-        this.PC.props.list = [...this.PC.props.list, ...(result.users ?? [])];
-      }
-
+      this.PC.props.list = [...this.PC.props.list, ...(result.users ?? [])];
       this.PC.props.isLoading = false;
       this.changeDetectorRef.markForCheck();
     });

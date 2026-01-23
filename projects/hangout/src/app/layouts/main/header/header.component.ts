@@ -1,12 +1,12 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {UkIconComponent, UkTextComponent} from '@utils/ui-kit/components';
+import {UkTextComponent} from '@utils/ui-kit/components';
 import {UK_TYPE} from '@utils/ui-kit/definitions';
 import {UkOverlayService} from '@utils/ui-kit/services';
 
 @Component({
   standalone: true,
   selector: 'hang-header',
-  imports: [UkTextComponent, UkIconComponent],
+  imports: [UkTextComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

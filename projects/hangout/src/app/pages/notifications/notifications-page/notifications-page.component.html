@@ -2,51 +2,55 @@
   <uk-page-body [fullHeight]="true">
     <uk-page-part [fullHeight]="true">
       <uk-scroll
-        (LOAD_MORE)="this.PC.actions.loadMore()"
+        (PAGE_COMPONENT_LOAD_MORE)="this.PC.actions.loadMore()"
         [isLoading]="this.PC.props.isLoading"
       >
-        @for (item of this.PC.props.list; track item._id) {
-          <div
-            class="item"
-            [ngClass]="{ 'need-to-read': !item.isRead }"
-            (click)="PC.actions.markAsRead(item)"
-            tabindex="0"
-            role="button"
-          >
-            <uk-text
-              [display]="UK_TYPE.TEXT.DISPLAY.BLOCK"
-              [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE"
-              [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_LOW_EMPHASIS"
+        @if (this.PC.props.list.length) {
+          @for (item of PC.props.list; track item._id) {
+            <div
+              class="item"
+              [ngClass]="{ 'need-to-read': !item.isRead }"
+              (click)="PC.actions.markAsRead(item)"
+              tabindex="0"
+              role="button"
             >
-              {{ item.createdAt | date: "yyyy-MM-dd" }}
-            </uk-text>
-            @switch (item.type) {
-              @case ("like") {
-                <uk-text
-                  [display]="UK_TYPE.TEXT.DISPLAY.BLOCK"
-                  [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE"
-                >
-                  {{ item.sender?.username }} پست شما رو لایک کرد
-                </uk-text>
+              <uk-text
+                [display]="UK_TYPE.TEXT.DISPLAY.BLOCK"
+                [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE"
+                [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_LOW_EMPHASIS"
+              >
+                {{ item.createdAt | date: "yyyy-MM-dd" }}
+              </uk-text>
+              @switch (item.type) {
+                @case ("like") {
+                  <uk-text
+                    [display]="UK_TYPE.TEXT.DISPLAY.BLOCK"
+                    [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE"
+                  >
+                    {{ item.sender?.username }} پست شما رو لایک کرد
+                  </uk-text>
+                }
+                @case ("comment") {
+                  <uk-text
+                    [display]="UK_TYPE.TEXT.DISPLAY.BLOCK"
+                    [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE"
+                  >
+                    {{ item.sender?.username }} برات نظر گذاشت
+                  </uk-text>
+                }
+                @case ("follow") {
+                  <uk-text
+                    [display]="UK_TYPE.TEXT.DISPLAY.BLOCK"
+                    [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE"
+                  >
+                    {{ item.sender?.username }} دنبالت کرد
+                  </uk-text>
+                }
               }
-              @case ("comment") {
-                <uk-text
-                  [display]="UK_TYPE.TEXT.DISPLAY.BLOCK"
-                  [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE"
-                >
-                  {{ item.sender?.username }} برات نظر گذاشت
-                </uk-text>
-              }
-              @case ("follow") {
-                <uk-text
-                  [display]="UK_TYPE.TEXT.DISPLAY.BLOCK"
-                  [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE"
-                >
-                  {{ item.sender?.username }} دنبالت کرد
-                </uk-text>
-              }
-            }
-          </div>
+            </div>
+          }
+        } @else {
+          <uk-empty-state> هیچ پیغامی وجود ندارد. </uk-empty-state>
         }
       </uk-scroll>
     </uk-page-part>

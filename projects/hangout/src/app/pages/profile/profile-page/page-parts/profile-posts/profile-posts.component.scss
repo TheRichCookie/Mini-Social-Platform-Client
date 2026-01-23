@@ -17,18 +17,16 @@
     .post {
       margin-bottom: 8px;
 
-      .content {
-        display: flex;
-        flex-direction: column;
-        border: 1px solid $color-border-grade-2;
-        background-color: $color-background-surface-02;
-        border-radius: 8px;
-        padding: 8px;
-        gap: 8px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid $color-border-grade-2;
+      background-color: $color-background-surface-02;
+      border-radius: 8px;
+      padding: 8px;
+      gap: 8px;
 
-        .icon {
-          display: flex;
-        }
+      .icon {
+        display: flex;
       }
     }
   }

@@ -21,12 +21,16 @@
       <uk-button
         [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
         [display]="UK_TYPE.BUTTON.DISPLAY.BLOCK"
+        [bgColor]="UK_TYPE.BUTTON.BG_COLOR.TRANSPARENT"
+        [borderColor]="UK_TYPE.BUTTON.BORDER_COLOR.BUTTON_PRIMARY"
+        [fgColor]="UK_TYPE.BUTTON.FG_COLOR.CONTENT_PRIMARY"
         (click)="onClose()"
       >
         بستن
       </uk-button>
       <uk-button
         [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
+        [bgColor]="UK_TYPE.BUTTON.BG_COLOR.ERROR"
         [display]="UK_TYPE.BUTTON.DISPLAY.BLOCK"
         (click)="onLogout()"
       >

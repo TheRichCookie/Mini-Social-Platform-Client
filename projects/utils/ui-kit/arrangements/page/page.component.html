@@ -14,7 +14,7 @@
   <header>
     <ng-content select="uk-page-header" />
   </header>
-  <main>
+  <main (scroll)="onScroll($event)">
     <ng-content select="uk-page-body" />
   </main>
   <footer>

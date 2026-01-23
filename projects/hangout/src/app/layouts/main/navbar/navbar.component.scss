@@ -45,6 +45,10 @@
           }
         }
       }
+
+      &:active {
+        background: none;
+      }
     }
   }
 }

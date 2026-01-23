@@ -27,8 +27,9 @@ $height-small: pxToRem(8);
   align-items: center;
   gap: 4px;
   border-radius: 12px;
-  width: 100%;
   text-wrap: nowrap;
+  width: 100%;
+  height: 100%;
 
   &.uk-button {
     &-display {
@@ -122,22 +123,22 @@ $height-small: pxToRem(8);
 
     &-height {
       &-H-48 {
-        height: 48px;
+        min-height: 48px;
       }
       &-H-40 {
-        height: 40px;
+         min-height: 40px;
       }
       &-H-36 {
-        height: 36px;
+         min-height: 36px;
       }
       &-H-32 {
-        height: 32px;
+         min-height: 32px;
       }
       &-H-24 {
-        height: 24px;
+         min-height: 24px;
       }
       &-H-16 {
-        height: 16px;
+         min-height: 16px;
       }
     }
 

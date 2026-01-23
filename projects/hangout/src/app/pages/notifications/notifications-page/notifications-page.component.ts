@@ -5,7 +5,6 @@ import {
   ChangeDetectorRef,
   Component,
   inject,
-  ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {RouterModule} from '@angular/router';
@@ -16,7 +15,7 @@ import {
   UkPagePartComponent,
   UkScrollComponent,
 } from '@utils/ui-kit/arrangements';
-import {UkTextComponent} from '@utils/ui-kit/components';
+import {UkEmptyStateComponent, UkTextComponent} from '@utils/ui-kit/components';
 import type {NotificationModel} from '@utils/ui-kit/definitions';
 import {UK_TYPE} from '@utils/ui-kit/definitions';
 import {UkAlertService, UkScrollService} from '@utils/ui-kit/services';
@@ -61,6 +60,7 @@ interface PageController {
     UkPagePartComponent,
     UkScrollComponent,
     UkTextComponent,
+    UkEmptyStateComponent,
   ],
   templateUrl: './notifications-page.component.html',
   styleUrls: ['./notifications-page.component.scss'],
@@ -72,11 +72,7 @@ export class HangNotificationsPageComponent implements OnDestroy {
   private readonly scrollService = inject(UkScrollService);
   private readonly alertService = inject(UkAlertService);
 
-  @ViewChild(UkScrollComponent)
-  public scrollComponent!: UkScrollComponent;
-
   public readonly UK_TYPE = UK_TYPE;
-
   public readonly notifications$ = this.store.select(SELECT_NOTIFICATIONS_RES);
   public readonly markAsRead$ = this.store.select(
     SELECT_NOTIFICATIONS_MARK_AS_READ_RECEIVED_TIME,
@@ -90,7 +86,7 @@ export class HangNotificationsPageComponent implements OnDestroy {
       request: {
         query: {
           page: 0,
-          limit: 20,
+          limit: 15,
         },
       },
     },
@@ -131,7 +127,7 @@ export class HangNotificationsPageComponent implements OnDestroy {
     this.notifications$.pipe(takeUntilDestroyed()).subscribe((notification) => {
       if (notification.totalCount) {
         this.PC.props.count = notification.totalCount;
-        this.scrollService.checkOverFlow();
+        this.scrollService.ensureScrollableContent();
       }
 
       this.PC.props.list.push(...(notification.items ?? []));

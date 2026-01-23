@@ -33,7 +33,6 @@ import {
 } from '@utils/ui-kit/arrangements';
 import {
   UkButtonComponent,
-  UkImageComponent,
   UkStopWatchComponent,
   UkTextComponent,
 } from '@utils/ui-kit/components';
@@ -69,7 +68,6 @@ import {
     UkFormPartComponent,
     UkFormRowComponent,
     UkStopWatchComponent,
-    UkImageComponent,
     UkTextComponent,
     UkFormErrorsComponent,
   ],

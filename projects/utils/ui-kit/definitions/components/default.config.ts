@@ -26,7 +26,10 @@ import {
   UkTableCardBgColor,
   UkTableCardSize,
 } from '@utils/ui-kit/definitions';
-import {UkEmptyStateStyle} from '@utils/ui-kit/definitions/components/empty-state/empty-state.type';
+import {
+  UkEmptyStateStyle,
+  UkEmptyStateType,
+} from '@utils/ui-kit/definitions/components/empty-state/empty-state.type';
 
 import {
   UkBasicCardBgColor,
@@ -117,6 +120,7 @@ import {
   UkTextTypography,
   UkTextVerticalAlignment,
   UkTextWhiteSpace,
+  UkTextWordBreak,
 } from './text/text.type';
 import {
   UkAutoBooleanType,
@@ -230,7 +234,9 @@ const SIMPLE = {
   },
   emptyState: {
     iconFgColor: UkIconFgColor.CONTENT_PRIMARY,
-    style: UkEmptyStateStyle.NORMAL,
+    style: UkEmptyStateStyle.PRE_DEFINED,
+    type: UkEmptyStateType.ICON,
+    iconName: UkIconName.DIZZY,
   },
   fileUploader: {
     type: UkFileUploaderType.IMAGE,
@@ -309,8 +315,9 @@ const SIMPLE = {
     borderRadius: UkTextBorderRadius.NONE,
     numeric: UkTextNumeric.PERSIAN,
     direction: UkTextDirection.RIGHT_TO_LEFT,
-    textWrap: UkTextTextWrap.UN_SET,
-    whiteSpace: UkTextWhiteSpace.UN_SET,
+    textWrap: UkTextTextWrap.WRAP,
+    whiteSpace: UkTextWhiteSpace.WRAP,
+    wordBreak: UkTextWordBreak.BREAK_WORD,
   },
   link: {
     target: UkLinkTarget.BLANK,

@@ -7,7 +7,7 @@
 .uk.scroll {
   height: 100%;
   width: 100%;
-  position: relative;
+  // position: relative;
 
   ng-scrollbar {
     height: 100%;
@@ -116,7 +116,7 @@
 
       &-FALSE {
         ng-scrollbar {
-          position: absolute;
+          // position: absolute;
         }
       }
     }
