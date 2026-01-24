@@ -1,10 +1,33 @@
-<uk-page [bodyOverFlow]="UK_TYPE.PAGE.BODY_OVER_FLOW.SCROLL">
+<uk-page [bodyOverFlow]="UK_TYPE.PAGE.BODY_OVER_FLOW.HIDDEN">
   <uk-page-body [fullHeight]="true">
-    <uk-page-part >
-      <hang-profile-info />
-    </uk-page-part>
-    <uk-page-part>
-      <hang-profile-posts  />
-    </uk-page-part>
+    <uk-scroll
+      (LOAD_MORE)="PC.actions.loadMore()"
+      [isLoading]="PC.props.isLoading"
+    >
+      <uk-page-part>
+        <hang-profile-info />
+      </uk-page-part>
+      <uk-page-part>
+        <div class="profile-info">
+          @if (PC.props.list.length) {
+            @for (post of PC.props.list; track post._id) {
+              <div class="post">
+                <uk-text
+                  [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE"
+                  [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_LOW_EMPHASIS"
+                >
+                  {{ post.createdAt | date: "yyyy-MM-dd" }}
+                </uk-text>
+                <uk-text [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE">
+                  {{ post.content }}
+                </uk-text>
+              </div>
+            }
+          } @else {
+            <uk-empty-state> هیچ پستی وجود ندارد. </uk-empty-state>
+          }
+        </div>
+      </uk-page-part>
+    </uk-scroll>
   </uk-page-body>
 </uk-page>

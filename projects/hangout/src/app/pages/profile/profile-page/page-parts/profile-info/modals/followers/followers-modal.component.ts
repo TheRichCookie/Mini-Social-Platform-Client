@@ -24,7 +24,6 @@ import {
 import {UkButtonComponent} from '@utils/ui-kit/components';
 import type {UserModel} from '@utils/ui-kit/definitions';
 import {UK_TYPE} from '@utils/ui-kit/definitions';
-import {UkScrollService} from '@utils/ui-kit/services';
 
 interface PageController {
   props: {
@@ -61,7 +60,6 @@ interface PageController {
 })
 export class HangFollowersModalComponent implements OnInit, OnDestroy {
   private readonly store = inject(Store);
-  private readonly scrollService = inject(UkScrollService);
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
 
   @Input({required: true})
@@ -120,9 +118,6 @@ export class HangFollowersModalComponent implements OnInit, OnDestroy {
     this.followers$.pipe(takeUntilDestroyed()).subscribe((followers) => {
       if (followers.totalCount) {
         this.PC.props.count = followers.totalCount;
-        setTimeout(() => {
-          this.scrollService.ensureScrollableContent();
-        });
       }
 
       this.PC.props.list = [...this.PC.props.list, ...(followers.items ?? [])];

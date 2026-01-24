@@ -17,7 +17,6 @@ import {
 } from '@utils/ui-kit/arrangements';
 import {UK_TYPE, type UserSearchModel} from '@utils/ui-kit/definitions';
 import {UkSearchBarComponent} from '@utils/ui-kit/forms';
-import {UkScrollService} from '@utils/ui-kit/services';
 
 import {SEARCH_ACTIONS, SEARCH_RESET_ACTIONS} from '../_store/search.actions';
 import {SELECT_SEARCH_USERS_RES} from '../_store/search.selectors';
@@ -61,7 +60,6 @@ interface PageController {
 })
 export class HangSearchPageComponent implements OnDestroy {
   private readonly store = inject(Store);
-  private readonly scrollService = inject(UkScrollService);
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
 
   public readonly searchResult$ = this.store.select(SELECT_SEARCH_USERS_RES);
@@ -126,7 +124,6 @@ export class HangSearchPageComponent implements OnDestroy {
     this.searchResult$.pipe(takeUntilDestroyed()).subscribe((result) => {
       if (result.totalCount) {
         this.PC.props.count = result.totalCount;
-        this.scrollService.ensureScrollableContent();
       }
 
       this.PC.props.list = [...this.PC.props.list, ...(result.users ?? [])];

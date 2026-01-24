@@ -61,7 +61,6 @@
     "lottie-web": "^5.13.0",
     "ngrx-immer": "^3.0.0",
     "ngrx-store-freeze": "^0.2.4",
-    "ngx-infinite-scroll": "^21.0.0",
     "ngx-logger": "^5.0.12",
     "ngx-lottie": "^20.0.0",
     "ngx-mask": "^20.0.3",

@@ -2,7 +2,7 @@ import {BidiModule} from '@angular/cdk/bidi';
 import {OverlayModule} from '@angular/cdk/overlay'; // for cdkOverlay scroll handling
 import {ScrollingModule} from '@angular/cdk/scrolling'; // for cdkOverlay scroll handling
 import {CommonModule} from '@angular/common';
-import type {AfterViewInit, ElementRef} from '@angular/core';
+import type {ElementRef} from '@angular/core';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -15,10 +15,8 @@ import {
   ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {UkScrolledComponent, UkScrollService} from '@utils/ui-kit/services';
-import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import {NgScrollbarModule} from 'ngx-scrollbar';
-import {debounceTime} from 'rxjs';
+import {debounceTime, Subject} from 'rxjs';
 
 import {UkAnimationComponent} from '../../animations/animation/animation.component';
 import type {BooleanType} from '../../definitions';
@@ -34,16 +32,16 @@ import {DEFAULT, UK_TYPE} from '../../definitions';
     BidiModule,
     OverlayModule,
     ScrollingModule,
-    InfiniteScrollModule,
   ],
   templateUrl: './scroll.component.html',
   styleUrl: './scroll.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UkScrollComponent implements AfterViewInit {
+export class UkScrollComponent {
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
-  private readonly scrollService = inject(UkScrollService);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly loadMoreSubject$ = new Subject<void>();
+  private readonly _isLoading = false;
 
   @ViewChild('mainElement')
   public mainElement!: ElementRef;
@@ -74,46 +72,59 @@ export class UkScrollComponent implements AfterViewInit {
   @Input()
   public maxHeight?: number;
 
-  @Input()
-  public isLoading = false;
-
   @Output()
-  public readonly SCROLL_COMPONENT_LOAD_MORE = new EventEmitter();
-
-  @Output()
-  public readonly PAGE_COMPONENT_LOAD_MORE = new EventEmitter();
+  public readonly LOAD_MORE = new EventEmitter();
 
   public readonly UK_TYPE = UK_TYPE;
   public autoAppearance: 'compact' | 'native' = 'compact';
 
   constructor() {
-    this.scrollService.reachedBottom$
+    this.loadMoreSubject$
       .pipe(debounceTime(150), takeUntilDestroyed(this.destroyRef))
-      .subscribe((component: UkScrolledComponent) => {
-        if (component === UkScrolledComponent.SCROLL_COMPONENT) {
-          this.SCROLL_COMPONENT_LOAD_MORE.emit();
-        }
-
-        if (component === UkScrolledComponent.PAGE_COMPONENT) {
-          this.PAGE_COMPONENT_LOAD_MORE.emit();
-        }
-      });
-    this.scrollService.ensureScrollableContent$
-      .pipe(takeUntilDestroyed())
       .subscribe(() => {
-        this.ensureScrollableContent();
+        this.LOAD_MORE.emit();
       });
+  }
+
+  @Input()
+  public set isLoading(value: boolean) {
+    this.isLoading = value;
+
+    if (!value) {
+      this.ensureScrollableContent();
+    }
+  }
+
+  public get isLoading(): boolean {
+    return this._isLoading;
   }
 
   public afterUpdate(): void {
     this.updateAppearance();
   }
 
-  public onScroll(event: Event): void {
-    this.scrollService.detectScrollBoundaries(
-      event,
-      UkScrolledComponent.SCROLL_COMPONENT,
-    );
+  public detectScrollBoundaries(event: Event): void {
+    const el = event.target as HTMLElement;
+
+    // const atTop = el.scrollTop <= 5;
+    const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 5;
+
+    if (atBottom) {
+      this.loadMoreSubject$.next();
+    }
+  }
+
+  public ensureScrollableContent(): void {
+    if (!this.isLoading) {
+      const mainElement = this.mainElement.nativeElement;
+      const contentElement = this.contentElement.nativeElement;
+
+      if (contentElement.scrollHeight <= mainElement.clientHeight) {
+        this.loadMoreSubject$.next();
+      }
+
+      this.changeDetectorRef.markForCheck();
+    }
   }
 
   public updateAppearance(): void {
@@ -125,24 +136,5 @@ export class UkScrollComponent implements AfterViewInit {
         WRAPPER.clientHeight > CONTENT.clientHeight ? 'compact' : 'native';
       this.changeDetectorRef.markForCheck();
     }
-  }
-
-  public ensureScrollableContent(): void {
-    if (!this.isLoading) {
-      const mainElement = this.mainElement.nativeElement;
-      const content = this.contentElement.nativeElement;
-
-      console.log(content.scrollHeight, mainElement.clientHeight);
-
-      if (content.scrollHeight <= mainElement.clientHeight) {
-        this.scrollService.reachedBottom(UkScrolledComponent.SCROLL_COMPONENT);
-      }
-
-      this.changeDetectorRef.markForCheck();
-    }
-  }
-
-  public ngAfterViewInit(): void {
-    // this.scrollService.ensureScrollableContent();
   }
 }

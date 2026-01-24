@@ -18,7 +18,7 @@ import {
 import {UkEmptyStateComponent, UkTextComponent} from '@utils/ui-kit/components';
 import type {NotificationModel} from '@utils/ui-kit/definitions';
 import {UK_TYPE} from '@utils/ui-kit/definitions';
-import {UkAlertService, UkScrollService} from '@utils/ui-kit/services';
+import {UkAlertService} from '@utils/ui-kit/services';
 
 import * as APP_ACTIONS from '../../../shared/store/app/app.action';
 import {
@@ -69,7 +69,6 @@ interface PageController {
 export class HangNotificationsPageComponent implements OnDestroy {
   private readonly store = inject(Store);
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
-  private readonly scrollService = inject(UkScrollService);
   private readonly alertService = inject(UkAlertService);
 
   public readonly UK_TYPE = UK_TYPE;
@@ -127,7 +126,6 @@ export class HangNotificationsPageComponent implements OnDestroy {
     this.notifications$.pipe(takeUntilDestroyed()).subscribe((notification) => {
       if (notification.totalCount) {
         this.PC.props.count = notification.totalCount;
-        this.scrollService.ensureScrollableContent();
       }
 
       this.PC.props.list.push(...(notification.items ?? []));

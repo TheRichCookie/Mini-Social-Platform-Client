@@ -6,14 +6,18 @@ $toast-title-gap: 12px;
 
 .toast-container {
   width: 100%;
+  padding: 0 20px;
 
   .ngx-toastr {
     box-shadow: none !important;
     border-radius: 16px !important;
     padding: 16px 20px;
     line-height: initial !important;
-    max-width: 350px;
+    max-width: 330px;
     width: 100% !important;
+    margin-bottom: 76px; // based on footer height
+
+    
 
     .toast-title {
       @include typography-subtitle-strong();

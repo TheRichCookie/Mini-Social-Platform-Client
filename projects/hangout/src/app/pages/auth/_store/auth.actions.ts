@@ -1,5 +1,4 @@
 import {createActionGroup, emptyProps, props} from '@ngrx/store';
-
 import type {
   AuthOtpVerificationRequest,
   AuthSignInRequest,
@@ -7,7 +6,7 @@ import type {
   OtpVerificationDataModel,
   SignInDataModel,
   SignUpDataModel,
-} from '../../../../../../utils/ui-kit/definitions/swagger/swagger';
+} from '@utils/ui-kit/definitions/swagger/swagger';
 
 // Sign In
 export const SIGN_IN_ACTIONS = createActionGroup({
@@ -46,5 +45,13 @@ export const OTP_ACTIONS = createActionGroup({
       response: OtpVerificationDataModel;
       receivedTime: number;
     }>(),
+  },
+});
+
+// RESET
+export const AUTH_RESET_ACTIONS = createActionGroup({
+  source: 'AUTH',
+  events: {
+    $RESET_AUTH: emptyProps(),
   },
 });

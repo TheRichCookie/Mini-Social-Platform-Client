@@ -15,7 +15,7 @@
     [orientation]="orientation"
     [visibility]="visibility"
     (afterUpdate)="afterUpdate()"
-    (scroll)="onScroll($event)"
+    (scroll)="detectScrollBoundaries($event)"
   >
     <div #contentElement class="content">
       <ng-content />

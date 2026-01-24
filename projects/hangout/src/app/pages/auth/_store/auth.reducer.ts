@@ -4,6 +4,7 @@ import {AUTH_INITIAL_STATE} from '@pages/auth/_store/auth.initial.state';
 import {immerOn} from 'ngrx-immer/store';
 
 import * as AUTH_ACTIONS from './auth.actions';
+import {AUTH_RESET_ACTIONS} from './auth.actions';
 import type {HangAuthState} from './auth.state';
 
 const reducer = createReducer(
@@ -30,6 +31,9 @@ const reducer = createReducer(
   immerOn(AUTH_ACTIONS.SIGN_UP_ACTIONS.$SIGN_UP_RESET, (state) => {
     state.signUp = AUTH_INITIAL_STATE.signUp;
   }),
+
+  // reset
+  immerOn(AUTH_RESET_ACTIONS.$RESET_AUTH, () => AUTH_INITIAL_STATE),
 );
 
 export const authReducer: (

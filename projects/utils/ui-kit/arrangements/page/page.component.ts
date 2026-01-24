@@ -1,9 +1,12 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {UkScrolledComponent, UkScrollService} from '@utils/ui-kit/services';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 
-import type {BooleanType, PageBackgroundColor} from '../../definitions';
-import {DEFAULT, UkPageBodyOverFlow} from '../../definitions';
+import type {
+  BooleanType,
+  PageBackgroundColor,
+  UkPageBodyOverFlow,
+} from '../../definitions';
+import {DEFAULT} from '../../definitions';
 
 @Component({
   standalone: true,
@@ -14,8 +17,6 @@ import {DEFAULT, UkPageBodyOverFlow} from '../../definitions';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UkPageComponent {
-  private readonly scrollService = inject(UkScrollService);
-
   @Input()
   public headerBackgroundColor: PageBackgroundColor =
     DEFAULT.page.headerBackgroundColor;
@@ -42,13 +43,4 @@ export class UkPageComponent {
 
   @Input()
   public showFooterBorder = true;
-
-  public onScroll(event: Event): void {
-    if (this.bodyOverFlow === UkPageBodyOverFlow.SCROLL) {
-      this.scrollService.detectScrollBoundaries(
-        event,
-        UkScrolledComponent.PAGE_COMPONENT,
-      );
-    }
-  }
 }

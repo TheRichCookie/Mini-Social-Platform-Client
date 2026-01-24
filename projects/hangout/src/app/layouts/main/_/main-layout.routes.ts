@@ -33,14 +33,6 @@ export const MAIN_LAYOUT_ROUTES: HangRoutes = [
           ),
         canActivate: [UkUsersGuard],
       },
-      // {
-      //   path: APP_ROUTES.FRIENDS.ROOT,
-      //   loadChildren: async () =>
-      //     import('../../../pages/friend/_/friend.routes').then(
-      //       (r) => r.FRIEND_ROUTES,
-      //     ),
-      //   canActivate: [UkUsersGuard],
-      // },
       {
         path: APP_ROUTES.PROFILE.ROOT,
         loadChildren: async () =>

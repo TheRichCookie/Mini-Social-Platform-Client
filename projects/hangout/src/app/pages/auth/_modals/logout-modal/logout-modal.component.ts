@@ -45,8 +45,8 @@ export class HangLogoutModalComponent {
   }
 
   public onLogout(): void {
-    this.ON_LOGOUT.emit();
     this.authenticateService.logout();
     this.alertService.success('با موفقیت خارج شدید.');
+    this.ON_LOGOUT.emit();
   }
 }

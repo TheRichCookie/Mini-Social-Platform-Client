@@ -19,6 +19,7 @@ import {APP_ROUTES} from '@app/app.routes';
 import type {HangOtpForm} from '@app/pages/auth/_models/auth.model';
 import {Store} from '@ngrx/store';
 import * as AUTH_ACTIONS from '@pages/auth/_store/auth.actions';
+import {AUTH_RESET_ACTIONS} from '@pages/auth/_store/auth.actions';
 import {
   UkFormBodyComponent,
   UkFormComponent,
@@ -33,6 +34,7 @@ import {
 } from '@utils/ui-kit/arrangements';
 import {
   UkButtonComponent,
+  UkImageComponent,
   UkStopWatchComponent,
   UkTextComponent,
 } from '@utils/ui-kit/components';
@@ -70,6 +72,7 @@ import {
     UkStopWatchComponent,
     UkTextComponent,
     UkFormErrorsComponent,
+    UkImageComponent,
   ],
   templateUrl: './enter-otp.component.html',
   styleUrls: ['./enter-otp.component.scss'],
@@ -141,6 +144,7 @@ export class HangEnterOtpComponent {
       .subscribe((res) => {
         if (res.token) {
           void this.router.navigate([`/${APP_ROUTES.HOME}`]);
+          this.store.dispatch(AUTH_RESET_ACTIONS.$RESET_AUTH());
         }
       });
   }
