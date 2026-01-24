@@ -39,7 +39,7 @@ interface PageController {
   props: {
     response: UserModel | null;
   };
-  actions: {
+  methods: {
     update: () => void;
   };
 }
@@ -103,7 +103,7 @@ export class HangProfileEditModalComponent implements OnInit {
     props: {
       response: null,
     },
-    actions: {
+    methods: {
       update: () => {
         this.profileEditFormSubmitted = true;
         if (this.profileEditForm.invalid) return;
@@ -123,7 +123,7 @@ export class HangProfileEditModalComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    this.PC.actions.update();
+    this.PC.methods.update();
     this.ON_SUBMIT.emit();
   }
 

@@ -11,11 +11,11 @@
       {{ (user$ | async)?.user?.username }}
     </uk-text>
   </section>
-  <section class="actions">
+  <section class="methods">
     <uk-button-group [alignType]="UK_TYPE.BUTTON_GROUP.ALIGN_TYPE.CENTER">
       @if ((user$ | async)?.isMe === true) {
         <uk-button
-          (click)="PC.actions.openProfileEditModal()"
+          (click)="PC.methods.openProfileEditModal()"
           [height]="UK_TYPE.BUTTON.HEIGHT.H_24"
           [padding]="UK_TYPE.BUTTON.PADDING.SMALL"
           [typography]="UK_TYPE.BUTTON.TYPOGRAPHY.BUTTON_2"
@@ -23,18 +23,21 @@
           ویرایش
         </uk-button>
         <uk-button
-          (click)="PC.actions.openLogoutModal()"
+          (click)="PC.methods.openLogoutModal()"
           [height]="UK_TYPE.BUTTON.HEIGHT.H_24"
           [padding]="UK_TYPE.BUTTON.PADDING.SMALL"
           [typography]="UK_TYPE.BUTTON.TYPOGRAPHY.BUTTON_2"
           [bgColor]="UK_TYPE.BUTTON.BG_COLOR.ERROR"
         >
-          <uk-icon [name]="UK_TYPE.ICON.NAME.ARROW_RIGHT_FROM_BRACKET" [fgColor]="UK_TYPE.ICON.FG_COLOR.REFERENCE_PRIMARY_LIGHT" />
+          <uk-icon
+            [name]="UK_TYPE.ICON.NAME.ARROW_RIGHT_FROM_BRACKET"
+            [fgColor]="UK_TYPE.ICON.FG_COLOR.REFERENCE_PRIMARY_LIGHT"
+          />
         </uk-button>
       }
       @if ((user$ | async)?.isFollowing && (user$ | async)?.isMe === false) {
         <uk-button
-          (click)="PC.actions.toggleFollow()"
+          (click)="PC.methods.toggleFollow()"
           [height]="UK_TYPE.BUTTON.HEIGHT.H_24"
           [padding]="UK_TYPE.BUTTON.PADDING.SMALL"
           [typography]="UK_TYPE.BUTTON.TYPOGRAPHY.BUTTON_2"
@@ -46,7 +49,7 @@
         !(user$ | async)?.isFollowing && (user$ | async)?.isMe === false
       ) {
         <uk-button
-          (click)="PC.actions.toggleFollow()"
+          (click)="PC.methods.toggleFollow()"
           [height]="UK_TYPE.BUTTON.HEIGHT.H_24"
           [padding]="UK_TYPE.BUTTON.PADDING.SMALL"
           [typography]="UK_TYPE.BUTTON.TYPOGRAPHY.BUTTON_2"
@@ -59,7 +62,7 @@
   <section class="follow">
     <uk-button-group [alignType]="UK_TYPE.BUTTON_GROUP.ALIGN_TYPE.CENTER">
       <uk-button
-        (click)="PC.actions.openFollowersModal()"
+        (click)="PC.methods.openFollowersModal()"
         [bgColor]="UK_TYPE.BUTTON.BG_COLOR.TRANSPARENT"
         [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_LOW_EMPHASIS"
         [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"
@@ -70,7 +73,7 @@
         </uk-text>
       </uk-button>
       <uk-button
-        (click)="PC.actions.openFollowingModal()"
+        (click)="PC.methods.openFollowingModal()"
         [bgColor]="UK_TYPE.BUTTON.BG_COLOR.TRANSPARENT"
         [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_LOW_EMPHASIS"
         [cursor]="UK_TYPE.BUTTON.CURSOR.POINTER"

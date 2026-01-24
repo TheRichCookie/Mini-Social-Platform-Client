@@ -44,7 +44,7 @@ interface PageController {
       };
     };
   };
-  actions: {
+  methods: {
     get: () => void;
     deletePost: (postId: string | undefined) => void;
     loadMore: () => void;
@@ -90,11 +90,11 @@ export class HangProfilePageComponent implements OnDestroy {
         userId: '',
         query: {
           page: 0,
-          limit: 1,
+          limit: 15,
         },
       },
     },
-    actions: {
+    methods: {
       get: () => {
         const REQUEST: {
           userId: string;
@@ -131,7 +131,7 @@ export class HangProfilePageComponent implements OnDestroy {
           this.PC.props.isLoading = true;
           this.PC.props.request.query.page = newPageIndex;
           this.changeDetectorRef.markForCheck();
-          this.PC.actions.get();
+          this.PC.methods.get();
         }
       },
     },
@@ -154,7 +154,7 @@ export class HangProfilePageComponent implements OnDestroy {
     this.deletePost$.pipe(takeUntilDestroyed()).subscribe((receivedTime) => {
       if (receivedTime) {
         this.alertService.success('پست حذف شد');
-        this.PC.actions.get();
+        this.PC.methods.get();
       }
     });
     this.user$.pipe(takeUntilDestroyed()).subscribe((user) => {
@@ -163,7 +163,7 @@ export class HangProfilePageComponent implements OnDestroy {
 
         if (this.PC.props.request.userId) {
           this.reset();
-          this.PC.actions.get();
+          this.PC.methods.get();
         }
 
         this.changeDetectorRef.markForCheck();

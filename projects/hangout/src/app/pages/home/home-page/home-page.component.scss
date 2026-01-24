@@ -7,50 +7,52 @@
 }
 
 uk-page {
-  .feed {
+  .feeds {
     display: flex;
     flex-direction: column;
-    border: 1px solid $color-border-grade-2;
-    background-color: $color-background-surface-02;
-    border-radius: 8px;
-    padding: 16px;
+    gap: 40px;
 
-    &:not(:last-child) {
-      margin-bottom: 40px;
-    }
+    .feed {
+      background-color: $color-background-surface-02;
+      border: 1px solid $color-border-grade-2;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 8px 0;
 
-    .header {
-      display: flex;
+      .header {
+        display: flex;
 
-      .avatar {
-        margin-left: 8px;
+        .avatar {
+          margin-left: 8px;
+        }
+
+        .info {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: space-between;
+        }
+
+        margin-bottom: 8px;
       }
 
-      .info {
-        width: 100%;
-        height: 100%;
+      .content {
         display: flex;
-        justify-content: space-between;
+        margin: 16px 0;
       }
 
-      margin-bottom: 8px;
-    }
-
-    .content {
-      display: flex;
-    }
-
-    .footer {
-      display: flex;
-      justify-content: end;
-      align-items: center;
-      gap: 8px;
-
-      .like,
-      .comment {
+      .footer {
         display: flex;
+        justify-content: end;
         align-items: center;
-        gap: 4px;
+        gap: 8px;
+
+        .like,
+        .comment {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+        }
       }
     }
   }

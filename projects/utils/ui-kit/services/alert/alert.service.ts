@@ -10,24 +10,21 @@ export class UkAlertService {
   public success(title: string, message?: string): void {
     this.toastrService.success(message, title, {
       toastClass: 'ngx-toastr uk-success-toast',
-      extendedTimeOut: 3000,
-      disableTimeOut: true,
+      extendedTimeOut: 2500,
     });
   }
 
   public error(title: string, message?: string): void {
     this.toastrService.error(message, title, {
       toastClass: 'ngx-toastr uk-error-toast',
-      extendedTimeOut: 3000,
-      disableTimeOut: true,
+      extendedTimeOut: 2500,
     });
   }
 
   public info(title: string, message?: string): void {
     this.toastrService.info(message, title, {
       toastClass: 'ngx-toastr uk-info-toast',
-      extendedTimeOut: 3000,
-      disableTimeOut: true,
+      extendedTimeOut: 2500,
     });
   }
 }

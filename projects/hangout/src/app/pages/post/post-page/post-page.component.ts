@@ -35,7 +35,7 @@ export interface HangPostForm {
 }
 
 interface PageController {
-  actions: {
+  methods: {
     addPost: () => void;
   };
 }
@@ -83,7 +83,7 @@ export class HangPostPageComponent implements OnDestroy {
   });
 
   public PC: PageController = {
-    actions: {
+    methods: {
       addPost: () => {
         this.postFormSubmitted = true;
 

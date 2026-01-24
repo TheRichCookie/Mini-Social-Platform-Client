@@ -10,8 +10,8 @@
   width: 100%;
   height: 100%;
   border-radius: 8px;
-  border: 1px solid $color-border-grade-2;
   background-color: $color-background-surface-02;
+  border: 1px solid $color-border-grade-2;
   overflow: hidden;
 
   textarea {
@@ -22,8 +22,8 @@
     width: 100%;
     height: 100%;
     resize: none;
-    background-color: $color-background-surface-02;
     color: $color-content-high-emphasis;
+    background-color: $color-background-surface-02;
     overflow: hidden;
 
     &::placeholder {
@@ -37,15 +37,11 @@
       &-TRANSPARENT {
         border-color: transparent;
       }
-      &-SECONDARY-700 {
-        border-color: $color-content-secondary;
+      &-GRADE-1 {
+        border-color: $color-border-grade-1;
       }
-      &-ERROR-500 {
-        border-color: $color-content-error;
-      }
-      &-REFERENCE-PRIMARY-MAIN {
-      }
-      &-CONTENT-ERROR {
+      &-GRADE-2 {
+        border-color: $color-border-grade-2;
       }
     }
 
@@ -66,7 +62,7 @@
 
     &-disabled {
       &-TRUE {
-        background-color: $color-content-secondary;
+        background-color: $color-background-surface-02;
       }
       &-FALSE {
       }

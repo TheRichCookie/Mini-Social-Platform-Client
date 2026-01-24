@@ -1,16 +1,19 @@
 <uk-page [bodyOverFlow]="UK_TYPE.PAGE.BODY_OVER_FLOW.HIDDEN">
   <uk-page-body [fullHeight]="true">
-    <uk-page-part>
-      <uk-search-bar (SEARCH)="PC.actions.onSearch($event)" />
-    </uk-page-part>
-    <uk-page-part [fullHeight]="true">
-      <hang-users-list
-        bindLabel="username"
-        bindId="_id"
-        [items]="PC.props.list"
-        [isLoading]="PC.props.isLoading"
-        (PAGE_COMPONENT_LOAD_MORE)="PC.actions.loadMore()"
-      />
-    </uk-page-part>
+    <uk-scroll
+      [isLoading]="PC.props.isLoading"
+      (LOAD_MORE)="PC.methods.loadMore()"
+    >
+      <uk-page-part>
+        <uk-search-bar (SEARCH)="PC.methods.onSearch($event)" />
+      </uk-page-part>
+      <uk-page-part [fullHeight]="true">
+        <hang-users-list
+          bindLabel="username"
+          bindId="_id"
+          [items]="PC.props.list"
+        />
+      </uk-page-part>
+    </uk-scroll>
   </uk-page-body>
 </uk-page>

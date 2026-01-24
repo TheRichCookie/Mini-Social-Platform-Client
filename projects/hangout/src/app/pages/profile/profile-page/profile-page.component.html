@@ -1,7 +1,7 @@
 <uk-page [bodyOverFlow]="UK_TYPE.PAGE.BODY_OVER_FLOW.HIDDEN">
   <uk-page-body [fullHeight]="true">
     <uk-scroll
-      (LOAD_MORE)="PC.actions.loadMore()"
+      (LOAD_MORE)="PC.methods.loadMore()"
       [isLoading]="PC.props.isLoading"
     >
       <uk-page-part>

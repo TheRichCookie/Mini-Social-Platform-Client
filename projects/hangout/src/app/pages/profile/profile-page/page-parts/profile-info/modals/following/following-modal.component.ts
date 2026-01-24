@@ -20,6 +20,7 @@ import {Store} from '@ngrx/store';
 import {
   UkButtonGroupComponent,
   UkModalFrameComponent,
+  UkScrollComponent,
 } from '@utils/ui-kit/arrangements';
 import {UkButtonComponent} from '@utils/ui-kit/components';
 import type {UserModel} from '@utils/ui-kit/definitions';
@@ -38,7 +39,7 @@ interface PageController {
       };
     };
   };
-  actions: {
+  methods: {
     get: () => void;
     loadMore: () => void;
   };
@@ -53,6 +54,7 @@ interface PageController {
     UkButtonComponent,
     CommonModule,
     HangUsersListComponent,
+    UkScrollComponent,
   ],
   templateUrl: './following-modal.component.html',
   styleUrl: './following-modal.component.scss',
@@ -69,8 +71,9 @@ export class HangFollowingModalComponent implements OnInit, OnDestroy {
   public readonly ON_CLOSE = new EventEmitter();
 
   public readonly following$ = this.store.select(SELECT_PROFILE_FOLLOWING_RES);
-  public readonly maxHeight = 80;
+
   public readonly UK_TYPE = UK_TYPE;
+  public readonly maxHeight = 200;
 
   public PC: PageController = {
     props: {
@@ -81,11 +84,11 @@ export class HangFollowingModalComponent implements OnInit, OnDestroy {
         userId: '',
         query: {
           page: 0,
-          limit: 1,
+          limit: 15,
         },
       },
     },
-    actions: {
+    methods: {
       get: () => {
         const REQUEST = JSON.parse(JSON.stringify(this.PC.props.request));
 
@@ -108,7 +111,7 @@ export class HangFollowingModalComponent implements OnInit, OnDestroy {
         ) {
           this.PC.props.isLoading = true;
           this.PC.props.request.query.page = newPageIndex;
-          this.PC.actions.get();
+          this.PC.methods.get();
         }
       },
     },
@@ -132,7 +135,7 @@ export class HangFollowingModalComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.PC.props.request.userId = this.userId;
-    this.PC.actions.get();
+    this.PC.methods.get();
   }
 
   public ngOnDestroy(): void {

@@ -2,16 +2,16 @@
   class="uk text-area"
   [ngClass]="[
     'uk-text-area-border-color-' + borderColor,
-    'uk-text-area-disabled-' + (disabled ? 'TRUE' : 'FALSE'),
+    'uk-text-area-disabled-' + (isDisabled ? 'TRUE' : 'FALSE'),
   ]"
 >
   <textarea
+    #textarea
     rows="4"
-    [disabled]="disabled"
+    [disabled]="isDisabled"
     [placeholder]="placeholder"
-    [value]="value"
-    [(ngModel)]="val"
+    [(ngModel)]="value"
     (blur)="onBlur()"
-    (input)="onChange($event)"
+    (input)="onChange()"
   ></textarea>
 </div>

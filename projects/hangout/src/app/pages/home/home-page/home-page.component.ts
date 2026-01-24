@@ -7,6 +7,7 @@ import {
   inject,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {
@@ -22,6 +23,7 @@ import {
 } from '@utils/ui-kit/components';
 import type {FeedPostModel} from '@utils/ui-kit/definitions';
 import {UK_TYPE} from '@utils/ui-kit/definitions';
+import {UkTextAreaComponent} from '@utils/ui-kit/forms';
 import {UkAlertService} from '@utils/ui-kit/services';
 
 import {FEED_ACTIONS, FEED_REST_ACTIONS} from '../_store/feed.actions';
@@ -39,7 +41,7 @@ interface PageController {
       };
     };
   };
-  actions: {
+  methods: {
     get: () => void;
     toggleLike: (item: FeedPostModel) => void;
     loadMore: () => void;
@@ -59,6 +61,9 @@ interface PageController {
     UkTextComponent,
     UkShapeIconComponent,
     UkIconComponent,
+    UkTextAreaComponent,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
@@ -84,7 +89,7 @@ export class HangHomePageComponent implements OnDestroy {
         },
       },
     },
-    actions: {
+    methods: {
       get: () => {
         const REQUEST = JSON.parse(JSON.stringify(this.PC.props.request));
 
@@ -93,10 +98,8 @@ export class HangHomePageComponent implements OnDestroy {
         this.store.dispatch(FEED_ACTIONS.$GET_FEEDS(REQUEST));
       },
       toggleLike: (item) => {
-        if (item.isLikedByUser !== undefined) {
-          item.isLikedByUser = JSON.parse(JSON.stringify(!item.isLikedByUser));
-          this.changeDetectorRef.markForCheck();
-        }
+        item.isLikedByUser = JSON.parse(JSON.stringify(!item.isLikedByUser));
+        this.changeDetectorRef.markForCheck();
       },
       loadMore: () => {
         let newPageIndex = JSON.parse(
@@ -112,7 +115,7 @@ export class HangHomePageComponent implements OnDestroy {
           this.PC.props.isLoading = true;
           this.PC.props.request.query.page = newPageIndex;
           this.changeDetectorRef.markForCheck();
-          this.PC.actions.get();
+          this.PC.methods.get();
         }
       },
     },
@@ -129,7 +132,7 @@ export class HangHomePageComponent implements OnDestroy {
 
       this.changeDetectorRef.markForCheck();
     });
-    this.PC.actions.get();
+    this.PC.methods.get();
   }
 
   public reset(): void {

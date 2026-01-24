@@ -7,17 +7,18 @@
   (ON_CLOSE)="onClose()"
 >
   <div FRAME-BODY>
-    <div>
+    <uk-scroll
+      [isLoading]="PC.props.isLoading"
+      (LOAD_MORE)="PC.methods.loadMore()"
+      [maxHeight]="maxHeight"
+    >
       <hang-users-list
         bindLabel="username"
         bindId="_id"
         [items]="PC.props.list"
-        [isLoading]="PC.props.isLoading"
-        [maxHeight]="maxHeight"
         (ON_CLICK)="onClose()"
-        (SCROLL_COMPONENT_LOAD_MORE)="PC.actions.loadMore()"
       />
-    </div>
+    </uk-scroll>
   </div>
   <div FRAME-ACTIONS>
     <uk-button-group>

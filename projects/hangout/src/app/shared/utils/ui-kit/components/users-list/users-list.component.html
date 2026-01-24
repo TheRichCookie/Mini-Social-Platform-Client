@@ -1,18 +1,11 @@
 <div class="users-list">
-  <uk-scroll
-    [isLoading]="isLoading"
-    [maxHeight]="maxHeight"
-    (PAGE_COMPONENT_LOAD_MORE)="onPageComponentLoadMore()"
-    (SCROLL_COMPONENT_LOAD_MORE)="onScrollComponentLoadMore()"
-  >
-    @if (items?.length) {
-      @for (item of items; track item.id) {
-        <uk-card (click)="goToProfile(item.id)">
-          {{ item.label }}
-        </uk-card>
-      }
-    } @else {
-      <uk-empty-state> هیچ داده ای یافت نشد. </uk-empty-state>
+  @if (items?.length) {
+    @for (item of items; track item.id) {
+      <uk-card (click)="navigate(item.id)">
+        {{ item.label }}
+      </uk-card>
     }
-  </uk-scroll>
+  } @else {
+    <uk-empty-state> هیچ داده ای یافت نشد. </uk-empty-state>
+  }
 </div>

@@ -1,16 +1,16 @@
-<uk-page>
+<uk-page [bodyOverFlow]="UK_TYPE.PAGE.BODY_OVER_FLOW.HIDDEN">
   <uk-page-body [fullHeight]="true">
-    <uk-page-part [fullHeight]="true">
-      <uk-scroll
-        (PAGE_COMPONENT_LOAD_MORE)="this.PC.actions.loadMore()"
-        [isLoading]="this.PC.props.isLoading"
-      >
+    <uk-scroll
+      (LOAD_MORE)="this.PC.methods.loadMore()"
+      [isLoading]="this.PC.props.isLoading"
+    >
+      <uk-page-part>
         @if (this.PC.props.list.length) {
           @for (item of PC.props.list; track item._id) {
             <div
               class="item"
               [ngClass]="{ 'need-to-read': !item.isRead }"
-              (click)="PC.actions.markAsRead(item)"
+              (click)="PC.methods.markAsRead(item)"
               tabindex="0"
               role="button"
             >
@@ -52,7 +52,7 @@
         } @else {
           <uk-empty-state> هیچ پیغامی وجود ندارد. </uk-empty-state>
         }
-      </uk-scroll>
-    </uk-page-part>
+      </uk-page-part>
+    </uk-scroll>
   </uk-page-body>
 </uk-page>

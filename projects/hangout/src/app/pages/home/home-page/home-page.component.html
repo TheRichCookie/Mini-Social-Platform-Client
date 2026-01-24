@@ -1,14 +1,14 @@
-<uk-page [bodyOverFlow]="UK_TYPE.PAGE.BODY_OVER_FLOW.SCROLL">
+<uk-page [bodyOverFlow]="UK_TYPE.PAGE.BODY_OVER_FLOW.HIDDEN">
   <uk-page-body [fullHeight]="true">
-    <uk-page-part>
-      <uk-scroll
-      [isLoading]="this.PC.props.isLoading"
-      (PAGE_COMPONENT_LOAD_MORE)="PC.actions.loadMore()"
-      >
-        <div>
-          @for (item of this.PC.props.list; track item._id) {
+    <uk-scroll
+      [isLoading]="PC.props.isLoading"
+      (LOAD_MORE)="PC.methods.loadMore()"
+    >
+      <uk-page-part [isFirstChildStick]="UK_TYPE.PAGE_PART.IS_FIRST_CHILD_STICK.TRUE">
+        <div class="feeds">
+          @for (item of PC.props.list; track item._id) {
             <div class="feed">
-              <div class="header">
+              <section class="header">
                 <div class="avatar">
                   <uk-shape-icon
                     [shapeIconType]="UK_TYPE.SHAPE_ICON.TYPE.CIRCLE"
@@ -19,26 +19,26 @@
                   <uk-text>
                     {{ item.author?.username }}
                   </uk-text>
-                  <uk-text
-                    [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE"
-                    [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_LOW_EMPHASIS"
-                  >
-                    {{ item.createdAt | date: "yyyy-MM-dd" }}
-                  </uk-text>
+                  <time>
+                    <uk-text
+                      [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE"
+                      [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_LOW_EMPHASIS"
+                    >
+                      {{ item.createdAt | date: "yyyy-MM-dd" }}
+                    </uk-text>
+                  </time>
                 </div>
-              </div>
-              <div class="content">
-                <uk-text [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE">
-                  {{ item.content }}
-                </uk-text>
-              </div>
-              <div class="footer">
+              </section>
+              <section class="content">
+                <uk-text-area [(ngModel)]="item.content" [disabled]="true" />
+              </section>
+              <section class="footer">
                 <div class="like">
                   <uk-text [typography]="UK_TYPE.TEXT.TYPOGRAPHY.BODY_1">
                     {{ item.likeCount }}
                   </uk-text>
                   <uk-icon
-                    (click)="this.PC.actions.toggleLike(item)"
+                    (click)="this.PC.methods.toggleLike(item)"
                     [name]="UK_TYPE.ICON.NAME.HEART"
                     [fgColor]="
                       item.isLikedByUser
@@ -58,11 +58,11 @@
                     [cursor]="UK_TYPE.ICON.CURSOR.POINTER"
                   />
                 </div>
-              </div>
+              </section>
             </div>
           }
         </div>
-      </uk-scroll>
-    </uk-page-part>
+      </uk-page-part>
+    </uk-scroll>
   </uk-page-body>
 </uk-page>

@@ -40,7 +40,7 @@ interface PageController {
       userId: string;
     };
   };
-  actions: {
+  methods: {
     get: () => void;
     toggleFollow: () => void;
     openFollowersModal: () => void;
@@ -90,7 +90,7 @@ export class HangProfileInfoComponent {
         userId: '',
       },
     },
-    actions: {
+    methods: {
       get: () => {
         const REQUEST: {
           userId: string;
@@ -240,19 +240,19 @@ export class HangProfileInfoComponent {
     this.follow$.pipe(takeUntilDestroyed()).subscribe((receivedTime) => {
       if (receivedTime) {
         this.alertService.success('عملیات با موفقیت انجام شد');
-        this.PC.actions.get();
+        this.PC.methods.get();
       }
     });
     this.profileEdit$.pipe(takeUntilDestroyed()).subscribe((newUser) => {
       if (newUser._id) {
         this.alertService.success('اطلاعات با موفقیت ویرایش شد');
-        this.PC.actions.get();
+        this.PC.methods.get();
       }
     });
     this.activatedRoute.paramMap.subscribe((params) => {
       this.PC.props.request.userId = params.get('id') ?? '';
 
-      this.PC.actions.get();
+      this.PC.methods.get();
     });
   }
 }

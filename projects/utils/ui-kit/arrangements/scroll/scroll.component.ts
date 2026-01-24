@@ -41,7 +41,7 @@ export class UkScrollComponent {
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
   private readonly destroyRef = inject(DestroyRef);
   private readonly loadMoreSubject$ = new Subject<void>();
-  private readonly _isLoading = false;
+  private _isLoading = false;
 
   @ViewChild('mainElement')
   public mainElement!: ElementRef;
@@ -88,10 +88,12 @@ export class UkScrollComponent {
 
   @Input()
   public set isLoading(value: boolean) {
-    this.isLoading = value;
+    this._isLoading = value;
 
     if (!value) {
-      this.ensureScrollableContent();
+      setTimeout(() => {
+        this.ensureScrollableContent();
+      });
     }
   }
 
@@ -118,6 +120,8 @@ export class UkScrollComponent {
     if (!this.isLoading) {
       const mainElement = this.mainElement.nativeElement;
       const contentElement = this.contentElement.nativeElement;
+
+      console.info(contentElement.scrollHeight, mainElement.clientHeight);
 
       if (contentElement.scrollHeight <= mainElement.clientHeight) {
         this.loadMoreSubject$.next();

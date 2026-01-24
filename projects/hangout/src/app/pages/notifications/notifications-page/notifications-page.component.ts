@@ -42,7 +42,7 @@ interface PageController {
       };
     };
   };
-  actions: {
+  methods: {
     get: () => void;
     markAsRead: (item: NotificationModel) => void;
     loadMore: () => void;
@@ -89,7 +89,7 @@ export class HangNotificationsPageComponent implements OnDestroy {
         },
       },
     },
-    actions: {
+    methods: {
       get: () => {
         const REQUEST = JSON.parse(JSON.stringify(this.PC.props.request));
 
@@ -116,7 +116,7 @@ export class HangNotificationsPageComponent implements OnDestroy {
         ) {
           this.PC.props.isLoading = true;
           this.PC.props.request.query.page = newPageIndex;
-          this.PC.actions.get();
+          this.PC.methods.get();
         }
       },
     },
@@ -137,11 +137,11 @@ export class HangNotificationsPageComponent implements OnDestroy {
       if (receivedTime) {
         this.alertService.success('خوانده شد');
         this.reset();
-        this.PC.actions.get();
+        this.PC.methods.get();
         this.store.dispatch(APP_ACTIONS.GET_HAS_NOTIFICATION());
       }
     });
-    this.PC.actions.get();
+    this.PC.methods.get();
   }
 
   public ngOnDestroy(): void {

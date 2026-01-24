@@ -9,7 +9,6 @@ import {
   Output,
 } from '@angular/core';
 import {Router} from '@angular/router';
-import {UkScrollComponent} from '@utils/ui-kit/arrangements';
 import {UkCardComponent, UkEmptyStateComponent} from '@utils/ui-kit/components';
 import {UK_TYPE} from '@utils/ui-kit/definitions';
 
@@ -20,12 +19,7 @@ interface Items {
 }
 @Component({
   selector: 'hang-users-list',
-  imports: [
-    UkCardComponent,
-    CommonModule,
-    UkScrollComponent,
-    UkEmptyStateComponent,
-  ],
+  imports: [UkCardComponent, CommonModule, UkEmptyStateComponent],
   templateUrl: './users-list.component.html',
   styleUrl: './users-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -40,23 +34,10 @@ export class HangUsersListComponent {
   @Input()
   public bindLabel = 'label';
 
-  @Input()
-  public maxHeight?: number;
-
-  @Input()
-  public isLoading = false;
-
-  @Output()
-  public readonly SCROLL_COMPONENT_LOAD_MORE = new EventEmitter();
-
-  @Output()
-  public readonly PAGE_COMPONENT_LOAD_MORE = new EventEmitter();
-
   @Output()
   public readonly ON_CLICK = new EventEmitter();
 
   public readonly UK_TYPE = UK_TYPE;
-  public appearance: 'auto' | 'compact' | 'native' = 'auto';
 
   @Input()
   public set items(items: any[]) {
@@ -73,15 +54,7 @@ export class HangUsersListComponent {
     return this._items;
   }
 
-  public onPageComponentLoadMore(): void {
-    this.PAGE_COMPONENT_LOAD_MORE.emit();
-  }
-
-  public onScrollComponentLoadMore(): void {
-    this.SCROLL_COMPONENT_LOAD_MORE.emit();
-  }
-
-  public goToProfile(userId: string): void {
+  public navigate(userId: string): void {
     this.ON_CLICK.emit();
     void this.router.navigate(['profile', userId]);
   }

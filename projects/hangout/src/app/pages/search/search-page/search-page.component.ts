@@ -14,6 +14,7 @@ import {
   UkPageBodyComponent,
   UkPageComponent,
   UkPagePartComponent,
+  UkScrollComponent,
 } from '@utils/ui-kit/arrangements';
 import {UK_TYPE, type UserSearchModel} from '@utils/ui-kit/definitions';
 import {UkSearchBarComponent} from '@utils/ui-kit/forms';
@@ -34,7 +35,7 @@ interface PageController {
       };
     };
   };
-  actions: {
+  methods: {
     get: () => void;
     loadMore: () => void;
     onSearch: (value: string) => void;
@@ -53,6 +54,7 @@ interface PageController {
     UkPageBodyComponent,
     UkPagePartComponent,
     HangUsersListComponent,
+    UkScrollComponent,
   ],
   templateUrl: './search-page.component.html',
   styleUrls: ['./search-page.component.scss'],
@@ -78,7 +80,7 @@ export class HangSearchPageComponent implements OnDestroy {
         },
       },
     },
-    actions: {
+    methods: {
       get: () => {
         const REQUEST = JSON.parse(JSON.stringify(this.PC.props.request));
 
@@ -102,7 +104,7 @@ export class HangSearchPageComponent implements OnDestroy {
           this.PC.props.isLoading = true;
           this.PC.props.request.query.page = newPageIndex;
           this.changeDetectorRef.markForCheck();
-          this.PC.actions.get();
+          this.PC.methods.get();
         }
       },
       onSearch: (value) => {
@@ -115,7 +117,7 @@ export class HangSearchPageComponent implements OnDestroy {
         this.PC.props.list = [];
         this.PC.props.isLoading = true;
 
-        this.PC.actions.get();
+        this.PC.methods.get();
       },
     },
   };

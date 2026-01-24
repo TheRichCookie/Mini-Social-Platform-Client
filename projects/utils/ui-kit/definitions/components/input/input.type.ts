@@ -10,8 +10,6 @@ export enum UkInputBorderColor {
   TRANSPARENT = 'TRANSPARENT',
   GRADE_1 = 'GRADE-1',
   GRADE_2 = 'GRADE-2',
-  REFERENCE_PRIMARY_MAIN = 'REFERENCE-PRIMARY-MAIN',
-  CONTENT_ERROR = 'CONTENT-ERROR',
 }
 export type InputBorderColor = `${UkInputBorderColor}`;
 

@@ -1,4 +1,5 @@
 import {CommonModule} from '@angular/common';
+import type {ElementRef} from '@angular/core';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -6,6 +7,7 @@ import {
   forwardRef,
   inject,
   Input,
+  ViewChild,
 } from '@angular/core';
 import type {ControlValueAccessor} from '@angular/forms';
 import {FormsModule, NG_VALUE_ACCESSOR} from '@angular/forms';
@@ -34,6 +36,10 @@ import {
 })
 export class UkTextAreaComponent implements ControlValueAccessor {
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
+
+  @ViewChild('textarea')
+  public textarea!: ElementRef;
+
   @Input()
   public placeholder = '';
 
@@ -41,12 +47,11 @@ export class UkTextAreaComponent implements ControlValueAccessor {
   public borderColor: InputBorderColor = DEFAULT.textArea.borderColor;
 
   @Input()
-  public value: unknown;
+  public value?: unknown;
 
-  public disabled = false;
   public readonly UK_TYPE = UK_TYPE;
+  public isDisabled = false;
 
-  public val!: unknown;
   public changed = UIKIT_EMPTY_FUNCTION_UNI_ARGUMENT;
   public touched = UIKIT_EMPTY_FUNCTION;
 
@@ -54,19 +59,20 @@ export class UkTextAreaComponent implements ControlValueAccessor {
     this.touched();
   }
 
-  public onChange(event: Event): void {
-    const textarea = event.target as HTMLTextAreaElement;
+  public onChange(): void {
+    const textarea = this.textarea.nativeElement as HTMLTextAreaElement;
 
     textarea.style.height = 'auto'; // reset
     textarea.style.height = `${textarea.scrollHeight}px`;
-    this.changed(this.val);
+    this.changed(this.value);
   }
 
   public writeValue(value: boolean): void {
-    if (value !== null) {
-      this.val = value;
-      this.changeDetectorRef.markForCheck();
-    }
+    this.value = value;
+    // setTimeout(() => {
+    //   this.onChange();
+    // });
+    this.changeDetectorRef.markForCheck();
   }
 
   public registerOnChange(fn: () => void): void {
@@ -77,8 +83,8 @@ export class UkTextAreaComponent implements ControlValueAccessor {
     this.touched = fn;
   }
 
-  public setDisabledState(disabled: boolean): void {
-    this.disabled = disabled;
+  public setDisabledState(isDisabled: boolean): void {
+    this.isDisabled = isDisabled;
     this.changeDetectorRef.markForCheck();
   }
 }
