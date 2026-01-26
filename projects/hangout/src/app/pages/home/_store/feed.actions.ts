@@ -81,9 +81,10 @@ export const COMMENT_ACTIONS = createActionGroup({
   },
 });
 
-export const FEED_REST_ACTIONS = createActionGroup({
+export const FEED_RESET_ACTIONS = createActionGroup({
   source: 'FEED',
   events: {
     $RESET_FEEDS: emptyProps(),
+    $RESET_COMMENTS: emptyProps(),
   },
 });

@@ -81,6 +81,12 @@ export type OtpVerificationResponse = CommonResponseViewModel & {
   data?: OtpVerificationDataModel;
 };
 
+export interface CommentUserModel {
+  _id: string;
+  username: string;
+  avatar: string;
+}
+
 export interface CommentModel {
   /** @example "60f7b8e6a2b4c12d34e5f678" */
   _id?: string;
@@ -130,6 +136,8 @@ export interface FeedPostModel {
   author?: AuthorModel;
   /** @example 12 */
   likeCount?: number;
+  /** @example 12 */
+  commentCount?: number;
   /** @example true */
   isLikedByUser?: boolean;
   /**

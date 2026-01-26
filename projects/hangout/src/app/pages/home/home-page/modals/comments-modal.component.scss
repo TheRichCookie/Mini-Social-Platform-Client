@@ -1,0 +1,28 @@
+@use "core" as *;
+
+:host {
+  width: 100%;
+}
+
+.comments-modal {
+  .comment {
+    display: flex;
+    border: 1px solid $color-border-grade-2;
+    background-color: $color-background-surface-02;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    padding: 8px;
+    gap: 8px;
+
+    > .content {
+      width: 100%;
+
+      > .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 4px;
+      }
+    }
+  }
+}

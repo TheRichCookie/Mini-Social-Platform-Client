@@ -1,6 +1,12 @@
 import {inject, Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import * as APP_ACTIONS from '@store/app/app.action';
+import type {
+  CommentModel,
+  CommentPaginationData,
+  CommonResponseViewModel,
+  FeedPaginationData,
+} from '@utils/ui-kit/definitions/swagger/swagger';
 import {
   UkCommentService,
   UkFeedService,
@@ -8,12 +14,6 @@ import {
 } from '@utils/ui-kit/services';
 import {catchError, exhaustMap, map, of} from 'rxjs';
 
-import type {
-  CommentModel,
-  CommentPaginationData,
-  CommonResponseViewModel,
-  FeedPaginationData,
-} from '../../../../../../utils/ui-kit/definitions/swagger/swagger';
 import {COMMENT_ACTIONS, FEED_ACTIONS, LIKE_ACTIONS} from './feed.actions';
 
 @Injectable({providedIn: 'root'})
@@ -131,7 +131,7 @@ export class HangFeedEffects {
       exhaustMap((props) =>
         this.commentService.addComment(props.postId, props.body).pipe(
           map((res: CommonResponseViewModel<CommentModel>) => {
-            if (res.code === 200 && res.data) {
+            if (res.code === 201 && res.data) {
               return COMMENT_ACTIONS.$ADD_COMMENT_UPDATE({
                 postId: props.postId,
                 body: props.body,

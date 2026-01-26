@@ -1,0 +1,71 @@
+<uk-modal-frame
+  class="comments-modal"
+  [borderRadius]="UK_TYPE.MODAL_FRAME.BORDER_RADIUS.TOP"
+  [showHeader]="UK_TYPE.UK.BOOLEAN.TRUE"
+  [showTopClose]="true"
+  [title]="'نظرها'"
+  (ON_CLOSE)="onClose()"
+>
+  <div FRAME-BODY>
+    <uk-scroll
+      [maxHeight]="maxHeight"
+      [isLoading]="PC.props.isLoading"
+      (LOAD_MORE)="PC.methods.loadMore()"
+    >
+      @if (PC.props.list.length) {
+        @for (item of PC.props.list; track item._id) {
+          <div class="comment">
+            <div class="avatar">
+              <uk-shape-icon
+                [shapeIconType]="UK_TYPE.SHAPE_ICON.TYPE.CIRCLE"
+                [iconName]="UK_TYPE.SHAPE_ICON.ICON_NAME.USER"
+                [size]="UK_TYPE.SHAPE_ICON.SIZE.MEDIUM"
+              />
+            </div>
+            <div class="content">
+              <div class="top">
+                <uk-text
+                  [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE_STRONG"
+                  [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_HIGH_EMPHASIS"
+                >
+                  {{ item.userId?.username }}
+                </uk-text>
+                <uk-text
+                  [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE"
+                  [fgColor]="UK_TYPE.TEXT.FG_COLOR.CONTENT_LOW_EMPHASIS"
+                >
+                  {{ item.createdAt | date: "yyyy-MM-dd" }}
+                </uk-text>
+              </div>
+              <div class="bot">
+                <uk-text [typography]="UK_TYPE.TEXT.TYPOGRAPHY.SUBTITLE">
+                  {{ item.text }}
+                </uk-text>
+              </div>
+            </div>
+          </div>
+        }
+      } @else {
+        <uk-empty-state> هیچ داده ای یافت نشد. </uk-empty-state>
+      }
+    </uk-scroll>
+  </div>
+  <div FRAME-ACTIONS>
+    <form (ngSubmit)="PC.methods.addComment()">
+      <uk-input
+        [(ngModel)]="comment"
+        name="comment"
+        [placeholder]="'نظر خود را وارد کنید...'"
+      >
+        <uk-icon
+          END
+          (click)="PC.methods.addComment()"
+          [fgColor]="UK_TYPE.ICON.FG_COLOR.CONTENT_PRIMARY"
+          [name]="UK_TYPE.ICON.NAME.PLUS_SQUARE"
+          [size]="UK_TYPE.ICON.SIZE.LARGE"
+          [cursor]="UK_TYPE.ICON.CURSOR.POINTER"
+        />
+      </uk-input>
+    </form>
+  </div>
+</uk-modal-frame>

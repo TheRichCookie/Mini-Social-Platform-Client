@@ -17,3 +17,7 @@ export const SELECT_COMMENTS_RES = createSelector(
   FEED_STATE,
   (s: HangFeedState) => s.comment.get.response,
 );
+export const SELECT_ADD_COMMENTS_RES = createSelector(
+  FEED_STATE,
+  (s: HangFeedState) => s.comment.add.response,
+);

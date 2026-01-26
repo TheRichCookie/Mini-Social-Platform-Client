@@ -121,8 +121,6 @@ export class UkScrollComponent {
       const mainElement = this.mainElement.nativeElement;
       const contentElement = this.contentElement.nativeElement;
 
-      console.info(contentElement.scrollHeight, mainElement.clientHeight);
-
       if (contentElement.scrollHeight <= mainElement.clientHeight) {
         this.loadMoreSubject$.next();
       }

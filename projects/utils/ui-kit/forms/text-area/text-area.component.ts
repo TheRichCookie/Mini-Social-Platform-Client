@@ -1,14 +1,16 @@
 import {CommonModule} from '@angular/common';
-import type {ElementRef} from '@angular/core';
+import type {AfterViewInit, ElementRef} from '@angular/core';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  DestroyRef,
   forwardRef,
   inject,
   Input,
   ViewChild,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {ControlValueAccessor} from '@angular/forms';
 import {FormsModule, NG_VALUE_ACCESSOR} from '@angular/forms';
 import type {InputBorderColor} from '@utils/ui-kit/definitions';
@@ -18,6 +20,7 @@ import {
   UIKIT_EMPTY_FUNCTION_UNI_ARGUMENT,
   UK_TYPE,
 } from '@utils/ui-kit/definitions';
+import {auditTime, Observable} from 'rxjs';
 
 @Component({
   standalone: true,
@@ -34,8 +37,11 @@ import {
     },
   ],
 })
-export class UkTextAreaComponent implements ControlValueAccessor {
+export class UkTextAreaComponent
+  implements ControlValueAccessor, AfterViewInit
+{
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
+  private readonly destroyRef = inject(DestroyRef);
 
   @ViewChild('textarea')
   public textarea!: ElementRef;
@@ -59,19 +65,34 @@ export class UkTextAreaComponent implements ControlValueAccessor {
     this.touched();
   }
 
-  public onChange(): void {
+  public onInput(): void {
+    this.changed(this.value);
+    this.resize();
+  }
+
+  public resize(): void {
     const textarea = this.textarea.nativeElement as HTMLTextAreaElement;
 
     textarea.style.height = 'auto'; // reset
     textarea.style.height = `${textarea.scrollHeight}px`;
-    this.changed(this.value);
+  }
+
+  public resizeObserver$(element: Element): Observable<ResizeObserverEntry[]> {
+    return new Observable((observer) => {
+      const resizeObserver = new ResizeObserver((entries) => {
+        observer.next(entries);
+      });
+
+      resizeObserver.observe(element);
+
+      return () => {
+        resizeObserver.disconnect();
+      };
+    });
   }
 
   public writeValue(value: boolean): void {
     this.value = value;
-    // setTimeout(() => {
-    //   this.onChange();
-    // });
     this.changeDetectorRef.markForCheck();
   }
 
@@ -86,5 +107,13 @@ export class UkTextAreaComponent implements ControlValueAccessor {
   public setDisabledState(isDisabled: boolean): void {
     this.isDisabled = isDisabled;
     this.changeDetectorRef.markForCheck();
+  }
+
+  public ngAfterViewInit(): void {
+    this.resizeObserver$(this.textarea.nativeElement)
+      .pipe(auditTime(0), takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => {
+        this.resize();
+      });
   }
 }

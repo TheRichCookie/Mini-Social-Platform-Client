@@ -4,6 +4,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  DestroyRef,
   inject,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -17,17 +18,24 @@ import {
   UkScrollComponent,
 } from '@utils/ui-kit/arrangements';
 import {
+  UkEmptyStateComponent,
   UkIconComponent,
   UkShapeIconComponent,
   UkTextComponent,
 } from '@utils/ui-kit/components';
 import type {FeedPostModel} from '@utils/ui-kit/definitions';
-import {UK_TYPE} from '@utils/ui-kit/definitions';
+import {CONST_CONFIG, UK_TYPE} from '@utils/ui-kit/definitions';
 import {UkTextAreaComponent} from '@utils/ui-kit/forms';
-import {UkAlertService} from '@utils/ui-kit/services';
+import {UkAlertService, UkOverlayService} from '@utils/ui-kit/services';
+import {take} from 'rxjs';
 
-import {FEED_ACTIONS, FEED_REST_ACTIONS} from '../_store/feed.actions';
+import {
+  FEED_ACTIONS,
+  FEED_RESET_ACTIONS,
+  LIKE_ACTIONS,
+} from '../_store/feed.actions';
 import {SELECT_FEEDS_RES} from '../_store/feed.selectors';
+import {HangCommentsModalComponent} from './modals/comments-modal.component';
 
 interface PageController {
   props: {
@@ -44,6 +52,7 @@ interface PageController {
   methods: {
     get: () => void;
     toggleLike: (item: FeedPostModel) => void;
+    openCommentModal: (item: FeedPostModel) => void;
     loadMore: () => void;
   };
 }
@@ -64,6 +73,7 @@ interface PageController {
     UkTextAreaComponent,
     FormsModule,
     ReactiveFormsModule,
+    UkEmptyStateComponent,
   ],
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
@@ -72,9 +82,12 @@ interface PageController {
 export class HangHomePageComponent implements OnDestroy {
   private readonly store = inject(Store);
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
+  private readonly overlayService = inject(UkOverlayService);
   private readonly alertService = inject(UkAlertService);
+  private readonly destroyRef = inject(DestroyRef);
 
   private readonly feeds$ = this.store.select(SELECT_FEEDS_RES);
+  public readonly CONST_CONFIG = CONST_CONFIG;
   public readonly UK_TYPE = UK_TYPE;
 
   public PC: PageController = {
@@ -98,8 +111,54 @@ export class HangHomePageComponent implements OnDestroy {
         this.store.dispatch(FEED_ACTIONS.$GET_FEEDS(REQUEST));
       },
       toggleLike: (item) => {
-        item.isLikedByUser = JSON.parse(JSON.stringify(!item.isLikedByUser));
-        this.changeDetectorRef.markForCheck();
+        this.PC.props.list = this.PC.props.list.map((i) =>
+          i._id === item._id
+            ? {
+                ...i,
+                isLikedByUser: !i.isLikedByUser,
+                likeCount: i.isLikedByUser
+                  ? i.likeCount! - 1
+                  : i.likeCount! + 1,
+              }
+            : i,
+        );
+
+        if (item._id) {
+          this.store.dispatch(LIKE_ACTIONS.$TOGGLE_LIKE({postId: item._id}));
+        }
+      },
+      openCommentModal: (item) => {
+        const INPUTS = new Map([['postId', item._id]]);
+
+        const OVERLAY = this.overlayService.open(HangCommentsModalComponent, {
+          hasBackdrop: true,
+          positionInfo: 'CENTER_BOTTOM',
+          width: CONST_CONFIG.COMMON.MAX_MOBILE_WIDTH,
+          inputs: INPUTS,
+        });
+
+        OVERLAY.overlayRef
+          .backdropClick()
+          .pipe(take(1))
+          .subscribe(() => {
+            const COUNTER = OVERLAY.componentRef.instance.counter;
+
+            if (COUNTER) {
+              this.updateCommentsCount(item, COUNTER);
+            }
+
+            OVERLAY.overlayRef.dispose();
+          });
+
+        OVERLAY.componentRef.instance.ON_CLOSE.pipe(
+          takeUntilDestroyed(this.destroyRef),
+        ).subscribe((counter: number) => {
+          if (counter) {
+            this.updateCommentsCount(item, counter);
+          }
+
+          OVERLAY.overlayRef.dispose();
+        });
       },
       loadMore: () => {
         let newPageIndex = JSON.parse(
@@ -122,17 +181,29 @@ export class HangHomePageComponent implements OnDestroy {
   };
 
   constructor() {
-    this.feeds$.pipe(takeUntilDestroyed()).subscribe((feed) => {
-      if (feed.totalCount) {
-        this.PC.props.count = feed.totalCount;
+    this.feeds$.pipe(takeUntilDestroyed()).subscribe((feeds) => {
+      if (feeds.totalCount) {
+        this.PC.props.count = feeds.totalCount;
       }
 
-      this.PC.props.list = [...this.PC.props.list, ...(feed.items ?? [])];
+      this.PC.props.list = [...this.PC.props.list, ...(feeds.items ?? [])];
       this.PC.props.isLoading = false;
 
       this.changeDetectorRef.markForCheck();
     });
     this.PC.methods.get();
+  }
+
+  public updateCommentsCount(item: FeedPostModel, counter: number): void {
+    this.PC.props.list = this.PC.props.list.map((i) =>
+      i._id === item._id
+        ? {
+            ...i,
+            commentCount: i.commentCount! + counter,
+          }
+        : i,
+    );
+    this.changeDetectorRef.markForCheck();
   }
 
   public reset(): void {
@@ -144,6 +215,6 @@ export class HangHomePageComponent implements OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this.store.dispatch(FEED_REST_ACTIONS.$RESET_FEEDS());
+    this.store.dispatch(FEED_RESET_ACTIONS.$RESET_FEEDS());
   }
 }

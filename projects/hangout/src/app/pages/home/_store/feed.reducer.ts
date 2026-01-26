@@ -5,10 +5,10 @@ import {immerOn} from 'ngrx-immer/store';
 import {
   COMMENT_ACTIONS,
   FEED_ACTIONS,
-  FEED_REST_ACTIONS,
+  FEED_RESET_ACTIONS,
   LIKE_ACTIONS,
 } from './feed.actions';
-import {FEED_INITIAL_STATE} from './feed.initial.state';
+import {COMMENT_INITIAL, FEED_INITIAL_STATE} from './feed.initial.state';
 import type {HangFeedState} from './feed.state';
 
 const reducer = createReducer(
@@ -42,7 +42,10 @@ const reducer = createReducer(
     state.comment.delete.request.commentId = props.commentId;
   }),
 
-  immerOn(FEED_REST_ACTIONS.$RESET_FEEDS, () => FEED_INITIAL_STATE),
+  immerOn(FEED_RESET_ACTIONS.$RESET_FEEDS, () => FEED_INITIAL_STATE),
+  immerOn(FEED_RESET_ACTIONS.$RESET_COMMENTS, (state) => {
+    state.comment = COMMENT_INITIAL;
+  }),
 );
 
 export const feedReducer: (
